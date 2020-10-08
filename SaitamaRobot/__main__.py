@@ -54,13 +54,16 @@ PM_START_TEXT = """
 Hi {},
 𝕴 𝖆𝖒 𝕾𝖚𝖟𝖚𝖞𝖆 𝖙𝖍𝖊 𝕬𝖓𝖎𝖒𝖊 𝖙𝖍𝖊𝖒𝖊𝖉 𝖌𝖗𝖔𝖚𝖕 𝖒𝖆𝖓𝖆𝖌𝖊𝖒𝖊𝖓𝖙 𝖇𝖔𝖙.
 ɪ ᴡɪʟʟ ᴋᴇᴇᴘ ᴛʜᴇ ɢʀᴏᴜᴘ ᴄʟᴇᴀɴ.
+
 I HOPE I'M ABLE TO MAINTAIN YOUR GROUP.
-You can find my list of avaiнιт нεℓρ тσ sεε cσммαη∂s /help.
+𝑱𝑶𝑰𝑵 𝑺𝑼𝑷𝑷𝑶𝑹𝑻 𝑮𝑹𝑶𝑼𝑷 : @Suzuya_Support.
+
+нιт нεℓρ тσ sεε cσммαη∂s /help.
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Hero For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+I'm a Pro Bot For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
 the things I can help you with.
 
 *Main* commands available:
@@ -190,18 +193,11 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="☑️ Add Suzuya to your group",
+                            text=" Add Suzuya to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🚑 Support Group",
-                             url=f"https://t.me/{SUPPORT_CHAT}"),
-                         InlineKeyboardButton(
-                             text="🔔 Updates Channel",
-                             url="https://t.me/OnePunchUpdates")
-                     ],
+                     
                      [
                          InlineKeyboardButton(
                              text="🧾 Getting started guide",
