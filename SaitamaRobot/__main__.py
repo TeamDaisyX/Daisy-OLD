@@ -56,7 +56,6 @@ Hi {},
 ɪ ᴡɪʟʟ ᴋᴇᴇᴘ ᴛʜᴇ ɢʀᴏᴜᴘ ᴄʟᴇᴀɴ.
 
 I HOPE I'M ABLE TO MAINTAIN YOUR GROUP.
-𝑱𝑶𝑰𝑵 𝑺𝑼𝑷𝑷𝑶𝑹𝑻 𝑮𝑹𝑶𝑼𝑷 : @Suzuya_Support.
 
 нιт нεℓρ тσ sεε cσммαη∂s /help.
 """
@@ -197,7 +196,14 @@ def start(update: Update, context: CallbackContext):
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
-                     
+                     [
+                         InlineKeyboardButton(
+                             text="🚑 Support Group",
+                             url=f"https://t.me/{SUPPORT_CHAT}"),
+                         InlineKeyboardButton(
+                             text="🔔 Updates Channel",
+                             url="https://t.me/OnePunchUpdates")
+                     ],
                      [
                          InlineKeyboardButton(
                              text="🧾 Getting started guide",
