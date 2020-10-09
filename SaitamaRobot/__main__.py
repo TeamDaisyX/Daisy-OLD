@@ -207,7 +207,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="🧾 Getting started guide",
-                             url="https://t.me/OnePunchUpdates/29")
+                             url="https://t.me/Suzuyalogs/15")
                      ],
                      [
                          InlineKeyboardButton(
