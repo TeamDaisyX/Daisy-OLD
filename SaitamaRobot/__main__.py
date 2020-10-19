@@ -51,7 +51,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-нєℓℓσ {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in the management of your group and will help it to stay clean.
 
 🧿 I have the normal GROUP MANAGING functions like flood control, a warning system etc but i mainly have the advanced and handy Antispam system and the SIBYL-x banning system which safegaurds and helps your group from spammers 🛡
