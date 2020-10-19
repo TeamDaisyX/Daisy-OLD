@@ -58,11 +58,11 @@ I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in the ma
 
 🧿 If u want a healthy and safe group you can add me to help take care of it
 
-===============================
+==============================
 
 ⚡️For seeing my commands you can use the /help option or for further doubts you can contact our support channel :)
 
-===============================
+==============================
 """
 
 HELP_STRINGS = """
