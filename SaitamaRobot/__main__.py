@@ -192,13 +192,13 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text=" Add Suzuya to your group",
+                            text="💫 Add Suzuya to your group 💫",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
                      [
                          InlineKeyboardButton(
-                             text="🚑 Support Group",
+                             text="⚡️Support Group⚡️",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                          InlineKeyboardButton(
                              text="🔔 Updates Channel",
@@ -206,12 +206,12 @@ def start(update: Update, context: CallbackContext):
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🧾 Getting started guide",
+                             text="🔰 Getting started guide 🔰",
                              url="https://t.me/Suzuyalogs/15")
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🗄 Source code",
+                             text="🗄 Source code 🗄",
                              url="https://github.com/Godzilla0userbot/SaitamaRobot.git")
                      ]]))
     else:
