@@ -208,16 +208,6 @@ def start(update: Update, context: CallbackContext):
                          InlineKeyboardButton(
                              text="🔔 Updates Channel",
                              url="https://t.me/OnePunchUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🔰 Getting started guide 🔰",
-                             url="https://t.me/Suzuyalogs/15")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🗄 Source code 🗄",
-                             url="https://github.com/Godzilla0userbot/SaitamaRobot.git")
                      ]]))
     else:
         update.effective_message.reply_text(
