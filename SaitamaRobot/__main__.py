@@ -52,20 +52,16 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
 🧿 I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL-x banning system which safegaurds and helps your group from spammers 
-
 🧿 If u want a healthy and safe group you can add me to help take care of it
-
 🧿 Hit /help to see my commands
 
 ==========================
-
 🔗 [ Support Group ](https://t.me/SuzuyaSupport)
-
 🔗 [ Updates Channel ](https://t.me/SuzuyaUpdates)
-
 ==========================
 """
 
@@ -204,14 +200,6 @@ def start(update: Update, context: CallbackContext):
                             text="💫 Add Suzuya to your group 💫",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text="⚡️Support Group⚡️",
-                             url=f"https://t.me/{SUPPORT_CHAT}"),
-                         InlineKeyboardButton(
-                             text="🔔 Updates Channel",
-                             url="https://t.me/OnePunchUpdates")
                      ]]))
     else:
         update.effective_message.reply_text(
