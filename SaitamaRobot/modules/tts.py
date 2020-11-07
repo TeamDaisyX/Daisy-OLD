@@ -13,17 +13,15 @@ import json
 import urllib.request
 import urllib.parse
 import requests
-from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS,MESSAGE_DUMP, SUPPORT_USERS,
-                          TIGER_USERS, WHITELIST_USERS, TIME_API_KEY, dispatcher, updater)
+from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS SUPPORT_USERS,
+                          TIGER_USERS, WHITELIST_USERS, dispatcher, updater)
 from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus, user_admin
-from SaitamRobot.modules.helper_funcs.extraction import extract_user
 from telegram import MessageEntity, ParseMode, Update, constants
 from telegram.error import BadRequest
 from emoji import UNICODE_EMOJI
-from SaitamRobot.modules.helper_funcs.alternate import typing_action
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
