@@ -46,6 +46,12 @@ def tts(update: Update, context: CallbackContext):
     with open("k.mp3", "rb") as speech:
         update.message.reply_voice(speech, quote=False)
 
-
+__help__ = """
+ - /tts <text>: convert text to speech
+ """
 TTS_HANDLER = DisableAbleCommandHandler("tts", tts, pass_args=True)
 dispatcher.add_handler(TTS_HANDLER)
+
+__mod_name__ = "tts"
+__command_list__ = ["tts"]
+__handlers__ = [TTS_HANDLER]
