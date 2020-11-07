@@ -19,7 +19,14 @@ GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
+@run_async
+def truth(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
 
+@run_async
+def dare(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(random.choice(fun_strings.DARE_STRINGS))
+    
 @run_async
 def sanitize(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -183,23 +190,28 @@ def table(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.TABLE))
 
-
 __help__ = """
  • `/runs`*:* reply a random string from an array of replies
- • `/slap`*:* slap a user, or get slapped if not a reply
+ • `/slap`*:* slap a user, or get slapped if not a reply 🌝
  • `/shrug`*:* get shrug XD
  • `/table`*:* get flip/unflip :v
- • `/decide`*:* Randomly answers yes/no/maybe
- • `/toss`*:* Tosses A coin
  • `/bluetext`*:* check urself :V
- • `/roll`*:* Roll a dice
  • `/rlg`*:* Join ears,nose,mouth and create an emo ;-;
  • `/shout <keyword>`*:* write anything you want to give loud shout
  • `/weebify <text>`*:* returns a weebified text
- • `/sanitize`*:* always use this before /pat or any contact
- • `/pat`*:* pats a user, or get patted
-"""
+ • `/sanitize`*:* always use this before `/pat` or any contact
+ • `/pat`*:* pats a user, or get patted (^-^)
+  - - - - - - - - - -
+• *Games* 🎲 *:*
+ • `/truth`*:* Get ready to reveal a surprising truth🤫
+ • `/dare`*:* A dare is on way 😈
+ • `/decide`*:* Randomly answers yes/no/maybe/idk
+ • `/toss`*:* Tosses A coin
+ • `/roll`*:* Roll a dice & get you a number
 
+"""
+TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
+DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
@@ -212,6 +224,8 @@ RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 
+dispatcher.add_handler(TRUTH_HANDLER)
+dispatcher.add_handler(DARE_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
@@ -230,7 +244,7 @@ __command_list__ = [
     "table", "pat", "sanitize"
 ]
 __handlers__ = [
-    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER
 ]
