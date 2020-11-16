@@ -9,7 +9,7 @@ from telegram.ext import run_async
 
 
 @run_async
-def animequotes(bot: Bot, update: Update):
+def animequotes(context: CallbackContext, update: Update):
     update.effective_message.reply_text(random.choice(animequotesstring.ANIMEQUOTES))
    
 
