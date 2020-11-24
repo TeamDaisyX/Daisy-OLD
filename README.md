@@ -7,8 +7,6 @@ A modular Telegram Python bot running on python3 with a sqlalchemy database and 
 
 Can be found on telegram as [Senku](https://t.me/SenkuRobot).
 
-Note : [Advertise your Business  for free](https://t.me/advertisehereforfree).
-
 The Support group can be reached out to at [Senku Support](https://t.me/SenkuSupport), where you can ask for help about [SenkuRobot](https://t.me/SenkuRobot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
 News channel as at [Senku Updates](https://t.me/SenkuUpdates) 
