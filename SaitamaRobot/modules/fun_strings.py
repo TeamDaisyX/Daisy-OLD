@@ -103,6 +103,18 @@ DARE_STRINGS = (
 
      )
 
+NOT_OK = (
+    "Ok",
+    "Fuck You",
+    "F Off",
+     )
+
+NOT_IT_OK = (
+    "Reply me something you fool",
+    "So this is what your parents taught ok",
+    "F Off U Fool",
+     )
+
 GIFS = [
     'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE',
     'CgACAgUAAx0CU_rCTAABAjdgX1s4NVaeCls6YaH3p43vgdCRwQIAAqsAA4P_MFUYQhyoR-kgpRsE',
