@@ -119,7 +119,7 @@ def pingall(update: Update, context: CallbackContext):
 
 
 PING_HANDLER = DisableAbleCommandHandler("ping", ping)
-PING_HANDLER = DisableAbleCommandHandler("ding", ding)
+DING_HANDLER = DisableAbleCommandHandler("ding", ding)
 PINGALL_HANDLER = DisableAbleCommandHandler("pingall", pingall)
 
 dispatcher.add_handler(DING_HANDLER)
