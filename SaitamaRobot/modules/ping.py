@@ -86,7 +86,6 @@ def ping(update: Update, context: CallbackContext):
         parse_mode=ParseMode.HTML)
 
 @run_async
-@sudo_plus
 def ding(update: Update, context: CallbackContext):
     msg = update.effective_message
 
