@@ -49,7 +49,6 @@ ANIMEQUOTES=(
 "People only find me interesting because they can't tell whether I'm serious or not.- Killua Zoldyck",  
 "If you want to get to know someone, find out what makes them angry.- Gon Freecss",
 "It takes a mere second for treasure to turn to trash.- Hisoka Morow",
-"Pranav Is God~Pranav ajay",
 "Human potential for evolution is limitless. - Isaac Netero",
 "You should enjoy the little detours to the fullest. Because that's where you'll find things more important than what you want.- Ging Freecss",
 "You Want To Keep Everyone From Dying? That’s Naïve. It’s War. People Die-Monkey D. Luffy",
