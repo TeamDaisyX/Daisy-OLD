@@ -41,7 +41,68 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
 
 ### Deep link example ends
 
+#FtSasaki adding add to pro developer cmd :D
+@run_async
+@dev_plus
+@gloggable
+def addpiro(update: Update, context: CallbackContext) -> str:
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    bot, args = context.bot, context.args
+    user_id = extract_user(message, args)
+    user_member = bot.getChat(user_id)
+    rt = ""
 
+    reply = check_user_id(user_id, bot)
+    if reply:
+        message.reply_text(reply)
+        return ""
+
+    with open(ELEVATED_USERS_FILE, 'r') as infile:
+        data = json.load(infile)
+        
+     if user_id in DEV_USERS:
+        message.reply_text("This member is already a Pro Developer")
+        return ""
+        
+    if user_id in DRAGONS:
+        rt += "Requested HQ to promote a Dragon Disaster to Pro Developer."
+        data['sudos'].remove(user_id)
+        DEMONS.remove(user_id)
+
+    if user_id in DEMONS:
+        rt += "Requested HQ to promote a Demon Disaster to Pro Developer."
+        data['supports'].remove(user_id)
+        DEMONS.remove(user_id)
+
+    if user_id in WOLVES:
+        rt += "Requested HQ to promote a Wolf Disaster to Pro Developer."
+        data['whitelists'].remove(user_id)
+        WOLVES.remove(user_id)
+
+    data['devs'].append(user_id)
+    DRAGONS.append(user_id)
+
+    with open(ELEVATED_USERS_FILE, 'w') as outfile:
+        json.dump(data, outfile, indent=4)
+
+    update.effective_message.reply_text(
+        rt + "\nSuccessfully set Disaster level of {} to Pro Developer!".format(
+            user_member.first_name))
+
+    log_message = (
+        f"#ProDeveloper\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+    )
+
+    if chat.type != 'private':
+        log_message = f"<b>{html.escape(chat.title)}:</b>\n" + log_message
+
+    return log_message
+
+  
 @run_async
 @dev_plus
 @gloggable
@@ -512,7 +573,7 @@ def sudolist(update: Update, context: CallbackContext):
 def devlist(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Hero Association Members ⚡️:</b>\n"
+    reply = "<b>Sciencer Association Members ⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -593,6 +654,7 @@ Group admins/group owners do not need these commands.
 Visit @{SUPPORT_CHAT} for more information.
 """
 
+DEV_HANDLER = CommandHandler(("addpiro", "addsudo"), addpiro)
 SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
 TIGER_HANDLER = CommandHandler(("addtiger"), addtiger)
@@ -611,6 +673,7 @@ SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
 DEVLIST_HANDLER = CommandHandler(["devlist", "heroes"], devlist)
 
+dispatcher.add_handler(DEV_HANDLER)
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
 dispatcher.add_handler(TIGER_HANDLER)
@@ -628,7 +691,7 @@ dispatcher.add_handler(DEVLIST_HANDLER)
 
 __mod_name__ = "Disasters"
 __handlers__ = [
-    SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
+    DEV_HANDLER, SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,
     WHITELISTLIST_HANDLER, TIGERLIST_HANDLER, SUPPORTLIST_HANDLER,
     SUDOLIST_HANDLER, DEVLIST_HANDLER
