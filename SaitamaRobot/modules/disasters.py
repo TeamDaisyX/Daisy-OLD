@@ -63,8 +63,8 @@ def addpiro(update: Update, context: CallbackContext) -> str:
     with open(ELEVATED_USERS_FILE, 'r') as infile:
         data = json.load(infile)
         
-     if user_id in DEV_USERS:
-        message.reply_text("This member is already a Pro Developer")
+    if int(user_id) in DEV_USERS:
+      message.reply_text("This member is already a Pro Developer")
         return ""
         
     if user_id in DRAGONS:
