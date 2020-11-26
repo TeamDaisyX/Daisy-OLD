@@ -82,7 +82,7 @@ def addpiro(update: Update, context: CallbackContext) -> str:
         WOLVES.remove(user_id)
 
     data['devs'].append(user_id)
-    DRAGONS.append(user_id)
+    DEV_USERS.append(user_id)
 
     with open(ELEVATED_USERS_FILE, 'w') as outfile:
         json.dump(data, outfile, indent=4)
