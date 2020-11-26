@@ -1,5 +1,6 @@
 future
 emoji
+fontTools
 lxml
 beautifulsoup4
 requests
@@ -29,3 +30,5 @@ spamwatch
 alphabet_detector
 pyrate-limiter
 gtts
+textwrap
+urllib
