@@ -65,7 +65,6 @@ def addpiro(update: Update, context: CallbackContext) -> str:
         
     if int(user_id) in DEV_USERS:
       message.reply_text("This member is already a Pro Developer")
-        return
         
     if user_id in DRAGONS:
         rt += "Requested HQ to promote a Dragon Disaster to Pro Developer."
