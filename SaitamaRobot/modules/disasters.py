@@ -338,6 +338,50 @@ def addtiger(update: Update, context: CallbackContext) -> str:
 @run_async
 @dev_plus
 @gloggable
+def rmpiro(update: Update, context: CallbackContext) -> str:
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    bot, args = context.bot, context.args
+    user_id = extract_user(message, args)
+    user_member = bot.getChat(user_id)
+
+    reply = check_user_id(user_id, bot)
+    if reply:
+        message.reply_text(reply)
+        return ""
+
+    with open(ELEVATED_USERS_FILE, 'r') as infile:
+        data = json.load(infile)
+
+    if user_id in DEV_USERS:
+        message.reply_text("Requested HQ to demote this user to Civilian")
+        DEV_USERS.remove(user_id)
+        data['devs'].remove(user_id)
+
+        with open(ELEVATED_USERS_FILE, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
+
+        log_message = (
+            f"#UNDEV\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+            f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+        )
+
+        if chat.type != 'private':
+            log_message = "<b>{}:</b>\n".format(html.escape(
+                chat.title)) + log_message
+
+        return log_message
+
+    else:
+        message.reply_text("This user is not a Pro Developer Disaster!")
+        return ""
+      
+      
+@run_async
+@dev_plus
+@gloggable
 def removesudo(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     user = update.effective_user
