@@ -42,6 +42,7 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
 ### Deep link example ends
 
 #FtSasaki adding add to pro developer cmd :D
+
 @run_async
 @dev_plus
 @gloggable
@@ -69,7 +70,7 @@ def addpiro(update: Update, context: CallbackContext) -> str:
     if user_id in DRAGONS:
         rt += "Requested HQ to promote a Dragon Disaster to Pro Developer."
         data['sudos'].remove(user_id)
-        DEMONS.remove(user_id)
+        DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
         rt += "Requested HQ to promote a Demon Disaster to Pro Developer."
