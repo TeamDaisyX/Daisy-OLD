@@ -30,3 +30,4 @@ alphabet_detector
 pyrate-limiter
 cachetools
 pyrogram
+pyyaml
