@@ -40,7 +40,7 @@ OFFICERS = [OWNER_ID] + DEV_USERS + DRAGONS + DEMONS
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in oko.iter_participants(
+    async for user in telethn.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
         if user_id == user.id or user_id in OFFICERS:
