@@ -31,3 +31,4 @@ pyrate-limiter
 cachetools
 pyrogram
 pyyaml
+
