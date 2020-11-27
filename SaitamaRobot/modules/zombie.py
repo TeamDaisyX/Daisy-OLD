@@ -5,7 +5,7 @@ from pyrogram.errors import FloodWait
 import time
 import yaml
 
-with open("SenkuRobot//SaitamaRobot//modules//config.yml", 'r') as ymlfile:
+with open("config.yml", 'r') as ymlfile:
     cfg = yaml.load(ymlfile)
 
 api_id = cfg['telegram']['api_id']
