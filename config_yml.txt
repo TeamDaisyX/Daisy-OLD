@@ -1,6 +1,6 @@
 telegram:
-  api_id: "1317300" # api id and hash which you got from telegram when registering a new app (https://my.telegram.org/apps)
-  api_hash: "c5175cf65c5924982ea4b54981a90d0d"
+  api_id: 1234 UwU # api id and hash which you got from telegram when registering a new app (https://my.telegram.org/apps)
+  api_hash: "OwO"
 bot:
   chat_ids: # telegram chat ids of the chats in which deleted accounts should be kicked. Use the string format, no numbers
     - "1234"
