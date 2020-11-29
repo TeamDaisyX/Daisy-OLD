@@ -14,7 +14,7 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 
 session = aiohttp.ClientSession()
 
-@run_async.on_message(~filters.me & filters.command('wa', prefixes='/'), group=8)
+@run_async
 async def whatanime(client, message):
     media = message.photo or message.animation or message.video or message.document
     if not media:
