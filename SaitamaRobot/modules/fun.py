@@ -151,6 +151,7 @@ def shout(update: Update, context: CallbackContext):
     msg = "```\n" + result + "```"
     return update.effective_message.reply_text(msg, parse_mode="MARKDOWN")
 
+
 @run_async
 def toss(update: Update, context: CallbackContext):
     update.message.reply_text(random.choice(fun_strings.TOSS))
@@ -196,6 +197,7 @@ def table(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.TABLE))
 
+
 normiefont = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
@@ -204,6 +206,7 @@ weebyfont = [
     '卂', '乃', '匚', '刀', '乇', '下', '厶', '卄', '工', '丁', '长', '乚', '从', '𠘨', '口',
     '尸', '㔿', '尺', '丂', '丅', '凵', 'リ', '山', '乂', '丫', '乙'
 ]
+
 
 @run_async
 def weebify(update: Update, context: CallbackContext):
@@ -232,21 +235,11 @@ def weebify(update: Update, context: CallbackContext):
     else:
         message.reply_text(string)
 
-@run_async
-def truth(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
-
-@run_async
-def dare(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.DARE_STRINGS))
-
 
 __help__ = """
  • `/runs`*:* reply a random string from an array of replies
  • `/slap`*:* slap a user, or get slapped if not a reply
  • `/shrug`*:* get shrug XD
- • `/truth`*:* Get ready to reveal a surprising truth :P
- • `/dare`*:* a dare is on way :V
  • `/table`*:* get flip/unflip :v
  • `/decide`*:* Randomly answers yes/no/maybe
  • `/toss`*:* Tosses A coin
@@ -259,8 +252,6 @@ __help__ = """
  • `/pat`*:* pats a user, or get patted
 """
 
-TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
-DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
@@ -275,9 +266,6 @@ TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 
-
-dispatcher.add_handler(TRUTH_HANDLER)
-dispatcher.add_handler(DARE_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -295,10 +283,10 @@ dispatcher.add_handler(TABLE_HANDLER)
 __mod_name__ = "Fun"
 __command_list__ = [
     "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
-    "table", "pat", "sanitize", "shout", "weebify", "truth", "dare"
+    "table", "pat", "sanitize", "shout", "weebify"
 ]
 __handlers__ = [
     RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER, SHOUT_HANDLER, WEEBIFY_HANDLER, TRUTH_HANDLER, DARE_HANDLER
+    SANITIZE_HANDLER, SHOUT_HANDLER, WEEBIFY_HANDLER
 ]
