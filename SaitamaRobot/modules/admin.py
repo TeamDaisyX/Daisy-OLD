@@ -464,8 +464,8 @@ __help__ = """
  • `/demote`*:* demotes the user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
  • `/admincache`*:* force refresh the admins list
- • `/zombies`*-* Scan deleted accounts
- • `/zombies clean`*-* Cleans deleted accounts
+ • `/zombies`*:* Scan deleted accounts
+ • `/zombies clean`*:* Cleans deleted accounts
 
 """
 
