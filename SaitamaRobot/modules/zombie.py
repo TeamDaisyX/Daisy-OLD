@@ -7,7 +7,7 @@ from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins
 
-from SaitamaRobot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
+from SaitamaRobot import telethn, OWNER_ID, DEV_USERS, SUDO_USERS, SUPPORT_USERS
 
 # =================== CONSTANT ===================
 
@@ -35,7 +35,7 @@ UNBAN_RIGHTS = ChatBannedRights(
     embed_links=None,
 )
 
-OFFICERS = [OWNER_ID] + DEV_USERS + DRAGONS + DEMONS
+OFFICERS = [OWNER_ID] + DEV_USERS + SUDO_USERS + SUPPORT_USERS
 
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
@@ -112,5 +112,3 @@ async def zombies(event):
         \n`{del_a}` Zombie Admin Accounts Are Not Removed!"
 
     await cleaning_zombies.edit(del_status)
-
-    
