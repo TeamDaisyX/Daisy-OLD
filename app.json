@@ -163,6 +163,14 @@
          "required": false,
          "value": ""
       }
-      
-   }
+   },
+   "keywords": [
+      "telegram",
+      "anime",
+      "group",
+      "manager",
+      "Suzuya"
+   ],
+   "name": "Suzuya ProBot",
+   "repository": "https://github.com/Godzilla-0/Suzuya_ProBot"
 }

@@ -13,8 +13,9 @@ import json
 import urllib.request
 import urllib.parse
 import requests
-from SaitamaRobot import (DEV_USERS, OWNER_ID, DRAGONS, DEMONS, TIGERS,
-                          WOLVES, dispatcher, updater)
+
+from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
+                          TIGER_USERS, WHITELIST_USERS, dispatcher, updater)
 from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters

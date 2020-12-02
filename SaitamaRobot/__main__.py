@@ -51,17 +51,25 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʜɪ {}, ᴍʏ ɴᴀᴍᴇ ɪs {}!
-ι αм αи αиιмє тнємє∂ gяσυρ мαиαgємєит вσт вυт уσυ ¢αи υѕє мє нσωєνєя уσυ ωαит!
-ʙᴜɪʟᴅ ʙʏ ᴡᴇᴇʙs ғᴏʀ ᴡᴇᴇʙs, ɪ sᴘᴇᴄɪᴀʟɪᴢᴇ ɪɴ ᴍᴀɴᴀɢɪɴɢ ᴀɴɪᴍᴇ ᴀɴᴅ sɪᴍɪʟᴀʀ ᴛʜᴇᴍᴇᴅ ɢʀᴏᴜᴘs.
-уσυ ¢αи fιи∂ му ℓιѕт σf αναιℓαвℓє ¢σммαи∂ѕ ωιтн  :
-👉 /help
+
+Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+
+I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
+
+🧿 I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL-x banning system which safegaurds and helps your group from spammers 
+🧿 If u want a healthy and safe group you can add me to help take care of it
+🧿 Hit /help to see my commands
+
+==========================
+🔗 [ Support Group ](https://t.me/SuzuyaSupport)
+🔗 [ Updates Channel ](https://t.me/SuzuyaUpdates)
+==========================
 """
 
 HELP_STRINGS = """
-ʜᴇʏ ᴛʜᴇʀᴇ! ᴍʏ ɴᴀᴍᴇ ɪs *{}*.
-𝘐'𝘮 Dr Stone 𝘢𝘯𝘥 𝘮𝘺 𝘸𝘰𝘳𝘬 𝘪𝘴 𝘩𝘦𝘭𝘱 𝘢𝘥𝘮𝘪𝘯𝘴 𝘵𝘰 𝘮𝘢𝘯𝘢𝘨𝘦 𝘵𝘩𝘦𝘪𝘳 𝘨𝘳𝘰𝘶𝘱𝘴!
-нανє α ℓσσк αт тнє ƒσℓℓσωιηg ƒσя αη ι∂єα σƒ ѕσмє σƒ тнє тнιηgѕ ι ¢αη ¢αη нєℓρ уσυ ωιтн.
+Hey there! My name is *{}*.
+I'm a Pro Bot For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+the things I can help you with.
 
 *ᴍᴀɪɴ* ᴄᴏᴍᴍᴀɴᴅs ᴀᴠᴀɪʟᴀʙʟᴇ:
  • /help: PM's you this message.
@@ -78,10 +86,10 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://images7.alphacoders.com/102/thumb-1920-1027364.png"
+
+SAITAMA_IMG = "https://telegra.ph/file/baf58ec4aca2df39c8b61.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-Senku is hosted on Heroku's Servers and doesn't require any donations as of now but \
 You can donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
@@ -201,22 +209,9 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                    [[
                         InlineKeyboardButton(
-                            text="👑 Summon Senku in your group",
+                            text="💫 Add Suzuya to your group 💫",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text="⚡️ Support Chat",
-                             url=f"https://t.me/{SUPPORT_CHAT}"),
-                         InlineKeyboardButton(
-                             text="🤖 Senku Updates",
-                             url="https://t.me/SenkuUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🔰 Begginer Guide",
-                             url="https://t.me/SenkuUpdates/4")
                      ]]))
     else:
         update.effective_message.reply_text(

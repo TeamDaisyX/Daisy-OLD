@@ -10,6 +10,7 @@ import random
 import json
 import os
 import re
+
 from SaitamaRobot.event import register
 
 COLORS = [

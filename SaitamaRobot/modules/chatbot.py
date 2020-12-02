@@ -70,7 +70,8 @@ def remove_chat(update: Update, context: CallbackContext):
 
 def check_message(context: CallbackContext, message):
     reply_msg = message.reply_to_message
-    if message.text.lower() == "senku":
+
+    if message.text.lower() == "suzuya":
         return True
     if reply_msg:
         if reply_msg.from_user.id == context.bot.get_me().id:

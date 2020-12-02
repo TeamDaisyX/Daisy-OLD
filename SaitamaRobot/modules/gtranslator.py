@@ -117,6 +117,7 @@ def totranslate(update: Update, context: CallbackContext):
             "Example: `/tr en-ml` to translate from English to Malayalam\n"
             "Or use: `/tr ml` for automatic detection and translating it into Malayalam.\n"
             "See ✨[List of Language Codes](t.me/SenkuUpdates/20) for a list of language codes.",
+
             parse_mode="markdown",
             disable_web_page_preview=True)
     except ValueError:

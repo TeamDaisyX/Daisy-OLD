@@ -617,7 +617,7 @@ def sudolist(update: Update, context: CallbackContext):
 def devlist(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Sciencer Association Members ⚡️:</b>\n"
+    reply = "<b>Anteiku Union Members ⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
