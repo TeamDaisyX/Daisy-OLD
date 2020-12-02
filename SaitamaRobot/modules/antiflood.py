@@ -1,22 +1,19 @@
 import html
 from typing import Optional, List
 
-from telegram import Message, Chat, Update, Bot, User, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, ChatPermissions
+from telegram import Message, Chat, Update, User, ChatPermissions
 
-from SaitamaRobot import TIGER_USERS, WHITELIST_USERS, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import (
-    bot_admin, can_restrict, connection_status, is_user_admin, user_admin,
-    user_admin_no_reply)
+from SaitamaRobot import TIGERS, WOLVES, dispatcher
+from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin,
+                                                           is_user_admin,
+                                                           user_admin,
+                                                           user_admin_no_reply)
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.sql import antiflood_sql as sql
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, Filters, MessageHandler, run_async
 from telegram.utils.helpers import mention_html, escape_markdown
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin, user_admin, can_restrict
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
-from SaitamaRobot.modules.log_channel import loggable
-from SaitamaRobot.modules.sql import antiflood_sql as sql
 from SaitamaRobot.modules.connection import connected
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
 FLOOD_GROUP = 3
@@ -32,8 +29,7 @@ def check_flood(update, context) -> str:
         return ""
 
     # ignore admins and whitelists
-    if (is_user_admin(chat, user.id) or user.id in WHITELIST_USERS or
-            user.id in TIGER_USERS):
+    if (is_user_admin(chat, user.id) or user.id in WOLVES or user.id in TIGERS):
         sql.update_flood(chat.id, None)
         return ""
 
@@ -80,7 +76,7 @@ def check_flood(update, context) -> str:
                "\n#{}" \
                "\n<b>User:</b> {}" \
                "\nFlooded the group.".format(tag, html.escape(chat.title),
-                                             mention_html(user.id, user.first_name))
+                                             mention_html(user.id, html.escape(user.first_name)))
 
     except BadRequest:
         msg.reply_text(
@@ -113,7 +109,7 @@ def flood_button(update: Update, context: CallbackContext):
                     can_send_other_messages=True,
                     can_add_web_page_previews=True))
             update.effective_message.edit_text(
-                f"Unmuted by {mention_html(user.id, user.first_name)}.",
+                f"Unmuted by {mention_html(user.id, html.escape(user.first_name))}.",
                 parse_mode="HTML")
         except:
             pass
@@ -162,7 +158,7 @@ def set_flood(update, context) -> str:
                 return "<b>{}:</b>" \
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
-                       "\nDisable antiflood.".format(html.escape(chat_name), mention_html(user.id, user.first_name))
+                       "\nDisable antiflood.".format(html.escape(chat_name), mention_html(user.id, html.escape(user.first_name)))
 
             elif amount <= 3:
                 send_message(
@@ -185,7 +181,7 @@ def set_flood(update, context) -> str:
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
                        "\nSet antiflood to <code>{}</code>.".format(html.escape(chat_name),
-                                                                    mention_html(user.id, user.first_name), amount)
+                                                                    mention_html(user.id, html.escape(user.first_name)), amount)
 
         else:
             message.reply_text(
@@ -301,7 +297,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
         return "<b>{}:</b>\n" \
                 "<b>Admin:</b> {}\n" \
                 "Has changed antiflood mode. User will {}.".format(settypeflood, html.escape(chat.title),
-                                                                            mention_html(user.id, user.first_name))
+                                                                            mention_html(user.id, html.escape(user.first_name)))
     else:
         getmode, getvalue = sql.get_flood_setting(chat.id)
         if getmode == 1:

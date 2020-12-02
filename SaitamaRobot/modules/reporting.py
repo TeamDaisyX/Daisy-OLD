@@ -1,7 +1,6 @@
 import html
 
-from SaitamaRobot import (LOGGER, SUDO_USERS, TIGER_USERS, WHITELIST_USERS,
-                          dispatcher)
+from SaitamaRobot import (LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher)
 from SaitamaRobot.modules.helper_funcs.chat_status import (user_admin,
                                                            user_not_admin)
 from SaitamaRobot.modules.log_channel import loggable
@@ -14,7 +13,7 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 from telegram.utils.helpers import mention_html
 
 REPORT_GROUP = 12
-REPORT_IMMUNE_USERS = SUDO_USERS + TIGER_USERS + WHITELIST_USERS
+REPORT_IMMUNE_USERS = DRAGONS + TIGERS + WOLVES
 
 
 @run_async
@@ -89,7 +88,7 @@ def report(update: Update, context: CallbackContext) -> str:
             return ""
 
         if reported_user.id in REPORT_IMMUNE_USERS:
-            message.reply_text("Uh? You reporting whitelisted users?")
+            message.reply_text("Uh? You reporting a disaster?")
             return ""
 
         if chat.username and chat.type == Chat.SUPERGROUP:
@@ -201,27 +200,16 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-def __chat_settings__(update, context, chat, chatP, user):
+def __chat_settings__(chat_id, _):
     return f"This chat is setup to send user reports to admins, via /report and @admin: `{sql.chat_should_report(chat_id)}`"
 
 
-def __user_settings__(update, context, user):
-    if sql.user_should_report(user.id) is True:
+def __user_settings__(user_id):
+    if sql.user_should_report(user_id) is True:
         text = "You will receive reports from chats you're admin."
-        keyboard = [[
-            InlineKeyboardButton(
-                text="Disable reporting",
-                callback_data="panel_reporting_U_disable")
-        ]]
     else:
         text = "You will *not* receive reports from chats you're admin."
-        keyboard = [[
-            InlineKeyboardButton(
-                text="Enable reporting",
-                callback_data="panel_reporting_U_enable")
-        ]]
-
-    return text, keyboard
+    return text
 
 
 def buttons(update: Update, context: CallbackContext):

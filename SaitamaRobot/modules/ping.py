@@ -85,7 +85,22 @@ def ping(update: Update, context: CallbackContext):
         "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
         parse_mode=ParseMode.HTML)
 
+@run_async
+def ding(update: Update, context: CallbackContext):
+    msg = update.effective_message
 
+    start_time = time.time()
+    messageX = msg.reply_text("Dinging...")
+    end_time = time.time()
+    telegram_ping = str(round((end_time - start_time) * 1000, 3)) + " ms"
+    uptime = get_readable_time((time.time() - StartTime))
+
+    messageX.edit_text(
+        "! !DONG! !\n"
+        "<b>Time Taken:</b> <code>{}</code>\n"
+        "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
+        parse_mode=ParseMode.HTML)
+    
 @run_async
 @sudo_plus
 def pingall(update: Update, context: CallbackContext):
@@ -103,10 +118,12 @@ def pingall(update: Update, context: CallbackContext):
 
 
 PING_HANDLER = DisableAbleCommandHandler("ping", ping)
+DING_HANDLER = DisableAbleCommandHandler("ding", ding)
 PINGALL_HANDLER = DisableAbleCommandHandler("pingall", pingall)
 
+dispatcher.add_handler(DING_HANDLER)
 dispatcher.add_handler(PING_HANDLER)
 dispatcher.add_handler(PINGALL_HANDLER)
 
-__command_list__ = ["ping", "pingall"]
-__handlers__ = [PING_HANDLER, PINGALL_HANDLER]
+__command_list__ = ["ping", "ding", "pingall"]
+__handlers__ = [PING_HANDLER, DING_HANDLER, PINGALL_HANDLER]

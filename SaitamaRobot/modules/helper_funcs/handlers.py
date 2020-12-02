@@ -1,11 +1,9 @@
 import SaitamaRobot.modules.sql.blacklistusers_sql as sql
 from SaitamaRobot import ALLOW_EXCL
-from SaitamaRobot import (DEV_USERS, SUDO_USERS, SUPPORT_USERS, TIGER_USERS,
-                          WHITELIST_USERS)
+from SaitamaRobot import (DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES)
 
-from telegram import MessageEntity, Update
+from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
-from time import sleep
 from pyrate_limiter import (BucketFullException, Duration, RequestRate, Limiter,
                             MemoryListBucket)
 
@@ -18,9 +16,9 @@ else:
 class AntiSpam:
 
     def __init__(self):
-        self.whitelist = (DEV_USERS or []) + (SUDO_USERS or []) + (
-            WHITELIST_USERS or []) + (SUPPORT_USERS or []) + (
-                TIGER_USERS or [])
+        self.whitelist = (DEV_USERS or []) + (DRAGONS or []) + (
+            WOLVES or []) + (DEMONS or []) + (
+                TIGERS or [])
         #Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
         self.sec_limit = RequestRate(6, Duration.CUSTOM)  # 6 / Per 15 Seconds
@@ -48,6 +46,7 @@ class AntiSpam:
 
 
 SpamChecker = AntiSpam()
+MessageHandlerChecker = AntiSpam()
 
 
 class CustomCommandHandler(CommandHandler):
@@ -86,7 +85,8 @@ class CustomCommandHandler(CommandHandler):
                     args = message.text.split()[1:]
                     command = fst_word[1:].split("@")
                     command.append(message.bot.username)
-
+                    if user_id == 1087968824:
+                        user_id = update.effective_chat.id
                     if not (command[0].lower() in self.command and
                             command[1].lower() == message.bot.username.lower()):
                         return None

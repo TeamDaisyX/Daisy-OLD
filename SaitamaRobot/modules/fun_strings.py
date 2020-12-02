@@ -92,7 +92,7 @@ TRUTH_STRINGS = (
 
 DARE_STRINGS = (
     "Make up a story about any item that comes in your mind *right now*",
-    "Tell us about an incident that happened in your life recently!\nP.S. It can be anything -> like funny, surprising story, tragedy etc. *",
+    "Tell us about an incident or story that happened in your life recently!\nP.S. It can be anything :D\nFor example -> funny XD, surprising story, tragedy : sed lyf, lewd \o/ etc.",
     "Think about a word starts with T and it must be longer then 6 letters. After that Write that word *backwards* in 17 seconds",
     "Think about a word starts with A and it must be longer then 5 letters. After that Write that word *backwards* in 17 seconds",
     "Think about a word starts with S and it must be longer then 6 letters. After that Write that word *backwards* in 17 seconds",
@@ -101,6 +101,18 @@ DARE_STRINGS = (
     "Think about a word starts with T and it must be longer then 8 letters. After that Write that word *backwards* in 17 seconds",
     "Think about a word starts with E and it must be longer then 6 letters. After that Write that word *backwards* in 17 seconds",
 
+     )
+
+NOT_OK = (
+    "Ok",
+    "Fuck You",
+    "F Off",
+     )
+
+NOT_IT_OK = (
+    "Reply me something you fool",
+    "So this is what your parents taught ok",
+    "F Off U Fool",
      )
 
 GIFS = [
@@ -113,7 +125,7 @@ SLAP_SAITAMA_TEMPLATES = (
     "Slap me one more time and I'll mute you.",
     "Stop slapping me. REEEEEEEEEEEEEE.",
     [
-        "I am muting you for a minute.",  # normal reply
+        "Very Good, Now I am muting you for a minute. (^-^)",  # normal reply
         "Stop slapping me just because I can't mute you. REEEEEEEEEE.",  # reply to admin
         "tmute",  # command
         "Shut up!",
@@ -379,7 +391,7 @@ TOSS = (
     "Tails",
 )
 
-DECIDE = ("Yes.", "No.", "Maybe.")
+DECIDE = ("Yes.", "No. ", "Maybe. (^_^)", "Idk. (-_-!)")
 
-TABLE = ("(╯°□°）╯彡 ┻━┻", "I ran out of tables, will order more.",
+TABLE = ("(╯°□°）╯彡 ┻━┻", "I ran out of tables, will order more soon.", "Why do you need tables btw. (*^_^*)",
          "Go do some work instead of flippin tables.")

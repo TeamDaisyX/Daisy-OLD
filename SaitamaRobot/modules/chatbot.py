@@ -35,9 +35,11 @@ def add_chat(update: Update, context: CallbackContext):
         expires = str(ses.expires)
         sql.set_ses(chat.id, ses_id, expires)
         msg.reply_text("AI successfully enabled for this chat!")
-        message = (f"<b>{html.escape(chat.title)}:</b>\n"
-                   f"#AI_ENABLED\n"
-                   f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n")
+        message = (
+            f"<b>{html.escape(chat.title)}:</b>\n"
+            f"#AI_ENABLED\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        )
         return message
     else:
         msg.reply_text("AI is already enabled for this chat!")
@@ -58,14 +60,17 @@ def remove_chat(update: Update, context: CallbackContext):
     else:
         sql.rem_chat(chat.id)
         msg.reply_text("AI disabled successfully!")
-        message = (f"<b>{html.escape(chat.title)}:</b>\n"
-                   f"#AI_DISABLED\n"
-                   f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n")
+        message = (
+            f"<b>{html.escape(chat.title)}:</b>\n"
+            f"#AI_DISABLED\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        )
         return message
 
 
 def check_message(context: CallbackContext, message):
     reply_msg = message.reply_to_message
+
     if message.text.lower() == "suzuya":
         return True
     if reply_msg:
@@ -127,7 +132,7 @@ def list_chatbot_chats(update: Update, context: CallbackContext):
 
 
 __help__ = f"""
-Chatbot utilizes the CoffeeHouse API and allows Saitama to talk and provides a more interactive group chat experience.
+Chatbot utilizes the CoffeeHouse API and allows Senku to talk and provides a more interactive group chat experience.
 
 *Commands:* 
 *Admins only:*

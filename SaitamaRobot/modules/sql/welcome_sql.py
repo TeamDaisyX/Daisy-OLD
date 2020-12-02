@@ -13,12 +13,12 @@ DEFAULT_GOODBYE = 'Nice knowing ya!'
 DEFAULT_WELCOME_MESSAGES = [
     "{first} is here!",  #Discord welcome messages copied
     "Ready player {first}",
-    "Genos, {first} is here.",
+    "Oi Chrome, {first} is here.✨",
+    "I was ten billion percent certain that {first} would join us!🔥",
     "A wild {first} appeared.",
     "{first} came in like a Lion!",
     "{first} has joined your party.",
     "{first} just joined. Can I get a heal?",
-    "{first} just joined the chat - asdgfhak!",
     "{first} just joined. Everyone, look busy!",
     "Welcome, {first}. Stay awhile and listen.",
     "Welcome, {first}. We were expecting you ( ͡° ͜ʖ ͡°)",
@@ -26,7 +26,7 @@ DEFAULT_WELCOME_MESSAGES = [
     "Welcome, {first}. Leave your weapons by the door.",
     "Swoooosh. {first} just landed.",
     "Brace yourselves. {first} just joined the chat.",
-    "{first} just joined. Hide your bananas.",
+    "{first} just joined. Get Excited! ✨.",
     "{first} just arrived. Seems OP - please nerf.",
     "{first} just slid into the chat.",
     "A {first} has spawned in the chat.",
@@ -40,21 +40,20 @@ DEFAULT_WELCOME_MESSAGES = [
     "Never gonna give {first} up. Never gonna let {first} down.",
     "Ha! {first} has joined! You activated my trap card!",
     "Hey! Listen! {first} has joined!",
-    "We've been expecting you {first}",
+    "We've been expecting you {first} 🔥",
     "It's dangerous to go alone, take {first}!",
     "{first} has joined the chat! It's super effective!",
     "Cheers, love! {first} is here!",
     "{first} is here, as the prophecy foretold.",
     "{first} has arrived. Party's over.",
-    "{first} is here to kick butt and chew bubblegum. And {first} is all out of gum.",
     "Hello. Is it {first} you're looking for?",
     "{first} has joined. Stay a while and listen!",
-    "Roses are red, violets are blue, {first} joined this chat with you",
+    "Roses are red, violets are blue, {first} joined this chat with you✨",
     "Welcome {first}, Avoid Punches if you can!",
     "It's a bird! It's a plane! - Nope, its {first}!",
     "{first} Joined! - Ok.",  #Discord welcome messages end.
     "All Hail {first}!",
-    "Hi, {first}. Don't lurk, Only Villans do that.",
+    "Hi, {first}. This is exhilarating! ✨.",
     "{first} has joined the battle bus.",
     "A new Challenger enters!",  #Tekken
     "Ok!",
@@ -117,8 +116,8 @@ DEFAULT_WELCOME_MESSAGES = [
     "{first} say Aschente to swear by the pledges.",  #No Game No Life
     "{first} just joined. El psy congroo!",  #Steins Gate
     "Irasshaimase {first}!",  #weeabo shit
-    "Hi {first}, What is 1000-7?",  #tokyo ghoul
-    "Come. I don't want to destroy this place",  #hunter x hunter
+    "Hi {first}, What is 1000-7? 🤔",  #tokyo ghoul
+    "Come. I don't want {first} to destroy this place",  #hunter x hunter
     "I... am... Whitebeard!...wait..wrong anime.",  #one Piece
     "Hey {first}...have you ever heard these words?",  #BNHA
     "Can't a guy get a little sleep around here?",  #Kamina Falls – Gurren Lagann
@@ -132,7 +131,7 @@ DEFAULT_WELCOME_MESSAGES = [
     "Sugoi, Dekai. {first} Joined!",
     "{first}, do you know Gods of death love apples?",  #Death Note owo
     "I'll take a potato chip.... and eat it",  #Death Note owo
-    "Oshiete oshiete yo sono shikumi wo!",  #Tokyo Ghoul
+    "Hey {first}, Let`s sing ->/nOshiete oshiete yo sono shikumi wo!",  #Tokyo Ghoul
     "Kaizoku ou ni...nvm wrong anime.",  #op
     "{first} just joined! Gear.....second!",  #Op
     "Omae wa mou....shindeiru",
@@ -146,7 +145,7 @@ DEFAULT_WELCOME_MESSAGES = [
     "{first} joined!, Gate of View...open!",
     "{first} joined!, Gate of Shock...open!",
     "{first} joined!, Gate of Death...open!",
-    "{first}! I, Madara! declare you the strongest",
+    "{first}! I, Madara! declare you the strongest 🤫",
     "{first}, this time I'll lend you my power. ",  #Kyuubi to naruto
     "{first}, welcome to the hidden leaf village!",  # Naruto thingies end here
     "In the jungle you must wait...until the dice read five or eight.",  #Jumanji stuff
@@ -168,7 +167,7 @@ DEFAULT_GOODBYE_MESSAGES = [
     "Goodbye {first}! Guess who's gonna miss you :')",
     "Goodbye {first}! It's gonna be lonely without ya.",
     "Please don't leave me alone in this place, {first}!",
-    "Good luck finding better shitposters than us, {first}!",
+    "Good luck finding better shit-posters than us, {first}!",
     "You know we're gonna miss you {first}. Right? Right? Right?",
     "Congratulations, {first}! You're officially free of this mess.",
     "{first}. You were an opponent worth fighting.",
@@ -197,8 +196,8 @@ DEFAULT_GOODBYE_MESSAGES = [
     "Trust good people",
     "Live to die.",
     "When life gives you lemons reroll!",
-    "Well that was worthless",
-    "I feel asleep!",
+    "Well, that was worthless",
+    "I fell asleep!",
     "May your troubles be many",
     "Your old life lies in ruin",
     "Always look on the bright side",
