@@ -31,4 +31,4 @@ pyrate-limiter
 cachetools
 pyrogram
 fontTools
-
+gtts
