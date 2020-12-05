@@ -561,7 +561,7 @@ Get information about anime, manga or characters from [AniList](anilist.co).
 
  • `/anime <anime>`*:* returns information about the anime.
  • `/character <character>`*:* returns information about the character.
- • `/animequote : Get random Anime qoute
+ • `/animequote` *:* Get random Anime qoute.
  • `/manga <manga>`*:* returns information about the manga.
  • `/user <user>`*:* returns information about a MyAnimeList user.
  • `/upcoming`*:* returns a list of new anime in the upcoming seasons.
