@@ -552,7 +552,7 @@ def kaizoku(update: Update, context: CallbackContext):
 @run_async
 def kayo(update: Update, context: CallbackContext):
     site_search(update, context, "kayo")
-
+    
 
 __help__ = """
 Get information about anime, manga or characters from [AniList](anilist.co).
@@ -570,7 +570,7 @@ Get information about anime, manga or characters from [AniList](anilist.co).
  • `/airing <anime>`*:* returns anime airing info.
 
  """
-
+ 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
 AIRING_HANDLER = DisableAbleCommandHandler("airing", airing)
 CHARACTER_HANDLER = DisableAbleCommandHandler("character", character)
@@ -591,7 +591,7 @@ dispatcher.add_handler(KAIZOKU_SEARCH_HANDLER)
 dispatcher.add_handler(KAYO_SEARCH_HANDLER)
 dispatcher.add_handler(UPCOMING_HANDLER)
 
-__mod_name__ = "Anime"
+
 __command_list__ = [
     "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
     "kayo"
