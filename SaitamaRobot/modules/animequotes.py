@@ -13,11 +13,6 @@ def animequotes(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(animequotesstring.ANIMEQUOTES))
    
 
-
-__help__ = """
- - /animequotes : for random Anime qoutes
-"""
-
 ANIMEQUOTES_HANDLER = DisableAbleCommandHandler("animequotes", animequotes)
 
 
