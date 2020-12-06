@@ -33,3 +33,4 @@ cachetools
 pyrogram
 fontTools
 gtts
+tswift
