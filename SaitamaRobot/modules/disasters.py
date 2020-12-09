@@ -183,7 +183,7 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "Requested HA to deomote this Dragon to Demon"
+        rt += "Requested HA to demote this Dragon to Demon"
         data['sudos'].remove(user_id)
         DRAGONS.remove(user_id)
 
@@ -638,7 +638,12 @@ Group admins/group owners do not need these commands.
  ╠ `/demons`*:* Lists all Demon disasters
  ╠ `/tigers`*:* Lists all Tigers disasters
  ╠ `/wolves`*:* Lists all Wolf disasters
- ╚ `/heroes`*:* Lists all Hero Association members
+ ╠ `/heroes`*:* Lists all Hero Association members
+ ╠ `/adddragon`*:* Adds a user to Dragon
+ ╠ `/adddemon`*:* Adds a user to Demon
+ ╠ `/addtiger`*:* Adds a user to Tiger
+ ╠ `/addwolf`*:* Adds a user to Wolf
+ ╚ `Add dev doesnt exist, devs should know how to add themselves`
 
  ╔ *Ping:*
  ╠ `/ping`*:* gets ping time of bot to telegram server
@@ -652,12 +657,21 @@ Group admins/group owners do not need these commands.
 
  ╔ *Groups Info:*
  ╠ `/groups`*:* List the groups with Name, ID, members count as a txt
- ╚ `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
+ ╠ `/leave <ID>`*:* Leave the group, ID must have hyphen
+ ╠ `/stats`*:* Shows overall bot stats
+ ╠ `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
+ ╚ `/ginfo username/link/ID`*:* Pulls info panel for entire group
 
- ╔ *Blacklist:* 
+ ╔ *Access control:* 
  ╠ `/ignore`*:* Blacklists a user from 
  ╠  using the bot entirely
- ╚ `/notice`*:* Whitelists the user to allow bot usage
+ ╠ `/notice`*:* Removes user from blacklist
+ ╚ `/ignoredlist`*:* Lists ignored users
+
+ ╔ *Module loading:*
+ ╠ `/listmodules`*:* Prints modules and their names
+ ╠ `/unload <name>`*:* Unloads module dynamically
+ ╚ `/load <name>`*:* Loads module
 
  ╔ *Speedtest:*
  ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
@@ -678,8 +692,7 @@ Group admins/group owners do not need these commands.
  ╠ `/runban user group`*:* Remote un-ban
  ╠ `/rpunch user group`*:* Remote punch
  ╠ `/rmute user group`*:* Remote mute
- ╠ `/runmute user group`*:* Remote un-mute
- ╚ `/ginfo username/link/ID`*:* Pulls info panel for entire group
+ ╚ `/runmute user group`*:* Remote un-mute
 
  ╔ *Windows self hosted only:*
  ╠ `/reboot`*:* Restarts the bots service
@@ -692,8 +705,16 @@ Group admins/group owners do not need these commands.
  ╠ `/debug <on/off>`*:* Logs commands to updates.txt
  ╠ `/logs`*:* Run this in support group to get logs in pm
  ╠ `/eval`*:* Self explanatory
- ╠ `/sh`*:* Self explanator
- ╚ `/py`*:* Self explanatory
+ ╠ `/sh`*:* Runs shell command
+ ╠ `/shell`*:* Runs shell command
+ ╠ `/clearlocals`*:* As the name goes
+ ╠ `/dbcleanup`*:* Removes deleted accs and groups from db
+ ╚ `/py`*:* Runs python code
+ 
+ ╔ *Global Bans:*
+ ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
+ ╠ `/ungban`*:* Ungbans the user, same usage as gban
+ ╚ `/gbanlist`*:* Outputs a list of gbanned users
 
 Visit @{SUPPORT_CHAT} for more information.
 """

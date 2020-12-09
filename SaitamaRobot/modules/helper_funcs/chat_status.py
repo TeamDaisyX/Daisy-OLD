@@ -1,3 +1,4 @@
+from time import perf_counter
 from functools import wraps
 from cachetools import TTLCache
 from threading import RLock
@@ -8,7 +9,7 @@ from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
 
 # stores admemes in memory for 10 min.
-ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10)
+ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
 THREAD_LOCK = RLock()
 
 
@@ -41,7 +42,7 @@ def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
             # try to fetch from cache first.
             try:
                 return user_id in ADMIN_CACHE[chat.id]
-            except BaseException:
+            except KeyError:
                 # keyerror happend means cache is deleted,
                 # so query bot api again and return user status
                 # while saving it in cache for future useage...
@@ -104,7 +105,10 @@ def dev_plus(func):
         elif not user:
             pass
         elif DEL_CMDS and " " not in update.effective_message.text:
-            update.effective_message.delete()
+            try:
+                update.effective_message.delete()
+            except:
+                pass
         else:
             update.effective_message.reply_text(
                 "This is a developer restricted command."
@@ -127,7 +131,10 @@ def sudo_plus(func):
         elif not user:
             pass
         elif DEL_CMDS and " " not in update.effective_message.text:
-            update.effective_message.delete()
+            try:
+                update.effective_message.delete()
+            except:
+                pass
         else:
             update.effective_message.reply_text(
                 "Who dis non-admin telling me what to do? You want a punch?")
@@ -147,7 +154,10 @@ def support_plus(func):
         if user and is_support_plus(chat, user.id):
             return func(update, context, *args, **kwargs)
         elif DEL_CMDS and " " not in update.effective_message.text:
-            update.effective_message.delete()
+            try:
+                update.effective_message.delete()
+            except:
+                pass
 
     return is_support_plus_func
 
@@ -183,7 +193,10 @@ def user_admin(func):
         elif not user:
             pass
         elif DEL_CMDS and " " not in update.effective_message.text:
-            update.effective_message.delete()
+            try:
+                update.effective_message.delete()
+            except:
+                pass
         else:
             update.effective_message.reply_text(
                 "Who dis non-admin telling me what to do? You want a punch?")
@@ -205,7 +218,10 @@ def user_admin_no_reply(func):
         elif not user:
             pass
         elif DEL_CMDS and " " not in update.effective_message.text:
-            update.effective_message.delete()
+            try:
+                update.effective_message.delete()
+            except:
+                pass
 
     return is_not_admin_no_reply
 
