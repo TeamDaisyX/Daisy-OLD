@@ -34,3 +34,4 @@ pyrogram
 fontTools
 gtts
 tswift
+pytz
