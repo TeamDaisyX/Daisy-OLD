@@ -30,3 +30,13 @@ spamwatch
 alphabet_detector
 pyrate-limiter
 cachetools
+pyrogram
+fontTools
+gtts
+tswift
+pytz
+hachoir
+pybase64
+pySmartDL
+validators
+youtube_dl
