@@ -19,7 +19,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import PeerIdInvalid
 from pyrogram.types import User, Message
 
-from hitsuki import pbot
+from SaitamaRobot import pbot
 
 
 def ReplyCheck(m: Message):
