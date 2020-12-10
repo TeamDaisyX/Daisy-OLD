@@ -175,7 +175,7 @@ else:
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
-pbot = Client("SaitamaPyro", api_id=API_KEY,
+pbot = Client("saitama", api_id=API_KEY,
               api_hash=API_HASH,
               bot_token=TOKEN)
 dispatcher = updater.dispatcher
