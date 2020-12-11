@@ -78,7 +78,7 @@ def antiarabic(update: Update, context: CallbackContext):
 def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
-modname_antiarabic: AntiArabicScript
+
 antiarabic_enabled: "Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted."
 antiarabic_disabled: "Turned off AntiArabic! Messages containing arabic text won't be deleted."
 antiarabic_setting: "This chat's current setting is: `{}`"
