@@ -28,13 +28,13 @@ def antiarabic_setting(update: Update, context: CallbackContext) -> str:
         if len(args) >= 1:
             if args[0].lower() in ("yes", "on", "true"):
                 sql.set_chat_setting(chat.id, True)
-                msg.reply_text("antiarabic_enabled")
+                msg.reply_text("Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted.")
 
             elif args[0].lower() in ("no", "off", "false"):
                 sql.set_chat_setting(chat.id, False)
-                msg.reply_text("antiarabic_disabled")
+                msg.reply_text("Turned off AntiArabic! Messages containing arabic text won't be deleted.")
         else:
-           msg.reply_text("antiarabic_setting").format(
+           msg.reply_text("`/antiarabic on/off` to turn on or turn off AntiArabic Mode.").format(
                 sql.chat_antiarabic(chat.id),
                 parse_mode=ParseMode.MARKDOWN)
 
@@ -79,9 +79,6 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-antiarabic_enabled: "Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted."
-antiarabic_disabled: "Turned off AntiArabic! Messages containing arabic text won't be deleted."
-antiarabic_setting: "This chat's current setting is: `{}`"
 
 
 
