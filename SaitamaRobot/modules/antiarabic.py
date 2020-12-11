@@ -2,7 +2,7 @@
 from typing import List
 
 from telegram import Update, Bot, ParseMode
-from telegram.ext import CommandHandler, MessageHandler, Filters
+from telegram.ext import CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 
 from SaitamaRobot import dispatcher
@@ -15,7 +15,10 @@ ANTIARABIC_GROUPS = 12
 
 @run_async
 @user_admin
-def antiarabic_setting(bot: Bot, update: Update, args: List[str]):
+def antiarabic(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
     chat = update.effective_chat
     msg = update.effective_message
     user = update.effective_user
@@ -38,7 +41,10 @@ def antiarabic_setting(bot: Bot, update: Update, args: List[str]):
 
 @user_not_admin
 @run_async
-def antiarabic(bot: Bot, update: Update):
+def antiarabic(update: Update, context: CallbackContext)
+    bot = context.bot
+    args = context.args
+
     chat = update.effective_chat
     msg = update.effective_message
     to_match = extract_text(msg)
