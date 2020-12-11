@@ -9,7 +9,6 @@ from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.helper_funcs.chat_status import user_not_admin, user_admin, can_delete
 from SaitamaRobot.modules.helper_funcs.extraction import extract_text
 from SaitamaRobot.modules.sql import antiarabic_sql as sql
-from SaitamaRobot.modules.tr_engine.strings import tld
 
 ANTIARABIC_GROUPS = 12
 
