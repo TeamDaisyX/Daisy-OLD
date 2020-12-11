@@ -15,9 +15,7 @@ ANTIARABIC_GROUPS = 12
 
 @run_async
 @user_admin
-def antiarabic_setting(update: Update, context: CallbackContext) -> str:
-    bot = context.bot
-    args = context.args
+def an
 
     chat = update.effective_chat
     msg = update.effective_message
