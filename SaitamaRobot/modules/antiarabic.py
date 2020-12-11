@@ -28,11 +28,11 @@ def antiarabic_setting(update: Update, context: CallbackContext) -> str:
         if len(args) >= 1:
             if args[0].lower() in ("yes", "on", "true"):
                 sql.set_chat_setting(chat.id, True)
-                msg.reply_text("antiarabic sucessfully enabled")
+                msg.reply_text(chat.id, "antiarabic_enabled")
 
             elif args[0].lower() in ("no", "off", "false"):
                 sql.set_chat_setting(chat.id, False)
-                msg.reply_text("antiarabic successfully disabled")
+                msg.reply_text(chat.id, "antiarabic_disabled")
         else:
            msg.reply_text("antiarabic_setting").format(
                 sql.chat_antiarabic(chat.id),
@@ -77,6 +77,12 @@ def antiarabic(update: Update, context: CallbackContext):
 
 def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
+
+modname_antiarabic: AntiArabicScript
+antiarabic_enabled: "Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted."
+antiarabic_disabled: "Turned off AntiArabic! Messages containing arabic text won't be deleted."
+antiarabic_setting: "This chat's current setting is: `{}`"
+
 
 
 __help__ = """
