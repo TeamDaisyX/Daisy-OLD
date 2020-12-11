@@ -32,7 +32,7 @@ def antiarabic_setting(update: Update, context: CallbackContext) -> str:
 
             elif args[0].lower() in ("no", "off", "false"):
                 sql.set_chat_setting(chat.id, False)
-                msg.reply_text(tld(chat.id, "antiarabic_disabled")
+                msg.reply_text(chat.id, "antiarabic_disabled")
         else:
            msg.reply_text("antiarabic_setting").format(
                 sql.chat_antiarabic(chat.id),
