@@ -41,7 +41,7 @@ def antiarabic(update: Update, context: CallbackContext) -> str:
 
 @user_not_admin
 @run_async
-def antiarabic(update: Update, context: CallbackContext)
+def antiarabic(update: Update, context: CallbackContext):
     bot = context.bot
     args = context.args
 
