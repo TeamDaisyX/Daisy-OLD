@@ -1,0 +1,33 @@
+modname_antiarabic: AntiArabicScript
+
+antiarabic_enabled: "Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted."
+
+antiarabic_disabled: "Turned off AntiArabic! Messages containing arabic text won't be deleted."
+
+antiarabic_setting: "This chat's current setting is: `{}`"
+
+antiarabic_help: |
+
+  AntiArabicScript module is used to delete messages containing characters from one of the following automatically:
+
+  • Arabic
+
+  • Arabic Supplement
+
+  • Arabic Extended-A
+
+  • Arabic Presentation Forms-A
+
+  • Arabic Presentation Forms-B
+
+  • Rumi Numeral Symbols
+
+  • Arabic Mathematical Alphabetic Symbols
+
+  *NOTE:* AntiArabicScript module doesn't affect messages sent by admins.
+
+  *Admin only:*
+
+   - /antiarabic <on/off>: turn antiarabic module on/off ( off by default )
+
+   - /antiarabic: get status of AntiArabicScript module in chat
