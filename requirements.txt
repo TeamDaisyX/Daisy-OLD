@@ -40,3 +40,4 @@ pybase64
 pySmartDL
 validators
 youtube_dl
+PyYAML>=5.3.1
