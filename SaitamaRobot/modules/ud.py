@@ -12,7 +12,7 @@ def ud(update: Update, context: CallbackContext):
     results = requests.get(
         f'https://api.urbandictionary.com/v0/define?term={text}').json()
     try:
-        reply_text = f'*{text}*\n\n{results["list"][0]["definition"]}'
+        reply_text = f'*{text}*\n\n_{results["list"][0]["definition"]}_'
         reply_text += f'\n\n{results["list"][0]["example"]}'
     except:
         reply_text = "No results found."
