@@ -54,7 +54,7 @@ async def zombies(event):
 
     con = event.pattern_match.group(1).lower()
     del_u = 0
-    del_status = " No Deleted Accounts Found, Group Is Clean (^_^) "
+    del_status = " No Deleted Accounts Found, Group Is Clean."
 
     if con != "clean":
         find_zombies = await event.respond("Searching For Zombies...")
