@@ -5,7 +5,7 @@ from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup, InlineQu
                             InputTextMessageContent, InlineQueryResultArticle)
 
 from SaitamaRobot.modules.anime import (url, anime_query, manga_query, t, shorten,
-                                   airing_query, character_query, nhentai_data)
+                                   airing_query, character_query)
 
 
 class AioHttp:
@@ -45,9 +45,7 @@ async def inline_query_handler(client, query):
                                                          InlineKeyboardButton(
                                                              "Anime", switch_inline_query_current_chat="anime "),
                                                          InlineKeyboardButton(
-                                                             "Manga", switch_inline_query_current_chat="manga "),
-                                                         InlineKeyboardButton(
-                                                             "nHentai", switch_inline_query_current_chat="nhentai ")
+                                                             "Manga", switch_inline_query_current_chat="manga ")
                                                      ],
                                                          [
                                                          InlineKeyboardButton(
