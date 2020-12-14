@@ -18,5 +18,5 @@ venv
 env
 saitama.session-journal
 updates.txt
-SaitamaPyro.session
 *.exe
+SaitamaPyro.session*
