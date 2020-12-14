@@ -177,6 +177,10 @@ updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
+pbot = Client("HitsukiPyro", api_id=API_KEY,
+              api_hash=API_HASH,
+              bot_token=TOKEN)
+
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
