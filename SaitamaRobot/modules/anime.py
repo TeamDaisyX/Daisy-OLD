@@ -13,7 +13,7 @@ from pyrogram.types import Message, Update, InlineKeyboardMarkup, InlineKeyboard
 from SaitamaRobot import pbot
 
 telegraph = Telegraph()
-telegraph.create_account(short_name='hitsuki')
+telegraph.create_account(short_name='suzuya')
 info_btn = "More Information"
 url = 'https://graphql.anilist.co'
 
