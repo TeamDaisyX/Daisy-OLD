@@ -13,7 +13,8 @@ def ud(update: Update, context: CallbackContext):
         f'https://api.urbandictionary.com/v0/define?term={text}').json()
     try:
         reply_text = f'*{text}*\n\n{results["list"][0]["definition"]}'
-        reply_text += f'\n\n{results["list"][0]["example"]}'
+        reply_text += f'\n\n_{results["list"][0]["example"]}_'
+        print(reply_text.replace('[', '').replace(']',''))
 
     except:
         reply_text = "No results found."
