@@ -4,6 +4,7 @@ import requests
 from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultPhoto,
                             InputTextMessageContent, InlineQueryResultArticle)
 
+from hitsuki import pbot
 from SaitamaRobot.modules.anime import (url, anime_query, manga_query, t, shorten,
                                    airing_query, character_query)
 
