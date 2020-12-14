@@ -41,3 +41,4 @@ pySmartDL
 validators
 youtube_dl
 PyYAML>=5.3.1
+telegraph>=1.4.1
