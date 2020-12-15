@@ -264,6 +264,8 @@ __help__ = """
  • `/weebify <text>`*:* returns a weebified text
  • `/sanitize`*:* always use this before `/pat` or any contact
  • `/pat`*:* pats a user, or get patted (^-^)
+ • `/plet <text> `*:* text get funny emojify
+ • `/tts <text> `*:* text to voice
   - - - - - - - - - -
 • *Games* 🎲 *:*
  • `/truth`*:* Get ready to reveal a surprising truth🤫
