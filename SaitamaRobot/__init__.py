@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import spamwatch
-
+from redis import StrictRedis
 import telegram.ext as tg
 from telethon import TelegramClient
 from pyrogram import Client
@@ -89,6 +89,7 @@ if ENV:
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
+    REDIS_URL = os.environ.get('REDIS_URL', None)
 
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
