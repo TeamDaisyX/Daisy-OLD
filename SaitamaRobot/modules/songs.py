@@ -277,10 +277,4 @@ async def download_video(v_url):
         await rkp.delete()
 
 
-__help__ = """
- ➩ /song <songname artist(optional)>: uploads the song in it's best quality available
 
- ➩ /video <songname artist(optional)>: uploads the video song in it's best quality available
-"""
-
-__mod_name__ = "Songs"
