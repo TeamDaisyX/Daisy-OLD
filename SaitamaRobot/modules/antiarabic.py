@@ -101,7 +101,7 @@ Admin only:
  - `/antiarabic` `<on/off>`*:* turn antiarabic module on/off ( off by default )
 \
 """
-__mod_name__ = "AntiArabicScript"
+__mod_name__ = "Anti Arabic"
 
 SETTING_HANDLER = CommandHandler("antiarabic", antiarabic_setting,
                                  pass_args=True)
