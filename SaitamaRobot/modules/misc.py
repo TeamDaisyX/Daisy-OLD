@@ -80,16 +80,22 @@ __help__ = """
 *Available commands:*
 ➩*Markdown:*
  •`/markdownhelp`*:* quick summary of how markdown works in telegram - can only be called in private chats
+
 ➩*Paste:*
  • `/paste`*:* Saves replied content to `nekobin.com` and replies with a url
+
 ➩*React:*
  • `/react`*:* Reacts with a random reaction 
+
 ➩*Urban Dictonary:*
  • `/ud <word>`*:* Type the word or expression you want to search use
+
 ➩*Wikipedia:*
  • `/wiki <query>`*:* wikipedia your query
+
 ➩*Wallpapers:*
  • `/wall <query>`*:* get a wallpaper from wall.alphacoders.com
+
 ➩*Currency converter:* 
  • `/cash`*:* currency converter
 _Example:_
@@ -97,19 +103,24 @@ _Example:_
       _OR_
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
+
 ➩*Time:*
  • `/time <query>`*:* Gives information about a timezone.
  *Available queries:* Country Code/Country Name/Timezone Name
  • 🕐 [Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
 ➩*Translater:*
  " `/tr` or `/tl` (language code) as reply to a long message
  _Example:_
   `/tr en`*:* translates something to english
   `/tr hi-en`*:* translates hindi to english
-➩*song:* 
+
+➩*Song and Video:* 
   •`/song <songname artist(optional)>`: uploads the song in it's best quality available.
-➩*video:*
-  •`/video <songname artist(optional)>`: uploads the video song in it's best quality available
+  •`/video <songname artist(optional)>`: uploads the video song in it's best quality available.
+  
+➩*Image Search:*
+  •`/reverse`: Does a reverse image search of the media which it was replied to.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
