@@ -3,11 +3,13 @@ import re
 import random
 import time
 import subprocess
+from sys import argv
 from typing import Optional, List
 
 from telegram import Message, Chat, User
-from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryHandler
+from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
+from telegram.error import BadRequest, ChatMigrated, NetworkError,TelegramError, TimedOut, Unauthorized
+from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryHandler, CallbackContext
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 from SaitamaRobot.modules.helper_funcs.admin_rights import user_can_ban
@@ -26,14 +28,11 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 
-CHAT_START_TEXT = ["Hey Ther! I'm Alive :3", "Hmm??", "Heya :) PM Me If You Have Any Questions On How To Use Me!"]
-
 
 PM_START_TEXT = f"""
-Hey There! I'm *{dispatcher.bot.first_name}* 
-
-[ I'm Here To Help You Manage \n    Your Groups!
- Hit /help To Find Out More About\n    How To Use Me.
+Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
+Hit /help to see my commands
 
 Join My [Support Chat](t.me/{SUPPORT_CHAT}) To Get Information & Help.
 """
@@ -49,16 +48,22 @@ buttons = [
 
 
 HELP_STRINGS = f"""
-*Helpful Commands :*
-✧ /start: Starts me! You've probably already used this.
-✧ /help: Sends this message; I'll tell you more about myself!
-✧ /donate: Gives you info on how to support me and my creator.
-✧ /settings: 
-   ∘ in PM: will send you your settings for all supported modules.
-   ∘ in a Group: will redirect you to pm, with all that chat's settings.
+*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/5534384d2f2b2d8e6fdbb.jpg)
+✪ /start: Starts me! You've probably already used this.
+✪ /help: Click this, I'll let you know about myself!
+✪ /donate: You can support my creater using this command.
+✪ /settings: 
+   ◔ in PM: will send you your settings for all supported modules.
+   ◔ in a Group: will redirect you to pm, with all that chat's settings.
+""".format(
+    dispatcher.bot.first_name, ""
+    if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-"""
+SAITAMA_IMG = "https://telegra.ph/file/baf58ec4aca2df39c8b61.jpg"
 
+DONATE_STRING = """Heya, glad to hear you want to donate!
+You can donate to the original writer of the Base code, Paul
+There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -161,44 +166,56 @@ def start(update, context):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_photo(
+                SAITAMA_IMG,
+                PM_START_TEXT.format(
+                    escape_markdown(first_name),
+                    escape_markdown(context.bot.first_name)),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60, 
-            )
+                disable_web_page_preview=True,
+                reply_markup=InlineKeyboardMarkup(
+                   [[
+                        InlineKeyboardButton(
+                            text="💫 Add Suzuya to your group 💫",
+                            url="t.me/{}?startgroup=true".format(
+                                context.bot.username))
+                     ]]))
     else:
-        update.effective_message.reply_text(random.choice(CHAT_START_TEXT).format(dispatcher.bot.first_name), parse_mode=ParseMode.MARKDOWN)
-            
+        update.effective_message.reply_text(
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
+            .format(uptime),
+            parse_mode=ParseMode.HTML)
 
 
-        
-def error_handler(update, context):
-    """Log the error and send a telegram message to notify the developer."""
-    # Log the error before we do anything else, so we can see it even if something breaks.
-    LOGGER.error(msg="Exception while handling an update:", exc_info=context.error)
+# for test purposes
+def error_callback(update: Update, context: CallbackContext):
+    error = context.error
+    try:
+        raise error
+    except Unauthorized:
+        print("no nono1")
+        print(error)
+        # remove update.message.chat_id from conversation list
+    except BadRequest:
+        print("no nono2")
+        print("BadRequest caught")
+        print(error)
 
-    # traceback.format_exception returns the usual python message about an exception, but as a
-    # list of strings rather than a single string, so we have to join them together.
-    tb_list = traceback.format_exception(
-        None, context.error, context.error.__traceback__
-    )
-    tb = "".join(tb_list)
-
-    # Build the message with some markup and additional information about what happened.
-    message = (
-        "An exception was raised while handling an update\n"
-        "<pre>update = {}</pre>\n\n"
-        "<pre>{}</pre>"
-    ).format(
-        html.escape(json.dumps(update.to_dict(), indent=2, ensure_ascii=False)),
-        html.escape(tb),
-    )
-
-    if len(message) >= 4096:
-        message = message[:4096]
-    # Finally, send the message
-    context.bot.send_message(chat_id=OWNER_ID, text=message, parse_mode=ParseMode.HTML)
+        # handle malformed requests - read more below!
+    except TimedOut:
+        print("no nono3")
+        # handle slow connection problems
+    except NetworkError:
+        print("no nono4")
+        # handle other connection problems
+    except ChatMigrated as err:
+        print("no nono5")
+        print(err)
+        # the chat_id of a group has changed, use e.new_chat_id instead
+    except TelegramError:
+        print(error)
+        # handle all other telegram related errors
 
 
 @run_async
@@ -273,7 +290,7 @@ def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Hey There! My Name Is {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* \n_Build By Weebs For Weebs_"
+            text=f"*Hey There! My Name Is {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
                  f"\n\nI Specialize In Managing Anime And Similar Themed Groups With Additional Features."
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, Simply [Click Here](https://telegra.ph/Ms-Hinata---Guides-10-01)", 
             parse_mode=ParseMode.MARKDOWN,
