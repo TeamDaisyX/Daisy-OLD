@@ -20,7 +20,6 @@ from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from SaitamaRobot.modules import ALL_MODULES
-from SaitamaRobot.modules.purge import client
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
 from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from SaitamaRobot.modules.helper_funcs.alternate import typing_action
