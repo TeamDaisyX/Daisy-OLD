@@ -29,7 +29,7 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 
-PM_START_TEXT = f"""
+PM_START_TEXT = """
 Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 Hit /help to see my commands
