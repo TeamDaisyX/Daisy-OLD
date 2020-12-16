@@ -27,7 +27,7 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 
-CHAT_START_TEXT = ["Hey There! I'm Alive :3", "Hmm??", "Heya :) PM Me If You Have Any Questions On How To Use Me!"]
+CHAT_START_TEXT = ["Hey Ther! I'm Alive :3", "Hmm??", "Heya :) PM Me If You Have Any Questions On How To Use Me!"]
 
 
 PM_START_TEXT = f"""
