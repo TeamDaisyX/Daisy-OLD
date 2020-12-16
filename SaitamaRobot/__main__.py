@@ -313,7 +313,7 @@ def SaitamaRobot_about_callback(update, context):
         query.message.edit_text(
             text=f"*Hey There! My Name Is {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
                  f"\n\nI Specialize In Managing Anime And Similar Themed Groups With Additional Features."
-                 f"\n\nIf Any Question About {dispatcher.bot.first_name}, Simply [Click Here](https://telegra.ph/Ms-Hinata---Guides-10-01)", 
+                 f"\n\nIf Any Question About {dispatcher.bot.first_name}, Simply [Click Here](https://telegra.ph/SUZUYA-GM-BOT-12-16)", 
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
