@@ -30,10 +30,10 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = """
-Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+Hello there,The name's [𝙎𝙪𝙯𝙪𝙮𝙖](https://telegra.ph/file/5bcbee541234987308553.jpg)
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
-Hit /help to see my commands
-
+✪ Hit /help to know more about my commands
+✪ Make sure you read *About* Section Below
 Join My [Support Chat](t.me/AnteikuUnion) To Get Information & Help.
 """
 
@@ -312,7 +312,7 @@ def SaitamaRobot_about_callback(update, context):
     if query.data == "aboutmanu_":
         query.message.edit_text(
             text=f"*Hey There! My Name Is {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
-                 f"\n\nI Specialize In Managing Anime And Similar Themed Groups With Additional Features."
+                 f"\n\nI Specialize In Managing Anime And Similar Themed Groups With Additional Features [◖⚆ᴥ⚆◗](https://telegra.ph/file/7f6a4d656e89553340af9.jpg)."
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, Simply [Click Here](https://telegra.ph/SUZUYA-GM-BOT-12-16)", 
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
