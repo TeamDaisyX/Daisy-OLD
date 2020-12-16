@@ -32,8 +32,8 @@ CHAT_START_TEXT = ["Hey Ther! I'm Alive :3", "Hmm??", "Heya :) PM Me If You Have
 PM_START_TEXT = f"""
 Hey There! I'm *{dispatcher.bot.first_name}* 
 
-[✧]({START_IMG}) I'm Here To Help You Manage \n    Your Groups!
-[✧]({START_IMG}) Hit /help To Find Out More About\n    How To Use Me.
+[ I'm Here To Help You Manage \n    Your Groups!
+ Hit /help To Find Out More About\n    How To Use Me.
 
 Join My [Support Chat](t.me/{SUPPORT_CHAT}) To Get Information & Help.
 """
