@@ -13,7 +13,7 @@ from telegram.utils.helpers import escape_markdown
 from SaitamaRobot.modules.helper_funcs.admin_rights import user_can_ban
 from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
-from SaitamaRobot import (dispatcher, since_time_start, updater, TOKEN, OWNER_ID, WEBHOOK,
+from SaitamaRobot import (dispatcher, StartTime, updater, TOKEN, OWNER_ID, WEBHOOK,
                            CERT_PATH, PORT, URL, LOGGER, BLACKLIST_CHATS, WHITELIST_CHATS,
                            SUPPORT_CHAT, START_IMG, REPOSITORY)
 
