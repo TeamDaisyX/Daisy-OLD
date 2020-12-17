@@ -31,16 +31,17 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 PM_START_TEXT = """
 Hello there,The name's [𝙎𝙪𝙯𝙪𝙮𝙖](https://telegra.ph/file/5bcbee541234987308553.jpg)
+
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
+
 ✪ Hit /help to know more about my commands
-✪ Make sure you read *About* Section Below
-Join My [Support Chat](t.me/AnteikuUnion) To Get Information & Help.
+✪ Make sure you read *INFO* Section Below
 """
 
 buttons = [
     [        
         InlineKeyboardButton(
-        text="About", callback_data="aboutmanu_"
+        text="INFO", callback_data="aboutmanu_"
         ),
     ]
     
@@ -321,15 +322,15 @@ def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Hey There! My Name Is {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
-                 f"\n\nI Specialize In Managing Anime And Similar Themed Groups With Additional Features [◖⚆ᴥ⚆◗](https://telegra.ph/file/7f6a4d656e89553340af9.jpg)."
-                 f"\n\nIf Any Question About {dispatcher.bot.first_name}, Simply [Click Here](https://telegra.ph/SUZUYA-GM-BOT-12-16)", 
+            text=f"*Hi again! The name's {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
+                 f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features. [◖⚆ᴥ⚆◗](https://telegra.ph/file/7f6a4d656e89553340af9.jpg)."
+                 f"\n\nYou Can Know More Aoubt Me By Clicking The Below Buttons.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                    InlineKeyboardButton(text="How To Use", callback_data="aboutmanu_howto"),
+                    InlineKeyboardButton(text="How To Use Me", callback_data="aboutmanu_howto"),
                     InlineKeyboardButton(text="T & C", callback_data="aboutmanu_tac")
                   ],
                  [
@@ -349,13 +350,14 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_howto":
         query.message.edit_text(
             text=f"*Basic Help:*"
-                 f"\nTo Add {dispatcher.bot.first_name} To Your Chats, Simply [Click Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Select Chat. \n" 
+                 f"\nIf You Want Add {dispatcher.bot.first_name} To Your Chats, Simply [Click Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Select Chat. \n"
+                 f"\n\nYou Can Know Main commands of {dispatcher.bot.first_name} by Just Clicking [Here](https://telegra.ph/SUZUYA-GM-BOT-12-16).\n"
                  f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(text="Admins Settings", callback_data="aboutmanu_permis"),
-                InlineKeyboardButton(text="Anti-Spam", callback_data="aboutmanu_spamprot")],
+                InlineKeyboardButton(text="Anti Spam", callback_data="aboutmanu_spamprot")],
                 [
                 InlineKeyboardButton(text="Back", callback_data="aboutmanu_")]
                                                ]),
@@ -365,7 +367,6 @@ def SaitamaRobot_about_callback(update, context):
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
                  f"\n\nFork Of [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
                  f"\n\n{dispatcher.bot.first_name}'s Licensed Under The GNU _(General Public License v3.0)_"
-                 f"\n\nHere Is The [Repository]({REPOSITORY})."
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -375,6 +376,7 @@ def SaitamaRobot_about_callback(update, context):
         query.message.edit_text(
             text=f"<b>Admin Permissions:</b>"
                  f"\nTo avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), {dispatcher.bot.first_name} will only find out ~10 minutes later."
+                 f"\n\nIF you want to update them immediately, you can use the /admincache command,thta'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions"
                  f"\n\nIf you are getting a message saying:"
                  f"\n<Code>You must be this chat administrator to perform this action!</code>"
                  f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
@@ -412,14 +414,14 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_tac":
         query.message.edit_text(
             text=f"<b>Terms and Conditions:</b>\n"
-                 f"\n<i>To Use This Bot, You Need To Read Terms and Conditions</i>\n"
-                 f"\n∘ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
-                 f"\n∘ Make sure antiflood is enabled, so \n  nobody can ruin your group."
-                 f"\n∘ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be Gbanned."
-                 f"\n∘ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
-                 f"\n∘ If you asking nonsense in Support \n  Chat, you will get banned."
-                 f"\n∘ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
-                 f"\n∘ Sharing NSFW in Support Chat,\n  will reward you banned/gbanned \n  and reported to Telegram as well."
+                 f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
+                 f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
+                 f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
+                 f"\n✪ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be <b>Gbanned</b>."
+                 f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
+                 f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
+                 f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
+                 f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
                  f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
                  f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
