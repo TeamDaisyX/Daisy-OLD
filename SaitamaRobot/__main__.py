@@ -178,8 +178,7 @@ def start(update: Update, context: CallbackContext):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
                 
-          else:
-              send_start(bot, update)
+             
             
         else:
             update.effective_message.reply_text(
