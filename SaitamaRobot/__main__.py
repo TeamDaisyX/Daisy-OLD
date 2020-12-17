@@ -144,14 +144,23 @@ def test(update, context):
 
 
 @run_async
-@typing_action
-def start(update, context):
+def start(update: Update, context: CallbackContext):
+    args = context.args
+    uptime = get_readable_time((time.time() - StartTime))
     if update.effective_chat.type == "private":
-        args = context.args
-        uptime = get_readable_time((time.time() - StartTime))
         if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
+            elif args[0].lower().startswith("ghelp_"):
+                mod = args[0].lower().split('_', 1)[1]
+                if not HELPABLE.get(mod, False):
+                    return
+                send_help(
+                    update.effective_chat.id, HELPABLE[mod].__help__,
+                    InlineKeyboardMarkup([[
+                        InlineKeyboardButton(
+                            text="Back", callback_data="help_back")
+                    ]]))
 
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
