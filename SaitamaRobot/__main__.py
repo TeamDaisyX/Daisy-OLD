@@ -46,7 +46,6 @@ buttons = [
     [        
         InlineKeyboardButton(
         text="💫 Add Suzuya to your group 💫", url="t.me/{}?startgroup=true".format(bot.username))
-        ),
     ]
 ]
 
@@ -681,6 +680,38 @@ def get_settings(update, context):
         send_settings(chat.id, user.id, True)
 
 
+@run_async
+def donate(update: Update, context: CallbackContext):
+    user = update.effective_message.from_user
+    chat = update.effective_chat  # type: Optional[Chat]
+    bot = context.bot
+    if chat.type == "private":
+        update.effective_message.reply_text(
+            DONATE_STRING,
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True)
+
+        if OWNER_ID != 254318997 and DONATION_LINK:
+            update.effective_message.reply_text(
+                "You can also donate to the person currently running me "
+                "[here]({})".format(DONATION_LINK),
+                parse_mode=ParseMode.MARKDOWN)
+
+    else:
+        try:
+            bot.send_message(
+                user.id,
+                DONATE_STRING,
+                parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True)
+
+            update.effective_message.reply_text(
+                "I've PM'ed you about donating to my creator!")
+        except Unauthorized:
+            update.effective_message.reply_text(
+                "Contact me in PM first to get donation information.")
+
+            
 def migrate_chats(update, context):
     msg = update.effective_message  # type: Optional[Message]
     if msg.migrate_to_chat_id:
@@ -736,6 +767,16 @@ def is_chat_allowed(update, context):
 
 
 def main():
+
+    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+        try:
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "I am now online!")
+        except Unauthorized:
+            LOGGER.warning(
+                "Bot isnt able to send message to support_chat, go and check!")
+        except BadRequest as e:
+            LOGGER.warning(e.message)
+            
     # test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
 
@@ -777,8 +818,12 @@ def main():
 
     else:
         LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4)
-        
+        updater.start_polling(timeout=15, read_latency=4, clean=True)
+    
+    if len(argv) not in (1, 3, 4):
+        telethn.disconnect()
+    else:
+        telethn.run_until_disconnected()
 
     updater.idle()
 
