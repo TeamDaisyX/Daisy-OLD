@@ -45,7 +45,7 @@ buttons = [
     ],
     [        
         InlineKeyboardButton(
-        text="💫 Add Suzuya to your group 💫", url="t.me/{dispatcher.bot.username}?startgroup=true"
+        text="💫 Add Suzuya to your group 💫", url="t.me/suzuya_probot?startgroup=true"
         ),
     ]
 ]
