@@ -87,6 +87,13 @@ if ENV:
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
+    REPOSITORY = os.environ.get('REPOSITORY', "")
+    
+    try:
+        WHITELIST_CHATS = set(int(x) for x in os.environ.get('WHITELIST_CHATS', "").split())
+    except ValueError:
+        raise Exception(
+            "Your blacklisted chats list does not contain valid integers.")
 
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
@@ -171,6 +178,8 @@ if not SPAMWATCH_API:
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
     sw = spamwatch.Client(SPAMWATCH_API)
+    
+    LOGGER.info("Your redis server is now alive!")
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
