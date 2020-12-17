@@ -193,9 +193,14 @@ def start(update: Update, context: CallbackContext):
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
             .format(uptime),
             parse_mode=ParseMode.HTML)
-        
-        
-        
+   
+  
+def send_start(bot, update):
+    #Try to remove old message
+    try:
+        query = update.callback_query
+        query.message.delete()
+     
 
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
