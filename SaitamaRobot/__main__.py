@@ -34,8 +34,7 @@ Hello there,The name's [𝙎𝙪𝙯𝙪𝙮𝙖](https://telegra.ph/file/5bcbee
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
-✪ Hit /help to know more about my commands
-✪ Make sure you read *INFO* Section Below
+✪ Make sure you read *INFO* Section Below.✪ 
 """
 
 buttons = [
@@ -43,8 +42,12 @@ buttons = [
         InlineKeyboardButton(
         text="INFO", callback_data="aboutmanu_"
         ),
+    ],
+    [        
+        InlineKeyboardButton(
+        text="💫 Add Suzuya to your group 💫", url="t.me/{}?startgroup=true".format(bot.username))
+        ),
     ]
-    
 ]
 
 
@@ -322,9 +325,10 @@ def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Hi again! The name's {dispatcher.bot.first_name}. \n\nI Am An Anime Themed Group Management Bot.* "
+            text=f"*Hi again! The name's {dispatcher.bot.first_name}. \n\nAs  You I'm An Anime Themed Group Management Bot.* "
+                 f"\n\n Join [Updates Channel](https://t.me/SuzuyaUpdates) To Keep Yourself Updated About {dispatcher.bot.first_name}."
                  f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features. [◖⚆ᴥ⚆◗](https://telegra.ph/file/7f6a4d656e89553340af9.jpg)."
-                 f"\n\nYou Can Know More Aoubt Me By Clicking The Below Buttons.",
+                 f"\n\nYou Can Know More About Me By Clicking The Below Buttons.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -335,7 +339,10 @@ def SaitamaRobot_about_callback(update, context):
                   ],
                  [
                     InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
-                 ]
+                 ],
+                 [
+                    InlineKeyboardButton(text="Help", callback_data="help_back")
+                 ] 
                 ]
             ),
         )
@@ -350,7 +357,7 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_howto":
         query.message.edit_text(
             text=f"*Basic Help:*"
-                 f"\nIf You Want Add {dispatcher.bot.first_name} To Your Chats, Simply [Click Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Select Chat. \n"
+                 f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Select Chat. \n"
                  f"\n\nYou Can Know Main commands of {dispatcher.bot.first_name} by Just Clicking [Here](https://telegra.ph/SUZUYA-GM-BOT-12-16).\n"
                  f"",
             parse_mode=ParseMode.MARKDOWN,
