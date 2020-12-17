@@ -148,6 +148,7 @@ def test(update, context):
 def start(update, context):
     if update.effective_chat.type == "private":
         args = context.args
+        uptime = get_readable_time((time.time() - StartTime))
         if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
