@@ -32,7 +32,7 @@ Now send the bot /start, If it doesn't respond go to https://dashboard.heroku.co
 ```
 
 
-  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Godzilla-0/Suzuya_ProBot.git)
+ 
 
 </details>  
 <details>
