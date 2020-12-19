@@ -8,7 +8,7 @@ from telegram.ext import Filters, MessageHandler, run_async
 
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
-from SaitamaRobot.modules.sql.redis import start_afk, end_afk, is_user_afk, afk_reason
+from SaitamaRobot.modules.sql.afk_sql import start_afk, end_afk, is_user_afk, afk_reason
 from SaitamaRobot import REDIS
 from SaitamaRobot.modules.users import get_user_id
 
