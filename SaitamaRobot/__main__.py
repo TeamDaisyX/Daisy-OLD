@@ -16,7 +16,7 @@ from SaitamaRobot.modules.helper_funcs.admin_rights import user_can_ban
 from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
 from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
-                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK, REPOSITORY, WHITELIST_CHATS, BL_CHATS,
+                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK, REPOSITORY, WHITELIST_CHATS, BL_CHATS, pbot,
                           SUPPORT_CHAT, dispatcher, StartTime, telethn, updater)
 
 # needed to dynamically load modules
@@ -835,4 +835,5 @@ def main():
 if __name__ == "__main__":
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
+    pbot.start()
     main()
