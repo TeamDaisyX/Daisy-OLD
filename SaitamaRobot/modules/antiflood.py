@@ -13,6 +13,7 @@ from SaitamaRobot.modules.sql import antiflood_sql as sql
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, Filters, MessageHandler, run_async
 from telegram.utils.helpers import mention_html, escape_markdown
+from SaitamaRobot import dispatcher, REDIS
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.connection import connected
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
@@ -25,6 +26,15 @@ def check_flood(update, context) -> str:
     user = update.effective_user  # type: Optional[User]
     chat = update.effective_chat  # type: Optional[Chat]
     msg = update.effective_message  # type: Optional[Message]
+    
+    
+    chat_id = str(chat.id)[1:] 
+    approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
+    target_user = mention_html(user.id, user.first_name)
+    if target_user in approve_list:
+        return
+
+        
     if not user:  # ignore channels
         return ""
 
