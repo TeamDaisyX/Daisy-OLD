@@ -3,7 +3,7 @@ import re
 from typing import Optional
 
 import telegram
-from SaitamaRobot import TIGERS, WOLVES, dispatcher
+from SaitamaRobot import TIGERS, WOLVES, dispatcher, REDIS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin,
                                                            can_restrict,
@@ -338,7 +338,15 @@ def reply_filter(update: Update, context: CallbackContext) -> str:
     chat: Optional[Chat] = update.effective_chat
     message: Optional[Message] = update.effective_message
     user: Optional[User] = update.effective_user
+      
+      
+    chat_id = str(chat.id)[1:] 
+    approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
+    target_user = mention_html(user.id, user.first_name)
+    if target_user in approve_list:
+        return
 
+        
     if not user:  #Ignore channel
         return
 
