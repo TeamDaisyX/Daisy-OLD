@@ -349,9 +349,11 @@ def del_blacklist(update, context):
     target_user = mention_html(user.id, user.first_name)
     if target_user in approve_list:
         return
-   
-	getmode, value = sql.get_blacklist_setting(chat.id)
 
+
+    getmode, value = sql.get_blacklist_setting(chat.id)
+
+   	
     chat_filters = sql.get_chat_blacklist(chat.id)
     for trigger in chat_filters:
         pattern = r"( |^|[^\w])" + re.escape(trigger) + r"( |$|[^\w])"
