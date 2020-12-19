@@ -4,6 +4,7 @@ import sys
 import time
 import spamwatch
 import telegram.ext as tg
+from redis import StrictRedis
 from telethon import TelegramClient
 
 StartTime = time.time()
@@ -88,6 +89,7 @@ if ENV:
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
     REPOSITORY = os.environ.get('REPOSITORY', "")
+    REDIS_URL = os.environ.get('REDIS_URL')
     
     try:
         WHITELIST_CHATS = set(int(x) for x in os.environ.get('WHITELIST_CHATS', "").split())
