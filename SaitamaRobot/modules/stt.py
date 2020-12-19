@@ -1,4 +1,4 @@
-from SaitamaRobot import client
+from SaitamaRobot import telethn
 import os
 import urllib.request
 from datetime import datetime
