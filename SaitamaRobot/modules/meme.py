@@ -13,7 +13,7 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 from SaitamaRobot import dispatcher, DRAGONS, DEMONS, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 
-import tg_bot.modSaitamaRobotelper_funcs.fun_strings as fun
+import SaitamaRobot.modules.helper_funcs.fun_strings as fun
 
 
 @run_async
