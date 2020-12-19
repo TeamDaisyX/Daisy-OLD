@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from SaitamaRobot import LOGGER
 from SaitamaRobot.modules.users import get_user_id
 
-from SaitamaRobot import client
+from SaitamaRobot import telethn
 from telethon import events
 from telethon.tl.types import MessageEntityMentionName
 from telethon.tl.functions.users import GetFullUserRequest
