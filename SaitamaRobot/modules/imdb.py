@@ -115,16 +115,16 @@ async def imdb(e):
     			)
  except IndexError:
      await e.reply("Please enter a valid movie name !")
-        buffer.save('hitler.jpg', 'JPEG')
+       buffer.save('hitler.jpg', 'JPEG')
     for mocked in glob.glob("hitlered*"):
-        os.remove(mocked)
+       os.remove(mocked)
     reply_text = spongemock.mock(data)
 
     randint = random.randint(1, 699)
     magick = """convert hitler.jpg -font Impact -pointsize 50 -size 615x409 -stroke black -strokewidth 1 -fill white -background none -gravity north caption:"{}" -flatten hitlered{}.jpg""".format(reply_text, randint)
     os.system(magick)
     with open('hitlered{}.jpg'.format(randint), 'rb') as mockedphoto:
-        message.reply_to_message.reply_photo(photo=mockedphoto, reply=message.reply_to_message)
+       message.reply_to_message.reply_photo(photo=mockedphoto, reply=message.reply_to_message)
     os.remove('hitlered{}.jpg'.format(randint))
 
 
