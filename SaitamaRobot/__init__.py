@@ -90,6 +90,10 @@ if ENV:
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
     REPOSITORY = os.environ.get('REPOSITORY', "")
     REDIS_URL = os.environ.get('REDIS_URL')
+    IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
+    IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
+    
     
     try:
         WHITELIST_CHATS = set(int(x) for x in os.environ.get('WHITELIST_CHATS', "").split())
@@ -198,6 +202,7 @@ finally:
     
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
+pbot = Client("suzuyaPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
 
