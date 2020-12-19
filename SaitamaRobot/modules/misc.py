@@ -21,8 +21,7 @@ from telegram.ext import CallbackContext ,CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
 from telegram.error import BadRequest
 
-from SaitamaRobot import (OWNER_ID, DRAGONS, DEMONS, WOLVES, DEV_USERS,
-                           spamwtc, dispatcher)
+from SaitamaRobot import (OWNER_ID, DRAGONS, DEMONS, WOLVES, DEV_USERS, dispatcher)
 from SaitamaRobot.__main__ import STATS, USER_INFO, GDPR
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user, get_user
