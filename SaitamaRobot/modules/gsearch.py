@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from SaitamaRobot.events import register
-from SaitamaRobot import client
+from SaitamaRobot import telethn
 import sys
 import shutil
 from re import findall
