@@ -25,12 +25,13 @@ regex
 bleach
 git+https://github.com/starry69/python-markdown2.git
 wikipedia
-telethon==1.16.4
+telethon==1.17.5
 spamwatch
 alphabet_detector
 pyrate-limiter
 cachetools
-pyrogram
+pyrogram>=1.0.7
+tgCrypto>=1.2.2
 fontTools
 gtts
 tswift
@@ -43,3 +44,5 @@ youtube_dl
 PyYAML>=5.3.1
 redis
 html2text
+pythonping
+html_telegraph_poster
