@@ -33,30 +33,3 @@ def covid(update: Update, context: CallbackContext):
 
 COVID_HANDLER = DisableAbleCommandHandler(["covid", "corona"], covid)
 dispatcher.add_handler(COVID_HANDLER)
-
-        buffer.save('bob.jpg', 'JPEG')
-    for mocked in glob.glob("mocked*"):
-        os.remove(mocked)
-    reply_text = spongemock.mock(data)
-
-    randint = random.randint(1, 699)
-    magick = """convert bob.jpg -font Impact -pointsize 30 -size 512x300 -stroke black -strokewidth 1 -fill white -background none -gravity north caption:"{}" -flatten mocked{}.jpg""".format(reply_text, randint)
-    os.system(magick)
-    with open('mocked{}.jpg'.format(randint), 'rb') as mockedphoto:
-        message.reply_to_message.reply_photo(photo=mockedphoto, reply=message.reply_to_message)
-    os.remove('mocked{}.jpg'.format(randint))
-    
-    
-
-
-MOCK_HANDLER = DisableAbleCommandHandler("mock", spongemocktext, admin_ok=True)
-KIM_HANDLER = DisableAbleCommandHandler("kim", kimtext, admin_ok=True)
-HITLER_HANDLER = DisableAbleCommandHandler("hitler", hitlertext, admin_ok=True)
-
-
-dispatcher.add_handler(MOCK_HANDLER)
-dispatcher.add_handler(KIM_HANDLER)
-dispatcher.add_handler(HITLER_HANDLER)
-
-__command_list__ = ["mock", "kim", "hitler"]
-__handlers__ = [MOCK_HANDLER, KIM_HANDLER,  HITLER_HANDLER]
