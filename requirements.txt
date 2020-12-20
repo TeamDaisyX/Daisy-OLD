@@ -42,3 +42,4 @@ validators
 youtube_dl
 PyYAML>=5.3.1
 redis
+html2text
