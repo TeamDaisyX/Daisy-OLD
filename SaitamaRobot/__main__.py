@@ -343,7 +343,7 @@ def SaitamaRobot_about_callback(update, context):
                     InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
                  ],
                  [
-                    InlineKeyboardButton(text="Help", callback_data="help_back")
+                    InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
                  ] 
                 ]
             ),
