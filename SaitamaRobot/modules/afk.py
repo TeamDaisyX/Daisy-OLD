@@ -60,7 +60,7 @@ def no_longer_afk(update, context):
         firstname = update.effective_user.first_name
         try:
             message.reply_text(
-                "User <b>{}</b> Is No Longer AFK!\nYou Were AFK For: <code>{}</code>".format(firstname, end_afk_time), parse_mode="html")
+                "<b>{}</b> Is Now Awake!\nYou Were AFK For: <code>{}</code>".format(firstname, end_afk_time), parse_mode="html")
         except Exception:
             return
 
@@ -122,12 +122,12 @@ def check_afk(update, context, user_id, fst_name, userc_id):
         if reason == "none":
             if int(userc_id) == int(user_id):
                 return
-            res = "User <b>{}</b> Is Currently AFK!\n\nLast Seen: <code>{}</code>".format(fst_name, since_afk)
+            res = "<b>{}</b> Is Currently AFK!\n\nLast Seen: <code>{}</code>".format(fst_name, since_afk)
             update.effective_message.reply_text(res, parse_mode="html")
         else:
             if int(userc_id) == int(user_id):
                 return
-            res = "User <b>{}</b> Is Currently AFK! Says It's Because Of:\n{}\n\nLast Seen: <code>{}</code>".format(fst_name, reason, since_afk)
+            res = "<b>{}</b> Is Currently Away! <b>Reason</b>:\n{}\n\nLast Seen: <code>{}</code>".format(fst_name, reason, since_afk)
             update.effective_message.reply_text(res, parse_mode="html")
 
 
