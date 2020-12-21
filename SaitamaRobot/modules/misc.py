@@ -339,8 +339,9 @@ def ud(update, context):
         return
     try:
         results = get(f"http://api.urbandictionary.com/v0/define?term={text}").json()
-        reply_text = f'Word: {text}\nDefinition: {results["list"][0]["definition"]}'
-        reply_text += f'\n\nExample: {results["list"][0]["example"]}'
+        reply_text = f'*{text}*\n\n{results["list"][0]["definition"]}'
+        reply_text += f'\n\n_{results["list"][0]["example"]}_'
+        reply_text = reply_text.replace('[', '').replace(']','')
     except IndexError:
         reply_text = (
             f"Word: {text}\nResults: Sorry could not find any matching results!"
