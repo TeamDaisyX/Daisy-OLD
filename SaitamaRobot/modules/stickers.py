@@ -665,15 +665,15 @@ def remove_fvrtsticker(update, context):
 __help__ = """
 Stickers made easy with stickers module!
 
-- /findsticker: Find stickers for given term on combot sticker catalogue 
+✪ `/findsticker`: Find stickers for given term on combot sticker catalogue 
 
-- /addsticker: Reply to a sticker to add it to your pack.
-- /delsticker: Reply to your anime exist sticker to your pack to delete it.
-- /stickerid: Reply to a sticker to me to tell you its file ID.
-- /getsticker: Reply to a sticker to me to upload its raw PNG file.
-- /addfsticker or /afs <custom name>: Reply to a sticker to add it into your favorite pack list.
-- /myfsticker or /mfs: Get list of your favorite packs.
-- /removefsticker or /rfs <custom name>: Reply to a sticker to remove it into your favorite pack list.
+✪ `/addsticker`: Reply to a sticker to add it to your pack.
+✪ `/delsticker`: Reply to your anime exist sticker to your pack to delete it.
+✪ `/stickerid`: Reply to a sticker to me to tell you its file ID.
+✪ `/getsticker`: Reply to a sticker to me to upload its raw PNG file.
+✪ `/addfsticker` or `/afs` <custom name>: Reply to a sticker to add it into your favorite pack list.
+✪ `/myfsticker` or `/mfs`: Get list of your favorite packs.
+✪ `/removefsticker` or `/rfs` <custom name>: Reply to a sticker to remove it into your favorite pack list.
 
 *Example:* `/addfsticker my cool pack`
 """
