@@ -98,7 +98,7 @@ AntiArabicScript module is used to delete messages containing characters from on
 NOTE: AntiArabicScript module doesn't affect messages sent by admins.
 
 Admin only:
- - `/antiarabic` `<on/off>`*:* turn antiarabic module on/off ( off by default )
+ ✪ `/antiarabic` `<on/off>`*:* turn antiarabic module on/off ( off by default )
 \
 """
 __mod_name__ = "Anti Arabic"
