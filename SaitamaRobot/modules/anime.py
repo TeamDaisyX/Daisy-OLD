@@ -673,18 +673,19 @@ def button(update, context):
 __help__ = """
 Get information about anime, manga or characters from [AniList](anilist.co).
 *Available commands:*
- - /anime <anime>: returns information about the anime.
- - /character <character>: returns information about the character.
- - /manga <manga>: returns information about the manga.
- - /user <user>: returns information about a MyAnimeList user.
- - /upcoming: returns a list of new anime in the upcoming seasons.
- - /airing <anime>: returns anime airing info.
- - /watchlist: to get your saved watchlist.
- - /mangalist: to get your saved manga read list.
- - /characterlist | fcl: to get your favorite characters list.
- - /removewatchlist | rwl <anime>: to remove a anime from your list.
- - /rfcharacter | rfcl <character>: to remove a character from your list.  
- - /rmanga | rml <manga>: to remove a manga from your list.
+ ✪ `/anime <anime>`: returns information about the anime.
+ ✪ `/animequote` : random anime quote.                              
+ ✪ `/character <character>`: returns information about the character.
+ ✪ `/manga <manga>`: returns information about the manga.
+ ✪ `/user <user>`: returns information about a MyAnimeList user.
+ ✪ `/upcoming`: returns a list of new anime in the upcoming seasons.
+ ✪ `/airing <anime>`: returns anime airing info.
+ ✪ `/watchlist`: to get your saved watchlist.
+ ✪ `/mangalist`: to get your saved manga read list.
+ ✪ `/characterlist | fcl`: to get your favorite characters list.
+ ✪ `/removewatchlist | rwl <anime>`: to remove a anime from your list.
+ ✪ `/rfcharacter | rfcl <character>`: to remove a character from your list.  
+ ✪ `/rmanga | rml <manga>`: to remove a manga from your list.
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
