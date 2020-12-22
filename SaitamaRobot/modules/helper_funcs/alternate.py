@@ -21,6 +21,7 @@ def typing_action(func):
         return func(update, context, *args, **kwargs)
 
     return command_func
+
 def send_action(action):
     """Sends `action` while processing func command."""
 

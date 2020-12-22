@@ -13,8 +13,11 @@ from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
 info_btn = "More Information"
-prequel_btn = "⬅️"
-sequel_btn = "➡️"
+kaizoku_btn = "Kaizoku ☠️"
+kayo_btn = "Kayo 🏴‍☠️"
+ganime_btn = "Ganime ☠️"
+prequel_btn = "⬅️ Prequel"
+sequel_btn = "Sequel ➡️"
 close_btn = "❌"
 
 
@@ -668,23 +671,122 @@ def button(update, context):
         else:
             query.answer("You are not allowed to use this.")
 
+def site_search(update: Update, context: CallbackContext, site: str):
+    message = update.effective_message
+    args = message.text.strip().split(" ", 1)
+    more_results = True
 
+    try:
+        search_query = args[1]
+    except IndexError:
+        message.reply_text("Give something to search")
+        return
+
+    if site == "kaizoku":
+        search_url = f"https://animekaizoku.com/?s={search_query}"
+        html_text = requests.get(search_url).text
+        soup = bs4.BeautifulSoup(html_text, "html.parser")
+        search_result = soup.find_all("h2", {'class': "post-title"})
+
+        if search_result:
+            result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>: \n"
+            for entry in search_result:
+                post_link = "https://animekaizoku.com/" + entry.a['href']
+                post_name = html.escape(entry.text)
+                result += f"• <a href='{post_link}'>{post_name}</a>\n"
+        else:
+            more_results = False
+            result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>"
+
+    elif site == "kayo":
+        search_url = f"https://animekayo.com/?s={search_query}"
+        html_text = requests.get(search_url).text
+        soup = bs4.BeautifulSoup(html_text, "html.parser")
+        search_result = soup.find_all("h2", {'class': "title"})
+
+        result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>: \n"
+        for entry in search_result:
+
+            if entry.text.strip() == "Nothing Found":
+                result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>"
+                more_results = False
+                break
+
+            post_link = entry.a['href']
+            post_name = html.escape(entry.text.strip())
+            result += f"• <a href='{post_link}'>{post_name}</a>\n"
+           
+    elif site == "ganime":
+        search_url = f"https://gogoanime.so//search.html?keyword={search_query}"
+        html_text = requests.get(search_url).text
+        soup = bs4.BeautifulSoup(html_text, "html.parser")
+        search_result = soup.find_all("h2", {'class': "title"})
+
+        result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>gogoanime</code>: \n"
+        for entry in search_result:
+
+            if entry.text.strip() == "Nothing Found":
+                result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>gogoanime</code>"
+                more_results = False
+                break
+
+            post_link = entry.a['href']
+            post_name = html.escape(entry.text.strip())
+            result += f"• <a href='{post_link}'>{post_name}</a>\n"
+
+    buttons = [[InlineKeyboardButton("See all results", url=search_url)]]
+
+    if more_results:
+        message.reply_text(
+            result,
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True)
+    else:
+        message.reply_text(
+            result, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+
+
+@run_async
+def kaizoku(update: Update, context: CallbackContext):
+    site_search(update, context, "kaizoku")
+
+
+@run_async
+def kayo(update: Update, context: CallbackContext):
+    site_search(update, context, "kayo")
+    
+@run_async
+def ganime(update: Update, context: CallbackContext):
+    site_search(update, context, "ganime")
+    
+    
 
 __help__ = """
 Get information about anime, manga or characters from [AniList](anilist.co).
 *Available commands:*
- - /anime <anime>: returns information about the anime.
- - /character <character>: returns information about the character.
- - /manga <manga>: returns information about the manga.
- - /user <user>: returns information about a MyAnimeList user.
- - /upcoming: returns a list of new anime in the upcoming seasons.
- - /airing <anime>: returns anime airing info.
- - /watchlist: to get your saved watchlist.
- - /mangalist: to get your saved manga read list.
- - /characterlist | fcl: to get your favorite characters list.
- - /removewatchlist | rwl <anime>: to remove a anime from your list.
- - /rfcharacter | rfcl <character>: to remove a character from your list.  
- - /rmanga | rml <manga>: to remove a manga from your list.
+➩ *Anime search:*                            
+ ✪ `/anime <anime>`: returns information about the anime.
+ ✪ `/whatanime`: returns source of anime when replied to photo or gif.                                                          
+ ✪ `/character <character>`: returns information about the character.
+ ✪ `/manga <manga>`: returns information about the manga.
+ ✪ `/user <user>`: returns information about a MyAnimeList user.
+ ✪ `/upcoming`: returns a list of new anime in the upcoming seasons.
+ ✪ `/airing <anime>`: returns anime airing info.
+ ✪ `/ganime <anime>`: search an anime on gogoanime.
+ ✪ `/kaizoku <anime>`:search an anime on animekaizoku.com
+ ✪ `/kayo <anime>`: search an anime on animekayo.com
+                               
+➩ *Watchlist:*                             
+ ✪ `/watchlist`: to get your saved watchlist.
+ ✪ `/mangalist`: to get your saved manga read list.
+ ✪ `/characterlist | fcl`: to get your favorite characters list.
+ ✪ `/removewatchlist | rwl <anime>`: to remove a anime from your list.
+ ✪ `/rfcharacter | rfcl <character>`: to remove a character from your list.  
+ ✪ `/rmanga | rml <manga>`: to remove a manga from your list.
+ 
+➩ *Anime Quotes:*
+ ✪ `/animequote` : random anime quote.                              
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
@@ -701,6 +803,10 @@ REMOVE_FVRT_CHAR_HANDLER = DisableAbleCommandHandler(["rfcharacter","rfcl"], rem
 REMOVE_MANGA_CHAR_HANDLER = DisableAbleCommandHandler(["rmanga","rml"], removemangalist)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 ANIME_STUFFS_HANDLER = CallbackQueryHandler(animestuffs, pattern='xanime_.*')
+KAIZOKU_SEARCH_HANDLER = DisableAbleCommandHandler("kaizoku", kaizoku)
+KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo)
+GANIME_SEARCH_HANDLER = DisableAbleCommandHandler("ganime", ganime)
+
 
 dispatcher.add_handler(BUTTON_HANDLER)
 dispatcher.add_handler(ANIME_STUFFS_HANDLER)
@@ -716,5 +822,8 @@ dispatcher.add_handler(FVRT_CHAR_HANDLER)
 dispatcher.add_handler(REMOVE_FVRT_CHAR_HANDLER)
 dispatcher.add_handler(REMOVE_MANGA_CHAR_HANDLER)
 dispatcher.add_handler(REMOVE_WATCHLIST_HANDLER)
+dispatcher.add_handler(KAIZOKU_SEARCH_HANDLER)
+dispatcher.add_handler(KAYO_SEARCH_HANDLER)
+dispatcher.add_handler(GANIME_SEARCH_HANDLER)
 
 __mod_name__ = "Anime"

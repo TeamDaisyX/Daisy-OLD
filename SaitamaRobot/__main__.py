@@ -16,7 +16,7 @@ from SaitamaRobot.modules.helper_funcs.admin_rights import user_can_ban
 from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
 from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
-                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK, REPOSITORY, WHITELIST_CHATS, BL_CHATS,
+                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK, REPOSITORY, WHITELIST_CHATS, BL_CHATS, pbot,
                           SUPPORT_CHAT, dispatcher, StartTime, telethn, updater)
 
 # needed to dynamically load modules
@@ -265,7 +265,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "*--- ｢Help for {} module」---*\n".format(
+                "*⚊❮❮❮❮ ｢  Help  for  {}  module 」❯❯❯❯⚊*\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -343,7 +343,7 @@ def SaitamaRobot_about_callback(update, context):
                     InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
                  ],
                  [
-                    InlineKeyboardButton(text="Help", callback_data="help_back")
+                    InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
                  ] 
                 ]
             ),
@@ -475,7 +475,7 @@ def get_help(update, context):
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
-            "*╠┮┄┄ ｢ Help for {} module 」┄┄┭╣*\n".format(
+            "Here is the available help for the *{}* module:\n".format(
                 HELPABLE[module].__mod_name__
             )
             + HELPABLE[module].__help__
@@ -835,4 +835,5 @@ def main():
 if __name__ == "__main__":
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
+    pbot.start()
     main()

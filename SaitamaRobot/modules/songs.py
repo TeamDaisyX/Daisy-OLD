@@ -1,4 +1,4 @@
-# Thanks to @p_rinc_e
+
 from pathlib import Path
 import asyncio, time, io, math, os, logging, asyncio, shutil, re, subprocess, json
 from re import findall
@@ -14,7 +14,7 @@ from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo, DocumentAttributeAudio
 from telethon import events
 
-from SaitamaRobot.event import register
+from SaitamaRobot.events import register
 from SaitamaRobot.utils import progress
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
@@ -277,4 +277,14 @@ async def download_video(v_url):
         await rkp.delete()
 
 
+__help__ = """
+ *You can either enter just the song name or both the artist and song
+  name. *
 
+ ✪ `/song` <songname artist(optional)>: uploads the song in it's best quality available
+ ✪ `/video` <songname artist(optional)>: uploads the video song in it's best quality available
+ ✪ `/lyrics` <song>: returns the lyrics of that song.
+
+"""
+
+__mod_name__ = "Music"

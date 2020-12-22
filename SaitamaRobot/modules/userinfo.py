@@ -72,7 +72,9 @@ def hpmanager(user):
             new_hp -= no_by_per(total_hp, 10)
 
         if is_user_afk(user.id):
+
             afkst = afk_reason(user.id)
+
             # if user is afk and no reason then decrease 7%
             # else if reason exist decrease 5%
             if not afkst:
@@ -518,7 +520,7 @@ _Examples:_
  ✪ `/info`*:* get information about a user. 
  
 *What is that health thingy?*
- Come and see [HP System explained](https://t.me/OnePunchUpdates/192)
+ Come and see [HP System explained](https://t.me/SuzuyaUpdates/33)
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)
@@ -541,7 +543,7 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "Info"
+__mod_name__ = "Bios/Abouts"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER, GIFID_HANDLER, INFO_HANDLER, SET_BIO_HANDLER, GET_BIO_HANDLER,
