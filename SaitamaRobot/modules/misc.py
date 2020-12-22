@@ -542,7 +542,7 @@ __help__ = """
  ✪ `/tts`: - To some message to convert it into audio format!
  ✪ `/stt` :- convert audio to text ( only English).
 
-*Use in bot pm* ( admin can use in group).
+*Use in bot pm* (admin can use in group).
  ✪ `/google` <text> :- search google queries.
 
 *Github:*
@@ -568,7 +568,7 @@ __help__ = """
  ✪ `/cash`: currency converter
  ✪ `/time <query>`: Gives information about a timezone.
  ✪ `/plet <text>`: make ur text sticker in different colours
-
+ ✪ `/imdb <text>`: check imdb score of anime or movies.
 \
 """
 
