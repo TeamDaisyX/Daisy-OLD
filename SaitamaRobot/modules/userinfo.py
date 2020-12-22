@@ -241,7 +241,7 @@ def info(update: Update, context: CallbackContext):
     if chat.type != "private" and user_id != bot.id:
         _stext = "\nPresence: <code>{}</code>"
 
-        afk_st = is_afk(user.id)
+        afk_st = is_user_afk(user.id)
         if afk_st:
             text += _stext.format("AFK")
         else:
