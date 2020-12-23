@@ -1,38 +1,41 @@
-from typing import Optional, List
-from gtts import gTTS
-import os
-import requests
-import json
-
 from telegram import ChatAction
-from telegram.ext import run_async
-
+from gtts import gTTS
+import html
+import urllib.request
+import re
+import json
+from datetime import datetime
+from typing import Optional, List
+import time
+import requests
+from telegram import Message, Chat, Update, Bot, MessageEntity
+from telegram import ParseMode
+from telegram.ext import CommandHandler, run_async, Filters
+from telegram.utils.helpers import escape_markdown, mention_html
 from SaitamaRobot import dispatcher
+from SaitamaRobot.__main__ import STATS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import typing_action, send_action
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
-@run_async
-@send_action(ChatAction.RECORD_AUDIO)
-def gtts(update, context):
-    msg = update.effective_message
-    reply = " ".join(context.args)
-    if not reply:
-        if msg.reply_to_message:
-            reply = msg.reply_to_message.text
-        else:
-            return msg.reply_text(
-                "Reply to some message or enter some text to convert it into audio format!"
-            )
-        for x in "\n":
-            reply = reply.replace(x, "")
-    try:
-        tts = gTTS(reply)
+def tts(update, context):
+    args = context.args
+    current_time = datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M:%S")
+    filename = datetime.now().strftime("%d%m%y-%H%M%S%f")
+    reply = " ".join(args)
+    update.message.chat.send_action(ChatAction.RECORD_AUDIO)
+    lang="ml"
+    tts = gTTS(reply, lang)
+    tts.save("k.mp3")
+    with open("k.mp3", "rb") as f:
+        linelist = list(f)
+        linecount = len(linelist)
+    if linecount == 1:
+        update.message.chat.send_action(ChatAction.RECORD_AUDIO)
+        lang = "en"
+        tts = gTTS(reply, lang)
         tts.save("k.mp3")
-        with open("k.mp3", "rb") as speech:
-            msg.reply_audio(speech)
-    finally:
-        if os.path.isfile("k.mp3"):
-            os.remove("k.mp3")
+    with open("k.mp3", "rb") as speech:
+        update.message.reply_voice(speech, quote=False)
 
 
 # Open API key
