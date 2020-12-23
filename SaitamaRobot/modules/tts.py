@@ -72,5 +72,13 @@ def spellcheck(update, context):
             "Reply to some message to get grammar corrected text!"
         )
 
-dispatcher.add_handler(DisableAbleCommandHandler("tts", gtts, pass_args=True))
-dispatcher.add_handler(DisableAbleCommandHandler("splcheck", spellcheck))
+TTS_HANDLER = DisableAbleCommandHandler("tts", tts)
+SPELLCHECK_HANDLER = DisableAbleCommandHandler("splcheck", spellcheck)
+
+dispatcher.add_handler(TTS_HANDLER)
+dispatcher.add_handler(SPELLCHECK_HANDLER)
+
+__handlers__ = [
+    TTS_HANDLER ,SPELLCHECK_HANDLER
+]
+
