@@ -46,3 +46,4 @@ redis
 html2text
 pythonping
 html_telegraph_poster
+youtube-search-python
