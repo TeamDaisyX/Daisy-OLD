@@ -15,7 +15,7 @@ from telegram.utils.helpers import escape_markdown, mention_html
 from SaitamaRobot import dispatcher
 from SaitamaRobot.__main__ import STATS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user, typing_action
 
 def tts(update, context):
     args = context.args
