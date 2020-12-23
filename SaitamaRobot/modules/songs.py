@@ -12,7 +12,7 @@ from youtube_dl.utils import (DownloadError, ContentTooShortError,
 
 try:
 
-   from youtubesearchpython import SearchVideos 
+   
 
 except:
 	os.system("pip install pip install youtube-search-python")
