@@ -2,7 +2,7 @@ import os
 import html
 import requests
 import random, re
-import wikipediai
+import wikipedia
 import codecs
 from typing import Optional, List
 from requests import get
