@@ -57,6 +57,7 @@ class CustomCommandHandler(CommandHandler):
                  admin_ok=False,
                  allow_edit=False,
                  **kwargs):
+        super().__init__(command, callback, **kwargs)
 
         if allow_edit is False:
             self.filters &= ~(
