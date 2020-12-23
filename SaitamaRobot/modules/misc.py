@@ -5,7 +5,7 @@ import random, re
 import wikipedia
 import codecs
 from typing import Optional, List
-from requests import get
+from requests import get, post
 
 
 from datetime import datetime
