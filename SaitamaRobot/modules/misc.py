@@ -627,7 +627,7 @@ PASTE_HANDLER = DisableAbleCommandHandler("paste", paste, pass_args=True)
 GET_PASTE_HANDLER = DisableAbleCommandHandler("getpaste",
                                               get_paste_content,
                                               pass_args=True)
-FPASTE_HANDLER = CommandHandler("fpaste", paste, pass_args=True)
+FPASTE_HANDLER = CommandHandler("fpaste", fpaste, pass_args=True)
 
 
 dispatcher.add_handler(APP_HANDLER)
