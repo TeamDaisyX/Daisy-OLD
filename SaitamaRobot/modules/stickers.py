@@ -665,7 +665,7 @@ def remove_fvrtsticker(update, context):
 __help__ = """
 Stickers made easy with stickers module!
 
-✪ `/findsticker`: Find stickers for given term on combot sticker catalogue 
+✪ `/stickers`: Find stickers for given term on combot sticker catalogue 
 
 ✪ `/addsticker`: Reply to a sticker to add it to your pack.
 ✪ `/delsticker`: Reply to your anime exist sticker to your pack to delete it.
@@ -686,7 +686,7 @@ ADD_FSTICKER_HANDLER = DisableAbleCommandHandler(["addfsticker","afs"], add_fvrt
 REMOVE_FSTICKER_HANDLER = DisableAbleCommandHandler(["removefsticker","rfs"], remove_fvrtsticker, pass_args=True)
 MY_FSTICKERS_HANDLER = DisableAbleCommandHandler(["myfsticker","mfs"], list_fvrtsticker)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
-FIND_STICKERS_HANDLER = DisableAbleCommandHandler("findpacks", cb_sticker)
+FIND_STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker)
 
 dispatcher.add_handler(KANG_HANDLER)
 dispatcher.add_handler(DEL_HANDLER)
