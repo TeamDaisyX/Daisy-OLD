@@ -611,7 +611,7 @@ __mod_name__ = "Extra"
 APP_HANDLER = DisableAbleCommandHandler("app", app)
 LYRICS_HANDLER = DisableAbleCommandHandler("lyrics", lyrics, pass_args=True)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid) 
-ECHO_HANDLER = CommandHandler("echo", echo, filters=CustomFilters.sudo_filter)
+ECHO_HANDLER = CommandHandler("echo", echo, filters=Filters.group)
 MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, filters=Filters.private)
 STATS_HANDLER = DisableAbleCommandHandler("stats", stats, filters=CustomFilters.sudo_filter)
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.private)
