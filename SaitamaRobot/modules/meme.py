@@ -490,7 +490,7 @@ def goodmorning(update, context):
 
 
 __help__ = """
-Some dank memes for fun or whatever!
+*Some dank memes for fun or whatever!*
  ✪ `/sanitize`: Sanitize Your Self
  ✪ `/shrug` or `/cri`: Get shrug or ToT.
  ✪ `/decide`: Randomly answer yes no etc.
@@ -507,7 +507,8 @@ Some dank memes for fun or whatever!
  ✪ `/hug`: Hug a user warmly, or get hugged if not a reply.
  ✪ `/pat`: pats a user, or get patted
  ✪ `/shou`t: write anything you want to give loud shoute
-
+ ✪ `/plet <text>`: make ur text sticker in different colours
+ 
  ✪ `/truth` or `/dare`: Send random truth or dare.
 
 *Memes*
