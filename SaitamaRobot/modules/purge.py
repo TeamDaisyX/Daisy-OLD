@@ -99,7 +99,12 @@ async def spurge_messages(event):
         messages.append(msg_id)
         if len(messages) == 100:
             await event.client.delete_messages(event.chat_id, messages)
-        
+            
+    try:
+        await event.client.delete_messages(event.chat_id, messages)
+    except:
+        pass
+    await event.respond(text, parse_mode='markdown')    
         
 __help__ = """
 *Admin only:*
