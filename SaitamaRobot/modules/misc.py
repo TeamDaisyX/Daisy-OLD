@@ -280,18 +280,17 @@ This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """ 
 
-@run_async
-@typing_action
 def markdown_help_sender(update: Update):
-    update.effective_message.reply_text(MARKDOWN_HELP, parse_mode=ParseMode.HTML)
     update.effective_message.reply_text(
-        "Try forwarding the following message to me, and you'll see!"
+        MARKDOWN_HELP, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_text(
+        "Try forwarding the following message to me, and you'll see, and Use #test!"
     )
     update.effective_message.reply_text(
-        "/save test This is a markdown test. _italics_, --underline--, *bold*, `code`, ~strike~ "
+        "/save test This is a markdown test. _italics_, *bold*, code, "
         "[URL](example.com) [button](buttonurl:github.com) "
-        "[button2](buttonurl://google.com:same)"
-    )
+        "[button2](buttonurl://google.com:same)")
+
 
 @run_async
 def markdown_help(update: Update, context: CallbackContext):
