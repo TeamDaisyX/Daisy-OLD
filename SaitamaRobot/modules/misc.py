@@ -254,7 +254,7 @@ def gdpr(update, context):
     )
 
 
-MARKDOWN_HELP = """
+MARKDOWN_HELP = f"""
 Markdown is a very powerful formatting tool supported by telegram. {} has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
 
@@ -278,14 +278,11 @@ If you want multiple buttons on the same line, use :same, as such:
 This will create two buttons on a single line, instead of one button per line.
 
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
-""".format(
-    dispatcher.bot.first_name
-)
-
+""" 
 
 @run_async
 @typing_action
-def markdown_help_sender(update, context):
+def markdown_help_sender(update: Update):
     update.effective_message.reply_text(MARKDOWN_HELP, parse_mode=ParseMode.HTML)
     update.effective_message.reply_text(
         "Try forwarding the following message to me, and you'll see!"
