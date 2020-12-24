@@ -104,7 +104,7 @@ async def spurge_messages(event):
         await event.client.delete_messages(event.chat_id, messages)
     except:
         pass
-    await event.respond(text, parse_mode='markdown')    
+    await
         
 __help__ = """
 *Admin only:*
