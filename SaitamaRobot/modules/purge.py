@@ -111,6 +111,8 @@ __help__ = """
  ✪ `/del`: deletes the message you replied to.
  ✪ `/purge`: deletes all messages between this and the replied to message.
  ✪ `/purge <integer X>`: deletes the replied message, and X messages following it if replied to a message.
+ ✪ `/spurge`: deletes all messages between this and the replied to message without notifying.
+ ✪ `/spurge <integer X>`: deletes the replied message, and X messages following it if replied to a message without notifying.
 """
 
 PURGE_HANDLER = purge_messages, events.NewMessage(pattern="^[!/]purge$")
