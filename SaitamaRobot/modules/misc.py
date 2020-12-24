@@ -217,18 +217,21 @@ def get_paste_content(update, context):
 
 
 @run_async
-@typing_action
-def echo(update, context):
+@user_admin
+def echo(update: Update, context: CallbackContext):
     args = update.effective_message.text.split(None, 1)
     message = update.effective_message
+
     if message.reply_to_message:
-        message.reply_to_message.reply_text(args[1])
+        message.reply_to_message.reply_text(
+            args[1], parse_mode="MARKDOWN", disable_web_page_preview=True)
     else:
-        message.reply_text(args[1], quote=False)
-    try:
-        message.delete()
-    except:
-        pass  
+        message.reply_text(
+            args[1],
+            quote=False,
+            parse_mode="MARKDOWN",
+            disable_web_page_preview=True)
+    message.delete()
 
 
 @run_async
