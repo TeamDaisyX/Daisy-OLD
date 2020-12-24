@@ -114,7 +114,7 @@ __help__ = """
 
 PURGE_HANDLER = purge_messages, events.NewMessage(pattern="^[!/]purge$")
 DEL_HANDLER = delete_messages, events.NewMessage(pattern="^[!/]del$")
-SPURGE_HANDLER = purge_messages, events.NewMessage(pattern="^[!/]spurge$")
+SPURGE_HANDLER = spurge_messages, events.NewMessage(pattern="^[!/]spurge$")
 
 
 telethn.add_event_handler(*PURGE_HANDLER)
