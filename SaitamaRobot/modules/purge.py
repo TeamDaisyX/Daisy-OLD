@@ -101,7 +101,10 @@ async def spurge_messages(event):
             await event.client.delete_messages(event.chat_id, messages)
             messages = []
 
-
+    try:
+        await event.client.delete_messages(event.chat_id, messages)
+        
+        
 __help__ = """
 *Admin only:*
  ✪ `/del`: deletes the message you replied to
