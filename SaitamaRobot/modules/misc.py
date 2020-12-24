@@ -21,6 +21,7 @@ from telegram import (Message, Chat, MessageEntity, ParseMode, ChatAction, Teleg
 from telegram.ext import CallbackContext ,CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
 from telegram.error import BadRequest
+from telegram.ext.dispatcher import run_async
 
 from SaitamaRobot import (OWNER_ID, DRAGONS, DEMONS, WOLVES, DEV_USERS, dispatcher)
 from SaitamaRobot.__main__ import STATS, USER_INFO, GDPR
