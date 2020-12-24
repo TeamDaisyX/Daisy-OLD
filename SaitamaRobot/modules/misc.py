@@ -285,7 +285,7 @@ Keep in mind that your message <b>MUST</b> contain some text other than just a b
 
 @run_async
 @typing_action
-def markdown_help(update, context):
+def markdown_help_sender(update, context):
     update.effective_message.reply_text(MARKDOWN_HELP, parse_mode=ParseMode.HTML)
     update.effective_message.reply_text(
         "Try forwarding the following message to me, and you'll see!"
@@ -296,6 +296,18 @@ def markdown_help(update, context):
         "[button2](buttonurl://google.com:same)"
     )
 
+@run_async
+def markdown_help(update: Update, context: CallbackContext):
+    if update.effective_chat.type != "private":
+        update.effective_message.reply_text(
+            'Contact me in pm',
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "Markdown help",
+                    url=f"t.me/{context.bot.username}?start=markdownhelp")
+            ]]))
+        return
+    markdown_help_sender(update)
 
 @run_async
 @typing_action
