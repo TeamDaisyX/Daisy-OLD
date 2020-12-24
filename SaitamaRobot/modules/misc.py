@@ -254,7 +254,7 @@ def gdpr(update, context):
     )
 
 
-MARKDOWN_HELP = f"""
+MARKDOWN_HELP = """
 Markdown is a very powerful formatting tool supported by telegram. {} has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
 
