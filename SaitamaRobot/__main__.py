@@ -668,8 +668,8 @@ def get_settings(update, context):
                         [
                             InlineKeyboardButton(
                                 text="Settings",
-                                url="t.me/{}?start=stngs_{}".format(
-                                    context.bot.username, chat.id
+                                url="t.me/suzuya_probot?start=stngs_{}".format(
+                                    cochat.id
                                 ),
                             )
                         ]
