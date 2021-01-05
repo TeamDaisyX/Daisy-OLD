@@ -1,22 +1,34 @@
 import html
 from typing import Optional, List
+import re
 
-from telegram import Message, Chat, User, ParseMode, ChatPermissions
-from telegram.error import BadRequest
-from telegram.ext import Filters, MessageHandler, CommandHandler, run_async
-from telegram.utils.helpers import mention_html
+from telegram import Message, Chat, Update, User, ChatPermissions
 
-from SaitamaRobot import dispatcher, REDIS, DRAGONS
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin, user_admin
-from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
+from SaitamaRobot import TIGERS, WOLVES, dispatcher
+from SaitamaRobot.modules.helper_funcs.chat_status import (
+    bot_admin,
+    is_user_admin,
+    user_admin,
+    user_admin_no_reply,
+)
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.sql import antiflood_sql as sql
+from telegram.error import BadRequest
+from telegram.ext import (
+    CallbackContext,
+    CallbackQueryHandler,
+    CommandHandler,
+    Filters,
+    MessageHandler,
+    run_async,
+)
+from telegram.utils.helpers import mention_html, escape_markdown
+from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.connection import connected
-
-from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
+from SaitamaRobot.modules.helper_funcs.alternate import send_message
+from SaitamaRobot.modules.sql.approve_sql import is_approved
 
 FLOOD_GROUP = 3
-
 
 
 @run_async
@@ -25,21 +37,17 @@ def check_flood(update, context) -> str:
     user = update.effective_user  # type: Optional[User]
     chat = update.effective_chat  # type: Optional[Chat]
     msg = update.effective_message  # type: Optional[Message]
-    
-    chat_id = str(chat.id)[1:] 
-    approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
-    target_user = mention_html(user.id, user.first_name)
-    if target_user in approve_list:
-        return
-
     if not user:  # ignore channels
         return ""
 
-    # ignore admins
-    if is_user_admin(chat, user.id):
+    # ignore admins and whitelists
+    if is_user_admin(chat, user.id) or user.id in WOLVES or user.id in TIGERS:
         sql.update_flood(chat.id, None)
         return ""
-    
+    # ignore approved users
+    if is_approved(chat.id, user.id):
+        sql.update_flood(chat.id, None)
+        return
     should_ban = sql.update_flood(chat.id, user.id)
     if not should_ban:
         return ""
@@ -77,9 +85,7 @@ def check_flood(update, context) -> str:
             execstrings = "Muted for {}".format(getvalue)
             tag = "TMUTE"
         send_message(
-            update.effective_message,
-            "Great, I like to leave flooding to staff members but you, "
-            "you were just a disappointment. {}!".format(execstrings),
+            update.effective_message, "Beep Boop! Boop Beep!\n{}!".format(execstrings)
         )
 
         return (
@@ -87,7 +93,9 @@ def check_flood(update, context) -> str:
             "\n#{}"
             "\n<b>User:</b> {}"
             "\nFlooded the group.".format(
-                html.escape(chat.title), tag, mention_html(user.id, user.first_name)
+                tag,
+                html.escape(chat.title),
+                mention_html(user.id, html.escape(user.first_name)),
             )
         )
 
@@ -106,9 +114,38 @@ def check_flood(update, context) -> str:
 
 
 @run_async
+@user_admin_no_reply
+@bot_admin
+def flood_button(update: Update, context: CallbackContext):
+    bot = context.bot
+    query = update.callback_query
+    user = update.effective_user
+    match = re.match(r"unmute_flooder\((.+?)\)", query.data)
+    if match:
+        user_id = match.group(1)
+        chat = update.effective_chat.id
+        try:
+            bot.restrict_chat_member(
+                chat,
+                int(user_id),
+                permissions=ChatPermissions(
+                    can_send_messages=True,
+                    can_send_media_messages=True,
+                    can_send_other_messages=True,
+                    can_add_web_page_previews=True,
+                ),
+            )
+            update.effective_message.edit_text(
+                f"Unmuted by {mention_html(user.id, html.escape(user.first_name))}.",
+                parse_mode="HTML",
+            )
+        except:
+            pass
+
+
+@run_async
 @user_admin
 @loggable
-@typing_action
 def set_flood(update, context) -> str:
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -131,7 +168,7 @@ def set_flood(update, context) -> str:
 
     if len(args) >= 1:
         val = args[0].lower()
-        if val == "off" or val == "no" or val == "0":
+        if val in ["off", "no", "0"]:
             sql.set_flood(chat_id, 0)
             if conn:
                 text = message.reply_text(
@@ -139,7 +176,6 @@ def set_flood(update, context) -> str:
                 )
             else:
                 text = message.reply_text("Antiflood has been disabled.")
-            send_message(update.effective_message, text, parse_mode="markdown")
 
         elif val.isdigit():
             amount = int(val)
@@ -156,11 +192,12 @@ def set_flood(update, context) -> str:
                     "\n#SETFLOOD"
                     "\n<b>Admin:</b> {}"
                     "\nDisable antiflood.".format(
-                        html.escape(chat_name), mention_html(user.id, user.first_name)
+                        html.escape(chat_name),
+                        mention_html(user.id, html.escape(user.first_name)),
                     )
                 )
 
-            elif amount < 3:
+            elif amount <= 3:
                 send_message(
                     update.effective_message,
                     "Antiflood must be either 0 (disabled) or number greater than 3!",
@@ -179,14 +216,13 @@ def set_flood(update, context) -> str:
                     text = message.reply_text(
                         "Successfully updated anti-flood limit to {}!".format(amount)
                     )
-                send_message(update.effective_message, text, parse_mode="markdown")
                 return (
                     "<b>{}:</b>"
                     "\n#SETFLOOD"
                     "\n<b>Admin:</b> {}"
                     "\nSet antiflood to <code>{}</code>.".format(
                         html.escape(chat_name),
-                        mention_html(user.id, user.first_name),
+                        mention_html(user.id, html.escape(user.first_name)),
                         amount,
                     )
                 )
@@ -204,7 +240,6 @@ def set_flood(update, context) -> str:
 
 
 @run_async
-@typing_action
 def flood(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -232,7 +267,6 @@ def flood(update, context):
             )
         else:
             text = msg.reply_text("I'm not enforcing any flood control here!")
-        send_message(update.effective_message, text, parse_mode="markdown")
     else:
         if conn:
             text = msg.reply_text(
@@ -246,13 +280,10 @@ def flood(update, context):
                     limit
                 )
             )
-        send_message(update.effective_message, text, parse_mode="markdown")
 
 
 @run_async
 @user_admin
-@loggable
-@typing_action
 def set_flood_mode(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -288,7 +319,6 @@ def set_flood_mode(update, context):
         elif args[0].lower() == "tban":
             if len(args) == 1:
                 teks = """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tban <timevalue>`.
-
 Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return
@@ -296,9 +326,11 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
             sql.set_flood_strength(chat_id, 4, str(args[1]))
         elif args[0].lower() == "tmute":
             if len(args) == 1:
-                teks = """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tmute <timevalue>`.
-
-Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
+                teks = (
+                    update.effective_message,
+                    """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tmute <timevalue>`.
+Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.""",
+                )
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return
             settypeflood = "tmute for {}".format(args[1])
@@ -320,14 +352,13 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
                     settypeflood
                 )
             )
-        send_message(update.effective_message, text, parse_mode="markdown")
         return (
             "<b>{}:</b>\n"
             "<b>Admin:</b> {}\n"
             "Has changed antiflood mode. User will {}.".format(
                 settypeflood,
                 html.escape(chat.title),
-                mention_html(user.id, user.first_name),
+                mention_html(user.id, html.escape(user.first_name)),
             )
         )
     else:
@@ -354,7 +385,6 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
                     settypeflood
                 )
             )
-        send_message(update.effective_message, text, parse_mode=ParseMode.MARKDOWN)
     return ""
 
 
@@ -372,20 +402,15 @@ def __chat_settings__(chat_id, user_id):
 
 __help__ = """
 You know how sometimes, people join, send 100 messages, and ruin your chat? With antiflood, that happens no more!
-
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood \
 will result in restricting that user.
-
  ✪ `/flood`: Get the current flood control setting
-
 *Admin only*:
-
  ✪ `/setflood` <int/'no'/'off'>: enables or disables flood control
+   *Example:* `/setflood 10`
  ✪ `/setfloodmode` <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
-
- Note:
+ *Note:*
  - Value must be filled for tban and tmute!
-
  It can be:
  5m = 5 minutes
  6h = 6 hours
@@ -393,20 +418,27 @@ will result in restricting that user.
  1w = 1 week
  """
 
-__mod_name__ = "Antiflood"
+__mod_name__ = "Anti-Flood"
 
 FLOOD_BAN_HANDLER = MessageHandler(
     Filters.all & ~Filters.status_update & Filters.group, check_flood
 )
-SET_FLOOD_HANDLER = CommandHandler(
-    "setflood", set_flood, pass_args=True
-)  # , filters=Filters.group)
+SET_FLOOD_HANDLER = CommandHandler("setflood", set_flood, filters=Filters.group)
 SET_FLOOD_MODE_HANDLER = CommandHandler(
     "setfloodmode", set_flood_mode, pass_args=True
 )  # , filters=Filters.group)
-FLOOD_HANDLER = CommandHandler("flood", flood)  # , filters=Filters.group)
+FLOOD_QUERY_HANDLER = CallbackQueryHandler(flood_button, pattern=r"unmute_flooder")
+FLOOD_HANDLER = CommandHandler("flood", flood, filters=Filters.group)
 
 dispatcher.add_handler(FLOOD_BAN_HANDLER, FLOOD_GROUP)
+dispatcher.add_handler(FLOOD_QUERY_HANDLER)
 dispatcher.add_handler(SET_FLOOD_HANDLER)
 dispatcher.add_handler(SET_FLOOD_MODE_HANDLER)
 dispatcher.add_handler(FLOOD_HANDLER)
+
+__handlers__ = [
+    (FLOOD_BAN_HANDLER, FLOOD_GROUP),
+    SET_FLOOD_HANDLER,
+    FLOOD_HANDLER,
+    SET_FLOOD_MODE_HANDLER,
+]
