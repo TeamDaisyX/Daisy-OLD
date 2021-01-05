@@ -127,7 +127,7 @@ def check_afk(update, context, user_id, fst_name, userc_id):
         else:
             if int(userc_id) == int(user_id):
                 return
-            res = "<b>{}</b> Is Currently Away!\n<b>Reason</b>:\n{}\nLast Seen: <code>{}</code>".format(fst_name, reason, since_afk)
+            res = "<b>{}</b> Is Currently Away!\n<b>Reason</b>:{}\nLast Seen: <code>{}</code>".format(fst_name, reason, since_afk)
             update.effective_message.reply_text(res, parse_mode="html")
 
 
