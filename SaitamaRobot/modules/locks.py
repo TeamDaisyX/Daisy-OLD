@@ -10,7 +10,7 @@ from telegram.utils.helpers import mention_html
 from alphabet_detector import AlphabetDetector
 
 import SaitamaRobot.modules.sql.locks_sql as sql
-from SaitamaRobot import dispatcher, DRAGONS, LOGGER, REDIS
+from SaitamaRobot import dispatcher, DRAGONS, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     can_delete,
@@ -21,7 +21,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (
 )
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.connection import connected
-
+from SaitamaRobot.modules.sql.approve_sql import is_approved
 from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 ad = AlphabetDetector()
@@ -157,13 +157,7 @@ def restr_members(bot,
                   other=False,
                   previews=False):
     for mem in members:
-        if mem.user in OFFICERS:
-            pass
-
-        user = update.effective_user
-        approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
-        target_user = mention_html(user.id, user.first_name)
-        if target_user in approve_list:
+        if mem.user in DRAGONS:
             pass
         try:
             bot.restrict_chat_member(
@@ -387,7 +381,8 @@ def unlock(update, context) -> str:
                     send_message(
                         update.effective_message,
                         "I don't have permission to change group info.",
-                        parse_mode="markdown")
+                        parse_mode="markdown",
+                    )
                     return
 
                 current_permission = context.bot.getChat(chat_id).permissions
@@ -428,7 +423,9 @@ def unlock(update, context) -> str:
 def del_lockables(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     message = update.effective_message  # type: Optional[Message]
-
+    user = update.effective_user
+    if is_approved(chat.id, user.id):
+        return
     for lockable, filter in LOCK_TYPES.items():
         if lockable == "rtl":
             if sql.is_locked(chat.id, lockable) and can_delete(
