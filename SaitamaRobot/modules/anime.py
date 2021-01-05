@@ -761,10 +761,25 @@ def ganime(update: Update, context: CallbackContext):
     site_search(update, context, "ganime")
     
     
-
+#plugin by t.me/RCage
+@run_async
+def meme(update: Update, context: CallbackContext):
+    msg = update.effective_message
+    meme = requests.get("https://meme-api.herokuapp.com/gimme/Animemes/").json()
+    image = meme.get("url")
+    caption = meme.get("title")
+    if not image:
+        msg.reply_text("No URL was received from the API!")
+        return
+    msg.reply_photo(
+                photo=image, caption=caption)
+                
+                
+                
 __help__ = """
 Get information about anime, manga or characters from [AniList](anilist.co).
 *Available commands:*
+                               
 ➩ *Anime search:*                            
  ✪ `/anime <anime>`: returns information about the anime.
  ✪ `/whatanime`: returns source of anime when replied to photo or gif.                                                          
@@ -785,8 +800,9 @@ Get information about anime, manga or characters from [AniList](anilist.co).
  ✪ `/rfcharacter | rfcl <character>`: to remove a character from your list.  
  ✪ `/rmanga | rml <manga>`: to remove a manga from your list.
  
-➩ *Anime Quotes:*
- ✪ `/animequote` : random anime quote.                              
+➩ *Anime Fun:*
+ ✪ `/animequote` : random anime quote.
+ ✪ `/meme`*:* sends a random anime meme form reddit `r/animemes`.                           
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
