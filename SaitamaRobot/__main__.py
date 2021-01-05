@@ -738,8 +738,6 @@ def main():
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
     
-    gethelp_callback_handler = CallbackQueryHandler(gethelp, pattern=r"gethelp_")
-    
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
@@ -752,7 +750,6 @@ def main():
     dispatcher.add_handler(start_handler) 
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_handler)
-    dispatcher.add_handler(gethelp_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
