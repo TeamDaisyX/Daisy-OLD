@@ -340,10 +340,10 @@ def SaitamaRobot_about_callback(update, context):
                     InlineKeyboardButton(text="T & C", callback_data="aboutmanu_tac")
                   ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
+                    InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
                  ],
                  [
-                    InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
+                    InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
                  ] 
                 ]
             ),
@@ -358,7 +358,7 @@ def SaitamaRobot_about_callback(update, context):
         
     elif query.data == "aboutmanu_howto":
         query.message.edit_text(
-            text=f"*╠╾ ｢ BASIC HELP 」╼╣*"
+            text=f"* ｢ BASIC HELP 」*"
                  f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
                  f"\n\nYou Can Know Main commands of {dispatcher.bot.first_name} by Just Clicking [Here](https://telegra.ph/SUZUYA-GM-BOT-12-16).\n"
                  f"",
@@ -383,7 +383,7 @@ def SaitamaRobot_about_callback(update, context):
         )
     elif query.data == "aboutmanu_permis":
         query.message.edit_text(
-            text=f"<b>╠╾ ｢ Admin Permissions 」╼╣</b>"
+            text=f"<b> ｢ Admin Permissions 」</b>"
                  f"\nTo avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), {dispatcher.bot.first_name} will only find out ~10 minutes later."
                  f"\n\nIF you want to update them immediately, you can use the /admincache command,thta'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions"
                  f"\n\nIf you are getting a message saying:"
@@ -395,7 +395,7 @@ def SaitamaRobot_about_callback(update, context):
         )
     elif query.data == "aboutmanu_spamprot":
         query.message.edit_text(
-            text="*╠╾ ｢ Anti-Spam Settings 」╼╣*"
+            text="* ｢ Anti-Spam Settings 」*"
                  "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
                  "\n_This helps protect you and your groups by removing spam flooders as quickly as possible._"
                  "\n\n- /setflood <int/'no'/'off'>: enables or disables flood control"
@@ -422,7 +422,7 @@ def SaitamaRobot_about_callback(update, context):
         )
     elif query.data == "aboutmanu_tac":
         query.message.edit_text(
-            text=f"<b>╠╾ ｢ Terms and Conditions 」╼╣</b>\n"
+            text=f"<b> ｢ Terms and Conditions 」</b>\n"
                  f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
                  f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
                  f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
