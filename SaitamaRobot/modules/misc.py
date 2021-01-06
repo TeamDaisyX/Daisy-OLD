@@ -218,24 +218,6 @@ def get_paste_content(update, context):
 
 
 @run_async
-@user_admin
-def echo(update: Update, context: CallbackContext):
-    args = update.effective_message.text.split(None, 1)
-    message = update.effective_message
-
-    if message.reply_to_message:
-        message.reply_to_message.reply_text(
-            args[1], parse_mode="MARKDOWN", disable_web_page_preview=True)
-    else:
-        message.reply_text(
-            args[1],
-            quote=False,
-            parse_mode="MARKDOWN",
-            disable_web_page_preview=True)
-    message.delete()
-
-
-@run_async
 @typing_action
 def gdpr(update, context):
     update.effective_message.reply_text("Deleting identifiable data...")
@@ -281,6 +263,24 @@ This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """ 
 
+@run_async
+@user_admin
+def echo(update: Update, context: CallbackContext):
+    args = update.effective_message.text.split(None, 1)
+    message = update.effective_message
+
+    if message.reply_to_message:
+        message.reply_to_message.reply_text(
+            args[1], parse_mode="MARKDOWN", disable_web_page_preview=True)
+    else:
+        message.reply_text(
+            args[1],
+            quote=False,
+            parse_mode="MARKDOWN",
+            disable_web_page_preview=True)
+    message.delete()
+    
+    
 def markdown_help_sender(update: Update):
     update.effective_message.reply_text(
         MARKDOWN_HELP, parse_mode=ParseMode.HTML)
@@ -301,7 +301,7 @@ def markdown_help(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(
                     "Markdown help",
-                    url=f"t.me/Suzuya_ProBot?start=markdownhelp")
+                    url=f"t.me/{context.bot.username}?start=markdownhelp")
             ]]))
         return
     markdown_help_sender(update)
