@@ -1,42 +1,38 @@
-from telegram import ChatAction
-from gtts import gTTS
-import html
-import urllib.request
-import re
-import json
-from datetime import datetime
 from typing import Optional, List
-import time
+from gtts import gTTS
+import os
 import requests
-from telegram import Message, Chat, Update, Bot, MessageEntity
-from telegram import ParseMode
-from telegram.ext import CommandHandler, run_async, Filters
-from telegram.utils.helpers import escape_markdown, mention_html
-from SaitamaRobot import dispatcher
-from SaitamaRobot.__main__ import STATS
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
-from SaitamaRobot.modules.helper_funcs.alternate import typing_action
+import json
 
-def tts(update, context):
-    args = context.args
-    current_time = datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M:%S")
-    filename = datetime.now().strftime("%d%m%y-%H%M%S%f")
-    reply = " ".join(args)
-    update.message.chat.send_action(ChatAction.RECORD_AUDIO)
-    lang="ml"
-    tts = gTTS(reply, lang)
-    tts.save("k.mp3")
-    with open("k.mp3", "rb") as f:
-        linelist = list(f)
-        linecount = len(linelist)
-    if linecount == 1:
-        update.message.chat.send_action(ChatAction.RECORD_AUDIO)
-        lang = "en"
-        tts = gTTS(reply, lang)
+from telegram import ChatAction
+from telegram.ext import run_async
+
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.alternate import typing_action, send_action
+
+@run_async
+@send_action(ChatAction.RECORD_AUDIO)
+def gtts(update, context):
+    msg = update.effective_message
+    reply = " ".join(context.args)
+    if not reply:
+        if msg.reply_to_message:
+            reply = msg.reply_to_message.text
+        else:
+            return msg.reply_text(
+                "Reply to some message or enter some text to convert it into audio format!"
+            )
+        for x in "\n":
+            reply = reply.replace(x, "")
+    try:
+        tts = gTTS(reply)
         tts.save("k.mp3")
-    with open("k.mp3", "rb") as speech:
-        update.message.reply_voice(speech, quote=False)
+        with open("k.mp3", "rb") as speech:
+            msg.reply_audio(speech)
+    finally:
+        if os.path.isfile("k.mp3"):
+            os.remove("k.mp3")
 
 
 # Open API key
@@ -73,13 +69,5 @@ def spellcheck(update, context):
             "Reply to some message to get grammar corrected text!"
         )
 
-TTS_HANDLER = DisableAbleCommandHandler("tts", tts)
-SPELLCHECK_HANDLER = DisableAbleCommandHandler("splcheck", spellcheck)
-
-dispatcher.add_handler(TTS_HANDLER)
-dispatcher.add_handler(SPELLCHECK_HANDLER)
-
-__handlers__ = [
-    TTS_HANDLER ,SPELLCHECK_HANDLER
-]
-
+dispatcher.add_handler(DisableAbleCommandHandler("tts", gtts, pass_args=True))
+dispatcher.add_handler(DisableAbleCommandHandler("splcheck", spellcheck))
