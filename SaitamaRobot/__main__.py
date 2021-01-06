@@ -719,7 +719,7 @@ def is_chat_allowed(update, context):
       
       
 @run_async
-def markdown_help(update: Update, context: CallbackContext):
+def donate(update: Update, context: CallbackContext):
     if update.effective_chat.type != "private":
         update.effective_message.reply_text(
             'Click below to Donate',
