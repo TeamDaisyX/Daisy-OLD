@@ -648,20 +648,6 @@ def donate(update: Update, context: CallbackContext):
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN)
-
-    else:
-        try:
-            bot.send_message(
-                user.id,
-                DONATE_STRING,
-                parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True)
-
-            update.effective_message.reply_text(
-                "I've PM'ed you about donating to my creator!")
-        except Unauthorized:
-            update.effective_message.reply_text(
-                "Contact me in PM first to get donation information.")
             
             
 def migrate_chats(update, context):
@@ -716,7 +702,18 @@ def is_chat_allowed(update, context):
                 raise DispatcherHandlerStop
     else:
         pass
-
+      
+      
+@run_async
+def donate(update: Update, context: CallbackContext):
+    if update.effective_chat.type != "private":
+        update.effective_message.reply_text(
+            'Click here to Donate',
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "About Donation",
+                    url=f"t.me/{context.bot.username}?start=donate")
+            ]]))
 
 def main():
 
