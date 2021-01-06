@@ -297,8 +297,8 @@ def markdown_help(update: Update, context: CallbackContext):
             'Contact me in pm',
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                    "Markdown help",
-                    url="t.me/{}?start=markdownhelp")
+                    text="Markdown help",
+                    url="t.me/{}?start=markdownhelp".format(context.bot.username)
             ]]))
         return
     markdown_help_sender(update)
