@@ -631,12 +631,10 @@ def settings_button(update, context):
 
 
 @run_async
-@typing_action
-def get_settings(update, context):
+def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     msg = update.effective_message  # type: Optional[Message]
-    args = msg.text.split(None, 1)
 
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
@@ -644,19 +642,12 @@ def get_settings(update, context):
             text = "Click here to get this chat's settings, as well as yours."
             msg.reply_text(
                 text,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="Settings",
-                                url="t.me/{}?start=stngs_{}".format(
-                                    context.bot.username, chat.id
-                                ),
-                            )
-                        ]
-                    ]
-                ),
-            )
+                reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton(
+                        text="Settings",
+                        url="t.me/{}?start=stngs_{}".format(
+                            context.bot.username, chat.id))
+                ]]))
         else:
             text = "Click here to check your settings."
 
