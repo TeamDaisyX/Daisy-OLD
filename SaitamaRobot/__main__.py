@@ -642,12 +642,10 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True)
-
-        if OWNER_ID != 254318997 and DONATION_LINK:
-            update.effective_message.reply_text(
-                "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
-                parse_mode=ParseMode.MARKDOWN)
+        update.effective_message.reply_text(
+            "You can also donate to the person currently running me "
+            "[here]({})".format(DONATION_LINK),
+            parse_mode=ParseMode.MARKDOWN)
             
     else:
         try:
@@ -717,21 +715,6 @@ def is_chat_allowed(update, context):
     else:
         pass
       
-      
-@run_async
-def donate(update: Update, context: CallbackContext):
-    if update.effective_chat.type != "private":
-        update.effective_message.reply_text(
-            'Click below to Donate',
-            reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    "Donation Info",
-                    url=f"t.me/{context.bot.username}?start=donate")
-            ]]))
-        return
-    DONATION_LINK(update)
-    
-    
 def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
