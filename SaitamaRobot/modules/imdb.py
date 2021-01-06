@@ -12,13 +12,13 @@ async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
-            (await client(functions.channels.GetParticipantRequest(chat, user))).participant,
+            (await telethn(functions.channels.GetParticipantRequest(chat, user))).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator)
         )
     if isinstance(chat, types.InputPeerChat):
 
-        ui = await client.get_peer_id(user)
-        ps = (await client(functions.messages.GetFullChatRequest(chat.chat_id))) \
+        ui = await tetethn.get_peer_id(user)
+        ps = (await tetethn(functions.messages.GetFullChatRequest(chat.chat_id))) \
                 .full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
