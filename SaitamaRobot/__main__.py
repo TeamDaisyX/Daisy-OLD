@@ -531,6 +531,7 @@ def send_settings(chat_id, user_id, user=False):
                 ),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
+                ),
                 )
             )
         else:
