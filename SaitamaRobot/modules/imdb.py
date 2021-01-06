@@ -1,13 +1,8 @@
 import bs4
 import requests
-import asyncio
-import os
 import re
-import subprocess
-import time
-from datetime import datetime
 from SaitamaRobot.events import register
-from SaitamaRobot import LOGGER, telethn
+from SaitamaRobot import client
 from telethon import types
 from telethon.tl import functions
 
@@ -20,17 +15,16 @@ async def is_register_admin(chat, user):
             (await client(functions.channels.GetParticipantRequest(chat, user))).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator)
         )
-    elif isinstance(chat, types.InputPeerChat):
+    if isinstance(chat, types.InputPeerChat):
 
         ui = await client.get_peer_id(user)
         ps = (await client(functions.messages.GetFullChatRequest(chat.chat_id))) \
-            .full_chat.participants.participants
+                .full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator)
         )
-    else:
-        return None
+    return None
 
 @register(pattern="^/imdb (.*)") 
 async def imdb(e):
@@ -115,4 +109,3 @@ async def imdb(e):
     			)
  except IndexError:
      await e.reply("Please enter a valid movie name !")
-       
