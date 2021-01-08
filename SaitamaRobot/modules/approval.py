@@ -215,7 +215,7 @@ DISAPPROVE = DisableAbleCommandHandler("unapprove", disapprove)
 APPROVED = DisableAbleCommandHandler("approved", approved)
 APPROVAL = DisableAbleCommandHandler("approval", approval)
 UNAPPROVEALL = DisableAbleCommandHandler("unapproveall", unapproveall)
-UNAPPROVEALL_BTN = CallbackQueryHandler(unapproveall_btn, pattern=r"unapproveall_.*")
+UNAPPROVEALL_BTN = CallbackQueryHandler("unapproveall_btn", pattern=r"unapproveall_.*")
 
 dispatcher.add_handler(APPROVE)
 dispatcher.add_handler(DISAPPROVE)
