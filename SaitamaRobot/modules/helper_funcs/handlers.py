@@ -103,10 +103,9 @@ class CustomCommandHandler(CommandHandler):
             self.collect_additional_context(context, update, dispatcher,
                                             check_result)
             return self.callback(update, context)
-        else:
-            optional_args = self.collect_optional_args(dispatcher, update,
-                                                       check_result)
-            return self.callback(dispatcher.bot, update, **optional_args)
+        optional_args = self.collect_optional_args(dispatcher, update,
+                                                   check_result)
+        return self.callback(dispatcher.bot, update, **optional_args)
 
     def collect_additional_context(self, context, update, dispatcher,
                                    check_result):
