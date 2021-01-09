@@ -582,7 +582,7 @@ __help__ = """
 
 BAN_HANDLER = CommandHandler("ban", ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
-zTEMPBAN_HANDLER = CommandHandler(["stban"] stemp_ban)
+STEMPBAN_HANDLER = CommandHandler(["stban"] stemp_ban)
 KICK_HANDLER = CommandHandler("kick", kick)
 SKICK_HANDLER = CommandHandler("skick", skick)
 UNBAN_HANDLER = CommandHandler("unban", unban)
