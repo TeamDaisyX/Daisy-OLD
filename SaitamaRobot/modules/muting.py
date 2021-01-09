@@ -287,10 +287,11 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
 @user_admin
 @loggable
 def stemp_mute(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
+    bot = context.bot
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
+    args = context.args  
     user_id, reason = extract_user_and_text(message, args)
     update.effective_message.delete()
     if not user_id:
