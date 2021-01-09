@@ -79,7 +79,7 @@ def mute(update: Update, context: CallbackContext) -> str:
 
     return ""
 
-
+#thanks to Sea Halfy git- hyper-ub for smute sban skick
 @run_async
 @connection_status
 @bot_admin
