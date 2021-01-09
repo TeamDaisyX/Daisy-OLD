@@ -123,7 +123,7 @@ def smute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     
     if user_admin(chat, user, context.bot.id) is False:
-        return log_message
+        return ""
       
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
@@ -336,7 +336,7 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     
     if user_admin(chat, user, context.bot.id) is False:
-        return log_message
+        return ""
 
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
