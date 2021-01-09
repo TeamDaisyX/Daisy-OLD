@@ -56,7 +56,28 @@ def mute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
 
     user_id, reason = extract_user_and_text(message, args)
-    reply = check_user(user_id, bot, chat)
+    if not user_id:
+        reply = "You don't seem to be referring to a user or the ID specified is incorrect.."
+        return reply
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message == "User not found":
+            reply = "I can't seem to find this user"
+            return reply
+        else:
+            raise
+
+    if user_id == bot.id:
+        reply = "I'm not gonna MUTE myself, How high are you?"
+        return reply
+
+    if is_user_admin(chat, user_id, member) or user_id in TIGERS:
+        reply = "Can't. Find someone else to mute but not this one."
+        return reply
+
+    return None
 
     if reply:
         message.reply_text(reply)
@@ -102,7 +123,25 @@ def smute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
 
     user_id, reason = extract_user_and_text(message, args)
-    reply = check_user(user_id, bot, chat)
+    if not user_id:
+        return reply
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message == "User not found":
+            return reply
+        else:
+            raise
+
+    if user_id == bot.id:
+        return reply
+
+    if is_user_admin(chat, user_id, member) or user_id in TIGERS:
+        return reply
+
+    return None
+
 
     if reply:
         return ""
@@ -111,7 +150,7 @@ def smute(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#MUTE\n"
+        f"#SMUTE\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
 
@@ -197,7 +236,29 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
 
     user_id, reason = extract_user_and_text(message, args)
-    reply = check_user(user_id, bot, chat)
+    if not user_id:
+        reply = "You don't seem to be referring to a user or the ID specified is incorrect.."
+        return reply
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message == "User not found":
+            reply = "I can't seem to find this user"
+            return reply
+        else:
+            raise
+
+    if user_id == bot.id:
+        reply = "I'm not gonna MUTE myself, How high are you?"
+        return reply
+
+    if is_user_admin(chat, user_id, member) or user_id in TIGERS:
+        reply = "Can't. Find someone else to mute but not this one."
+        return reply
+
+    return None
+
 
     if reply:
         message.reply_text(reply)
@@ -272,10 +333,27 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
 
     user_id, reason = extract_user_and_text(message, args)
-    reply = check_user(user_id, bot, chat)
+    if not user_id:
+        return reply
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message == "User not found":
+            return reply
+        else:
+            raise
+
+    if user_id == bot.id:
+        return reply
+
+    if is_user_admin(chat, user_id, member) or user_id in TIGERS:
+        return reply
+
+    return None
+
 
     if reply:
-        message.reply_text(reply)
         return ""
 
     member = chat.get_member(user_id)
@@ -300,7 +378,7 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#TEMP MUTED\n"
+        f"#STEMP MUTED\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}\n"
         f"<b>Time:</b> {time_val}")
@@ -331,6 +409,9 @@ __help__ = """
  ✪ `/tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  ✪ `/stmute <userhandle> x(m/h/d)`*:* mutes a user for x time without notifying. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  ✪ `/unmute <userhandle>`*:* unmutes a user. Can also be used as a reply, muting the replied to user.
+ 
+ _NOTE:_
+ If you set Log Channels, you will get logs of Silent mutes. Check *Logger* module to know more about Log Channel.
 """
 
 MUTE_HANDLER = CommandHandler("mute", mute)
