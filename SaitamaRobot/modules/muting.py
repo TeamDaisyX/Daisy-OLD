@@ -96,23 +96,20 @@ def smute(update: Update, context: CallbackContext) -> str:
       
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
-        return reply
+        return ""
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            return reply
+            return ""
         else:
             raise
 
     if user_id == bot.id:
-        return reply
+        return ""
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
-        return reply
-
-    if reply:
         return ""
 
     member = chat.get_member(user_id)
@@ -207,24 +204,24 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
         reply = "You don't seem to be referring to a user or the ID specified is incorrect.."
-        return reply
+        return ""
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
             reply = "I can't seem to find this user"
-            return reply
+            return ""
         else:
             raise
 
     if user_id == bot.id:
         reply = "I'm not gonna MUTE myself, How high are you?"
-        return reply
+        return ""
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
         reply = "Can't. Find someone else to mute but not this one."
-        return reply
+        return ""
 
     if reply:
         message.reply_text(reply)
@@ -300,21 +297,21 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
 
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
-        return reply
+        return ""
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            return reply
+            return ""
         else:
             raise
 
     if user_id == bot.id:
-        return reply
+        return ""
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
-        return reply
+        return ""
 
     if reply:
         return ""
