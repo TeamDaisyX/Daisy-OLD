@@ -93,6 +93,44 @@ def mute(update: Update, context: CallbackContext) -> str:
 @bot_admin
 @user_admin
 @loggable
+def smute(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    chat = update.effective_chat
+    user = update.effective_user
+    message = update.effective_message
+
+    user_id, reason = extract_user_and_text(message, args)
+    reply = check_user(user_id, bot, chat)
+
+    if reply:
+        return ""
+
+    member = chat.get_member(user_id)
+
+    log = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#MUTE\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
+
+    if reason:
+        log += f"\n<b>Reason:</b> {reason}"
+
+    if member.can_send_messages is None or member.can_send_messages:
+        chat_permissions = ChatPermissions(can_send_messages=False)
+        bot.restrict_chat_member(chat.id, user_id, chat_permissions)
+        return log
+
+    return ""
+
+  
+@run_async
+@connection_status
+@bot_admin
+@user_admin
+@loggable
 def unmute(update: Update, context: CallbackContext) -> str:
     bot, args = context.bot, context.args
     chat = update.effective_chat
@@ -221,20 +259,91 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
     return ""
 
 
+@run_async
+@connection_status
+@bot_admin
+@can_restrict
+@user_admin
+@loggable
+def stemp_mute(update: Update, context: CallbackContext) -> str:
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    message = update.effective_message
+
+    user_id, reason = extract_user_and_text(message, args)
+    reply = check_user(user_id, bot, chat)
+
+    if reply:
+        message.reply_text(reply)
+        return ""
+
+    member = chat.get_member(user_id)
+
+    if not reason:
+        message.reply_text(
+            "You haven't specified a time to mute this user for!")
+        return ""
+
+    split_reason = reason.split(None, 1)
+
+    time_val = split_reason[0].lower()
+    if len(split_reason) > 1:
+        reason = split_reason[1]
+    else:
+        reason = ""
+
+    mutetime = extract_time(message, time_val)
+
+    if not mutetime:
+        return ""
+
+    log = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#TEMP MUTED\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}\n"
+        f"<b>Time:</b> {time_val}")
+    if reason:
+        log += f"\n<b>Reason:</b> {reason}"
+
+    try:
+        if member.can_send_messages is None or member.can_send_messages:
+            chat_permissions = ChatPermissions(can_send_messages=False)
+            bot.restrict_chat_member(
+                chat.id, user_id, chat_permissions, until_date=mutetime)
+            return log
+
+    except BadRequest as excp:
+        if excp.message == "Reply message not found":
+            return log
+        else:
+            LOGGER.warning(update)
+            LOGGER.exception("ERROR muting user %s in chat %s (%s) due to %s",
+                             user_id, chat.title, chat.id, excp.message)
+
+    return ""
+
 __help__ = """
 *Admins only:*
  ✪ `/mute <userhandle>`*:* silences a user. Can also be used as a reply, muting the replied to user.
+ ✪ `/smute <userhandle>`*:* silences a user without notifying. Can also be used as a reply, muting the replied to user.
  ✪ `/tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
+ ✪ `/stmute <userhandle> x(m/h/d)`*:* mutes a user for x time without notifying. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  ✪ `/unmute <userhandle>`*:* unmutes a user. Can also be used as a reply, muting the replied to user.
 """
 
 MUTE_HANDLER = CommandHandler("mute", mute)
+SMUTE_HANDLER = CommandHandler("smute", smute)
 UNMUTE_HANDLER = CommandHandler("unmute", unmute)
 TEMPMUTE_HANDLER = CommandHandler(["tmute", "tempmute"], temp_mute)
+STEMPMUTE_HANDLER = CommandHandler(["stmute", "stempmute"], stemp_mute)
 
 dispatcher.add_handler(MUTE_HANDLER)
+dispatcher.add_handler(SMUTE_HANDLER)
 dispatcher.add_handler(UNMUTE_HANDLER)
 dispatcher.add_handler(TEMPMUTE_HANDLER)
+dispatcher.add_handler(STEMPMUTE_HANDLER)
 
 __mod_name__ = "Muting"
-__handlers__ = [MUTE_HANDLER, UNMUTE_HANDLER, TEMPMUTE_HANDLER]
+__handlers__ = [MUTE_HANDLER, SMUTE_HANDLER, UNMUTE_HANDLER, TEMPMUTE_HANDLER, TEMPMUTE_HANDLER]
