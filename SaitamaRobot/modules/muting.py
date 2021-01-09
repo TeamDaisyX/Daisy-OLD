@@ -24,7 +24,6 @@ from telegram.utils.helpers import mention_html
 def mute(update: Update, context: CallbackContext) -> str:
     bot = context.bot
     args = context.args
-
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -88,13 +87,12 @@ def mute(update: Update, context: CallbackContext) -> str:
 @loggable
 def smute(update: Update, context: CallbackContext) -> str:
     bot = context.bot
-    args = context.args
-
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
-      
+    args = context.args  
     user_id, reason = extract_user_and_text(message, args)
+    update.effective_message.delete()
     if not user_id:
         return ""
 
@@ -141,7 +139,6 @@ def unmute(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
-
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
@@ -294,8 +291,8 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
-
     user_id, reason = extract_user_and_text(message, args)
+    update.effective_message.delete()
     if not user_id:
         return ""
 
