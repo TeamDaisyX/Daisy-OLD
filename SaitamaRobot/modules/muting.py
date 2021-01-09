@@ -313,9 +313,6 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
         return ""
 
-    if reply:
-        return ""
-
     member = chat.get_member(user_id)
 
     if not reason:
