@@ -582,7 +582,7 @@ __help__ = """
 
 BAN_HANDLER = CommandHandler("ban", ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
-STEMPBAN_HANDLER = CommandHandler(["stban"] stemp_ban)
+STEMPBAN_HANDLER = CommandHandler(["stban"], stemp_ban)
 KICK_HANDLER = CommandHandler("kick", kick)
 SKICK_HANDLER = CommandHandler("skick", skick)
 UNBAN_HANDLER = CommandHandler("unban", unban)
@@ -598,7 +598,7 @@ dispatcher.add_handler(KICK_HANDLER)
 dispatcher.add_handler(SKICK_HANDLER)
 dispatcher.add_handler(UNBAN_HANDLER)
 dispatcher.add_handler(ROAR_HANDLER)
-dispatcher.add_handler(PUNCHME_HANDLER)
+dispatcher.add_handler(KICKME_HANDLER)
 dispatcher.add_handler(SBAN_HANDLER)
 
 __mod_name__ = "Bans"
