@@ -177,7 +177,7 @@ def new_member(update: Update, context: CallbackContext):
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Oh, Chrome? Let's get this moving (｡•̀ᴗ-)✧.",
+                    "Oh my! Hey Owner, let's get this moving (｡•̀ᴗ-)✧.",
                     reply_to_message_id=reply)
                 welcome_log = (f"{html.escape(chat.title)}\n"
                                f"#USER_JOINED\n"
@@ -187,7 +187,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "Whoa! A member of the *Anteiku Union* just joined!◉‿◉",
+                    "Whoa! A member of the Anteiku Union just joined!◉‿◉",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -495,7 +495,7 @@ def left_member(update: Update, context: CallbackContext):
             # Give the devs a special goodbye
             elif left_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "See you later at the *Anteiku Union* (✪㉨✪)!",
+                    "See you later at the Anteiku Union!",
                     reply_to_message_id=reply,
                 )
                 return
