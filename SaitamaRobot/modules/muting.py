@@ -16,32 +16,6 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-
-def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
-    if not user_id:
-        reply = "You don't seem to be referring to a user or the ID specified is incorrect.."
-        return reply
-
-    try:
-        member = chat.get_member(user_id)
-    except BadRequest as excp:
-        if excp.message == "User not found":
-            reply = "I can't seem to find this user"
-            return reply
-        else:
-            raise
-
-    if user_id == bot.id:
-        reply = "I'm not gonna MUTE myself, How high are you?"
-        return reply
-
-    if is_user_admin(chat, user_id, member) or user_id in TIGERS:
-        reply = "Can't. Find someone else to mute but not this one."
-        return reply
-
-    return None
-
-
 @run_async
 @connection_status
 @bot_admin
