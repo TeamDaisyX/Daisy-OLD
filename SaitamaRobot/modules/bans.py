@@ -127,6 +127,10 @@ def sban(update: Update, context: CallbackContext) -> str:
     log_message = ""
     bot = context.bot
     args = context.args
+    
+    if user_can_ban(chat, user, context.bot.id) is False:
+        return log_message
+      
     user_id, reason = extract_user_and_text(message, args)
     
     if not user_id:
@@ -143,22 +147,12 @@ def sban(update: Update, context: CallbackContext) -> str:
     if user_id == bot.id:
         return log_message
 
-    if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
-        if user_id == OWNER_ID:
-            return log_message
-        elif user_id in DEV_USERS:
-            return log_message
-        elif user_id in DRAGONS:
-            return log_message
-        elif user_id in DEMONS:
-            return log_message
-        elif user_id in TIGERS:
-            return log_message
-        elif user_id in WOLVES:
-            return log_message
-        else:
-            return log_message
-
+    if is_user_ban_protected(chat, user_id, member):
+        return log_message
+      
+    if user_id == 777000 or user_id == 1087968824:
+        return log_message
+      
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#SBANNED\n"
@@ -282,6 +276,10 @@ def stemp_ban(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     log_message = ""
     bot, args = context.bot, context.args
+    
+    if user_can_ban(chat, user, context.bot.id) is False:
+        return log_message
+      
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
@@ -416,6 +414,10 @@ def skick(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     log_message = ""
     bot, args = context.bot, context.args
+    
+    if user_can_ban(chat, user, context.bot.id) is False:
+        return log_message
+      
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
