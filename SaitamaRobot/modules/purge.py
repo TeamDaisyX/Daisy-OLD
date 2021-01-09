@@ -11,7 +11,7 @@ from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in client.iter_participants(
+    async for user in telethn.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
         if user_id == user.id or user_id in DEV_USERS:
