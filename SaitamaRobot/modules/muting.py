@@ -51,8 +51,6 @@ def mute(update: Update, context: CallbackContext) -> str:
         reply = "Can't. Find someone else to mute but not this one."
         return reply
 
-    return None
-
     if reply:
         message.reply_text(reply)
         return ""
@@ -113,9 +111,6 @@ def smute(update: Update, context: CallbackContext) -> str:
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
         return reply
-
-    return None
-
 
     if reply:
         return ""
@@ -231,9 +226,6 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
         reply = "Can't. Find someone else to mute but not this one."
         return reply
 
-    return None
-
-
     if reply:
         message.reply_text(reply)
         return ""
@@ -323,9 +315,6 @@ def stemp_mute(update: Update, context: CallbackContext) -> str:
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
         return reply
-
-    return None
-
 
     if reply:
         return ""
