@@ -128,7 +128,7 @@ def sban(update: Update, context: CallbackContext) -> str:
     bot = context.bot
     args = context.args
     user_id, reason = extract_user_and_text(message, args)
-    
+    update.effective_message.delete()
     if not user_id:
         return log_message
 
@@ -273,7 +273,7 @@ def stemp_ban(update: Update, context: CallbackContext) -> str:
     log_message = ""
     bot, args = context.bot, context.args
     user_id, reason = extract_user_and_text(message, args)
-
+    update.effective_message.delete()
     if not user_id:
         return log_message
 
@@ -407,7 +407,7 @@ def skick(update: Update, context: CallbackContext) -> str:
     log_message = ""
     bot, args = context.bot, context.args
     user_id, reason = extract_user_and_text(message, args)
-
+    update.effective_message.delete()
     if not user_id:
         return log_message
 
