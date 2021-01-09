@@ -161,7 +161,7 @@ def sban(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#BANNED\n"
+        f"#SBANNED\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
@@ -320,7 +320,7 @@ def stemp_ban(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        "#TEMP BANNED\n"
+        "#STEMP BANNED\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}\n"
         f"<b>Time:</b> {time_val}")
@@ -439,7 +439,7 @@ def skick(update: Update, context: CallbackContext) -> str:
     if res:
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#KICKED\n"
+            f"#SKICKED\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
@@ -577,7 +577,9 @@ __help__ = """
  ✪ `/tban <userhandle> x(m/h/d)`*:* Bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  ✪ `/stban <userhandle> x(m/h/d)`*:* Silently bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  ✪ `/unban <userhandle>`*:* Unbans a user. (via handle, or reply)
- 
+
+_NOTE:_
+ If you set Log Channels, you will get logs of Silent kick and bans. Check *Logger* module to know more about Log Channel.
 """
 
 BAN_HANDLER = CommandHandler("ban", ban)
