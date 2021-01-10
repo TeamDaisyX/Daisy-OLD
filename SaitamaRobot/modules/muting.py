@@ -216,10 +216,6 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
         reply = "Can't. Find someone else to mute but not this one."
         return ""
 
-    if reply:
-        message.reply_text(reply)
-        return ""
-
     member = chat.get_member(user_id)
 
     if not reason:
