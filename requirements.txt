@@ -16,8 +16,7 @@ psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
-#googletrans
-google_trans_new
+googletrans==3.1.0a0
 jikanpy
 speedtest-cli
 coffeehouse
@@ -36,10 +35,6 @@ fontTools
 gtts
 tswift
 pytz
-hachoir
-pybase64
-pySmartDL
-validators
 youtube_dl
 PyYAML>=5.3.1
 redis
@@ -48,3 +43,5 @@ pythonping
 html_telegraph_poster
 pytube
 youtube-search-python
+instantmusic
+PyLyrics
