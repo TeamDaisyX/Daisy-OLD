@@ -95,7 +95,7 @@ def gban(update: Update, context: CallbackContext):
         return
 
     if user_id == bot.id:
-        message.reply_text("You uhh...want me to punch myself?")
+        message.reply_text("You uhh...want me to kick myself?")
         return
 
     if user_id in [777000, 1087968824]:
