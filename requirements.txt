@@ -45,3 +45,7 @@ pytube
 youtube-search-python
 instantmusic
 PyLyrics
+hachoir
+pybase64
+pySmartDL
+validators
