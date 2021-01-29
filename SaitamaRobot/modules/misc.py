@@ -577,13 +577,13 @@ __help__ = """
  ✪ /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
 
 *➩Info:*
-  ✪ `/whois` :- Get information about user using pyrogram  method.
+  ✪ /whois: Get information about user using pyrogram  method.
 
 *➩Translator:*
-  ✪ /tr or /tl: - To translate to your language, by default language is set to english, use /tr <lang code> for some other language!
-  ✪ /splcheck: - As a reply to get grammar corrected text of gibberish message.
-  ✪ /tts: - To some message to convert it into audio format!
-  ✪ /stt:- convert audio to text ( only English).
+  ✪ /tr or /tl: To translate to your language, by default language is set to english, use /tr <lang code> for some other language!
+  ✪ /splcheck: As a reply to get grammar corrected text of gibberish message.
+  ✪ /tts: To some message to convert it into audio format!
+  ✪ /stt: Convert audio to text ( only English).
 
 *➩Search:*
   ✪ /google <text>:- search google queries.Use in bot pm (admin can use in group).
@@ -603,7 +603,7 @@ __help__ = """
   ✪ /covid <country>:To get data of a country.
  
 *➩Paste:*
-  ✪ /past`: Create a paste or a shortened url using dogbin. *From letters to url.*
+  ✪ /paste: Create a paste or a shortened url using dogbin. *From letters to url.*
   ✪ /getpaste: Get the content of a paste or shortened url from dogbin
   ✪ /fpaste: Create a paste or a shortened url using dogbin and nekobin.*From files to url.*
 
