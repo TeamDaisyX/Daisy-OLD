@@ -781,28 +781,28 @@ Get information about anime, manga or characters from [AniList](anilist.co).
 *Available commands:*
                                
 ➩ *Anime search:*                            
- ✪ `/anime <anime>`: returns information about the anime.
- ✪ `/whatanime`: returns source of anime when replied to photo or gif.                                                          
- ✪ `/character <character>`: returns information about the character.
- ✪ `/manga <manga>`: returns information about the manga.
- ✪ `/user <user>`: returns information about a MyAnimeList user.
- ✪ `/upcoming`: returns a list of new anime in the upcoming seasons.
- ✪ `/airing <anime>`: returns anime airing info.
- ✪ `/ganime <anime>`: search an anime on gogoanime.
- ✪ `/kaizoku <anime>`:search an anime on animekaizoku.com
- ✪ `/kayo <anime>`: search an anime on animekayo.com
+ ✪ /anime <anime>*:* returns information about the anime.
+ ✪ /whatanime*:* returns source of anime when replied to photo or gif.                                                          
+ ✪ /character <character>*:* returns information about the character.
+ ✪ /manga <manga>*:* returns information about the manga.
+ ✪ /user <user>*:* returns information about a MyAnimeList user.
+ ✪ /upcoming*:* returns a list of new anime in the upcoming seasons.
+ ✪ /airing <anime>*:* returns anime airing info.
+ ✪ /ganime <anime>*:* search an anime on gogoanime.
+ ✪ /kaizoku <anime>*:* search an anime on animekaizoku.com
+ ✪ /kayo <anime>*:* search an anime on animekayo.com
                                
 ➩ *Watchlist:*                             
- ✪ `/watchlist`: to get your saved watchlist.
- ✪ `/mangalist`: to get your saved manga read list.
- ✪ `/characterlist | fcl`: to get your favorite characters list.
- ✪ `/removewatchlist | rwl <anime>`: to remove a anime from your list.
- ✪ `/rfcharacter | rfcl <character>`: to remove a character from your list.  
- ✪ `/rmanga | rml <manga>`: to remove a manga from your list.
+ ✪ /watchlist*:* to get your saved watchlist.
+ ✪ /mangalist*:* to get your saved manga read list.
+ ✪ /characterlist | fcl*:* to get your favorite characters list.
+ ✪ /removewatchlist | rwl <anime>*:* to remove a anime from your list.
+ ✪ /rfcharacter | rfcl <character>*:* to remove a character from your list.  
+ ✪ /rmanga | rml <manga>*:* to remove a manga from your list.
  
 ➩ *Anime Fun:*
- ✪ `/animequote` : random anime quote.
- ✪ `/meme`*:* sends a random anime meme form reddit `r/animemes`.                           
+ ✪ /animequote*:* random anime quote.
+ ✪ /meme*:* sends a random anime meme form reddit `r/animemes`.                           
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
