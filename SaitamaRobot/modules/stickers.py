@@ -670,6 +670,7 @@ Stickers made easy with stickers module!
 ✪ `/addsticker`: Reply to a sticker to add it to your pack.
 ✪ `/delsticker`: Reply to your anime exist sticker to your pack to delete it.
 ✪ `/stickerid`: Reply to a sticker to me to tell you its file ID.
+✪ `/gifid`: Reply to a gif to me to tell you its file ID.
 ✪ `/getsticker`: Reply to a sticker to me to upload its raw PNG file.
 ✪ `/addfsticker` or `/afs` <custom name>: Reply to a sticker to add it into your favorite pack list.
 ✪ `/myfsticker` or `/mfs`: Get list of your favorite packs.
