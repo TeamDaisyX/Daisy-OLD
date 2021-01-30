@@ -2,7 +2,7 @@ import html
 from typing import Optional
 
 import SaitamaRobot.modules.sql.blsticker_sql as sql
-from SaitamaRobot import LOGGER, REDIS, dispatcher
+from SaitamaRobot import LOGGER, dispatcher
 from SaitamaRobot.modules.connection import connected
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
