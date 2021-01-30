@@ -70,7 +70,7 @@ def warn(user: User,
         if soft_warn:  # punch
             chat.unban_member(user.id)
             reply = (
-                f"<code>❕</code><b>PKick Event</b>\n"
+                f"<code>❕</code><b>Punch Event</b>\n"
                 f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<code> </code><b>•  Count:</b> {limit}")
 
@@ -338,15 +338,7 @@ def reply_filter(update: Update, context: CallbackContext) -> str:
     chat: Optional[Chat] = update.effective_chat
     message: Optional[Message] = update.effective_message
     user: Optional[User] = update.effective_user
-      
-      
-    chat_id = str(chat.id)[1:] 
-    approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
-    target_user = mention_html(user.id, user.first_name)
-    if target_user in approve_list:
-        return
 
-        
     if not user:  #Ignore channel
         return
 
@@ -465,6 +457,7 @@ def __chat_settings__(chat_id, user_id):
         f"This chat has `{num_warn_filters}` warn filters. "
         f"It takes `{limit}` warns before the user gets *{'kicked' if soft_warn else 'banned'}*."
     )
+
 
 
 __help__ = """
