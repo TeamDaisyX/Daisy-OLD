@@ -1,4 +1,4 @@
-nes (591 sloc) 22.5 KB
+
 import html
 
 from telegram import Message, Chat, ParseMode, MessageEntity
