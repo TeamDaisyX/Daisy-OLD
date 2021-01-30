@@ -20,7 +20,7 @@ from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
 import SaitamaRobot.modules.sql.userinfo_sql as sql
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
-from SaitamaRobot.modules.sql.afk_sql import is_user_afk, afk_reason
+from SaitamaRobot.modules.sql.afk_sql import is_afk, check_afk_status
 from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
 from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
@@ -71,13 +71,11 @@ def hpmanager(user):
         if not sql.get_user_bio(user.id):
             new_hp -= no_by_per(total_hp, 10)
 
-        if is_user_afk(user.id):
-
-            afkst = afk_reason(user.id)
-
+        if is_afk(user.id):
+            afkst = check_afk_status(user.id)
             # if user is afk and no reason then decrease 7%
             # else if reason exist decrease 5%
-            if not afkst:
+            if not afkst.reason:
                 new_hp -= no_by_per(total_hp, 7)
             else:
                 new_hp -= no_by_per(total_hp, 5)
@@ -243,7 +241,7 @@ def info(update: Update, context: CallbackContext):
     if chat.type != "private" and user_id != bot.id:
         _stext = "\nPresence: <code>{}</code>"
 
-        afk_st = is_user_afk(user.id)
+        afk_st = is_afk(user.id)
         if afk_st:
             text += _stext.format("AFK")
         else:
@@ -276,6 +274,7 @@ def info(update: Update, context: CallbackContext):
         text += "\n\nThe Disaster level of this person is 'God'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
+
         text += "\n\nThis user is member of 'Anteiku Union'."
         disaster_level_present = True
     elif user.id in DRAGONS:
@@ -498,27 +497,28 @@ def __user_info__(user_id):
 
 __help__ = """
 *ID:*
- ✪ /id*:* get the current group id. If used by replying to a message, gets that user's id.
+ • `/id`*:* get the current group id. If used by replying to a message, gets that user's id.
+ • `/gifid`*:* reply to a gif to me to tell you its file ID.
 
 *Self addded information:* 
- ✪ /setme <text>*:* will set your info
- ✪ /me*:* will get your or another user's info.
-_Examples:_
+ • `/setme <text>`*:* will set your info
+ • `/me`*:* will get your or another user's info.
+Examples:
  `/setme I am a wolf.`
  `/me @username(defaults to yours if no user specified)`
 
 *Information others add on you:* 
- ✪ /bio*:* will get your or another user's bio. This cannot be set by yourself.
- ✪ /setbio <text>*:* while replying, will save another user's bio 
-_Examples:_
+ • `/bio`*:* will get your or another user's bio. This cannot be set by yourself.
+• `/setbio <text>`*:* while replying, will save another user's bio 
+Examples:
  `/bio @username(defaults to yours if not specified).`
  `/setbio This user is a wolf` (reply to the user)
 
 *Overall Information about you:*
- ✪ /info*:* get information about a user. 
+ • `/info`*:* get information about a user. 
  
 *What is that health thingy?*
- Come and see [HP System explained](https://t.me/SuzuyaUpdates/33)
+ Come and see [HP System explained](https://t.me/OnePunchUpdates/192)
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)
@@ -541,7 +541,7 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "Bios/Abouts"
+__mod_name__ = "Info"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER, GIFID_HANDLER, INFO_HANDLER, SET_BIO_HANDLER, GET_BIO_HANDLER,
