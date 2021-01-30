@@ -555,68 +555,44 @@ def kayo(update: Update, context: CallbackContext):
 __help__ = """
 Get information about anime, manga or characters from [AniList](anilist.co).
 *Available commands:*
-                               
-➩ *Anime search:*                            
- ✪ /anime <anime>*:* returns information about the anime.
- ✪ /whatanime*:* returns source of anime when replied to photo or gif.                                                          
- ✪ /character <character>*:* returns information about the character.
- ✪ /manga <manga>*:* returns information about the manga.
- ✪ /user <user>*:* returns information about a MyAnimeList user.
- ✪ /upcoming*:* returns a list of new anime in the upcoming seasons.
- ✪ /airing <anime>*:* returns anime airing info.
- ✪ /ganime <anime>*:* search an anime on gogoanime.
- ✪ /kaizoku <anime>*:* search an anime on animekaizoku.com
- ✪ /kayo <anime>*:* search an anime on animekayo.com
-                               
-➩ *Watchlist:*                             
- ✪ /watchlist*:* to get your saved watchlist.
- ✪ /mangalist*:* to get your saved manga read list.
- ✪ /characterlist | fcl*:* to get your favorite characters list.
- ✪ /removewatchlist | rwl <anime>*:* to remove a anime from your list.
- ✪ /rfcharacter | rfcl <character>*:* to remove a character from your list.  
- ✪ /rmanga | rml <manga>*:* to remove a manga from your list.
- 
-➩ *Anime Fun:*
- ✪ /animequote*:* random anime quote.
- ✪ /meme*:* sends a random anime meme form reddit `r/animemes`.                           
+ • `/anime <anime>`*:* returns information about the anime.
+ • `/character <character>`*:* returns information about the character.
+ • `/animequote` *:* Get random Anime qoute.
+ • `/manga <manga>`*:* returns information about the manga.
+ • `/user <user>`*:* returns information about a MyAnimeList user.
+ • `/upcoming`*:* returns a list of new anime in the upcoming seasons.
+ • `/kaizoku <anime>`*:* search an anime on animekaizoku.com
+ • `/kayo <anime>`*:* search an anime on animekayo.com
+ • `/airing <anime>`*:* returns anime airing info.
  """
-
+ 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
 AIRING_HANDLER = DisableAbleCommandHandler("airing", airing)
 CHARACTER_HANDLER = DisableAbleCommandHandler("character", character)
 MANGA_HANDLER = DisableAbleCommandHandler("manga", manga)
 USER_HANDLER = DisableAbleCommandHandler("user", user)
 UPCOMING_HANDLER = DisableAbleCommandHandler("upcoming", upcoming)
-WATCHLIST_HANDLER = DisableAbleCommandHandler("watchlist", watchlist)
-MANGALIST_HANDLER = DisableAbleCommandHandler("mangalist", readmanga)
-FVRT_CHAR_HANDLER = DisableAbleCommandHandler(["characterlist","fcl"], fvrtchar)
-REMOVE_WATCHLIST_HANDLER = DisableAbleCommandHandler(["removewatchlist","rwl"], removewatchlist)
-REMOVE_FVRT_CHAR_HANDLER = DisableAbleCommandHandler(["rfcharacter","rfcl"], removefvrtchar)
-REMOVE_MANGA_CHAR_HANDLER = DisableAbleCommandHandler(["rmanga","rml"], removemangalist)
-BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
-ANIME_STUFFS_HANDLER = CallbackQueryHandler(animestuffs, pattern='xanime_.*')
 KAIZOKU_SEARCH_HANDLER = DisableAbleCommandHandler("kaizoku", kaizoku)
 KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo)
-GANIME_SEARCH_HANDLER = DisableAbleCommandHandler("ganime", ganime)
-MEME_HANDLER = DisableAbleCommandHandler("meme", meme)
+BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(BUTTON_HANDLER)
-dispatcher.add_handler(ANIME_STUFFS_HANDLER)
 dispatcher.add_handler(ANIME_HANDLER)
 dispatcher.add_handler(CHARACTER_HANDLER)
 dispatcher.add_handler(MANGA_HANDLER)
 dispatcher.add_handler(AIRING_HANDLER)
 dispatcher.add_handler(USER_HANDLER)
-dispatcher.add_handler(UPCOMING_HANDLER)
-dispatcher.add_handler(WATCHLIST_HANDLER)
-dispatcher.add_handler(MANGALIST_HANDLER)
-dispatcher.add_handler(FVRT_CHAR_HANDLER)
-dispatcher.add_handler(REMOVE_FVRT_CHAR_HANDLER)
-dispatcher.add_handler(REMOVE_MANGA_CHAR_HANDLER)
-dispatcher.add_handler(REMOVE_WATCHLIST_HANDLER)
 dispatcher.add_handler(KAIZOKU_SEARCH_HANDLER)
 dispatcher.add_handler(KAYO_SEARCH_HANDLER)
-dispatcher.add_handler(GANIME_SEARCH_HANDLER)
-dispatcher.add_handler(MEME_HANDLER)
+dispatcher.add_handler(UPCOMING_HANDLER)
 
-__mod_name__ = "Anime"
+
+__command_list__ = [
+    "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
+    "kayo"
+]
+__handlers__ = [
+    ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
+    UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
+    BUTTON_HANDLER, AIRING_HANDLER
+]
