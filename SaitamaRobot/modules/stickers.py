@@ -13,7 +13,7 @@ from telegram import TelegramError
 from telegram.ext import run_async, CallbackContext, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import dispatcher, REDIS
+from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler 
 
 
