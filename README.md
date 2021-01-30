@@ -13,6 +13,8 @@
 
 <details>
   <summary>Steps to deploy on Heroku !! </summary>
+ 
+ [Deploy](https://www.heroku.com/deploy?template=https://github.com/Infinity-Bots/LizaSnowGirl)
 
 ```
 Fill in all the details, Deploy!
