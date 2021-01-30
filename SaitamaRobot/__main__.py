@@ -30,7 +30,7 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = """
-Hello there,The name's [Liza](https://telegra.ph/file/5bcbee541234987308553.jpg)
+Hello there,The name's [Liza](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 Developed by team @Infinity_Bots
@@ -58,7 +58,7 @@ buttons = [
 
 
 HELP_STRINGS = f"""
-*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/5534384d2f2b2d8e6fdbb.jpg)
+*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /donate: You can support my creater using this command.
