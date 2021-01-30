@@ -30,11 +30,12 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = """
-Hello there,The name's [𝙎𝙪𝙯𝙪𝙮𝙖](https://telegra.ph/file/5bcbee541234987308553.jpg)
+Hello there,The name's [Liza](https://telegra.ph/file/5bcbee541234987308553.jpg)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
+Developed by team @Infinity_Bots
 
-✪ Make sure you read *INFO* Section Below.✪ 
+✪ Make sure to read *INFO* Section Below.✪ 
 """
 
 buttons = [
@@ -50,7 +51,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-        text="💫 Add Suzuya to your group 💫", url="t.me/suzuya_probot?startgroup=true"
+        text="💫 Add Liza to your group 💫", url="t.me/@LizaSnow_bot?startgroup=true"
         ),
     ]
 ]
@@ -71,7 +72,9 @@ HELP_STRINGS = f"""
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer of the Base code, Paul
-There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen).
+
+If you Interested to donate @Infinity_Bots Projects please contact us @InfinityJE"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -331,18 +334,18 @@ def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Hi again! The name's {dispatcher.bot.first_name}. \n\nAs  You I'm An Anime Themed Group Management Bot.* "
-                 f"\n\n Join [Updates Channel](https://t.me/SuzuyaUpdates) To Keep Yourself Updated About {dispatcher.bot.first_name}."
-                 f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
+            text=f"*Hola again! The name's {dispatcher.bot.first_name}. \n\nAs  You I'm An Powerful Group Management Bot.* "
+                 f"\n\n Join [Updates Channel](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name}."
+                 f"\n\n The concept of Group management bots firstly got from Paul Larson's Mary and it was developed by many volunteers.\n\n@Infinity_Bots combined famous Daisy and Naruto bots together as Liza Snow "
                  f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features. [◖⚆ᴥ⚆◗](https://telegra.ph/file/7f6a4d656e89553340af9.jpg)."
-                 f"\n\nYou Can Know More About Me By Clicking The Below Buttons.",
+                 f"\n\nYou Can Know More About Me By Clicking The Below Buttons.\n\n Also You can contact us anytime by Joining @InfinityJE",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                    InlineKeyboardButton(text="How To Use Me", callback_data="aboutmanu_howto"),
-                    InlineKeyboardButton(text="T & C", callback_data="aboutmanu_tac")
+                    InlineKeyboardButton(text="Learn How To Use", callback_data="aboutmanu_howto"),
+                    InlineKeyboardButton(text="Our Agreement", callback_data="aboutmanu_tac")
                   ],
                  [
                     InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
@@ -365,7 +368,7 @@ def SaitamaRobot_about_callback(update, context):
         query.message.edit_text(
             text=f"* ｢ BASIC HELP 」*"
                  f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
-                 f"\n\nYou Can Know Main commands of {dispatcher.bot.first_name} by Just Clicking [Here](https://telegra.ph/SUZUYA-GM-BOT-12-16).\n"
+                 f"\n\nYou Can request more features for {dispatcher.bot.first_name} by Contacting us @InfinityJE.\n"
                  f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -379,9 +382,9 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nFork Of [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
-                 f"\n\n{dispatcher.bot.first_name}'s Licensed Under The GNU _(General Public License v3.0)_"
-                 f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
+                 f"\n\Developed Version of Daisy x Naruto with the help of \n[Suzuya_ProBot](https://github.com/Godzilla-0/Suzuya_ProBot) + [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
+                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team @Infinity_Bots\n\n All credits goes to original authors of modules included in Liza "
+                 f"\n\nHave Any Questions About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tac")]]),
@@ -436,6 +439,7 @@ def SaitamaRobot_about_callback(update, context):
                  f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
                  f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
                  f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
+                 f"\n✪ If you are forking the bot keep credits for original authors,\n  Also Note that Team @Infinity_Bots are not responsible for any forks of @LizaSnow_Bot"
                  f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
                  f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
