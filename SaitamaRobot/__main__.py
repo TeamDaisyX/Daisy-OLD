@@ -367,7 +367,7 @@ def SaitamaRobot_about_callback(update, context):
         query.message.edit_text(
             text=f"* ｢ BASIC HELP 」*"
                  f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
-                 f"\n\nYou Can request more features for {dispatcher.bot.first_name} by Contacting us @InfinityJE.\n"
+                 f"\n\nYou Can request more features for {dispatcher.bot.first_name} by Contacting us InfinityJE.\n"
                  f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -382,7 +382,7 @@ def SaitamaRobot_about_callback(update, context):
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
                  f"\n\Developed Version of Daisy x Naruto with the help of \n[Suzuya_ProBot](https://github.com/Godzilla-0/Suzuya_ProBot) + [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
-                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team @Infinity_Bots\n\n All credits goes to original authors of modules included in Liza "
+                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team Infinity_Bots\n\n All credits goes to original authors of modules included in Liza "
                  f"\n\nHave Any Questions About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -438,7 +438,7 @@ def SaitamaRobot_about_callback(update, context):
                  f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
                  f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
                  f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
-                 f"\n✪ If you are forking the bot keep credits for original authors,\n  Also Note that Team @Infinity_Bots are not responsible for any forks of @LizaSnow_Bot"
+                 f"\n✪ If you are forking the bot keep credits for original authors,\n  Also Note that Team Infinity_Bots are not responsible for any forks of @LizaSnow_Bot"
                  f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
                  f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
