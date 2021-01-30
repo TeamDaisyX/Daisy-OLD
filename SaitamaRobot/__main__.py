@@ -50,14 +50,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-        text="💫 Add Liza to your group 💫", url="t.me/@LizaSnow_bot?startgroup=true"
+        text="💫 Add Liza to your group 💫", url="t.me/LizaSnow_bot?startgroup=true"
         ),
     ]
 ]
 
 
 HELP_STRINGS = f"""
-*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+*Main Commands :* [:)](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /donate: You can support my creater using this command.
