@@ -10,7 +10,7 @@ from telegram.utils.helpers import mention_html
 from alphabet_detector import AlphabetDetector
 
 import SaitamaRobot.modules.sql.locks_sql as sql
-from SaitamaRobot import dispatcher, DRAGONS, LOGGER, REDIS
+from SaitamaRobot import dispatcher, DRAGONS, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     can_delete,
