@@ -30,8 +30,10 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = """
-Hello there,The name's [Liza](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+Hello there, I'm [ 𝓛𝓲𝔃𝓪 ](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
+
 ✪ Make sure you read *INFO* Section Below.✪ 
 """
 
@@ -329,11 +331,11 @@ def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Hi again! The name's {dispatcher.bot.first_name}. \n\nAs  You I'm a next generational group management bot developed by Infinity_Bots.* "
-                 f"\n\n Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name}."
+            text=f"*😍 Hi again!  The name's {dispatcher.bot.first_name}.😍 \n\nAs  You I'm a next generational group management bot developed by Infinity_Bots.* "
+                 f"\n\n 🔥 Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name}. 🔥"
                  f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
                  f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features. [◖⚆ᴥ⚆◗](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)."
-                 f"\n\nYou Can Know More About Me By Clicking The Below Buttons.",
+                 f"\n\n👇 You Can Know More About Me By Clicking The Below Buttons. 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -377,7 +379,7 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nFork Of [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
+                 f"\n\nRedisigned Daisy and Naruto for the best perfomance"
                  f"\n\n{dispatcher.bot.first_name}'s coded with love by team Infinity_Bots\n\n All credits goes to original authors of modules included in Liza "
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
