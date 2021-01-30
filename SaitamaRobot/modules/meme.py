@@ -523,7 +523,7 @@ __help__ = """
 Some other regex filters are:
 `goodmorning`, `good morning` or `goodnight`, `good night`.
 
-Saber will reply random strings accordingly when these words are used!
+Suzuya will reply random strings accordingly when these words are used!
 All regex filters can be disabled incase u don't want... like: `/disable goodnight`.
 
 """
