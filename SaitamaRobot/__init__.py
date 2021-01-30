@@ -4,7 +4,6 @@ import sys
 import time
 import spamwatch
 import telegram.ext as tg
-from redis import StrictRedis
 from telethon import TelegramClient
 from pyrogram import Client, errors
 
@@ -184,22 +183,8 @@ if not SPAMWATCH_API:
     sw = None
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
-    sw = spamwatch.Client(SPAMWATCH_API)
-    
-    
-REDIS = StrictRedis.from_url(REDIS_URL,decode_responses=True)
-try:
-    REDIS.ping()
-    LOGGER.info("Your redis server is now alive!")
-except BaseException:
-    raise Exception("Your redis server is not alive, please check again.")
-    
-finally:
-   REDIS.ping()
-   LOGGER.info("Your redis server is now alive!")
-
-    
-    
+    sw = spamwatch.Client(SPAMWATCH_API)   
+       
     
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
