@@ -378,14 +378,15 @@ def SaitamaRobot_about_callback(update, context):
         )
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
-            text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nRedisigned Daisy and Naruto for the best perfomance  \n\n Base code written by [InukaASiTH](https://t.me/Inukaasith) and [Imjanindu](https://t.me/Imjanindu) with the help of Kaveesha_Induwara"
-                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team [Infinity_Bots](https://t.me/infinity_Bots)\n\n All credits goes to original authors of modules included in Liza "
+            text=f"*{dispatcher.bot.first_name} Is the redisigned version of Daisy and Naruto for the best performance.*"
+                 f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
+                 f"\n\n{dispatcher.bot.first_name}'s source code was written by @InukaASiTH and @Imjanindu with the help of @Kaveesha_Induwara"
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tac")]]),
         )
+    elif query.data == "aboutma
     elif query.data == "aboutmanu_permis":
         query.message.edit_text(
             text=f"<b> ｢ Admin Permissions 」</b>"
