@@ -518,7 +518,7 @@ __help__ = """
 ✪ /rmeme*:* Sends random meme scraped from reddit
 *Regex based memes:*
 
-✪ /decide can be also used with regex like: `suzuya? <question>: randomly answer "Yes, No" etc.`
+✪ /decide can be also used with regex like: `Liza? <question>: randomly answer "Yes, No" etc.`
 
 Some other regex filters are:
 `goodmorning`, `good morning` or `goodnight`, `good night`.
@@ -539,7 +539,7 @@ TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 DECIDE_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)^Liza\?"), decide, friendly="decide"
+    Filters.regex(r"(?i)(Liza|liza)"), decide, friendly="decide"
 )
 ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse,pass_args=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs ,pass_args=True)
