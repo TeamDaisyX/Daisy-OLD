@@ -30,7 +30,7 @@ from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = """
-Hello there, I'm [Liza](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+Hello there, I'm [𝓛𝓲𝔃𝓪 𝓢𝓷𝓸𝔀](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
