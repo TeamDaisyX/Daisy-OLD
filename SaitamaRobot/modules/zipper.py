@@ -3,7 +3,7 @@ import time
 import os
 from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
-from SaitamaRobot import client
+from SaitamaRobot import telethn as client
 from telethon import types
 from telethon.tl import functions
 
