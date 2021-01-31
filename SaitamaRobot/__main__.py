@@ -379,7 +379,7 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nRedisigned Daisy and Naruto for the best perfomance  \n\n Base code written by @InukaASiTH , @Imjanindu with the help of @Kaveesha_Induwara"
+                 f"\n\nRedisigned Daisy and Naruto for the best perfomance  \n\n Base code written by [InukaASiTH](https://t.me/Inukaasith) and [Imjanindu](https://t.me/Imjanindu) with the help of Kaveesha_Induwara"
                  f"\n\n{dispatcher.bot.first_name}'s coded with love by team [Infinity_Bots](https://t.me/infinity_Bots)\n\n All credits goes to original authors of modules included in Liza "
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
