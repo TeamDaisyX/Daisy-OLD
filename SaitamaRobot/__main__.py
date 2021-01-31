@@ -70,8 +70,8 @@ HELP_STRINGS = f"""
 
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-You can donate to the original writer of the Base code,
-Support him [Jason](t.me/imjanindu)"""
+You can donate to the original writer's of the Base code,
+Support them [Jason](t.me/imjanindu), [Inuka](t.me/InukaASiTH)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -379,8 +379,8 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nRedisigned Daisy and Naruto for the best perfomance"
-                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team Infinity_Bots\n\n All credits goes to original authors of modules included in Liza "
+                 f"\n\nRedisigned Daisy and Naruto for the best perfomance  \n\n Base code written by @InukaASiTH , @Imjanindu with the help of @Kaveesha_Induwara"
+                 f"\n\n{dispatcher.bot.first_name}'s coded with love by team [Infinity_Bots](https://t.me/infinity_Bots)\n\n All credits goes to original authors of modules included in Liza "
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
