@@ -386,7 +386,7 @@ def SaitamaRobot_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tac")]]),
         )
-    elif query.data == "aboutma
+
     elif query.data == "aboutmanu_permis":
         query.message.edit_text(
             text=f"<b> ｢ Admin Permissions 」</b>"
