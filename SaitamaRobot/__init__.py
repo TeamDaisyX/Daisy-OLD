@@ -86,6 +86,7 @@ if ENV:
     AI_API_KEY = os.environ.get('AI_API_KEY', None)
     WALL_API = os.environ.get('WALL_API', None)
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
+    YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
     REPOSITORY = os.environ.get('REPOSITORY', "")
