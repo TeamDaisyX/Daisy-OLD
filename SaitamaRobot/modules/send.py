@@ -1,7 +1,7 @@
-from saitamaRobot import dispatcher
-from saitamaRobot.modules.disable import DisableAbleCommandHandler
-from saitamaRobot.modules.helper_funcs.alternate import send_message
-from saitamaRobot.modules.helper_funcs.chat_status import user_admin
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.alternate import send_message
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
 from telegram.ext import run_async
 
 
