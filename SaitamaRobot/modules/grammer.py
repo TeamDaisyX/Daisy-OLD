@@ -55,7 +55,7 @@ TRANSLATE_HANDLER = CommandHandler('t', translate)
 
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
-__mod_name__ = "Grammmar"
+
 __command_list__ = ["t"]
 __handlers__ = [
     TRANSLATE_HANDLER
