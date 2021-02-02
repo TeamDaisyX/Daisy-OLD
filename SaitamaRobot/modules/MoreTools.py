@@ -1,5 +1,5 @@
 __help__ = """
-** Locate **
+** GPS **
  - /gps <Place> : Show Location on a map
  
 ** Grammer **
