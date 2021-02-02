@@ -63,10 +63,10 @@ def _check_member(client, message):
           client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
         except ChatAdminRequired:
           sent_message.edit("❗ **මම මේකෙ Admin නෙමෙයි..**\n__මට Ban Permissions එක්ක Admin දීල ආපහු උත්සාහ කරන්න.. \n#Leaving this chat...__")
-          client.leave_chat(chat_id)
+          
       except ChatAdminRequired:
         client.send_message(chat_id, text=f"❗ **මම @{channel} එකේ Admin නෙමෙයි.**\n__මට ඒකෙ Admin දීල ආපහු Add කරන්න.\n#Leaving this chat...__")
-        client.leave_chat(chat_id)
+        
 
 
 @pbot.on_message(filters.command(["forcesubscribe", "fsub"]) & ~filters.private)
@@ -108,3 +108,31 @@ def config(client, message):
         message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
   else:
       message.reply_text("❗ **Group Creator Required**\n__You have to be the group creator to do that.__")
+      
+      
+      
+      
+      
+__help__ = """
+*ForceSubscribe:*
+
+*Channel Manageer Inbuilt*
+✪ ඔයාගෙ ගෲප් එකේ මෙම්බර්ස්ල Channel එකක් හෝ කිහිපයක් Subscribe කරනකන් Message දාන එක නවත්තන්න මට පුලූවන්.
+✪ සාමාජිකයන් ඔබේ Channel  එකට සම්බන්ධ නොවූයේ නම් මම ඔවුන්ව නිශ්ශබ්ද කර channel එකට සම්බන්ධ වන ලෙස පවසන්න සහ බොත්තමක් එබීමෙන් ඔවුන්ව නිශ්ශබ්ද කරන්න මට පුලුවන්.
+
+*Setup*
+1) First of all add me in the group as admin with ban users permission and in the channel as admin.
+Note: Only creator of the group can setup me and i will not allow force subscribe again if not done so.
+ 
+*Commmands*
+✪ /ForceSubscribe - To get the current settings.
+✪ /ForceSubscribe no/off/disable - To turn of ForceSubscribe.
+✪ /ForceSubscribe {channel username} - To turn on and setup the channel.
+✪ /ForceSubscribe clear - To unmute all members who muted by me.
+
+Note: /FSub is an alias of /ForceSubscribe
+
+💭 Only on Sinhala 🇱🇰 yet
+ 
+"""
+__mod_name__ = "📢 Force Subscribe 💭"      
