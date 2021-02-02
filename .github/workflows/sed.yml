@@ -1,0 +1,21 @@
+name: Sed-replacer
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          find: "SaitamaRobot"
+          replace: "SnowGirl"
+      - name: Pull All Updates
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Welcome to Liza Snow'
+          commit_options: '--no-verify'
+          repository: .
+          commit_user_name: InukaAsith
+          commit_user_email: inukaasith7@gmail.com
+          commit_author: inukaasith <inukaasith7@gmail.com>
