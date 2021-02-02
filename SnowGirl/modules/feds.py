@@ -23,15 +23,7 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, mention_markdown
 
 import SnowGirl.modules.sql.feds_sql as sql
-from SnowGirl import (
-    DRAGONS,
-    EVENT_LOGS,
-    LOGGER,
-    OWNER_ID,
-    TIGERS,
-    WOLVES,
-    dispatcher,
-)
+from SnowGirl import DRAGONS, EVENT_LOGS, LOGGER, OWNER_ID, TIGERS, WOLVES, dispatcher
 from SnowGirl.modules.disable import DisableAbleCommandHandler
 from SnowGirl.modules.helper_funcs.alternate import send_message
 from SnowGirl.modules.helper_funcs.chat_status import is_user_admin
