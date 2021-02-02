@@ -1,3 +1,20 @@
+#    Copyright (C) 2020-2021 by @InukaAsith
+#    This programme is a part of Channel Manager project
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+
 import logging
 import time
 
@@ -84,7 +101,7 @@ def _check_member(client, message):
             except UserNotParticipant:
                 try:
                     sent_message = message.reply_text(
-                        "ආයුබෝවන් {} 🙏, \n \n ඔයා අපේ @{} Channel එකට තාම Join වෙලා නෑ 😭 \n කරුණාකරල ඒකට Join වෙලා පහල තියන UNMUTE ME Button එක touch කරන්න. \n \n [👉 OUR CHANNEL 👈](https://t.me/{})".format(
+                        "ආයුබෝවන් {} 🙏, \n \n **ඔයා අපේ @{} Channel එකට තාම Join වෙලා නෑ** 😭 \n කරුණාකරල ඒකට Join වෙලා පහල තියන **UNMUTE ME** Button එක touch කරන්න. \n \n **[👉 OUR CHANNEL 👈](https://t.me/{})**".format(
                             message.from_user.mention, channel, channel
                         ),
                         disable_web_page_preview=True,
@@ -103,7 +120,7 @@ def _check_member(client, message):
                     )
                 except ChatAdminRequired:
                     sent_message.edit(
-                        "❗ **මම මේකෙ Admin නෙමෙයි..**\n__මට Ban Permissions එක්ක Admin දීල ආපහු උත්සාහ කරන්න.. \n#Leaving this chat...__"
+                        "❗ **මම මේකෙ Admin නෙමෙයි..**\n__මට Ban Permissions එක්ක Admin දීල ආපහු උත්සාහ කරන්න.. \n#Ending FSub...__"
                     )
 
             except ChatAdminRequired:
