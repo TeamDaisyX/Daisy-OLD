@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Numeric, Boolean
-from sql_helpers import SESSION, BASE
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 class forceSubscribe(BASE):
     __tablename__ = "forceSubscribe"
