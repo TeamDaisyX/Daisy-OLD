@@ -2,7 +2,7 @@ import time
 import logging
 from SaitamaRobot import DRAGONS as SUDO_USERS
 from SaitamaRobot import pbot
-from pyrogram import filters, Client
+from pyrogram import filters
 from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
@@ -10,7 +10,7 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Usern
 logging.basicConfig(level=logging.INFO)
 
 static_data_filter = filters.create(lambda _, __, query: query.data == "onUnMuteRequest")
-@Client.on_callback_query(static_data_filter)
+@pbot.on_callback_query(static_data_filter)
 def _onUnMuteRequest(client, cb):
   user_id = cb.from_user.id
   chat_id = cb.message.chat.id
@@ -23,8 +23,9 @@ def _onUnMuteRequest(client, cb):
           try:
             client.get_chat_member(channel, user_id)
             client.unban_chat_member(chat_id, user_id)
-            if cb.message.reply_to_message.from_user.id == user_id:
-              cb.message.delete()
+            cb.message.delete()
+            #if cb.message.reply_to_message.from_user.id == user_id:
+              #cb.message.delete()
           except UserNotParticipant:
             client.answer_callback_query(cb.id, text=f"❗ අපේ @{channel} channel එකට Join වෙලා 'UnMute Me' button එක ආපහු ඔබන්න.", show_alert=True)
       else:
@@ -32,13 +33,13 @@ def _onUnMuteRequest(client, cb):
     else:
       if not client.get_chat_member(chat_id, (client.get_me()).id).status == 'administrator':
         client.send_message(chat_id, f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__")
-        client.leave_chat(chat_id)
+        
       else:
         client.answer_callback_query(cb.id, text="❗ අවවාදයයි: ඔයාට කතාකරන්න පුලුවන්කම තියෙද්දි button එක click කරන්න එපා.", show_alert=True)
 
 
 
-@Client.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
+@pbot.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
 def _check_member(client, message):
   chat_id = message.chat.id
   chat_db = sql.fs_settings(chat_id)
@@ -68,7 +69,7 @@ def _check_member(client, message):
         client.leave_chat(chat_id)
 
 
-@Client.on_message(filters.command(["forcesubscribe", "fsub"]) & ~filters.private)
+@pbot.on_message(filters.command(["forcesubscribe", "fsub"]) & ~filters.private)
 def config(client, message):
   user = client.get_chat_member(message.chat.id, message.from_user.id)
   if user.status is "creator" or user.user.id in SUDO_USERS:
