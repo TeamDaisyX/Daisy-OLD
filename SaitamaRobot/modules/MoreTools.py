@@ -1,18 +1,21 @@
 __help__ = """
-     ** Locate **
- - /locate <Place> : Show Location on a map
+** Locate **
+ - /gps <Place> : Show Location on a map
  
-     ** Image Tools**
+** Grammer **
+ - /t <reply> : Show grammer corrected text
+ 
+** Image Tools**
  - /img <text>: perform a image search
  - /getqr <reply to image>: Read QR code
  - /makeqr <reply to text>: Make QR code
  
-     ** Style Text **
+** Style Text **
  - /weebify : Weebify Text
  - /square : square Text
  - /blue : Blues text
  
-    ** More **
+** More **
  - /phone <tp no> : Track Phone no
  
  
