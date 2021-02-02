@@ -1,6 +1,7 @@
 import time
 import logging
-from SaitamaRobot import SUDO_USERS, pbot
+from SaitamaRobot import DRAGONS as SUDO_USERS
+from SaitamaRobot import pbot
 from pyrogram import filters
 from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
