@@ -51,3 +51,4 @@ pySmartDL
 validators
 bing_image_downloader
 google-api-python-client
+zalgo_text
