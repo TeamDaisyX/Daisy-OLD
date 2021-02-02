@@ -2,7 +2,7 @@ import time
 import logging
 from SaitamaRobot import SUDO_USERS, pbot
 from pyrogram import filters
-from SaitamaRobot.modules.sql_helpers import forceSubscribe_sql as sql
+from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 
