@@ -1,59 +1,60 @@
 import math
 
 import pynewtonmath as newton
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
+
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 
 
 @run_async
 def simplify(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.simplify('{}'.format(args[0])))
+    message.reply_text(newton.simplify("{}".format(args[0])))
 
 
 @run_async
 def factor(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.factor('{}'.format(args[0])))
+    message.reply_text(newton.factor("{}".format(args[0])))
 
 
 @run_async
 def derive(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.derive('{}'.format(args[0])))
+    message.reply_text(newton.derive("{}".format(args[0])))
 
 
 @run_async
 def integrate(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.integrate('{}'.format(args[0])))
+    message.reply_text(newton.integrate("{}".format(args[0])))
 
 
 @run_async
 def zeroes(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.zeroes('{}'.format(args[0])))
+    message.reply_text(newton.zeroes("{}".format(args[0])))
 
 
 @run_async
 def tangent(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.tangent('{}'.format(args[0])))
+    message.reply_text(newton.tangent("{}".format(args[0])))
 
 
 @run_async
 def area(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
-    message.reply_text(newton.area('{}'.format(args[0])))
+    message.reply_text(newton.area("{}".format(args[0])))
 
 
 @run_async

@@ -1,13 +1,11 @@
-
-import asyncio
 from asyncio import sleep
 
 from telethon import events
 from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins
+from telethon.tl.types import ChannelParticipantsAdmins, ChatBannedRights
 
-from SaitamaRobot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
+from SaitamaRobot import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, telethn
 
 # =================== CONSTANT ===================
 
@@ -47,7 +45,6 @@ async def is_administrator(user_id: int, message):
             admin = True
             break
     return admin
-
 
 
 @telethn.on(events.NewMessage(pattern=f"^[!/]zombies ?(.*)"))

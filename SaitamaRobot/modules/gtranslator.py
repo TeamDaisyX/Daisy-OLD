@@ -125,14 +125,12 @@ def totranslate(update: Update, context: CallbackContext):
             "Or use: `/tr ml` for automatic detection and translating it into Malayalam.\n"
             "See [List of Language Codes](t.me/OnePunchSupport/12823) for a list of language codes.",
             parse_mode="markdown",
-            disable_web_page_preview=True)
+            disable_web_page_preview=True,
+        )
     except ValueError:
-        update.effective_message.reply_text(
-            "The intended language is not found!")
+        update.effective_message.reply_text("The intended language is not found!")
     else:
         return
-
-
 
 
 TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)

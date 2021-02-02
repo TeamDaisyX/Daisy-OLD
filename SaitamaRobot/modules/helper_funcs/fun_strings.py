@@ -1,4 +1,4 @@
-#taken from @zoldycktmbot
+# taken from @zoldycktmbot
 TRUTH = (
     "Do you pick your nose?",
     "Do you sing in the shower? ",
@@ -48,8 +48,7 @@ TRUTH = (
     "What's one food that you will never order at a restaurant?",
     "What's one thing you would never eat on a first date?",
     "How long have you gone without brushing your teeth?",
-    "How long have you gone without a shower?"
-  
+    "How long have you gone without a shower?",
 )
 
 DARE = (
@@ -185,7 +184,7 @@ GDMORNING = [
 ]
 
 # Abuse strings credits @NotAMemeBot
-ABUSE_STRINGS = (    
+ABUSE_STRINGS = (
     "Owww ... Such a stupid idiot.",
     "Don't drink and type.",
     "I think you should go home or better a mental asylum.",
@@ -303,8 +302,7 @@ RUN_STRINGS = (
 )
 
 
-
-#pat - by @saitamarobot
+# pat - by @saitamarobot
 PAT_TEMPLATES = (
     "Pattt Se Headshot!",
     "{user1} pats {user2} on the head.",
@@ -316,7 +314,7 @@ PAT_TEMPLATES = (
     "*{user2}'s got free headpats*",
     "No pats for {user2}!",
     "Oh no! We are all out of pats.",
-    "This is a designated no pat zone!", 
+    "This is a designated no pat zone!",
     "{user1} spoils {user2} with headpats!",
     "{user2} received one free headpat!",
     "{user1} headpats {user2} whilst giving a lap pillow",
@@ -367,10 +365,8 @@ PAT_STICKERS = (
     "CAACAgQAAxkBAAICb1--eJVMMK6yxFEWF92K5jr4eG0EAAKCAQAC1TMzC87tPZLqbwkSHgQ",
     "CAACAgQAAxkBAAICcF--eJbOrVL_MkJo5kw_zfIS4TEzAAI6AQAC1TMzC3h8vVt-_pjtHgQ",
     "CAACAgQAAxkBAAICcV--eJb1nknGXwKgGE5aXDcawgK3AAJ6AQAC1TMzCweeI_mdwBUIHgQ",
-    "CAACAgQAAxkBAAICcl--eJk_0PxzYNwy1TZ5IWwsW__sAAKyAQAC1TMzC-yfrpJDR9k7HgQ", 
+    "CAACAgQAAxkBAAICcl--eJk_0PxzYNwy1TZ5IWwsW__sAAKyAQAC1TMzC-yfrpJDR9k7HgQ",
 )
-
-
 
 
 # SLAP_TEMPLATES From @SaitamaRobot
@@ -558,13 +554,13 @@ TABLE = (
 
 GBUN = (
     "Beware! This Bot-Admeme Can Gbun You Right Off The Map.",
-    "I Guess You've Forgot Spelling Of GBAN Maybe...?", 
+    "I Guess You've Forgot Spelling Of GBAN Maybe...?",
     "Don't Misuse Your Powers...",
-    "Nah, He Looks Innocent..."
+    "Nah, He Looks Innocent...",
 )
 
 
-GBAM = "<b>Beginning Of Global Bam For {user2}</b>  \n \nChat Id : <code>{chatid}</code> \nReason : <i>{reason}</i> \nGBammed By {user1}"                                                       
+GBAM = "<b>Beginning Of Global Bam For {user2}</b>  \n \nChat Id : <code>{chatid}</code> \nReason : <i>{reason}</i> \nGBammed By {user1}"
 
 
 GBAM_REASON = (
@@ -587,11 +583,14 @@ GBAM_REASON = (
     "sasti ria chokroborti",
     "sasti nibbi",
     "sasta camper",
-
 )
 
 
-GIFS = ['CgACAgQAAx0ESlgI7AACAqxfu09m1qXPJjRiyRMyJxswdUA5LwACaAgAAlZD0VEtI5O_RO_rSB4E', 'CgACAgUAAx0CSlgI7AACA2Ffu4L_5S3dL5YUWNGBEBL60oBNIgACqwADg_8wVe6pdZO2-TIxHgQ', 'CgACAgQAAx0ESlgI7AACA3Nfu4M3oUQUhZ6X-I5LNrQkWJ1iogACaAgAAlZD0VGB9mP1VKDQJR4E']
+GIFS = [
+    "CgACAgQAAx0ESlgI7AACAqxfu09m1qXPJjRiyRMyJxswdUA5LwACaAgAAlZD0VEtI5O_RO_rSB4E",
+    "CgACAgUAAx0CSlgI7AACA2Ffu4L_5S3dL5YUWNGBEBL60oBNIgACqwADg_8wVe6pdZO2-TIxHgQ",
+    "CgACAgQAAx0ESlgI7AACA3Nfu4M3oUQUhZ6X-I5LNrQkWJ1iogACaAgAAlZD0VGB9mP1VKDQJR4E",
+]
 
 
 DECIDE = ("Yes.", "NoU.", "Maybe.", "No.")

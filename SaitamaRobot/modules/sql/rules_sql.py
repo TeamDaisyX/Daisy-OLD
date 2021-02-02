@@ -1,7 +1,8 @@
 import threading
 
-from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, UnicodeText, distinct, func
+
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 
 class Rules(BASE):

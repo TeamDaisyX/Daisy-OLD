@@ -1,19 +1,21 @@
 import html
-import random, re
-import requests as r
+import random
+import re
 
-from telegram import Update, ParseMode, TelegramError, MAX_MESSAGE_LENGTH
-from telegram.ext import Filters, CallbackContext, CommandHandler, run_async
+import requests as r
+from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update
 from telegram.error import BadRequest
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import escape_markdown
 
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
-from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
-from SaitamaRobot.modules.helper_funcs.alternate import typing_action
-from SaitamaRobot import dispatcher, DRAGONS, DEMONS, LOGGER
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
-
 import SaitamaRobot.modules.helper_funcs.fun_strings as fun
+from SaitamaRobot import DEMONS, DRAGONS, dispatcher
+from SaitamaRobot.modules.disable import (
+    DisableAbleCommandHandler,
+    DisableAbleMessageHandler,
+)
+from SaitamaRobot.modules.helper_funcs.alternate import typing_action
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
 
 @run_async
@@ -21,13 +23,14 @@ import SaitamaRobot.modules.helper_funcs.fun_strings as fun
 def truth(update, context):
     update.effective_message.reply_text(random.choice(fun.TRUTH))
 
+
 @run_async
 @typing_action
 def dare(update, context):
     update.effective_message.reply_text(random.choice(fun.DARE))
 
 
-#run
+# run
 @run_async
 @typing_action
 def runs(update, context):
@@ -76,8 +79,6 @@ def pat(update: Update, context: CallbackContext):
         reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
-
-
 @run_async
 @typing_action
 def slap(update, context):
@@ -94,8 +95,8 @@ def slap(update, context):
         curr_user = "@" + escape_markdown(msg.from_user.username)
     else:
         curr_user = "[{}](tg://user?id={})".format(
-            msg.from_user.first_name, msg.from_user.id)
-        
+            msg.from_user.first_name, msg.from_user.id
+        )
 
     user_id = extract_user(update.effective_message, args)
     if user_id:
@@ -123,15 +124,22 @@ def slap(update, context):
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
 
 
-#sanitize a user - by @saitamarobot
+# sanitize a user - by @saitamarobot
 @run_async
 @typing_action
 def sanitize(update: Update, context: CallbackContext):
     message = update.effective_message
-    name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
-    reply_animation = message.reply_to_message.reply_animation if message.reply_to_message else message.reply_animation
-    reply_animation(
-        random.choice(fun.GIFS), caption=f'*Sanitizes {name}*')
+    name = (
+        message.reply_to_message.from_user.first_name
+        if message.reply_to_message
+        else message.from_user.first_name
+    )
+    reply_animation = (
+        message.reply_to_message.reply_animation
+        if message.reply_to_message
+        else message.reply_animation
+    )
+    reply_animation(random.choice(fun.GIFS), caption=f"*Sanitizes {name}*")
 
 
 @run_async
@@ -177,7 +185,6 @@ def hug(update, context):
     repl = temp.format(user1=user1, user2=user2, hug=hug)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
-
 
 
 @run_async
@@ -303,7 +310,6 @@ def gbam(update, context):
         user1 = curr_user
         user2 = bot.first_name
 
-
     if update.effective_message.chat.type == "private":
         return
     if int(user.id) in DRAGONS or int(user.id) in DEMONS:
@@ -311,7 +317,6 @@ def gbam(update, context):
         reason = random.choice(fun.GBAM_REASON)
         gbam = gbamm.format(user1=user1, user2=user2, chatid=chat.id, reason=reason)
         context.bot.sendMessage(chat.id, gbam, parse_mode=ParseMode.HTML)
-
 
 
 @run_async
@@ -325,19 +330,18 @@ def shout(update, context):
     elif args:
         data = " ".join(args)
     else:
-        data = ("I need a message to meme")
+        data = "I need a message to meme"
 
     msg = "```"
     result = []
-    result.append(' '.join([s for s in data]))
+    result.append(" ".join([s for s in data]))
     for pos, symbol in enumerate(data[1:]):
-        result.append(symbol + ' ' + '  ' * pos + symbol)
+        result.append(symbol + " " + "  " * pos + symbol)
     result = list("\n".join(result))
     result[0] = data[0]
     result = "".join(result)
     msg = "```\n" + result + "```"
     return update.effective_message.reply_text(msg, parse_mode="MARKDOWN")
-
 
 
 @run_async
@@ -476,7 +480,7 @@ def stretch(update, context):
 def goodnight(update, context):
     message = update.effective_message
     first_name = update.effective_user.first_name
-    reply = f"Good Night! {escape_markdown(first_name)}" 
+    reply = f"Good Night! {escape_markdown(first_name)}"
     message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 
@@ -531,7 +535,6 @@ All regex filters can be disabled incase u don't want... like: `/disable goodnig
 __mod_name__ = "Memes"
 
 
-
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout)
 DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
@@ -541,8 +544,8 @@ SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 DECIDE_HANDLER = DisableAbleMessageHandler(
     Filters.regex(r"(?i)(Liza|liza)"), decide, friendly="decide"
 )
-ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse,pass_args=True)
-RUNS_HANDLER = DisableAbleCommandHandler("runs", runs ,pass_args=True)
+ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True)
+RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, pass_args=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 HUG_HANDLER = DisableAbleCommandHandler("hug", hug)
 GBUN_HANDLER = CommandHandler("gbun", gbun)
@@ -557,13 +560,13 @@ RECITE_HANDLER = DisableAbleCommandHandler("recite", recite)
 DICE_HANDLER = DisableAbleCommandHandler("roll", dice)
 YESNOWTF_HANDLER = DisableAbleCommandHandler("decide", yesnowtf)
 GDMORNING_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning"
+    Filters.regex(r"(?i)(goodmorning|good morning)"),
+    goodmorning,
+    friendly="goodmorning",
 )
 GDNIGHT_HANDLER = DisableAbleMessageHandler(
     Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight"
 )
-
-
 
 
 dispatcher.add_handler(PAT_HANDLER)

@@ -1,16 +1,12 @@
-import re
-import html
-import aiohttp
-from datetime import datetime
-from asyncio import sleep
 import os
+
+import aiohttp
+from pyrogram import filters
 from pytube import YouTube
 from youtubesearchpython import VideosSearch
+
+from SaitamaRobot import LOGGER, pbot
 from SaitamaRobot.utils.ut import get_arg
-from SaitamaRobot import pbot, LOGGER
-from pyrogram import Client, filters
-from pyrogram.errors import PeerIdInvalid
-from pyrogram.types import Message
 
 
 def yt_search(song):
@@ -44,10 +40,9 @@ class AioHttp:
                 return await resp.read()
 
 
-
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
-    chat_id = message.chat.id
+    message.chat.id
     user_id = message.from_user["id"]
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
@@ -66,7 +61,7 @@ async def song(client, message):
         await status.edit("Failed to download song")
         LOGGER.error(ex)
         return ""
-    rename = os.rename(download, f"{str(user_id)}.mp3")
+    os.rename(download, f"{str(user_id)}.mp3")
     await pbot.send_chat_action(message.chat.id, "upload_audio")
     await pbot.send_audio(
         chat_id=message.chat.id,
@@ -78,9 +73,8 @@ async def song(client, message):
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
-	
-	
-	
+
+
 __help__ = """
  *You can either enter just the song name or both the artist and song
   name. *

@@ -1,10 +1,11 @@
 from random import randint
 
 import requests as r
-from SaitamaRobot import SUPPORT_CHAT, WALL_API, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
+
+from SaitamaRobot import SUPPORT_CHAT, WALL_API, dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 
 # Wallpapers module by @TheRealPhoenix using wall.alphacoders.com
 
@@ -41,16 +42,18 @@ def wall(update: Update, context: CallbackContext):
                 bot.send_photo(
                     chat_id,
                     photo=wallpaper,
-                    caption='Preview',
+                    caption="Preview",
                     reply_to_message_id=msg_id,
-                    timeout=60)
+                    timeout=60,
+                )
                 bot.send_document(
                     chat_id,
                     document=wallpaper,
-                    filename='wallpaper',
+                    filename="wallpaper",
                     caption=caption,
                     reply_to_message_id=msg_id,
-                    timeout=60)
+                    timeout=60,
+                )
 
 
 WALLPAPER_HANDLER = DisableAbleCommandHandler("wall", wall)

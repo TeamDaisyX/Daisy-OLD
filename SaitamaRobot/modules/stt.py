@@ -1,17 +1,13 @@
-from SaitamaRobot import telethn
 import os
-import urllib.request
 from datetime import datetime
-from typing import List
-from typing import Optional
+
 import requests
 from telethon import *
-from telethon import events
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from SaitamaRobot import *
+from SaitamaRobot import telethn
 from SaitamaRobot.events import register
 
 
@@ -40,9 +36,11 @@ async def _(event):
     if event.fwd_from:
         return
     if event.is_group:
-     if not (await is_register_admin(event.input_chat, event.message.sender_id)):
-       await event.reply(" Hi.. You are not admin.. You can't use this command.. But you can use in my pm")
-       return
+        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
+            await event.reply(
+                " Hi.. You are not admin.. You can't use this command.. But you can use in my pm"
+            )
+            return
 
     start = datetime.now()
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -77,8 +75,7 @@ async def _(event):
                 transcript_confidence = ""
                 for alternative in results:
                     alternatives = alternative["alternatives"][0]
-                    transcript_response += " " + \
-                        str(alternatives["transcript"])
+                    transcript_response += " " + str(alternatives["transcript"])
                     transcript_confidence += (
                         " " + str(alternatives["confidence"]) + " + "
                     )
@@ -86,10 +83,12 @@ async def _(event):
                 ms = (end - start).seconds
                 if transcript_response != "":
                     string_to_show = "Language: `English`\nTRANSCRIPT: `{}`\nTime Taken: {} seconds\nConfidence: `{}`".format(
-                        transcript_response, ms, transcript_confidence)
+                        transcript_response, ms, transcript_confidence
+                    )
                 else:
                     string_to_show = "Language: `English`\nTime Taken: {} seconds\n**No Results Found**".format(
-                        ms)
+                        ms
+                    )
                 await event.reply(string_to_show)
             else:
                 await event.reply(r["error"])

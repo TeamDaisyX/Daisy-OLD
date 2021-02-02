@@ -1,9 +1,9 @@
 import threading
 from typing import Union
 
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Boolean, Column, String
 
-from SaitamaRobot.modules.sql import SESSION, BASE
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 
 class AntiArabicChatSettings(BASE):
@@ -46,8 +46,11 @@ def set_chat_setting(chat_id: Union[int, str], setting: bool):
 
 def migrate_chat(old_chat_id, new_chat_id):
     with CHAT_LOCK:
-        chat_notes = SESSION.query(AntiArabicChatSettings).filter(
-            AntiArabicChatSettings.chat_id == str(old_chat_id)).all()
+        chat_notes = (
+            SESSION.query(AntiArabicChatSettings)
+            .filter(AntiArabicChatSettings.chat_id == str(old_chat_id))
+            .all()
+        )
         for note in chat_notes:
             note.chat_id = str(new_chat_id)
         SESSION.commit()

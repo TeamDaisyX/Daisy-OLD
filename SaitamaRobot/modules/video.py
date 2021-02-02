@@ -1,65 +1,68 @@
-import asyncio, time, os, asyncio, json
+import asyncio
+import json
+import os
+import time
+
 from telethon.tl.types import DocumentAttributeAudio
+from youtube_dl import YoutubeDL
+from youtube_dl.utils import (
+    ContentTooShortError,
+    DownloadError,
+    ExtractorError,
+    GeoRestrictedError,
+    MaxDownloadsReached,
+    PostProcessingError,
+    UnavailableVideoError,
+    XAttrMetadataError,
+)
+
 from SaitamaRobot.events import register
 from SaitamaRobot.utils import progress
-from youtube_dl import YoutubeDL
-from youtube_dl.utils import (DownloadError, ContentTooShortError,
 
-                              ExtractorError, GeoRestrictedError,
-                              MaxDownloadsReached, PostProcessingError,
-                              UnavailableVideoError, XAttrMetadataError)
 try:
-   from youtubesearchpython import SearchVideos 
+    from youtubesearchpython import SearchVideos
 
 except:
-	os.system("pip install pip install youtube-search-python")
-	from youtubesearchpython import SearchVideos 
-	pass
+    os.system("pip install pip install youtube-search-python")
+    from youtubesearchpython import SearchVideos
+
 
 @register(pattern="^/video (.*)")
-async def download_video(v_url):  
-    lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
+async def download_video(v_url):
+    lazy = v_url
+    sender = await lazy.get_sender()
+    me = await lazy.client.get_me()
     if not sender.id == me.id:
         rkp = await lazy.reply("`processing...`")
     else:
-    	rkp = await lazy.edit("`processing...`")   
+        rkp = await lazy.edit("`processing...`")
     url = v_url.pattern_match.group(1)
     if not url:
-         return await rkp.edit("`Error \nusage song <song name>`")
-    search = SearchVideos(url, offset = 1, mode = "json", max_results = 1)
+        return await rkp.edit("`Error \nusage song <song name>`")
+    search = SearchVideos(url, offset=1, mode="json", max_results=1)
     test = search.result()
     p = json.loads(test)
-    q = p.get('search_result')
+    q = p.get("search_result")
     try:
-       url = q[0]['link']
+        url = q[0]["link"]
     except:
-    	return await rkp.edit("`failed to find`")
+        return await rkp.edit("`failed to find`")
     type = "audio"
     await rkp.edit("`Preparing to download...`")
     if type == "audio":
         opts = {
-            'format':
-            'best',
-            'addmetadata':
-            True,
-            'key':
-            'FFmpegMetadata',
-            'prefer_ffmpeg':
-            True,
-            'geo_bypass':
-            True,
-            'nocheckcertificate':
-            True,
-            'postprocessors': [{
-                'key': 'FFmpegVideoConvertor',
-                'preferedformat': 'mp4'
-            }],
-            'outtmpl':
-            '%(id)s.mp4',
-            'logtostderr':
-            False,
-            'quiet':
-            True
+            "format": "best",
+            "addmetadata": True,
+            "key": "FFmpegMetadata",
+            "prefer_ffmpeg": True,
+            "geo_bypass": True,
+            "nocheckcertificate": True,
+            "postprocessors": [
+                {"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}
+            ],
+            "outtmpl": "%(id)s.mp4",
+            "logtostderr": False,
+            "quiet": True,
         }
         song = False
         video = True
@@ -98,36 +101,42 @@ async def download_video(v_url):
         return
     c_time = time.time()
     if song:
-        await rkp.edit(f"`Preparing to upload song `\
+        await rkp.edit(
+            f"`Preparing to upload song `\
         \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*")
+        \nby *{rip_data['uploader']}*"
+        )
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp3",
             supports_streaming=True,
             attributes=[
-                DocumentAttributeAudio(duration=int(rip_data['duration']),
-                                       title=str(rip_data['title']),
-                                       performer=str(rip_data['uploader']))
+                DocumentAttributeAudio(
+                    duration=int(rip_data["duration"]),
+                    title=str(rip_data["title"]),
+                    performer=str(rip_data["uploader"]),
+                )
             ],
-            progress_callback=lambda d, t: asyncio.get_event_loop(
-            ).create_task(
-                progress(d, t, v_url, c_time, "Uploading..",
-                         f"{rip_data['title']}.mp3")))
+            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp3")
+            ),
+        )
         os.remove(f"{rip_data['id']}.mp3")
         await v_url.delete()
     elif video:
-        await rkp.edit(f"`Preparing to upload video song :`\
+        await rkp.edit(
+            f"`Preparing to upload video song :`\
         \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*")
+        \nby *{rip_data['uploader']}*"
+        )
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp4",
             supports_streaming=True,
-            caption=rip_data['title'],
-            progress_callback=lambda d, t: asyncio.get_event_loop(
-            ).create_task(
-                progress(d, t, v_url, c_time, "Uploading..",
-                         f"{rip_data['title']}.mp4")))
+            caption=rip_data["title"],
+            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp4")
+            ),
+        )
         os.remove(f"{rip_data['id']}.mp4")
         await rkp.delete()

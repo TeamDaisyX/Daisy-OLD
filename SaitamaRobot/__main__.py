@@ -1,33 +1,66 @@
-import importlib, traceback, html, json
+import html
+import importlib
+import json
 import re
-import random
 import time
-import subprocess
+import traceback
 from sys import argv
-from typing import Optional, List
+from typing import Optional
 
-from telegram import Message, Chat, User
-from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
-from telegram.error import BadRequest, ChatMigrated, NetworkError,TelegramError, TimedOut, Unauthorized
-from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryHandler, CallbackContext
-from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
+from telegram import (
+    Chat,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+    ParseMode,
+    Update,
+    User,
+)
+from telegram.error import (
+    BadRequest,
+    ChatMigrated,
+    NetworkError,
+    TelegramError,
+    TimedOut,
+    Unauthorized,
+)
+from telegram.ext import (
+    CallbackContext,
+    CallbackQueryHandler,
+    CommandHandler,
+    Filters,
+    MessageHandler,
+)
+from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
-from SaitamaRobot.modules.helper_funcs.admin_rights import user_can_ban
-from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
-from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
-                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK, REPOSITORY, WHITELIST_CHATS, BL_CHATS, pbot,
-                          SUPPORT_CHAT, dispatcher, StartTime, telethn, updater)
+from SaitamaRobot import (
+    ALLOW_EXCL,
+    BL_CHATS,
+    CERT_PATH,
+    DONATION_LINK,
+    LOGGER,
+    OWNER_ID,
+    PORT,
+    SUPPORT_CHAT,
+    TOKEN,
+    URL,
+    WEBHOOK,
+    WHITELIST_CHATS,
+    StartTime,
+    dispatcher,
+    pbot,
+    telethn,
+    updater,
+)
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
 from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
-from SaitamaRobot.modules.helper_funcs.alternate import typing_action
-
-
-
+from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
 Hello there, I'm [𝓛𝓲𝔃𝓪 𝓢𝓷𝓸𝔀](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
@@ -38,21 +71,17 @@ I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managi
 """
 
 buttons = [
-    [        
-        InlineKeyboardButton(
-        text="🚀 INFO 🚀", callback_data="aboutmanu_"
-        ),
+    [
+        InlineKeyboardButton(text="🚀 INFO 🚀", callback_data="aboutmanu_"),
     ],
-    [        
-        InlineKeyboardButton(
-        text="❓ Help & Commands ❓", callback_data="help_back"
-        ),
+    [
+        InlineKeyboardButton(text="❓ Help & Commands ❓", callback_data="help_back"),
     ],
     [
         InlineKeyboardButton(
-        text="💫 Add Liza to your group 💫", url="t.me/lizasnow_bot?startgroup=true"
+            text="💫 Add Liza to your group 💫", url="t.me/lizasnow_bot?startgroup=true"
         ),
-    ]
+    ],
 ]
 
 
@@ -65,8 +94,9 @@ HELP_STRINGS = f"""
    ◔ in PM: will send you your settings for all supported modules.
    ◔ in a Group: will redirect you to pm, with all that chat's settings.
 """.format(
-    dispatcher.bot.first_name, ""
-    if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
+    dispatcher.bot.first_name,
+    "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
+)
 
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
@@ -129,7 +159,6 @@ for module_name in ALL_MODULES:
         USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
 
 
-    
 # do not async
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
@@ -161,15 +190,16 @@ def start(update: Update, context: CallbackContext):
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
             elif args[0].lower().startswith("ghelp_"):
-                mod = args[0].lower().split('_', 1)[1]
+                mod = args[0].lower().split("_", 1)[1]
                 if not HELPABLE.get(mod, False):
                     return
                 send_help(
-                    update.effective_chat.id, HELPABLE[mod].__help__,
-                    InlineKeyboardMarkup([[
-                        InlineKeyboardButton(
-                            text="Back", callback_data="help_back")
-                    ]]))
+                    update.effective_chat.id,
+                    HELPABLE[mod].__help__,
+                    InlineKeyboardMarkup(
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    ),
+                )
 
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
@@ -182,22 +212,21 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
-                
-             
-            
+
         else:
             update.effective_message.reply_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60, 
+                timeout=60,
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
-            .format(uptime),
-            parse_mode=ParseMode.HTML)
-   
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime
+            ),
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
@@ -226,9 +255,8 @@ def error_handler(update, context):
         message = message[:4096]
     # Finally, send the message
     context.bot.send_message(chat_id=OWNER_ID, text=message, parse_mode=ParseMode.HTML)
-    
-    
-    
+
+
 # for test purposes
 def error_callback(update: Update, context: CallbackContext):
     error = context.error
@@ -312,7 +340,7 @@ def help_button(update, context):
                 ),
             )
 
-        # ensure no spinny white circle 
+        # ensure no spinny white circle
         context.bot.answer_callback_query(query.id)
         # query.message.delete()
     except Exception as excp:
@@ -326,128 +354,151 @@ def help_button(update, context):
             query.message.edit_text(excp.message)
             LOGGER.exception("Exception in help buttons. %s", str(query.data))
 
+
 @run_async
 def SaitamaRobot_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
             text=f"*😍 Hi again!  The name's {dispatcher.bot.first_name} 😍 \n\nAs  You I'm a next generational group management bot developed by Infinity_Bots.* "
-                 f"\n\n 🔥 Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name} 🔥"
-                 f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
-                 f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)"
-                 f"\n\n👇 You Can Know More About Me By Clicking The Below Buttons 👇",
+            f"\n\n 🔥 Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name} 🔥"
+            f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
+            f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)"
+            f"\n\n👇 You Can Know More About Me By Clicking The Below Buttons 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                  [
-                    InlineKeyboardButton(text="How To Use Me", callback_data="aboutmanu_howto"),
-                    InlineKeyboardButton(text="T & C", callback_data="aboutmanu_tac")
-                  ],
-                 [
-                    InlineKeyboardButton(text="❔Help & Commands", callback_data="help_back")
-                 ],
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")
-                 ] 
+                    [
+                        InlineKeyboardButton(
+                            text="How To Use Me", callback_data="aboutmanu_howto"
+                        ),
+                        InlineKeyboardButton(
+                            text="T & C", callback_data="aboutmanu_tac"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="❔Help & Commands", callback_data="help_back"
+                        )
+                    ],
+                    [InlineKeyboardButton(text="Back", callback_data="aboutmanu_back")],
                 ]
             ),
         )
     elif query.data == "aboutmanu_back":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60, 
-            )
-        
+            PM_START_TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+        )
+
     elif query.data == "aboutmanu_howto":
         query.message.edit_text(
             text=f"* ｢ BASIC HELP 」*"
-                 f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
-                 f"\n\nYou Can get support {dispatcher.bot.first_name} by joining [InfinityJE](https://t.me/infinityje).\n"
-                 f"",
+            f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
+            f"\n\nYou Can get support {dispatcher.bot.first_name} by joining [InfinityJE](https://t.me/infinityje).\n"
+            f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton(text="Admins Settings", callback_data="aboutmanu_permis"),
-                InlineKeyboardButton(text="Anti Spam", callback_data="aboutmanu_spamprot")],
+            reply_markup=InlineKeyboardMarkup(
                 [
-                InlineKeyboardButton(text="Back", callback_data="aboutmanu_")]
-                                               ]),
+                    [
+                        InlineKeyboardButton(
+                            text="Admins Settings", callback_data="aboutmanu_permis"
+                        ),
+                        InlineKeyboardButton(
+                            text="Anti Spam", callback_data="aboutmanu_spamprot"
+                        ),
+                    ],
+                    [InlineKeyboardButton(text="Back", callback_data="aboutmanu_")],
+                ]
+            ),
         )
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is the redisigned version of Daisy and Naruto for the best performance.*"
-                 f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
-                 f"\n\n{dispatcher.bot.first_name}'s source code was written by InukaASiTH and Imjanindu"
-                 f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
+            f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
+            f"\n\n{dispatcher.bot.first_name}'s source code was written by InukaASiTH and Imjanindu"
+            f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tac")]]),
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tac")]]
+            ),
         )
 
     elif query.data == "aboutmanu_permis":
         query.message.edit_text(
             text=f"<b> ｢ Admin Permissions 」</b>"
-                 f"\nTo avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), {dispatcher.bot.first_name} will only find out ~10 minutes later."
-                 f"\n\nIF you want to update them immediately, you can use the /admincache command,thta'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions"
-                 f"\n\nIf you are getting a message saying:"
-                 f"\n<Code>You must be this chat administrator to perform this action!</code>"
-                 f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
-                 f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
+            f"\nTo avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), {dispatcher.bot.first_name} will only find out ~10 minutes later."
+            f"\n\nIF you want to update them immediately, you can use the /admincache command,thta'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions"
+            f"\n\nIf you are getting a message saying:"
+            f"\n<Code>You must be this chat administrator to perform this action!</code>"
+            f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
+            f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
             parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]),
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
+            ),
         )
     elif query.data == "aboutmanu_spamprot":
         query.message.edit_text(
             text="* ｢ Anti-Spam Settings 」*"
-                 "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
-                 "\n_This helps protect you and your groups by removing spam flooders as quickly as possible._"
-                 "\n\n- /setflood <int/'no'/'off'>: enables or disables flood control"
-                 "\n- /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban"
-                 "\n_Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user._"
-                 "\n\n- /addblacklist <triggers>: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers."
-                 "\n- /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>: Action to perform when someone sends blacklisted words."
-                 "\n_Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, the message will immediately be deleted. A good combo is sometimes to pair this up with warn filters!_"
-                 "\n\n- /reports <on/off>: Change report setting, or view current status."
-                 "\n • If done in pm, toggles your status."
-                 "\n • If in chat, toggles that chat's status."
-                 "\n_If someone in your group thinks someone needs reporting, they now have an easy way to call all admins._"
-                 "\n\n- /lock <type>: Lock items of a certain type (not available in private)"
-                 "\n- /locktypes: Lists all possible locktypes"
-                 "\n_The locks module allows you to lock away some common items in the telegram world; the bot will automatically delete them!_"
-                 "\n\n- /addwarn <keyword> <reply message>: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn \"very angry\" This is an angry user. "
-                 "\n- /warn <userhandle>: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply."
-                 "\n- /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just kick."
-                 "\n_If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command._"
-                 "\n\n- /welcomemute <off/soft/strong>: All users that join, get muted"
-                 "\n_ A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots._",
+            "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
+            "\n_This helps protect you and your groups by removing spam flooders as quickly as possible._"
+            "\n\n- /setflood <int/'no'/'off'>: enables or disables flood control"
+            "\n- /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban"
+            "\n_Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user._"
+            "\n\n- /addblacklist <triggers>: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers."
+            "\n- /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>: Action to perform when someone sends blacklisted words."
+            "\n_Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, the message will immediately be deleted. A good combo is sometimes to pair this up with warn filters!_"
+            "\n\n- /reports <on/off>: Change report setting, or view current status."
+            "\n • If done in pm, toggles your status."
+            "\n • If in chat, toggles that chat's status."
+            "\n_If someone in your group thinks someone needs reporting, they now have an easy way to call all admins._"
+            "\n\n- /lock <type>: Lock items of a certain type (not available in private)"
+            "\n- /locktypes: Lists all possible locktypes"
+            "\n_The locks module allows you to lock away some common items in the telegram world; the bot will automatically delete them!_"
+            '\n\n- /addwarn <keyword> <reply message>: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user. '
+            "\n- /warn <userhandle>: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply."
+            "\n- /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just kick."
+            "\n_If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command._"
+            "\n\n- /welcomemute <off/soft/strong>: All users that join, get muted"
+            "\n_ A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots._",
             parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]),
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
+            ),
         )
     elif query.data == "aboutmanu_tac":
         query.message.edit_text(
             text=f"<b> ｢ Terms and Conditions 」</b>\n"
-                 f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
-                 f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
-                 f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
-                 f"\n✪ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be <b>Gbanned</b>."
-                 f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
-                 f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
-                 f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
-                 f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
-                 f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
-                 f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
+            f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
+            f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
+            f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
+            f"\n✪ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be <b>Gbanned</b>."
+            f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
+            f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
+            f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
+            f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
+            f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
+            f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
-                  [
-                    InlineKeyboardButton(text="Credits", callback_data="aboutmanu_credit"),
-                    InlineKeyboardButton(text="Back", callback_data="aboutmanu_")
-                  ]])
+                    [
+                        InlineKeyboardButton(
+                            text="Credits", callback_data="aboutmanu_credit"
+                        ),
+                        InlineKeyboardButton(text="Back", callback_data="aboutmanu_"),
+                    ]
+                ]
+            ),
         )
-        
+
+
 @run_async
 @typing_action
 def get_help(update, context):
@@ -460,12 +511,19 @@ def get_help(update, context):
             module = args[1].lower()
             update.effective_message.reply_text(
                 f"Contact me in PM to get help of {module.capitalize()}",
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        text="Help",
-                        url="t.me/{}?start=ghelp_{}".format(
-                            context.bot.username, module))
-                ]]))
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="Help",
+                                url="t.me/{}?start=ghelp_{}".format(
+                                    context.bot.username, module
+                                ),
+                            )
+                        ]
+                    ]
+                ),
+            )
             return
         update.effective_message.reply_text(
             "Contact me in PM to get the list of possible commands.",
@@ -482,7 +540,7 @@ def get_help(update, context):
                             text="Support Chat",
                             url="https://t.me/{}".format(SUPPORT_CHAT),
                         )
-                    ]
+                    ],
                 ]
             ),
         )
@@ -490,17 +548,23 @@ def get_help(update, context):
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
-        text = "Here is the available help for the *{}* module:\n".format(HELPABLE[module].__mod_name__) \
-               + HELPABLE[module].__help__
+        text = (
+            "Here is the available help for the *{}* module:\n".format(
+                HELPABLE[module].__mod_name__
+            )
+            + HELPABLE[module].__help__
+        )
         send_help(
-            chat.id, text,
+            chat.id,
+            text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back",
-                                       callback_data="help_back")]]))
+                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+            ),
+        )
 
     else:
         send_help(chat.id, HELP_STRINGS)
-        
+
 
 def send_settings(chat_id, user_id, user=False):
     if user:
@@ -532,7 +596,7 @@ def send_settings(chat_id, user_id, user=False):
                 ),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
-                )
+                ),
             )
         else:
             dispatcher.bot.send_message(
@@ -643,12 +707,19 @@ def get_settings(update: Update, context: CallbackContext):
             text = "Click here to get this chat's settings, as well as yours."
             msg.reply_text(
                 text,
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        text="Settings",
-                        url="t.me/{}?start=stngs_{}".format(
-                            context.bot.username, chat.id))
-                ]]))
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="Settings",
+                                url="t.me/{}?start=stngs_{}".format(
+                                    context.bot.username, chat.id
+                                ),
+                            )
+                        ]
+                    ]
+                ),
+            )
         else:
             text = "Click here to check your settings."
 
@@ -673,7 +744,6 @@ def migrate_chats(update, context):
 
     LOGGER.info("Successfully migrated!")
     raise DispatcherHandlerStop
-
 
 
 def is_chat_allowed(update, context):
@@ -709,26 +779,27 @@ def is_chat_allowed(update, context):
                 raise DispatcherHandlerStop
     else:
         pass
- 
+
 
 @run_async
 def donate(update: Update, context: CallbackContext):
-    user = update.effective_message.from_user
+    update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
-    bot = context.bot
+    context.bot
     if chat.type == "private":
         update.effective_message.reply_text(
-            DONATE_STRING,
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True)
+            DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
+        )
         update.effective_message.reply_text(
             "You can also donate to the person currently running me "
             "[here]({})".format(DONATION_LINK),
-            parse_mode=ParseMode.MARKDOWN)
-            
+            parse_mode=ParseMode.MARKDOWN,
+        )
+
     else:
         pass
-            
+
+
 def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
@@ -736,28 +807,31 @@ def main():
             dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "I am now online!")
         except Unauthorized:
             LOGGER.warning(
-                "Bot isnt able to send message to support_chat, go and check!")
+                "Bot isnt able to send message to support_chat, go and check!"
+            )
         except BadRequest as e:
             LOGGER.warning(e.message)
-            
+
     # test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
-    
+
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
-    
+
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(SaitamaRobot_about_callback, pattern=r"aboutmanu_")
-    
+    about_callback_handler = CallbackQueryHandler(
+        SaitamaRobot_about_callback, pattern=r"aboutmanu_"
+    )
+
     donate_handler = CommandHandler("donate", donate)
-    
+
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
     is_chat_allowed_handler = MessageHandler(Filters.group, is_chat_allowed)
 
     # dispatcher.add_handler(test_handler)
-    dispatcher.add_handler(start_handler) 
+    dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
@@ -766,7 +840,7 @@ def main():
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(is_chat_allowed_handler)
     dispatcher.add_handler(donate_handler)
-    
+
     dispatcher.add_error_handler(error_handler)
 
     if WEBHOOK:
@@ -782,14 +856,13 @@ def main():
     else:
         LOGGER.info("Using long polling.")
         updater.start_polling(timeout=15, read_latency=4, clean=True)
-    
+
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
     else:
         telethn.run_until_disconnected()
 
     updater.idle()
-
 
 
 if __name__ == "__main__":

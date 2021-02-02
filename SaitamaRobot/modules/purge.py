@@ -1,13 +1,17 @@
+import asyncio
+import time
+
+from telethon import events
+from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
+from telethon.tl.types import ChannelParticipantsAdmins
+
+from SaitamaRobot import DEV_USERS, telethn
 from SaitamaRobot.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )
-from SaitamaRobot import telethn, DEV_USERS
-import time
-import asyncio
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
+
+
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
@@ -26,7 +30,9 @@ async def purge(event):
     start = time.perf_counter()
     msgs = []
 
-    if not await is_administrator(user_id=event.sender_id, message=event) and event.from_id not in [1087968824]:                           
+    if not await is_administrator(
+        user_id=event.sender_id, message=event
+    ) and event.from_id not in [1087968824]:
         await event.reply("You're Not An Admin!")
         return
 
@@ -64,7 +70,7 @@ async def purge(event):
         await asyncio.sleep(5)
         await del_res.delete()
 
-        
+
 @telethn.on(events.NewMessage(pattern="^[!/]del$"))
 async def delete_messages(event):
     if event.from_id is None:
@@ -88,7 +94,7 @@ async def delete_messages(event):
     del_message = [message, event.message]
     await event.client.delete_messages(chat, del_message)
 
-    
+
 __help__ = """
 *Admin only:*
  ✪ /del*:* deletes the message you replied to.

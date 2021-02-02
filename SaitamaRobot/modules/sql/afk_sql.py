@@ -1,7 +1,8 @@
 import threading
 
-from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, UnicodeText
+
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 
 class AFK(BASE):
@@ -83,9 +84,7 @@ def __load_afk_users():
     global AFK_USERS
     try:
         all_afk = SESSION.query(AFK).all()
-        AFK_USERS = {
-            user.user_id: user.reason for user in all_afk if user.is_afk
-        }
+        AFK_USERS = {user.user_id: user.reason for user in all_afk if user.is_afk}
     finally:
         SESSION.close()
 
