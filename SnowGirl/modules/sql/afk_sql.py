@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Boolean, Column, Integer, UnicodeText
 
-from SaitamaRobot.modules.sql import BASE, SESSION
+from SnowGirl.modules.sql import BASE, SESSION
 
 
 class AFK(BASE):

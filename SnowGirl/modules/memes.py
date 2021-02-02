@@ -9,8 +9,8 @@ from PIL import Image
 from spongemock import spongemock
 from telegram.ext import run_async
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SnowGirl import dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
 
 
 @run_async

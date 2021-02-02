@@ -5,7 +5,7 @@ from cachetools import TTLCache
 from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
 
-from SaitamaRobot import (
+from SnowGirl import (
     DEL_CMDS,
     DEMONS,
     DEV_USERS,
@@ -389,6 +389,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from SaitamaRobot.modules import connection
+from SnowGirl.modules import connection
 
 connected = connection.connected

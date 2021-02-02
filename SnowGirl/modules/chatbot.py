@@ -17,11 +17,11 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import SaitamaRobot.modules.sql.chatbot_sql as sql
-from SaitamaRobot import AI_API_KEY, SUPPORT_CHAT, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
-from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
-from SaitamaRobot.modules.log_channel import gloggable
+import SnowGirl.modules.sql.chatbot_sql as sql
+from SnowGirl import AI_API_KEY, SUPPORT_CHAT, dispatcher
+from SnowGirl.modules.helper_funcs.chat_status import user_admin
+from SnowGirl.modules.helper_funcs.filters import CustomFilters
+from SnowGirl.modules.log_channel import gloggable
 
 CoffeeHouseAPI = API(AI_API_KEY)
 api_client = LydiaAI(CoffeeHouseAPI)

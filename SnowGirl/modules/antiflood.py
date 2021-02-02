@@ -12,18 +12,18 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import TIGERS, WOLVES, dispatcher
-from SaitamaRobot.modules.connection import connected
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+from SnowGirl import TIGERS, WOLVES, dispatcher
+from SnowGirl.modules.connection import connected
+from SnowGirl.modules.helper_funcs.alternate import send_message
+from SnowGirl.modules.helper_funcs.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
-from SaitamaRobot.modules.log_channel import loggable
-from SaitamaRobot.modules.sql import antiflood_sql as sql
+from SnowGirl.modules.helper_funcs.string_handling import extract_time
+from SnowGirl.modules.log_channel import loggable
+from SnowGirl.modules.sql import antiflood_sql as sql
 
 FLOOD_GROUP = 3
 

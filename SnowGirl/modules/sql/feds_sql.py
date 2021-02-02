@@ -3,8 +3,8 @@ import threading
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.sql import BASE, SESSION
+from SnowGirl import dispatcher
+from SnowGirl.modules.sql import BASE, SESSION
 
 
 class Federations(BASE):

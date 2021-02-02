@@ -9,15 +9,15 @@ from telegram.ext import (
     run_async,
 )
 
-from SaitamaRobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+from SnowGirl import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from SaitamaRobot.modules.sql import cleaner_sql as sql
+from SnowGirl.modules.sql import cleaner_sql as sql
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")

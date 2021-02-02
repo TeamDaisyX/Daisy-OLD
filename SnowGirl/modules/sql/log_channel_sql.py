@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String, distinct, func
 
-from SaitamaRobot.modules.sql import BASE, SESSION
+from SnowGirl.modules.sql import BASE, SESSION
 
 
 class GroupLogs(BASE):

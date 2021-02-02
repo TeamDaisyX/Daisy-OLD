@@ -5,10 +5,10 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackQueryHandler, CommandHandler, run_async
 
-import SaitamaRobot.modules.sql.connection_sql as sql
-from SaitamaRobot import DEV_USERS, DRAGONS, dispatcher
-from SaitamaRobot.modules.helper_funcs import chat_status
-from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
+import SnowGirl.modules.sql.connection_sql as sql
+from SnowGirl import DEV_USERS, DRAGONS, dispatcher
+from SnowGirl.modules.helper_funcs import chat_status
+from SnowGirl.modules.helper_funcs.alternate import send_message, typing_action
 
 user_admin = chat_status.user_admin
 

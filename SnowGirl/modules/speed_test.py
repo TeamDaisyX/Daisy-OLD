@@ -2,9 +2,9 @@ import speedtest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
-from SaitamaRobot import DEV_USERS, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SnowGirl import DEV_USERS, dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.chat_status import dev_plus
 
 
 def convert(speed):

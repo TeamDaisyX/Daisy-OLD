@@ -12,10 +12,10 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import DRAGONS, LOGGER, TIGERS, WOLVES, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from SaitamaRobot.modules.log_channel import loggable
-from SaitamaRobot.modules.sql import reporting_sql as sql
+from SnowGirl import DRAGONS, LOGGER, TIGERS, WOLVES, dispatcher
+from SnowGirl.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from SnowGirl.modules.log_channel import loggable
+from SnowGirl.modules.sql import reporting_sql as sql
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = DRAGONS + TIGERS + WOLVES

@@ -4,7 +4,7 @@ from telethon import *
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from SaitamaRobot.events import register
+from SnowGirl.events import register
 
 
 async def is_register_admin(chat, user):

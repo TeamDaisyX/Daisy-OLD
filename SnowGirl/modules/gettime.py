@@ -5,8 +5,8 @@ import requests
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 
-from SaitamaRobot import TIME_API_KEY, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SnowGirl import TIME_API_KEY, dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
 
 
 def generate_time(to_find: str, findtype: List[str]) -> str:

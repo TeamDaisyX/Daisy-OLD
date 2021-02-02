@@ -13,8 +13,8 @@ from telethon import events
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 
-import SaitamaRobot.modules.sql.userinfo_sql as sql
-from SaitamaRobot import (
+import SnowGirl.modules.sql.userinfo_sql as sql
+from SnowGirl import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -25,14 +25,14 @@ from SaitamaRobot import (
     dispatcher,
     sw,
 )
-from SaitamaRobot import telethn as SaitamaTelethonClient
-from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
-from SaitamaRobot.modules.sql.afk_sql import check_afk_status, is_afk
-from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
-from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
+from SnowGirl import telethn as SaitamaTelethonClient
+from SnowGirl.__main__ import STATS, TOKEN, USER_INFO
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.chat_status import sudo_plus
+from SnowGirl.modules.helper_funcs.extraction import extract_user
+from SnowGirl.modules.sql.afk_sql import check_afk_status, is_afk
+from SnowGirl.modules.sql.global_bans_sql import is_user_gbanned
+from SnowGirl.modules.sql.users_sql import get_user_num_chats
 
 
 def no_by_per(totalhp, percentage):

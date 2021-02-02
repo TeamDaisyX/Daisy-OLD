@@ -5,8 +5,8 @@ from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telethon import events
 
-from SaitamaRobot import dispatcher, telethn
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SnowGirl import dispatcher, telethn
+from SnowGirl.modules.helper_funcs.chat_status import dev_plus
 
 DEBUG_MODE = False
 

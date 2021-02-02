@@ -15,23 +15,23 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from SaitamaRobot import DRAGONS, LOGGER, dispatcher
-from SaitamaRobot.modules.connection import connected
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import extract_text
-from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
-from SaitamaRobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from SaitamaRobot.modules.helper_funcs.misc import build_keyboard_parser
-from SaitamaRobot.modules.helper_funcs.msg_types import get_filter_type
-from SaitamaRobot.modules.helper_funcs.string_handling import (
+from SnowGirl import DRAGONS, LOGGER, dispatcher
+from SnowGirl.modules.connection import connected
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message, typing_action
+from SnowGirl.modules.helper_funcs.chat_status import user_admin
+from SnowGirl.modules.helper_funcs.extraction import extract_text
+from SnowGirl.modules.helper_funcs.filters import CustomFilters
+from SnowGirl.modules.helper_funcs.handlers import MessageHandlerChecker
+from SnowGirl.modules.helper_funcs.misc import build_keyboard_parser
+from SnowGirl.modules.helper_funcs.msg_types import get_filter_type
+from SnowGirl.modules.helper_funcs.string_handling import (
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
     split_quotes,
 )
-from SaitamaRobot.modules.sql import cust_filters_sql as sql
+from SnowGirl.modules.sql import cust_filters_sql as sql
 
 HANDLER_GROUP = 10
 

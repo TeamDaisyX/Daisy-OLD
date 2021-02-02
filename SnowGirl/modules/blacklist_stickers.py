@@ -7,16 +7,16 @@ from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandle
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html, mention_markdown
 
-import SaitamaRobot.modules.sql.blsticker_sql as sql
-from SaitamaRobot import LOGGER, dispatcher
-from SaitamaRobot.modules.connection import connected
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from SaitamaRobot.modules.helper_funcs.misc import split_message
-from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
-from SaitamaRobot.modules.log_channel import loggable
-from SaitamaRobot.modules.warns import warn
+import SnowGirl.modules.sql.blsticker_sql as sql
+from SnowGirl import LOGGER, dispatcher
+from SnowGirl.modules.connection import connected
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message
+from SnowGirl.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from SnowGirl.modules.helper_funcs.misc import split_message
+from SnowGirl.modules.helper_funcs.string_handling import extract_time
+from SnowGirl.modules.log_channel import loggable
+from SnowGirl.modules.warns import warn
 
 
 @run_async

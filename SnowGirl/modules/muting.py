@@ -5,20 +5,20 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import LOGGER, TIGERS, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+from SnowGirl import LOGGER, TIGERS, dispatcher
+from SnowGirl.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
     is_user_admin,
     user_admin,
 )
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from SnowGirl.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
-from SaitamaRobot.modules.log_channel import loggable
+from SnowGirl.modules.helper_funcs.string_handling import extract_time
+from SnowGirl.modules.log_channel import loggable
 
 
 @run_async

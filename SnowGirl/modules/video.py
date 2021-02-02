@@ -16,8 +16,8 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from SaitamaRobot.events import register
-from SaitamaRobot.utils import progress
+from SnowGirl.events import register
+from SnowGirl.utils import progress
 
 try:
     from youtubesearchpython import SearchVideos

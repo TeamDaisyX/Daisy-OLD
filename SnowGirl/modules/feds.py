@@ -22,8 +22,8 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html, mention_markdown
 
-import SaitamaRobot.modules.sql.feds_sql as sql
-from SaitamaRobot import (
+import SnowGirl.modules.sql.feds_sql as sql
+from SnowGirl import (
     DRAGONS,
     EVENT_LOGS,
     LOGGER,
@@ -32,15 +32,15 @@ from SaitamaRobot import (
     WOLVES,
     dispatcher,
 )
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message
+from SnowGirl.modules.helper_funcs.chat_status import is_user_admin
+from SnowGirl.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from SaitamaRobot.modules.helper_funcs.string_handling import markdown_parser
+from SnowGirl.modules.helper_funcs.string_handling import markdown_parser
 
 # Hello bot owner, I spended for feds many hours of my life, Please don't remove this if you still respect MrYacha and peaktogoo and AyraHikari too
 # Federation by MrYacha 2018-2019

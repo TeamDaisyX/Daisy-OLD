@@ -14,19 +14,19 @@ from telegram.ext import CommandHandler, Filters, MessageHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
-import SaitamaRobot.modules.sql.locks_sql as sql
-from SaitamaRobot import DRAGONS, LOGGER, dispatcher
-from SaitamaRobot.modules.connection import connected
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+import SnowGirl.modules.sql.locks_sql as sql
+from SnowGirl import DRAGONS, LOGGER, dispatcher
+from SnowGirl.modules.connection import connected
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message, typing_action
+from SnowGirl.modules.helper_funcs.chat_status import (
     can_delete,
     is_bot_admin,
     is_user_admin,
     user_admin,
     user_not_admin,
 )
-from SaitamaRobot.modules.log_channel import loggable
+from SnowGirl.modules.log_channel import loggable
 
 ad = AlphabetDetector()
 

@@ -22,8 +22,8 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
-import SaitamaRobot.modules.sql.welcome_sql as sql
-from SaitamaRobot import (
+import SnowGirl.modules.sql.welcome_sql as sql
+from SnowGirl import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -35,18 +35,18 @@ from SaitamaRobot import (
     dispatcher,
     sw,
 )
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+from SnowGirl.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from SaitamaRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from SaitamaRobot.modules.helper_funcs.msg_types import get_welcome_type
-from SaitamaRobot.modules.helper_funcs.string_handling import (
+from SnowGirl.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from SnowGirl.modules.helper_funcs.msg_types import get_welcome_type
+from SnowGirl.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from SaitamaRobot.modules.log_channel import loggable
-from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
+from SnowGirl.modules.log_channel import loggable
+from SnowGirl.modules.sql.global_bans_sql import is_user_gbanned
 
 VALID_WELCOME_FORMATTERS = [
     "first",

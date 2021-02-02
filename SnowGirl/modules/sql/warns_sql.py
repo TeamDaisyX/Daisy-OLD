@@ -3,7 +3,7 @@ import threading
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText, distinct, func
 from sqlalchemy.dialects import postgresql
 
-from SaitamaRobot.modules.sql import BASE, SESSION
+from SnowGirl.modules.sql import BASE, SESSION
 
 
 class Warns(BASE):

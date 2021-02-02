@@ -26,9 +26,9 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from SaitamaRobot import DRAGONS as SUDO_USERS
-from SaitamaRobot import pbot
-from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
+from SnowGirl import DRAGONS as SUDO_USERS
+from SnowGirl import pbot
+from SnowGirl.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 

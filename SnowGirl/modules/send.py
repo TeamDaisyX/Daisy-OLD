@@ -1,9 +1,9 @@
 from telegram.ext import run_async
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
+from SnowGirl import dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message
+from SnowGirl.modules.helper_funcs.chat_status import user_admin
 
 
 @run_async

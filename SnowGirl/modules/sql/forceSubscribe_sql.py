@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Numeric, String
 
-from SaitamaRobot.modules.sql import BASE, SESSION
+from SnowGirl.modules.sql import BASE, SESSION
 
 
 class forceSubscribe(BASE):

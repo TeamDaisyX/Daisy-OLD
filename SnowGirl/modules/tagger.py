@@ -5,11 +5,11 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackQueryHandler, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import typing_action
-from SaitamaRobot.modules.helper_funcs.chat_status import bot_admin, user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
+from SnowGirl import dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import typing_action
+from SnowGirl.modules.helper_funcs.chat_status import bot_admin, user_admin
+from SnowGirl.modules.helper_funcs.extraction import extract_user_and_text
 
 
 @run_async

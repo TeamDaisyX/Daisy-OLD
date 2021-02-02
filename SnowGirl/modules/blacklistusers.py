@@ -6,8 +6,8 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-import SaitamaRobot.modules.sql.blacklistusers_sql as sql
-from SaitamaRobot import (
+import SnowGirl.modules.sql.blacklistusers_sql as sql
+from SnowGirl import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -16,12 +16,12 @@ from SaitamaRobot import (
     WOLVES,
     dispatcher,
 )
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from SnowGirl.modules.helper_funcs.chat_status import dev_plus
+from SnowGirl.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from SaitamaRobot.modules.log_channel import gloggable
+from SnowGirl.modules.log_channel import gloggable
 
 BLACKLISTWHITELIST = [OWNER_ID] + DEV_USERS + DRAGONS + WOLVES + DEMONS
 BLABLEUSERS = [OWNER_ID] + DEV_USERS

@@ -5,8 +5,8 @@ import requests
 from telethon import types
 from telethon.tl import functions
 
-from SaitamaRobot import telethn
-from SaitamaRobot.events import register
+from SnowGirl import telethn
+from SnowGirl.events import register
 
 langi = "en"
 

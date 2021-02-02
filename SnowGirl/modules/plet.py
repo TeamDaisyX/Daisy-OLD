@@ -7,9 +7,9 @@ from PIL import Image
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.thonkify_dict import thonkifydict
+from SnowGirl import dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.thonkify_dict import thonkifydict
 
 
 @run_async

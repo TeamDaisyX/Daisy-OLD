@@ -5,10 +5,10 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import DRAGONS, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import (
+from SnowGirl import DRAGONS, dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
+from SnowGirl.modules.helper_funcs.alternate import send_message
+from SnowGirl.modules.helper_funcs.chat_status import (
     ADMIN_CACHE,
     bot_admin,
     can_pin,
@@ -16,11 +16,11 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (
     connection_status,
     user_admin,
 )
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from SnowGirl.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from SaitamaRobot.modules.log_channel import loggable
+from SnowGirl.modules.log_channel import loggable
 
 
 @run_async

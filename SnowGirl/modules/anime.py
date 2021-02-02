@@ -8,8 +8,8 @@ import requests
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
-from SaitamaRobot import DEV_USERS, DRAGONS, OWNER_ID, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SnowGirl import DEV_USERS, DRAGONS, OWNER_ID, dispatcher
+from SnowGirl.modules.disable import DisableAbleCommandHandler
 
 info_btn = "More Information"
 kaizoku_btn = "Kaizoku ☠️"

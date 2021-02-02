@@ -6,8 +6,8 @@ from time import sleep
 from telegram import TelegramError, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SnowGirl import dispatcher
+from SnowGirl.modules.helper_funcs.chat_status import dev_plus
 
 
 @run_async

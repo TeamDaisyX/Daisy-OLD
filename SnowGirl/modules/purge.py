@@ -5,8 +5,8 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from SaitamaRobot import DEV_USERS, telethn
-from SaitamaRobot.modules.helper_funcs.telethn.chatstatus import (
+from SnowGirl import DEV_USERS, telethn
+from SnowGirl.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )

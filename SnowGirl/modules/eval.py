@@ -9,8 +9,8 @@ from contextlib import redirect_stdout
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
-from SaitamaRobot import LOGGER, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SnowGirl import LOGGER, dispatcher
+from SnowGirl.modules.helper_funcs.chat_status import dev_plus
 
 namespaces = {}
 
@@ -77,7 +77,7 @@ def do(func, bot, update):
 
     os.chdir(os.getcwd())
     with open(
-        os.path.join(os.getcwd(), "SaitamaRobot/modules/helper_funcs/temp.txt"), "w"
+        os.path.join(os.getcwd(), "SnowGirl/modules/helper_funcs/temp.txt"), "w"
     ) as temp:
         temp.write(body)
 
