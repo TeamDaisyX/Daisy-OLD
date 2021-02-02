@@ -17,6 +17,14 @@
          "plan": "heroku-postgresql"
       }
    ],
+   "buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "heroku/python"
+    }     
+  ],      
    "env": {
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
