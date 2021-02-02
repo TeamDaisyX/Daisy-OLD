@@ -2,6 +2,13 @@ __help__ = """
 ** GPS **
  - /gps <Place> : Show Location on a map
  
+ ** Blue Cleaner **
+ - /cleanblue on : Turn bluetext cleaner on
+ - /cleanblue off : Turn bluetext cleaner off
+ 
+ ** Send **
+ - /snd <Text> : Message like the bot
+ 
 ** Grammer **
  - /t <reply> : Show grammer corrected text
  
@@ -17,7 +24,5 @@ __help__ = """
  
 ** More **
  - /phone <tp no> : Track Phone no
- 
- 
 """
 __mod_name__ = "More Tools"
