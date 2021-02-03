@@ -1,5 +1,6 @@
 
 # Liza Snow
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Infinity-Bots/LizaSnowGirl.git)
 
 ## How to setup/deploy.
 
