@@ -1,18 +1,14 @@
-from DaisyX import CMD_HELP
-from DaisyX import tbot
-import json
 import os
-import time
+
 import cloudmersive_ocr_api_client
 from cloudmersive_ocr_api_client.rest import ApiException
 from pymongo import MongoClient
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-
+from DaisyX import CMD_HELP, tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -21,28 +17,33 @@ db = client["missjuliarobot"]
 approved_users = db.approve
 
 configuration = cloudmersive_ocr_api_client.Configuration()
-configuration.api_key['Apikey'] = VIRUS_API_KEY
-api_instance = cloudmersive_ocr_api_client.ImageOcrApi(cloudmersive_ocr_api_client.ApiClient(configuration))
+configuration.api_key["Apikey"] = VIRUS_API_KEY
+api_instance = cloudmersive_ocr_api_client.ImageOcrApi(
+    cloudmersive_ocr_api_client.ApiClient(configuration)
+)
+
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
-            (await
-             tbot(functions.channels.GetParticipantRequest(chat,
-                                                           user))).participant,
+            (
+                await tbot(functions.channels.GetParticipantRequest(chat, user))
+            ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
     if isinstance(chat, types.InputPeerChat):
 
         ui = await tbot.get_peer_id(user)
-        ps = (await tbot(functions.messages.GetFullChatRequest(chat.chat_id)
-                         )).full_chat.participants.participants
+        ps = (
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
+        ).full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
+
 
 @register(pattern="^/img2text (.*)")
 async def parse_ocr_space_api(event):
@@ -65,16 +66,20 @@ async def parse_ocr_space_api(event):
     lang_code = event.pattern_match.group(1)
     language = lang_code
     downloaded_file_name = await tbot.download_media(
-        await event.get_reply_message(), TEMP_DOWNLOAD_DIRECTORY)
+        await event.get_reply_message(), TEMP_DOWNLOAD_DIRECTORY
+    )
     try:
-     api_response = api_instance.image_ocr_post(downloaded_file_name, language=language)
+        api_response = api_instance.image_ocr_post(
+            downloaded_file_name, language=language
+        )
     except ApiException as e:
-     print(e)
-     os.remove(downloaded_file_name)
-     await gg.edit("Some error occurred.")
-     return
+        print(e)
+        os.remove(downloaded_file_name)
+        await gg.edit("Some error occurred.")
+        return
     await gg.edit("{}".format(api_response.text_result))
     os.remove(downloaded_file_name)
+
 
 @register(pattern="^/img2textlang")
 async def get_ocr_languages(event):
@@ -196,6 +201,7 @@ YID (Yiddish) (optional)
     """
     await event.reply(languages)
 
+
 file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
@@ -205,9 +211,4 @@ __help__ = """
  - /img2textlang: List all the available languages
 """
 
-CMD_HELP.update({
-    file_helpo: [
-        file_helpo,
-        __help__
-    ]
-})
+CMD_HELP.update({file_helpo: [file_helpo, __help__]})
