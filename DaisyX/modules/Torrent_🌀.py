@@ -1,18 +1,15 @@
-from DaisyX import telethn as tbot
 import os
 import subprocess
-import urllib.request
-from typing import List
-from typing import Optional
+
 import telegraph
 from pymongo import MongoClient
 from telegraph import Telegraph
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -74,6 +71,7 @@ async def tor_search(event):
         link_preview=False,
     )
 
+
 @register(pattern="^/helptorrent$")
 async def howdoi(event):
     if event.fwd_from:
@@ -84,7 +82,6 @@ async def howdoi(event):
     os.system("youtube-dl https://vimeo.com/486829727")
     await tbot.send_file(event.chat_id, "Torrent-486829727.mp4", reply_to=c)
     os.remove("Torrent-486829727.mp4")
-
 
 
 __help__ = """
