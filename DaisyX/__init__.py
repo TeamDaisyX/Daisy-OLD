@@ -84,6 +84,7 @@ if ENV:
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BOT_ID = int(os.environ.get("BOT_ID", None))
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
