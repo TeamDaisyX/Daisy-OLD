@@ -1,10 +1,8 @@
-import os
-
 from pymongo import MongoClient
 from telethon import *
 from telethon.tl import *
 
-from DaisyX import BOT_ID, CMD_HELP, MONGO_DB_URI, tbot
+from DaisyX import BOT_ID, MONGO_DB_URI, tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -392,8 +390,6 @@ async def stop(event):
                 await event.reply("Done you can now create a new poll.")
             except Exception:
                 await event.reply("Seems like you haven't created any poll yet !")
-
-
 
 
 __help__ = """
