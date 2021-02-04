@@ -54,3 +54,4 @@ google-api-python-client
 pymongo==3.11.0
 howdoi==2.0.10
 gTTs-token
+dnspython
