@@ -2,15 +2,14 @@ import os
 from urllib.request import urlopen
 
 import bs4
-from julia import *
-from julia import telethn as tbot
+from DaisyX import *
+from DaisyX import telethn as tbot
 from pymongo import MongoClient
 from telethon import *
 from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from DaisyX import CMD_HELP
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -396,14 +395,10 @@ async def paginate_nextnews(event):
     )
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
-
 __help__ = """
  - /news <country code> <LanguageCode>: Returns today's American News Headlines (ONLY WORKS IN PM)
 **Example:**
  - /news US en: This will return news for US in english language.
 """
 
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
+__mod_name__ = "News 🗞️.py"
