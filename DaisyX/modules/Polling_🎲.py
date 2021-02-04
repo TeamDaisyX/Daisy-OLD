@@ -2,7 +2,8 @@ from pymongo import MongoClient
 from telethon import *
 from telethon.tl import *
 
-from DaisyX import BOT_ID, MONGO_DB_URI, tbot
+from DaisyX import BOT_ID, MONGO_DB_URI, 
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
