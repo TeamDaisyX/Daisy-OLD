@@ -86,6 +86,7 @@ if ENV:
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BOT_ID = int(os.environ.get("BOT_ID", None))
+    REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
     SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
