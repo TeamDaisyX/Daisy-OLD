@@ -1,20 +1,16 @@
-
-from DaisyX import telethn as tbot
 import os
 import subprocess
 
 import requests
-from gtts import gTTS
-from gtts import gTTSError
+from gtts import gTTS, gTTSError
 from pymongo import MongoClient
 from requests import get
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -27,16 +23,17 @@ async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
-            (await
-             tbot(functions.channels.GetParticipantRequest(chat,
-                                                           user))).participant,
+            (
+                await tbot(functions.channels.GetParticipantRequest(chat, user))
+            ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
     if isinstance(chat, types.InputPeerChat):
 
         ui = await tbot.get_peer_id(user)
-        ps = (await tbot(functions.messages.GetFullChatRequest(chat.chat_id)
-                         )).full_chat.participants.participants
+        ps = (
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
+        ).full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
@@ -65,14 +62,15 @@ async def _(event):
         server = f"https://api.wolframalpha.com/v1/spoken?appid={appid}&i={i}"
         res = get(server)
         if res == "Wolfram Alpha did not understand your input":
-           await event.reply("Sorry I can't understand")
-           return   
+            await event.reply("Sorry I can't understand")
+            return
         await event.reply(f"**{i}**\n\n" + res.text, parse_mode="markdown")
 
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         required_file_name = await tbot.download_media(
-            previous_message, TEMP_DOWNLOAD_DIRECTORY)
+            previous_message, TEMP_DOWNLOAD_DIRECTORY
+        )
         if IBM_WATSON_CRED_URL is None or IBM_WATSON_CRED_PASSWORD is None:
             await event.reply(
                 "You need to set the required ENV variables for this module. \nModule stopping"
@@ -93,11 +91,9 @@ async def _(event):
                 # process the json to appropriate string format
                 results = r["results"]
                 transcript_response = ""
-                transcript_confidence = ""
                 for alternative in results:
                     alternatives = alternative["alternatives"][0]
-                    transcript_response += " " + str(
-                        alternatives["transcript"])
+                    transcript_response += " " + str(alternatives["transcript"])
                 if transcript_response != "":
                     string_to_show = "{}".format(transcript_response)
                     appid = WOLFRAM_ID
@@ -124,7 +120,9 @@ async def _(event):
                         )
                     os.remove("results.mp3")
                     os.remove(required_file_name)
-                elif transcript_response == "Wolfram Alpha did not understand your input":
+                elif (
+                    transcript_response == "Wolfram Alpha did not understand your input"
+                ):
                     try:
                         answer = "Sorry I can't understand"
                         tts = gTTS(answer, tld="com", lang="en")
