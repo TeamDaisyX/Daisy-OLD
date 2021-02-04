@@ -41,7 +41,7 @@ async def is_register_admin(chat, user):
     return None
 
 
-@register(pattern=r"^/julia(?: |$)([\s\S]*)")
+@register(pattern=r"^/daisy(?: |$)([\s\S]*)")
 async def _(event):
     if event.fwd_from:
         return
