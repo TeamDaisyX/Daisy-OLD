@@ -8,7 +8,7 @@ from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-from DaisyX import CMD_HELP, tbot
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -202,13 +202,11 @@ YID (Yiddish) (optional)
     await event.reply(languages)
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
 
 __help__ = """
  - /img2text <lang>: Type in reply to a image to extract the text from it
  - /img2textlang: List all the available languages
 """
 
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
+
+__mod_name__ = "Image2Text 📷"
