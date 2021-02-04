@@ -13,7 +13,7 @@ jobs:
       - name: Pull All Updates
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Welcome to Liza Snow'
+          commit_message: 'Welcome to Daisy X'
           commit_options: '--no-verify'
           repository: .
           commit_user_name: InukaAsith
