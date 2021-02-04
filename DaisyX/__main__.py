@@ -34,7 +34,7 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
-from SnowGirl import (
+from DaisyX import (
     ALLOW_EXCL,
     BL_CHATS,
     CERT_PATH,
@@ -56,11 +56,11 @@ from SnowGirl import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from SnowGirl.modules import ALL_MODULES
-from SnowGirl.modules.helper_funcs.alternate import typing_action
-from SnowGirl.modules.helper_funcs.chat_status import is_user_admin
-from SnowGirl.modules.helper_funcs.misc import paginate_modules
-from SnowGirl.modules.helper_funcs.readable_time import get_readable_time
+from DaisyX.modules import ALL_MODULES
+from DaisyX.modules.helper_funcs.alternate import typing_action
+from DaisyX.modules.helper_funcs.chat_status import is_user_admin
+from DaisyX.modules.helper_funcs.misc import paginate_modules
+from DaisyX.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
 Hello there, I'm [𝓛𝓲𝔃𝓪 𝓢𝓷𝓸𝔀](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
@@ -118,7 +118,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("SnowGirl.modules." + module_name)
+    imported_module = importlib.import_module("DaisyX.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -356,7 +356,7 @@ def help_button(update, context):
 
 
 @run_async
-def SnowGirl_about_callback(update, context):
+def DaisyX_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
@@ -822,7 +822,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(
-        SnowGirl_about_callback, pattern=r"aboutmanu_"
+        DaisyX_about_callback, pattern=r"aboutmanu_"
     )
 
     donate_handler = CommandHandler("donate", donate)

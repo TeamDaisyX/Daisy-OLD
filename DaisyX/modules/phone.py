@@ -3,9 +3,9 @@ import json
 import requests
 from telegram.ext import CommandHandler, run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.helper_funcs.alternate import send_message
-from SnowGirl.modules.helper_funcs.chat_status import user_admin
+from DaisyX import dispatcher
+from DaisyX.modules.helper_funcs.alternate import send_message
+from DaisyX.modules.helper_funcs.chat_status import user_admin
 
 
 @run_async

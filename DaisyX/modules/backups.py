@@ -7,22 +7,22 @@ from telegram import Message, ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async
 
-# from SnowGirl.modules.sql import warns_sql as warnssql
-import SnowGirl.modules.sql.blacklist_sql as blacklistsql
+# from DaisyX.modules.sql import warns_sql as warnssql
+import DaisyX.modules.sql.blacklist_sql as blacklistsql
 
-# from SnowGirl.modules.sql import cust_filters_sql as filtersql
-# import SnowGirl.modules.sql.welcome_sql as welcsql
-import SnowGirl.modules.sql.locks_sql as locksql
-import SnowGirl.modules.sql.notes_sql as sql
+# from DaisyX.modules.sql import cust_filters_sql as filtersql
+# import DaisyX.modules.sql.welcome_sql as welcsql
+import DaisyX.modules.sql.locks_sql as locksql
+import DaisyX.modules.sql.notes_sql as sql
 
-# from SnowGirl.modules.rules import get_rules
-import SnowGirl.modules.sql.rules_sql as rulessql
-from SnowGirl import JOIN_LOGGER, LOGGER, OWNER_ID, dispatcher
-from SnowGirl.__main__ import DATA_IMPORT
-from SnowGirl.modules.connection import connected
-from SnowGirl.modules.helper_funcs.alternate import typing_action
-from SnowGirl.modules.helper_funcs.chat_status import user_admin
-from SnowGirl.modules.sql import disable_sql as disabledsql
+# from DaisyX.modules.rules import get_rules
+import DaisyX.modules.sql.rules_sql as rulessql
+from DaisyX import JOIN_LOGGER, LOGGER, OWNER_ID, dispatcher
+from DaisyX.__main__ import DATA_IMPORT
+from DaisyX.modules.connection import connected
+from DaisyX.modules.helper_funcs.alternate import typing_action
+from DaisyX.modules.helper_funcs.chat_status import user_admin
+from DaisyX.modules.sql import disable_sql as disabledsql
 
 
 @run_async

@@ -3,7 +3,7 @@ from functools import wraps
 
 from telegram.ext import CallbackContext
 
-from SnowGirl.modules.helper_funcs.misc import is_module_loaded
+from DaisyX.modules.helper_funcs.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -13,9 +13,9 @@ if is_module_loaded(FILENAME):
     from telegram.ext import CommandHandler, JobQueue, run_async
     from telegram.utils.helpers import escape_markdown
 
-    from SnowGirl import EVENT_LOGS, LOGGER, dispatcher
-    from SnowGirl.modules.helper_funcs.chat_status import user_admin
-    from SnowGirl.modules.sql import log_channel_sql as sql
+    from DaisyX import EVENT_LOGS, LOGGER, dispatcher
+    from DaisyX.modules.helper_funcs.chat_status import user_admin
+    from DaisyX.modules.sql import log_channel_sql as sql
 
     def loggable(func):
         @wraps(func)

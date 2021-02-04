@@ -1,3 +1,3 @@
-worker: python3 -m SnowGirl
-web: python3 -m SnowGirl
+worker: python3 -m DaisyX
+web: python3 -m DaisyX
 ps:scale worker=1

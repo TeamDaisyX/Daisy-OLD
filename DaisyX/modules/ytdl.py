@@ -14,7 +14,7 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from SnowGirl.events import register as saitama
+from DaisyX.events import register as saitama
 
 
 @saitama(pattern="^/yt(audio|video) (.*)")

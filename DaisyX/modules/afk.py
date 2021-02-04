@@ -5,13 +5,13 @@ from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler, run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import (
+from DaisyX import dispatcher
+from DaisyX.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from SnowGirl.modules.sql import afk_sql as sql
-from SnowGirl.modules.users import get_user_id
+from DaisyX.modules.sql import afk_sql as sql
+from DaisyX.modules.users import get_user_id
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8

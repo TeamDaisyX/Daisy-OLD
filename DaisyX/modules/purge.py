@@ -5,8 +5,8 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from SnowGirl import DEV_USERS, telethn
-from SnowGirl.modules.helper_funcs.telethn.chatstatus import (
+from DaisyX import DEV_USERS, telethn
+from DaisyX.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )

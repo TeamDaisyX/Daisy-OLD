@@ -1,9 +1,9 @@
 from telegram.ext import run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.alternate import send_message
-from SnowGirl.modules.helper_funcs.chat_status import user_admin
+from DaisyX import dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.alternate import send_message
+from DaisyX.modules.helper_funcs.chat_status import user_admin
 
 
 @run_async

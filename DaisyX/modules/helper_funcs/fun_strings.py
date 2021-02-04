@@ -369,7 +369,7 @@ PAT_STICKERS = (
 )
 
 
-# SLAP_TEMPLATES From @SnowGirl
+# SLAP_TEMPLATES From @DaisyX
 SLAP_TEMPLATES = (
     "{user2} was shot by {user1}.",
     "{user2} walked into a cactus while trying to escape {user1}.",
@@ -544,7 +544,7 @@ PUNCH = (
 
 HUG = ("hugs", "hugged", "kissed", "pinches")
 
-# Table strings credits: @SnowGirl
+# Table strings credits: @DaisyX
 
 TABLE = (
     "(╯°□°）╯彡 ┻━┻",

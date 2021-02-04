@@ -5,8 +5,8 @@ from pyrogram import filters
 from pytube import YouTube
 from youtubesearchpython import VideosSearch
 
-from SnowGirl import LOGGER, pbot
-from SnowGirl.utils.ut import get_arg
+from DaisyX import LOGGER, pbot
+from DaisyX.utils.ut import get_arg
 
 
 def yt_search(song):

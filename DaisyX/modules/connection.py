@@ -5,10 +5,10 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackQueryHandler, CommandHandler, run_async
 
-import SnowGirl.modules.sql.connection_sql as sql
-from SnowGirl import DEV_USERS, DRAGONS, dispatcher
-from SnowGirl.modules.helper_funcs import chat_status
-from SnowGirl.modules.helper_funcs.alternate import send_message, typing_action
+import DaisyX.modules.sql.connection_sql as sql
+from DaisyX import DEV_USERS, DRAGONS, dispatcher
+from DaisyX.modules.helper_funcs import chat_status
+from DaisyX.modules.helper_funcs.alternate import send_message, typing_action
 
 user_admin = chat_status.user_admin
 

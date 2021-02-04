@@ -27,12 +27,12 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown
 from tswift import Song
 
-from SnowGirl import DEV_USERS, OWNER_ID, dispatcher
-from SnowGirl.__main__ import GDPR, STATS
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.alternate import send_action, typing_action
-from SnowGirl.modules.helper_funcs.chat_status import user_admin
-from SnowGirl.modules.helper_funcs.filters import CustomFilters
+from DaisyX import DEV_USERS, OWNER_ID, dispatcher
+from DaisyX.__main__ import GDPR, STATS
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.alternate import send_action, typing_action
+from DaisyX.modules.helper_funcs.chat_status import user_admin
+from DaisyX.modules.helper_funcs.filters import CustomFilters
 
 
 @run_async

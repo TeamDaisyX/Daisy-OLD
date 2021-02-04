@@ -2,15 +2,15 @@ from telegram import ChatPermissions, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.helper_funcs.chat_status import (
+from DaisyX import dispatcher
+from DaisyX.modules.helper_funcs.chat_status import (
     bot_admin,
     is_bot_admin,
     is_user_ban_protected,
     is_user_in_chat,
 )
-from SnowGirl.modules.helper_funcs.extraction import extract_user_and_text
-from SnowGirl.modules.helper_funcs.filters import CustomFilters
+from DaisyX.modules.helper_funcs.extraction import extract_user_and_text
+from DaisyX.modules.helper_funcs.filters import CustomFilters
 
 RBAN_ERRORS = {
     "User is an administrator of the chat",

@@ -12,10 +12,10 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import escape_markdown
 
-import SnowGirl.modules.sql.rules_sql as sql
-from SnowGirl import dispatcher
-from SnowGirl.modules.helper_funcs.chat_status import user_admin
-from SnowGirl.modules.helper_funcs.string_handling import markdown_parser
+import DaisyX.modules.sql.rules_sql as sql
+from DaisyX import dispatcher
+from DaisyX.modules.helper_funcs.chat_status import user_admin
+from DaisyX.modules.helper_funcs.string_handling import markdown_parser
 
 
 @run_async

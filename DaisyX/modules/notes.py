@@ -23,14 +23,14 @@ from telegram.ext import (
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown, mention_markdown
 
-import SnowGirl.modules.sql.notes_sql as sql
-from SnowGirl import DRAGONS, JOIN_LOGGER, LOGGER, SUPPORT_CHAT, dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.chat_status import connection_status, user_admin
-from SnowGirl.modules.helper_funcs.handlers import MessageHandlerChecker
-from SnowGirl.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from SnowGirl.modules.helper_funcs.msg_types import get_note_type
-from SnowGirl.modules.helper_funcs.string_handling import escape_invalid_curly_brackets
+import DaisyX.modules.sql.notes_sql as sql
+from DaisyX import DRAGONS, JOIN_LOGGER, LOGGER, SUPPORT_CHAT, dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.chat_status import connection_status, user_admin
+from DaisyX.modules.helper_funcs.handlers import MessageHandlerChecker
+from DaisyX.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from DaisyX.modules.helper_funcs.msg_types import get_note_type
+from DaisyX.modules.helper_funcs.string_handling import escape_invalid_curly_brackets
 
 FILE_MATCHER = re.compile(r"^###file_id(!photo)?###:(.*?)(?:\s|$)")
 STICKER_MATCHER = re.compile(r"^###sticker(!photo)?###:")

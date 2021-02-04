@@ -9,15 +9,15 @@ from telegram.ext import (
     run_async,
 )
 
-from SnowGirl import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.chat_status import (
+from DaisyX import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from SnowGirl.modules.sql import cleaner_sql as sql
+from DaisyX.modules.sql import cleaner_sql as sql
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")

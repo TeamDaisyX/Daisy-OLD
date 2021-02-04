@@ -25,25 +25,25 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from SnowGirl import TIGERS, WOLVES, dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.chat_status import (
+from DaisyX import TIGERS, WOLVES, dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from SnowGirl.modules.helper_funcs.extraction import (
+from DaisyX.modules.helper_funcs.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from SnowGirl.modules.helper_funcs.filters import CustomFilters
-from SnowGirl.modules.helper_funcs.misc import split_message
-from SnowGirl.modules.helper_funcs.string_handling import split_quotes
-from SnowGirl.modules.log_channel import loggable
-from SnowGirl.modules.sql import warns_sql as sql
+from DaisyX.modules.helper_funcs.filters import CustomFilters
+from DaisyX.modules.helper_funcs.misc import split_message
+from DaisyX.modules.helper_funcs.string_handling import split_quotes
+from DaisyX.modules.log_channel import loggable
+from DaisyX.modules.sql import warns_sql as sql
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"

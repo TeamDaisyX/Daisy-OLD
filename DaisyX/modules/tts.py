@@ -6,9 +6,9 @@ from gtts import gTTS
 from telegram import ChatAction
 from telegram.ext import run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.alternate import send_action, typing_action
+from DaisyX import dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.alternate import send_action, typing_action
 
 
 @run_async

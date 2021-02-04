@@ -6,11 +6,11 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-import SnowGirl.modules.sql.blacklistusers_sql as sql
-from SnowGirl import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, TIGERS, WOLVES, dispatcher
-from SnowGirl.modules.helper_funcs.chat_status import dev_plus
-from SnowGirl.modules.helper_funcs.extraction import extract_user, extract_user_and_text
-from SnowGirl.modules.log_channel import gloggable
+import DaisyX.modules.sql.blacklistusers_sql as sql
+from DaisyX import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, TIGERS, WOLVES, dispatcher
+from DaisyX.modules.helper_funcs.chat_status import dev_plus
+from DaisyX.modules.helper_funcs.extraction import extract_user, extract_user_and_text
+from DaisyX.modules.log_channel import gloggable
 
 BLACKLISTWHITELIST = [OWNER_ID] + DEV_USERS + DRAGONS + WOLVES + DEMONS
 BLABLEUSERS = [OWNER_ID] + DEV_USERS

@@ -9,7 +9,7 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from telethon.tl import functions, types
 
-from SnowGirl.events import register
+from DaisyX.events import register
 
 COLORS = [
     "#F07975",

@@ -16,8 +16,8 @@ from telegram import (
 from telegram.ext import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
+from DaisyX import dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 

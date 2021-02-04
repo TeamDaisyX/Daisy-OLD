@@ -12,9 +12,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
-from SnowGirl.modules.helper_funcs.misc import is_module_loaded
+from DaisyX import dispatcher
+from DaisyX.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
+from DaisyX.modules.helper_funcs.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -23,12 +23,12 @@ if is_module_loaded(FILENAME):
 
     from telegram.ext.dispatcher import run_async
 
-    from SnowGirl.modules.helper_funcs.chat_status import (
+    from DaisyX.modules.helper_funcs.chat_status import (
         connection_status,
         is_user_admin,
         user_admin,
     )
-    from SnowGirl.modules.sql import disable_sql as sql
+    from DaisyX.modules.sql import disable_sql as sql
 
     DISABLE_CMDS = []
     DISABLE_OTHER = []
@@ -162,7 +162,7 @@ if is_module_loaded(FILENAME):
         args = context.args
         chat = update.effective_chat
         if len(args) >= 1:
-            disable_module = "SnowGirl.modules." + args[0].rsplit(".", 1)[0]
+            disable_module = "DaisyX.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(disable_module)
@@ -237,7 +237,7 @@ if is_module_loaded(FILENAME):
         chat = update.effective_chat
 
         if len(args) >= 1:
-            enable_module = "SnowGirl.modules." + args[0].rsplit(".", 1)[0]
+            enable_module = "DaisyX.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(enable_module)

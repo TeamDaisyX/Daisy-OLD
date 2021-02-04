@@ -5,7 +5,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from SnowGirl import (
+from DaisyX import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -15,8 +15,8 @@ from SnowGirl import (
     WOLVES,
     dispatcher,
 )
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.chat_status import (
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
@@ -26,9 +26,9 @@ from SnowGirl.modules.helper_funcs.chat_status import (
     user_admin,
     user_can_ban,
 )
-from SnowGirl.modules.helper_funcs.extraction import extract_user_and_text
-from SnowGirl.modules.helper_funcs.string_handling import extract_time
-from SnowGirl.modules.log_channel import gloggable, loggable
+from DaisyX.modules.helper_funcs.extraction import extract_user_and_text
+from DaisyX.modules.helper_funcs.string_handling import extract_time
+from DaisyX.modules.log_channel import gloggable, loggable
 
 
 @run_async

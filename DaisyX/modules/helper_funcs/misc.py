@@ -3,7 +3,7 @@ from typing import Dict, List
 from telegram import MAX_MESSAGE_LENGTH, Bot, InlineKeyboardButton, ParseMode
 from telegram.error import TelegramError
 
-from SnowGirl import NO_LOAD
+from DaisyX import NO_LOAD
 
 
 class EqInlineKeyboardButton(InlineKeyboardButton):

@@ -3,8 +3,8 @@ from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 from wikipedia.exceptions import DisambiguationError, PageError
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
+from DaisyX import dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
 
 
 @run_async

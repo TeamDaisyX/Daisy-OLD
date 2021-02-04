@@ -1,4 +1,4 @@
-from SnowGirl import LOAD, LOGGER, NO_LOAD
+from DaisyX import LOAD, LOGGER, NO_LOAD
 
 
 def __list_all_modules():

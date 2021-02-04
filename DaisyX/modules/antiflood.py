@@ -12,18 +12,18 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from SnowGirl import TIGERS, WOLVES, dispatcher
-from SnowGirl.modules.connection import connected
-from SnowGirl.modules.helper_funcs.alternate import send_message
-from SnowGirl.modules.helper_funcs.chat_status import (
+from DaisyX import TIGERS, WOLVES, dispatcher
+from DaisyX.modules.connection import connected
+from DaisyX.modules.helper_funcs.alternate import send_message
+from DaisyX.modules.helper_funcs.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from SnowGirl.modules.helper_funcs.string_handling import extract_time
-from SnowGirl.modules.log_channel import loggable
-from SnowGirl.modules.sql import antiflood_sql as sql
+from DaisyX.modules.helper_funcs.string_handling import extract_time
+from DaisyX.modules.log_channel import loggable
+from DaisyX.modules.sql import antiflood_sql as sql
 
 FLOOD_GROUP = 3
 

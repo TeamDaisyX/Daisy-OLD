@@ -9,10 +9,10 @@ from telegram.ext import (
     run_async,
 )
 
-import SnowGirl.modules.sql.global_bans_sql as gban_sql
-import SnowGirl.modules.sql.users_sql as user_sql
-from SnowGirl import DEV_USERS, OWNER_ID, dispatcher
-from SnowGirl.modules.helper_funcs.chat_status import dev_plus
+import DaisyX.modules.sql.global_bans_sql as gban_sql
+import DaisyX.modules.sql.users_sql as user_sql
+from DaisyX import DEV_USERS, OWNER_ID, dispatcher
+from DaisyX.modules.helper_funcs.chat_status import dev_plus
 
 
 def get_invalid_chats(update: Update, context: CallbackContext, remove: bool = False):

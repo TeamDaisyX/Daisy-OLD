@@ -4,7 +4,7 @@ from pprint import pprint
 import requests
 from telegram.ext import CommandHandler
 
-from SnowGirl import dispatcher
+from DaisyX import dispatcher
 
 # Open API key
 API_KEY = "6ae0c3a0-afdc-4532-a810-82ded0054236"

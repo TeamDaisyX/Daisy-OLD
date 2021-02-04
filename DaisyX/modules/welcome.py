@@ -22,8 +22,8 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
-import SnowGirl.modules.sql.welcome_sql as sql
-from SnowGirl import (
+import DaisyX.modules.sql.welcome_sql as sql
+from DaisyX import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -35,15 +35,15 @@ from SnowGirl import (
     dispatcher,
     sw,
 )
-from SnowGirl.modules.helper_funcs.chat_status import is_user_ban_protected, user_admin
-from SnowGirl.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from SnowGirl.modules.helper_funcs.msg_types import get_welcome_type
-from SnowGirl.modules.helper_funcs.string_handling import (
+from DaisyX.modules.helper_funcs.chat_status import is_user_ban_protected, user_admin
+from DaisyX.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from DaisyX.modules.helper_funcs.msg_types import get_welcome_type
+from DaisyX.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from SnowGirl.modules.log_channel import loggable
-from SnowGirl.modules.sql.global_bans_sql import is_user_gbanned
+from DaisyX.modules.log_channel import loggable
+from DaisyX.modules.sql.global_bans_sql import is_user_gbanned
 
 VALID_WELCOME_FORMATTERS = [
     "first",

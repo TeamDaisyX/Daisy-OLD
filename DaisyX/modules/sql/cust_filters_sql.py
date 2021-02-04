@@ -2,8 +2,8 @@ import threading
 
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText, distinct, func
 
-from SnowGirl.modules.helper_funcs.msg_types import Types
-from SnowGirl.modules.sql import BASE, SESSION
+from DaisyX.modules.helper_funcs.msg_types import Types
+from DaisyX.modules.sql import BASE, SESSION
 
 
 class CustomFilters(BASE):

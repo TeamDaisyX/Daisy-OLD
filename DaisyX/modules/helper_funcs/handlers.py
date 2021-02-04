@@ -8,8 +8,8 @@ from pyrate_limiter import (
 from telegram import Update
 from telegram.ext import CommandHandler, Filters, MessageHandler, RegexHandler
 
-import SnowGirl.modules.sql.blacklistusers_sql as sql
-from SnowGirl import ALLOW_EXCL, DEMONS, DEV_USERS, DRAGONS, TIGERS, WOLVES
+import DaisyX.modules.sql.blacklistusers_sql as sql
+from DaisyX import ALLOW_EXCL, DEMONS, DEV_USERS, DRAGONS, TIGERS, WOLVES
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")

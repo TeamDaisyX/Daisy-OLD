@@ -1,9 +1,9 @@
 from telegram import ParseMode
 from telegram.ext import run_async
 
-from SnowGirl import dispatcher
-from SnowGirl.modules.disable import DisableAbleCommandHandler
-from SnowGirl.modules.helper_funcs.alternate import typing_action
+from DaisyX import dispatcher
+from DaisyX.modules.disable import DisableAbleCommandHandler
+from DaisyX.modules.helper_funcs.alternate import typing_action
 
 normiefont = [
     "a",
