@@ -55,3 +55,5 @@ pymongo==3.11.0
 howdoi==2.0.10
 gTTs-token
 dnspython
+cloudmersive-ocr-api-client==3.0.1
+cloudmersive_virus_api_client==3.0.1
