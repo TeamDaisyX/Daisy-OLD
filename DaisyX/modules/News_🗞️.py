@@ -1,15 +1,14 @@
-import os
 from urllib.request import urlopen
 
 import bs4
-from DaisyX import *
-from DaisyX import telethn as tbot
 from pymongo import MongoClient
 from telethon import *
 from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
+from DaisyX import *
+from DaisyX import telethn as tbot
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
