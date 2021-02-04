@@ -394,9 +394,7 @@ async def stop(event):
                 await event.reply("Seems like you haven't created any poll yet !")
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
+
 
 __help__ = """
 You can now send polls anonymously with Julia
@@ -418,4 +416,5 @@ Reply to the poll with `/stoppoll <poll-id>` to stop the poll
 If you have forgotten your poll id or deleted the poll so that you can't stop the previous poll type `/forgotpollid`, this will reset the poll id, you will have no access to the previous poll !
 """
 
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
+
+__mod_name__ = "Polling 🎲"
