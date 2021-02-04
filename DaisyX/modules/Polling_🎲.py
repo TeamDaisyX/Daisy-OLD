@@ -1,11 +1,11 @@
-from DaisyX import CMD_HELP, BOT_ID
 import os
-from DaisyX import tbot
+
+from pymongo import MongoClient
 from telethon import *
 from telethon.tl import *
+
+from DaisyX import BOT_ID, CMD_HELP, MONGO_DB_URI, tbot
 from DaisyX.events import register
-from pymongo import MongoClient
-from DaisyX import MONGO_DB_URI
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -77,7 +77,9 @@ async def _(event):
     # print(secret)
     for c in allpoll:
         if event.sender_id == c["user"]:
-            await event.reply("Please stop the previous poll before creating a new one !")
+            await event.reply(
+                "Please stop the previous poll before creating a new one !"
+            )
             return
     poll_id.insert_one({"user": event.sender_id, "pollid": secret})
 
@@ -350,7 +352,9 @@ async def stop(event):
         allpoll = poll_id.find({})
         for c in allpoll:
             if not event.sender_id == c["user"] and not secret == c["pollid"]:
-                await event.reply("Oops, either you haven't created this poll or you have given wrong poll id")
+                await event.reply(
+                    "Oops, either you haven't created this poll or you have given wrong poll id"
+                )
                 return
         if msg.poll.poll.closed:
             await event.reply("Oops, the poll is already closed.")
@@ -359,9 +363,7 @@ async def stop(event):
         pollid = msg.poll.poll.id
         await msg.edit(
             file=types.InputMediaPoll(
-                poll=types.Poll(
-                    id=pollid, question="", answers=[], closed=True
-                )
+                poll=types.Poll(id=pollid, question="", answers=[], closed=True)
             )
         )
         await event.reply("Successfully stopped the poll")
@@ -391,6 +393,7 @@ async def stop(event):
             except Exception:
                 await event.reply("Seems like you haven't created any poll yet !")
 
+
 file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
@@ -415,9 +418,4 @@ Reply to the poll with `/stoppoll <poll-id>` to stop the poll
 If you have forgotten your poll id or deleted the poll so that you can't stop the previous poll type `/forgotpollid`, this will reset the poll id, you will have no access to the previous poll !
 """
 
-CMD_HELP.update({
-    file_helpo: [
-        file_helpo,
-        __help__
-    ]
-})
+CMD_HELP.update({file_helpo: [file_helpo, __help__]})
