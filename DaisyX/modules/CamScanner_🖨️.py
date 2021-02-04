@@ -1,11 +1,13 @@
-from DaisyX import telethn as tbot
-from DaisyX import MONGO_DB_URI
-from DaisyX.events import register
-from telethon import *
-from telethon.tl import functions
-from pymongo import MongoClient
 import os
 import subprocess
+
+from pymongo import MongoClient
+from telethon import *
+from telethon.tl import functions
+
+from DaisyX import MONGO_DB_URI
+from DaisyX import telethn as tbot
+from DaisyX.events import register
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -17,16 +19,17 @@ async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
-            (await
-             tbot(functions.channels.GetParticipantRequest(chat,
-                                                           user))).participant,
+            (
+                await tbot(functions.channels.GetParticipantRequest(chat, user))
+            ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
     if isinstance(chat, types.InputPeerChat):
 
         ui = await tbot.get_peer_id(user)
-        ps = (await tbot(functions.messages.GetFullChatRequest(chat.chat_id)
-                         )).full_chat.participants.participants
+        ps = (
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
+        ).full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
