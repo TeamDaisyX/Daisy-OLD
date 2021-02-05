@@ -1,8 +1,9 @@
-from pyimagesearch.transform import four_point_transform
-import imutils
-from skimage.filters import threshold_local
 import argparse
+
 import cv2
+import imutils
+from pyimagesearch.transform import four_point_transform
+from skimage.filters import threshold_local
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="Path to the image to be scanned")
