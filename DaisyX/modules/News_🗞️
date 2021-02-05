@@ -35,8 +35,7 @@ async def is_register_admin(chat, user):
         )
     return False
 
-
-@tbot.on(events.NewMessage(pattern="^/news (.*) (.*)"))
+@register(pattern="^/news$")
 async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
