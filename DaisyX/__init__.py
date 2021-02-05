@@ -82,7 +82,7 @@ if ENV:
     AI_API_KEY = os.environ.get("AI_API_KEY", None)
     WALL_API = os.environ.get("WALL_API", None)
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
-    MONGO_DB_URI = os.envi os.environ.get("VIRUS_API_KEY", None)ron.get("MONGO_DB_URI", None)
+    MONGO_DB_URI = os.envi os.environ.get("VIRUS_API_KEY", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     WOLFRAM_ID =  os.environ.get("WOLFRAM_ID", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
