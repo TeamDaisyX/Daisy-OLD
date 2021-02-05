@@ -226,4 +226,4 @@ __help__ = """
  - /app <appname>: Searches for an app in Play Store and returns its details.
  - /reverse: Does a reverse image search of the media which it was replied to.
 """
-__Mod_Name__ = "Google 🔍"
+__mod_name__ = "Google 🔍"
