@@ -10,10 +10,7 @@ from telegram.utils.helpers import escape_markdown
 
 import DaisyX.modules.helper_funcs.fun_strings as fun
 from DaisyX import DEMONS, DRAGONS, dispatcher
-from DaisyX.modules.disable import (
-    DisableAbleCommandHandler,
-    DisableAbleMessageHandler,
-)
+from DaisyX.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from DaisyX.modules.helper_funcs.alternate import typing_action
 from DaisyX.modules.helper_funcs.extraction import extract_user
 

@@ -6,10 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler, run_async
 
 from DaisyX import dispatcher
-from DaisyX.modules.disable import (
-    DisableAbleCommandHandler,
-    DisableAbleMessageHandler,
-)
+from DaisyX.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from DaisyX.modules.sql import afk_sql as sql
 from DaisyX.modules.users import get_user_id
 
