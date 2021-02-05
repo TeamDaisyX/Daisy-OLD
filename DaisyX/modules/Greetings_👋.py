@@ -11,7 +11,7 @@ from telethon.utils import pack_bot_file_id
 
 import DaisyX.modules.sql.rules_sql as sql
 from DaisyX import *
-from DaisyX import telethn as tbot
+from DaisyX import telethn
 from DaisyX.events import register
 from DaisyX.modules.sql.welcome2_sql import (
     add_goodbye_setting,
@@ -59,7 +59,7 @@ async def can_change_info(message):
     )
 
 
-@tbot.on(events.ChatAction())  # pylint:disable=E0602
+@teletn.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
     cws = get_current_welcome_settings(event.chat_id)
     if cws:
@@ -208,7 +208,7 @@ async def _(event):
                 update_previous_welcome(event.chat_id, current_message.id)
 
 
-@tbot.on(events.ChatAction())  # pylint:disable=E0602
+@telethn.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
     # print("yo")
     cws = get_current_goodbye_settings(event.chat_id)
@@ -271,7 +271,7 @@ async def _(event):
 # -- @DaisyX (sassiet captcha ever) --#
 
 
-@tbot.on(events.CallbackQuery(pattern=r"start-ruless-(\d+)"))
+@telethn.on(events.CallbackQuery(pattern=r"start-ruless-(\d+)"))
 async def rules_st(event):
     rules = sql.get_rules(event.chat_id)
     # print(rules)
@@ -294,7 +294,7 @@ async def rules_st(event):
 # -- @DaisyX -- #
 
 
-@tbot.on(events.CallbackQuery(pattern=r"check-bot-(\d+)"))
+@telethn.on(events.CallbackQuery(pattern=r"check-bot-(\d+)"))
 async def cbot(event):
     chats = verified_user.find({})
     user_id = int(event.pattern_match.group(1))
@@ -356,7 +356,7 @@ async def cbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"1(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"1(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -434,7 +434,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"2(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"2(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -508,7 +508,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"3(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"3(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -582,7 +582,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"4(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"4(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -730,7 +730,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"6(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"6(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -804,7 +804,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"7(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"7(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -878,7 +878,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"8(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"8(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
@@ -952,7 +952,7 @@ async def checkbot(event):
         )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"9(\-(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"9(\-(.*))"))
 async def checkbot(event):
     chats = verified_user.find({})
     tata = event.pattern_match.group(1)
