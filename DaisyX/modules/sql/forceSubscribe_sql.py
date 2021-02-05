@@ -14,7 +14,6 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-
 from sqlalchemy import Column, Numeric, String
 
 from DaisyX.modules.sql import BASE, SESSION
