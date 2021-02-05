@@ -59,3 +59,5 @@ cloudmersive-ocr-api-client==3.0.1
 cloudmersive_virus_api_client==3.0.1
 telegraph
 dateparser==1.0.0
+PyDictionary==2.0.1
+
