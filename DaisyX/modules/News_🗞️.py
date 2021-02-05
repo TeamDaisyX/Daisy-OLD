@@ -10,6 +10,7 @@ from telethon.tl.types import *
 from DaisyX import *
 from DaisyX import telethn as tbot
 from DaisyX.events import register
+
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
 db = client["missjuliarobot"]
