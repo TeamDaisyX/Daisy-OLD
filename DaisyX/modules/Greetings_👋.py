@@ -35,7 +35,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 imgg = Image.new("RGB", (300, 200), color="white")
 fntt = ImageFont.truetype(
-    "./.apt/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 50
+    "./fonts/truetype/liberation/LiberationSans-Regular.ttf", 50
 )
 dd = ImageDraw.Draw(imgg)
 dd.text((50, 50), "Loading ...", font=fntt, fill="black")
@@ -43,7 +43,7 @@ imgg.save("loadcheckbot.png")
 
 imggg = Image.new("RGB", (300, 200), color="white")
 fnttt = ImageFont.truetype(
-    "./.apt/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 50
+    "./fonts/truetype/liberation/LiberationSans-Regular.ttf", 50
 )
 ddd = ImageDraw.Draw(imggg)
 ddd.text((60, 60), "Verified", font=fnttt, fill="green")
