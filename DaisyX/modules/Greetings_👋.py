@@ -1,29 +1,28 @@
-import os
+import random
+
+from PIL import Image, ImageDraw, ImageFont
+from pymongo import MongoClient
+from telethon import *
 from telethon import events
+from telethon.tl import *
+from telethon.tl.functions.channels import EditBannedRequest
+from telethon.tl.types import ChatBannedRights
 from telethon.utils import pack_bot_file_id
-from DaisyX.events import register
+
+import DaisyX.modules.sql.rules_sql as sql
+from DaisyX import *
 from DaisyX import telethn as tbot
-from DaisyX.modules.sql.welcome2_sql import (
-    add_welcome_setting,
-    get_current_welcome_settings,
-    rm_welcome_setting,
-    update_previous_welcome,
-)
+from DaisyX.events import register
 from DaisyX.modules.sql.welcome2_sql import (
     add_goodbye_setting,
+    add_welcome_setting,
     get_current_goodbye_settings,
+    get_current_welcome_settings,
     rm_goodbye_setting,
+    rm_welcome_setting,
     update_previous_goodbye,
+    update_previous_welcome,
 )
-import DaisyX.modules.sql.rules_sql as sql
-from telethon import *
-from telethon.tl import *
-from DaisyX import *
-import random
-from PIL import Image, ImageDraw, ImageFont
-from telethon.tl.functions.channels import EditBannedRequest
-from pymongo import MongoClient
-from telethon.tl.types import ChatBannedRights
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -1252,8 +1251,6 @@ async def _(event):
     if not input == "on" and not input == "off":
         await event.reply("I only understand by on or off")
         return
-
-
 
 
 __help__ = """
