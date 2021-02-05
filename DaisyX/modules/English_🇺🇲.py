@@ -1,19 +1,15 @@
-from google_trans_new import google_translator
-from DaisyX import telethn as tbot
 import json
+
 import requests
-from DaisyX import MONGO_DB_URI
-from DaisyX.events import register
-from telethon import *
-from telethon.tl import functions
-from pymongo import MongoClient
-import os
-import urllib.request
-from typing import List
-from typing import Optional
 from PyDictionary import PyDictionary
-from telethon.tl import types
+from pymongo import MongoClient
+from telethon import *
+from telethon.tl import functions, types
 from telethon.tl.types import *
+
+from DaisyX import MONGO_DB_URI
+from DaisyX import telethn as tbot
+from DaisyX.events import register
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -41,7 +37,6 @@ async def is_register_admin(chat, user):
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
-
 
 
 API_KEY = "6ae0c3a0-afdc-4532-a810-82ded0054236"
@@ -154,8 +149,6 @@ async def _(event):
     net = jet.replace("}", "")
     got = net.replace("'", "")
     await event.reply(got)
-
-
 
 
 __help__ = """
