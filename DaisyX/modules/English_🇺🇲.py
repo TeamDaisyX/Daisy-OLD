@@ -160,4 +160,4 @@ __help__ = """
  - /antonyms <word>: Find the antonyms of a word
 """
 
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
+__mod_name__ = "English 🇺🇲"
