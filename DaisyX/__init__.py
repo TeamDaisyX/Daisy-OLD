@@ -84,7 +84,7 @@ if ENV:
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
-    WOLFRAM_ID =  os.environ.get("WOLFRAM_ID", None)
+    WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BOT_ID = int(os.environ.get("BOT_ID", None))
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
