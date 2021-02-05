@@ -59,7 +59,7 @@ async def can_change_info(message):
     )
 
 
-@teletn.on(events.ChatAction())  # pylint:disable=E0602
+@telethn.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
     cws = get_current_welcome_settings(event.chat_id)
     if cws:
