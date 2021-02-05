@@ -1,26 +1,21 @@
-
-from bs4 import BeautifulSoup
-import urllib
-from DaisyX import tbot
 import glob
 import io
 import os
 import re
+import urllib
 import urllib.request
 
-import bs4
-import html2text
 import requests
 from bing_image_downloader import downloader
+from bs4 import BeautifulSoup
 from PIL import Image
 from pymongo import MongoClient
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-
+from DaisyX import tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -49,7 +44,6 @@ async def is_register_admin(chat, user):
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
-
 
 
 @register(pattern="^/img (.*)")
@@ -216,8 +210,6 @@ async def scam(results, lim):
             break
 
     return imglinks
-
-
 
 
 __help__ = """
