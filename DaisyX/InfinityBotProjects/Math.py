@@ -1,16 +1,14 @@
-
-import os
-from DaisyX import telethn as tbot
-import math
-import requests
 import json
+import math
 
+import requests
+from pymongo import MongoClient
 from telethon import types
 from telethon.tl import functions
-from DaisyX.events import register
 
-from pymongo import MongoClient
 from DaisyX import MONGO_DB_URI
+from DaisyX import telethn as tbot
+from DaisyX.events import register
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -328,6 +326,3 @@ async def _(event):
     args = int(event.pattern_match.group(1))
 
     await event.reply(str(math.log(int(args))))
-
-
-
