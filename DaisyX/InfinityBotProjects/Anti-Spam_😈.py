@@ -1,18 +1,19 @@
-from DaisyX import BOT_ID
-import nude
-import html
 import asyncio
-from DaisyX.modules.sql import cleaner_sql as sql
+import html
+
+import better_profanity
+import nude
+from better_profanity import profanity
 from pymongo import MongoClient
-from DaisyX import MONGO_DB_URI
-from DaisyX.events import register
-from telethon import types, events
+from telethon import events, types
 from telethon.tl import *
 from telethon.tl.types import *
-from DaisyX import *
-import better_profanity
-from better_profanity import profanity
 from textblob import TextBlob
+
+from DaisyX import *
+from DaisyX import BOT_ID, MONGO_DB_URI
+from DaisyX.events import register
+from DaisyX.modules.sql import cleaner_sql as sql
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -195,7 +196,6 @@ async def _(event):
             return
         if str(event.sender_id) in str(userss) and str(event.chat_id) in str(iid):
             return
-        pass
     else:
         return
     if str(event.sender_id) == str(BOT_ID):
@@ -371,7 +371,6 @@ async def del_profanity(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             return
-        pass
     chats = spammers.find({})
     for c in chats:
         if event.text:
@@ -409,11 +408,10 @@ async def del_profanity(event):
         return
     msg = str(event.text)
     sender = await event.get_sender()
-    let = sender.username
+    sender.username
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             return
-        pass
     chats = globalchat.find({})
     for c in chats:
         if event.text:
@@ -439,4 +437,3 @@ async def del_cleanservice(event):
                 await event.delete()
             except Exception as e:
                 print(e)
-
