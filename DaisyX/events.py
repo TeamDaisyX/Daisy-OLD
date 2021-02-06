@@ -175,3 +175,41 @@ def callbackquery(**args):
         return func
 
     return decorator
+
+def load_module(shortname):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        import importlib
+        import DaisyX.events
+
+        path = Path(f"DaisyX/InfinityBotProjects/{shortname}.py")
+        name = "DaisyX.InfinityBotProjects.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        print("Successfully imported " + shortname)
+    else:
+        import importlib
+        import DaisyX.events
+
+        path = Path(f"DaisyX/InfinityBotProjects/{shortname}.py")
+        name = "DaisyX.InfinityBotProjects.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.register = register
+        mod.juliabot = juliabot
+        mod.tbot = tbot
+        mod.logger = logging.getLogger(shortname)
+        spec.loader.exec_module(mod)
+        sys.modules["DaisyX.InfinityBotProjects." + shortname] = mod
+        print("Successfully imported " + shortname)
+
+
+path = "DaisyX/InfinityBotProjects/*.py"
+files = glob.glob(path)
+for name in files:
+    with open(name) as f:
+        path1 = Path(f.name)
+        shortname = path1.stem
+        load_module(shortname.replace(".py", ""))
