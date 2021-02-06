@@ -1,17 +1,14 @@
-
-import os
-from DaisyX import telethn as tbot
-import json
 import re
 
-import rapidjson as json
 from bs4 import BeautifulSoup
+from pymongo import MongoClient
 from requests import get
 from telethon import types
 from telethon.tl import functions
-from DaisyX.events import register
-from pymongo import MongoClient
+
 from DaisyX import MONGO_DB_URI
+from DaisyX import telethn as tbot
+from DaisyX.events import register
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -110,4 +107,3 @@ async def devices_specifications(request):
             )
             reply += f"**{title}**: {data}\n"
     await request.reply(reply)
-
