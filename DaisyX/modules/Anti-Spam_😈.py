@@ -8,4 +8,4 @@ __help__ = """
  - /globalmode: let users only speak in english in your group (automatically deletes messages in other languages)
 """
 
-__mod_name__ = "Anti-Spam 😈"
+__mod_name__ = "Cleaning 🧹"
