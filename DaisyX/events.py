@@ -1,10 +1,10 @@
-import inspect
-import re
-import logging
-import time
-from pathlib import Path
 import glob
+import inspect
+import logging
+import re
 import sys
+from pathlib import Path
+
 from pymongo import MongoClient
 from telethon import events
 
