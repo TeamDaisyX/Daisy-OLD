@@ -62,3 +62,4 @@ dateparser==1.0.0
 PyDictionary==2.0.1
 better_profanity
 nudepy
+textblob 
