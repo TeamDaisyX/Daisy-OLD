@@ -1,4 +1,3 @@
-
 __help__ = """
 Solves complex math problems using https://newton.now.sh
  ✪ /simplify*:* Math `/math 2^2+2(2)`
@@ -23,4 +22,3 @@ To compute fractions, enter expressions as numerator(over)denominator. For examp
 """
 
 __mod_name__ = "Maths ➗"
-
