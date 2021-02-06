@@ -12,6 +12,7 @@ from telethon.utils import pack_bot_file_id
 import DaisyX.modules.sql.rules_sql as sql
 from DaisyX import *
 from DaisyX import telethn
+from DaisyX import tbot
 from DaisyX.events import register
 from DaisyX.modules.sql.welcome2_sql import (
     add_goodbye_setting,
@@ -403,7 +404,7 @@ async def checkbot(event):
         num = random.randint(1, 9)
         img = Image.new("RGB", (300, 200), color="white")
         fnt = ImageFont.truetype(
-            "./.apt/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 100
+            "./fonts/truetype/liberation/LiberationSans-Regular.ttf", 100
         )
         d = ImageDraw.Draw(img)
         d.text((110, 50), str(num), font=fnt, fill="black")
