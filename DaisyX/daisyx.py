@@ -1,18 +1,13 @@
 import inspect
-import time
-import logging
 import re
 from pathlib import Path
 
+from pymongo import MongoClient
 from telethon import events
 
-from DaisyX import CMD_LIST, LOAD_PLUG
-import glob
-import sys
-from DaisyX import ubot
+from DaisyX import CMD_LIST, LOAD_PLUG, MONGO_DB_URI
 from DaisyX import telethn as tbot
-from pymongo import MongoClient
-from DaisyX import MONGO_DB_URI
+from DaisyX import ubot
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -87,7 +82,7 @@ def juliabot(**args):
     ignore_unsafe = args.get("ignore_unsafe", False)
     unsafe_pattern = r"^[^/!#@\$A-Za-z]"
     group_only = args.get("group_only", False)
-    disable_errors = args.get("disable_errors", False)
+    args.get("disable_errors", False)
     insecure = args.get("insecure", False)
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -138,4 +133,3 @@ def juliabot(**args):
         return wrapper
 
     return decorator
-
