@@ -189,7 +189,7 @@ else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
 if STRING_SESSION:
-    ubot = TelegramClient(StringSession(STRING_SESSION), API_KEY, API_HASH)
+    ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 else:
     sys.exit(1)
 
