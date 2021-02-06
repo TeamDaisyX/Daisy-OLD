@@ -11,8 +11,7 @@ from telethon.utils import pack_bot_file_id
 
 import DaisyX.modules.sql.rules_sql as sql
 from DaisyX import *
-from DaisyX import telethn
-from DaisyX import tbot
+from DaisyX import tbot, telethn
 from DaisyX.events import register
 from DaisyX.modules.sql.welcome2_sql import (
     add_goodbye_setting,
