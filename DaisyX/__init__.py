@@ -85,6 +85,7 @@ if ENV:
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BOT_ID = int(os.environ.get("BOT_ID", None))
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -184,7 +185,17 @@ if not SPAMWATCH_API:
 else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
+if STRING_SESSION:
+    ubot = TelegramClient(StringSession(STRING_SESSION), API_KEY, API_HASH)
+else:
+    sys.exit(1)
 
+try:
+    ubot.start()
+except BaseException:
+    print("Network Error !")
+    sys.exit(1)
+        
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 pbot = Client("suzuyaPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
