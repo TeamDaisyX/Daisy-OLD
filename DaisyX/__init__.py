@@ -206,7 +206,7 @@ except BaseException:
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
-pbot = Client("suzuyaPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+pbot = Client("DaisyX", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 tbot = telethn
 
