@@ -63,7 +63,7 @@ from DaisyX.modules.helper_funcs.misc import paginate_modules
 from DaisyX.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
-Hello there, I'm [𝓛𝓲𝔃𝓪 𝓢𝓷𝓸𝔀](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+Hello there, I'm [𝓓𝓪𝓲𝓼𝔂 𝓧](https://telegra.ph/file/473cc17913393959e0667.jpg)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
@@ -79,14 +79,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="💫 Add Liza to your group 💫", url="t.me/lizasnow_bot?startgroup=true"
+            text="💫 Add Daisy to your group 💫", url="t.me/daisyXBot?startgroup=true"
         ),
     ],
 ]
 
 
 HELP_STRINGS = f"""
-*Main Commands :* [🤖](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)
+*Main Commands :* [🤖](https://telegra.ph/file/473cc17913393959e0667.jpg)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /donate: You can support my creater using this command.
@@ -101,7 +101,7 @@ HELP_STRINGS = f"""
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer's of the Base code,
-Support them [Jason](t.me/imjanindu), [Inuka](t.me/InukaASiTH)"""
+Support them  [Inuka](t.me/InukaASiTH),[Jason](t.me/imjanindu),"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -363,7 +363,7 @@ def DaisyX_about_callback(update, context):
             text=f"*😍 Hi again!  The name's {dispatcher.bot.first_name} 😍 \n\nAs  You I'm a next generational group management bot developed by Infinity_Bots.* "
             f"\n\n 🔥 Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name} 🔥"
             f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
-            f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/e31bc5658f31ddd41d12d.png)"
+            f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/473cc17913393959e0667.jpg)"
             f"\n\n👇 You Can Know More About Me By Clicking The Below Buttons 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -476,13 +476,13 @@ def DaisyX_about_callback(update, context):
         query.message.edit_text(
             text=f"<b> ｢ Terms and Conditions 」</b>\n"
             f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
-            f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
-            f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
-            f"\n✪ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be <b>Gbanned</b>."
+            f"\n✪ We always respect your privacy \n  We never log into bot's api and spying on you \n  We use a encripted database \n  Bot will automatically stops if someone logged in with api."
+            f"\n✪ Always try to keep credits, so \n  This hardwork is done by Infinity_Bots team spending many sleepless nights.. So, Respect it."
+            f"\n✪ Some modules in this bot is owned by different authors, So, \n  All credits goes to them \n  Also for <b>Paul Larson for Marie</b>."
             f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
             f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
-            f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
-            f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
+            f"\n✪ All api's we used owned by originnal authors \n  Some api's we use Free version \n  Please don't overuse AI Chat."
+            f"\n✪ We don't Provide any support to forks,\n  So these terms and conditions not applied to forks \n  If you are using a fork of DaisyXBot we are not resposible for anything."
             f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
             f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
