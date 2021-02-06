@@ -133,6 +133,8 @@ def juliabot(**args):
         return wrapper
 
     return decorator
+
+
 def chataction(**args):
     """ Registers chat actions. """
 
