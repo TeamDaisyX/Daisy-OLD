@@ -6,7 +6,8 @@ from pymongo import MongoClient
 from telethon import events
 
 from DaisyX import CMD_LIST, LOAD_PLUG, MONGO_DB_URI
-from DaisyX import telethn as tbot
+from DaisyX import telethn
+from DaisyX import tbot
 from DaisyX import ubot
 
 client = MongoClient()
@@ -133,8 +134,6 @@ def juliabot(**args):
         return wrapper
 
     return decorator
-
-
 def chataction(**args):
     """ Registers chat actions. """
 
