@@ -176,12 +176,12 @@ def callbackquery(**args):
 
     return decorator
 
+
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
         import importlib
-        import DaisyX.events
 
         path = Path(f"DaisyX/InfinityBotProjects/{shortname}.py")
         name = "DaisyX.InfinityBotProjects.{}".format(shortname)
@@ -191,7 +191,6 @@ def load_module(shortname):
         print("Successfully imported " + shortname)
     else:
         import importlib
-        import DaisyX.events
 
         path = Path(f"DaisyX/InfinityBotProjects/{shortname}.py")
         name = "DaisyX.InfinityBotProjects.{}".format(shortname)
