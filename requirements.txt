@@ -64,3 +64,4 @@ better_profanity
 nudepy
 textblob 
 nekos.py
+opencv-python-headless==4.4.0.44
