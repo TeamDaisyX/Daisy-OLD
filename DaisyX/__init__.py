@@ -87,6 +87,7 @@ if ENV:
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
+    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
     WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
@@ -173,6 +174,7 @@ else:
     TIME_API_KEY = Config.TIME_API_KEY
     AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
