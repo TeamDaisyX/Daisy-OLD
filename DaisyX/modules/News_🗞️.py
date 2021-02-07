@@ -4,4 +4,4 @@ __help__ = """
  - /news US en: This will return news for US in english language.
 """
 
-__mod_name__ = "News 🗞️.py"
+__mod_name__ = "News 🗞️"
