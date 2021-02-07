@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 from telethon.utils import pack_bot_file_id
 
-import DaisyX.modules.sql.rules_sql as sql
+import DaisyX.modules.sql.rules2_sql as sql
 from DaisyX import *
 from DaisyX import tbot, telethn
 from DaisyX.events import register
