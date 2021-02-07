@@ -2,13 +2,13 @@
 
 from functools import wraps
 
+import DaisyX.modules.sql.hentai_sql as sql
 import nekos
 from telegram import ParseMode
 from telegram.ext import CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
-import DaisyX.modules.sql.hentai_sql as sql
 from DaisyX import EVENT_LOGS, dispatcher
 from DaisyX.modules.disable import DisableAbleCommandHandler
 from DaisyX.modules.helper_funcs.filters import CustomFilters
@@ -19,7 +19,7 @@ def hentai_supplier(func):
     def allowed_chat(update, context, *args, **kwargs):
         chat = update.effective_chat
         isAllowed = sql.isAdded(str(chat.id))
-        if isAllowed:  # or chat.type == "private"
+        if isAllowed or chat.type == "private":
             sql.addedChat(str(chat.id))
             return func(update, context, *args, **kwargs)
 
@@ -29,10 +29,6 @@ def hentai_supplier(func):
         elif DEL_CMDS and " " not in update.effective_message.text:
             update.effective_message.delete()
 
-        elif chat.type == "private":
-            update.effective_message.reply_text(
-                "As this module contain explicit things. Your must have a private group and should approoved by us, \nif you want ask for approval [Here](https://telegram.dog/inukaasith) or [Here](https://telegram.dog/infinityje)"
-            )
         else:
             update.effective_message.reply_text(
                 "As this module contain explicit things. Your group should be private and approoved by us, if you want ask for approval [Here](https://telegram.dog/inukaasith) or [Here](https://telegram.dog/infinityje)"
@@ -331,57 +327,6 @@ def classic(update, context):
 def kuni(update, context):
     update.message.reply_video(nekos.img("kuni"))
 
-
-__help__ = """
-** Explicit content included 🔞 .. So need approoval and your group should be private **
-*Hentai Supplier* for your Private Groups, powerd by [Nekos](https://nekos.life/) I can supply you loads of anime wallpapers and hentai images for free!
-If you want Hentai Supplier in your Private Group, ask [Here](https://t.me/Inukaasith) or [Here](https://t.me/DaisySupport_Officil) for approval of your group.
-* 🔞 Commands to get photos:*
-- /pussy
-- /feet
-- /yuri
-- /trap
-- /futanari
-- /hololewd
-- /lewdkemo
-- /erokemo
-- /lesbian
-- /lewdk
-- /tickle
-- /lewd
-- /feed
-- /eroyuri
-- /eron
-- /cum
-- /bj
-- /solo
-- /kemonomimi
-- /hentai
-- /erofeet
-- /holo
-- /boobs
-- /holoero
-*🔞 Commands to get gifs:*
-- /hentaigif
-- /sologif
-- /feetgif
-- /cumgif
-- /ngif
-- /bjgif
-- /nekonsfw
-- /pokegif
-- /analgif
-- /pussygif
-- /classic
-- /kuni
-*🔞 Commands to get wallpapers:*
-- /neko
-- /walls
-
-"""
-
-
-__mod_name__ = "Hentai 🔞"
 
 
 ADDHENTAI_HANDLER = CommandHandler(
