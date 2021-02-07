@@ -1,11 +1,8 @@
 import threading
-from sqlalchemy import Column
-from sqlalchemy import distinct
-from sqlalchemy import func
-from sqlalchemy import String
-from sqlalchemy import UnicodeText
-from DaisyX.modules.sql import BASE
-from DaisyX.modules.sql import SESSION
+
+from sqlalchemy import Column, String, UnicodeText, distinct, func
+
+from DaisyX.modules.sql import BASE, SESSION
 
 
 class Rules(BASE):
