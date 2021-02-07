@@ -63,3 +63,4 @@ PyDictionary==2.0.1
 better_profanity
 nudepy
 textblob 
+nekos
