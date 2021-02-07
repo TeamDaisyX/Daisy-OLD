@@ -1,6 +1,6 @@
 
 # Liza Snow
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Infinity-Bots/LizaDaisyX.git)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 ## How to setup/deploy.
 
@@ -15,7 +15,7 @@
 <details>
   <summary>Steps to deploy on Heroku !! </summary>
  
- [Deploy](https://www.heroku.com/deploy?template=https://github.com/Infinity-Bots/LizaDaisyX)
+ [Deploy](https://www.heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x)
 
 ```
 Fill in all the details, Deploy!
