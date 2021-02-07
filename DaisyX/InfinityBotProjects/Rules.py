@@ -1,10 +1,9 @@
-from DaisyX import telethn as tbot
-import os
-from typing import Optional
-import DaisyX.modules.sql.rules2_sql as sql
 from telethon import *
 from telethon.tl import *
+
+import DaisyX.modules.sql.rules2_sql as sql
 from DaisyX import *
+from DaisyX import telethn as tbot
 
 
 async def can_change_info(message):
