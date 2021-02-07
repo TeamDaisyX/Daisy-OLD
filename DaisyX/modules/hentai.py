@@ -2,7 +2,7 @@
 
 from functools import wraps
 
-import Hackfreaks.modules.sql.hentai_sql as sql
+import DaisyX.modules.sql.hentai_sql as sql
 import nekos
 from telegram import ParseMode
 from telegram.ext import CommandHandler
