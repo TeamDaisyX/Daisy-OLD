@@ -1,17 +1,14 @@
-from DaisyX import telethn as tbot
 import io
-import os
 import time
 
 import aiohttp
 from pymongo import MongoClient
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -37,7 +34,7 @@ async def is_register_admin(chat, user):
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
-    if isinstance(chat, types.InputPeerUser):          
+    if isinstance(chat, types.InputPeerUser):
         return True
 
 
