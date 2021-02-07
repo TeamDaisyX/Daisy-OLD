@@ -65,3 +65,5 @@ nudepy
 textblob 
 nekos.py
 opencv-python-headless==4.4.0.44
+imutils==0.5.3
+scikit-image==0.17.2
