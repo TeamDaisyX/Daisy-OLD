@@ -33,6 +33,7 @@ def hentai_supplier(func):
             update.effective_message.reply_text(
                 "As this module contain explicit things. Your must have a private group and should approoved by us, \nif you want ask for approval [Here](https://telegram.dog/inukaasith) or [Here](https://telegram.dog/infinityje)"
             )
+            pass
         else:
             update.effective_message.reply_text(
                 "As this module contain explicit things. Your group should be private and approoved by us, if you want ask for approval [Here](https://telegram.dog/inukaasith) or [Here](https://telegram.dog/infinityje)"
