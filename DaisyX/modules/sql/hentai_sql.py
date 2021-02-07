@@ -1,7 +1,9 @@
 import threading
-from sqlalchemy import Column, String, UnicodeText, Integer, BigInteger
 
-from DaisyX.modules.sql import SESSION, BASE
+from sqlalchemy import Column, String
+
+from DaisyX.modules.sql import BASE, SESSION
+
 
 class AllowedChat(BASE):
     __tablename__ = "chat_added"
@@ -16,6 +18,7 @@ AllowedChat.__table__.create(checkfirst=True)
 ALLOWCHATLOCK = threading.RLock()
 
 HSLIST = set()
+
 
 def __load_added_chats_list():  # load shit to memory to be faster, and reduce disk access
     global HSLIST
