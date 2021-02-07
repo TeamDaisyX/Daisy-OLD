@@ -9,9 +9,10 @@ from telethon import events, types
 from telethon.tl import *
 from telethon.tl.types import *
 from textblob import TextBlob
-from DaisyX import telethn as tbot
+
 from DaisyX import *
 from DaisyX import BOT_ID, MONGO_DB_URI
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 from DaisyX.modules.sql import cleaner_sql as sql
 
