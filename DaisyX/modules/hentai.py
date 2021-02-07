@@ -1,15 +1,17 @@
 # Kanged from Hackfreaks.. All credits to them..
 
-import nekos
-import Hackfreaks.modules.sql.hentai_sql as sql
 from functools import wraps
+
+import Hackfreaks.modules.sql.hentai_sql as sql
+import nekos
 from telegram import ParseMode
+from telegram.ext import CommandHandler
+from telegram.ext.dispatcher import run_async
+from telegram.utils.helpers import mention_html
+
+from DaisyX import EVENT_LOGS, dispatcher
 from DaisyX.modules.disable import DisableAbleCommandHandler
 from DaisyX.modules.helper_funcs.filters import CustomFilters
-from DaisyX import dispatcher, EVENT_LOGS
-from telegram.ext.dispatcher import run_async
-from telegram.ext import CommandHandler
-from telegram.utils.helpers import mention_html
 
 
 def hentai_supplier(func):
@@ -20,7 +22,7 @@ def hentai_supplier(func):
         if isAllowed or chat.type == "private":
             sql.addedChat(str(chat.id))
             return func(update, context, *args, **kwargs)
-            
+
         elif not isAllowed:
             pass
 
@@ -31,6 +33,7 @@ def hentai_supplier(func):
             update.effective_message.reply_text(
                 "As this module contain explicit things. Your group should be private and approoved by us, if you want ask for approval [Here](https://telegram.dog/inukaasith) or [Here](https://telegram.dog/infinityje)"
             )
+
     return allowed_chat
 
 
@@ -42,19 +45,27 @@ def addhentai(update, context):
         del args[0]
         try:
             banner = update.effective_user
-            context.bot.send_message(EVENT_LOGS,
-                     "<b>Chat Added for Hentai Supplier</b>" \
-                     "\n#Added to Hentai" \
-                     "\n#Successfull #EnjoyMore" \
-                     "\n<b>Status:</b> <code>Added</code>" \
-                     "\n<b>Sudo Admin:</b> {}" \
-                     "\n<b>ID:</b> <code>{}</code>".format(mention_html(banner.id, banner.first_name),chat_id), parse_mode=ParseMode.HTML)
+            context.bot.send_message(
+                EVENT_LOGS,
+                "<b>Chat Added for Hentai Supplier</b>"
+                "\n#Added to Hentai"
+                "\n#Successfull #EnjoyMore"
+                "\n<b>Status:</b> <code>Added</code>"
+                "\n<b>Sudo Admin:</b> {}"
+                "\n<b>ID:</b> <code>{}</code>".format(
+                    mention_html(banner.id, banner.first_name), chat_id
+                ),
+                parse_mode=ParseMode.HTML,
+            )
             sql.addedChat(chat_id)
-            update.effective_message.reply_text("Chat has been successfully added for Hentai Supplier!")
+            update.effective_message.reply_text(
+                "Chat has been successfully added for Hentai Supplier!"
+            )
         except:
             update.effective_message.reply_text("Error adding chat!")
     else:
         update.effective_message.reply_text("Give me a valid chat id!")
+
 
 @run_async
 def removehentai(update, context):
@@ -64,15 +75,22 @@ def removehentai(update, context):
         del args[0]
         try:
             banner = update.effective_user
-            context.bot.send_message(EVENT_LOGS,
-                     "<b>Regression of Chat for Hentai Supplier</b>" \
-                     "\n#Removed Hentai" \
-                     "\n#REMOVED #BYE" \
-                     "\n<b>Status:</b> <code>Removed</code>" \
-                     "\n<b>Sudo Admin:</b> {}" \
-                     "\n<b>ID:</b> <code>{}</code>".format(mention_html(banner.id, banner.first_name),chat_id), parse_mode=ParseMode.HTML)
+            context.bot.send_message(
+                EVENT_LOGS,
+                "<b>Regression of Chat for Hentai Supplier</b>"
+                "\n#Removed Hentai"
+                "\n#REMOVED #BYE"
+                "\n<b>Status:</b> <code>Removed</code>"
+                "\n<b>Sudo Admin:</b> {}"
+                "\n<b>ID:</b> <code>{}</code>".format(
+                    mention_html(banner.id, banner.first_name), chat_id
+                ),
+                parse_mode=ParseMode.HTML,
+            )
             sql.removedChat(chat_id)
-            update.effective_message.reply_text("Chat has been successfully removed for Hentai Supplier")
+            update.effective_message.reply_text(
+                "Chat has been successfully removed for Hentai Supplier"
+            )
         except:
             update.effective_message.reply_text("Error removing chat!")
     else:
@@ -80,6 +98,7 @@ def removehentai(update, context):
 
 
 # Begin hentai functions ....
+
 
 @hentai_supplier
 @run_async
@@ -361,8 +380,12 @@ If you want Hentai Supplier in your Private Group, ask [Here](https://t.me/Inuka
 __mod_name__ = "Hentai 🔞"
 
 
-ADDHENTAI_HANDLER = CommandHandler("addhentai", addhentai, pass_args=True, filters=CustomFilters.sudo_filter)
-REMOVEHENTAI_HANDLER = CommandHandler("removehentai", removehentai, pass_args=True, filters=CustomFilters.sudo_filter)
+ADDHENTAI_HANDLER = CommandHandler(
+    "addhentai", addhentai, pass_args=True, filters=CustomFilters.sudo_filter
+)
+REMOVEHENTAI_HANDLER = CommandHandler(
+    "removehentai", removehentai, pass_args=True, filters=CustomFilters.sudo_filter
+)
 
 PUSSY_HANDLER = DisableAbleCommandHandler("pussy", pussy)
 HENTAIG_HANDLER = DisableAbleCommandHandler("hentaigif", hentaig)
