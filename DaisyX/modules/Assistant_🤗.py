@@ -1,5 +1,3 @@
-
-
 __help__ = """
 **For text assistant**
  - /daisy <question>: Ask julia any question and it will give accurate reply. For eg: `/julia where is Taj Mahal`, `/julia what is the age of Virat Kohli` etc..

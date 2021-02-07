@@ -1,19 +1,16 @@
-from DaisyX import telethn as tbot
 import os
 import subprocess
 
 import requests
-from gtts import gTTS
-from gtts import gTTSError
+from gtts import gTTS, gTTSError
 from pymongo import MongoClient
 from requests import get
 from telethon import *
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from DaisyX import *
-
+from DaisyX import telethn as tbot
 from DaisyX.events import register
 
 client = MongoClient()
@@ -65,7 +62,9 @@ async def _(event):
         server = f"https://api.wolframalpha.com/v1/spoken?appid={appid}&i={i}"
         res = get(server)
         if res == "Wolfram Alpha did not understand your input":
-            await event.reply("Sorry, Daisy's AI systems could't recognized your question..")
+            await event.reply(
+                "Sorry, Daisy's AI systems could't recognized your question.."
+            )
             return
         await event.reply(f"**{i}**\n\n" + res.text, parse_mode="markdown")
 
@@ -94,7 +93,6 @@ async def _(event):
                 # process the json to appropriate string format
                 results = r["results"]
                 transcript_response = ""
-                transcript_confidence = ""
                 for alternative in results:
                     alternatives = alternative["alternatives"][0]
                     transcript_response += " " + str(alternatives["transcript"])
