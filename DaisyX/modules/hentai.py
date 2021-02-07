@@ -2,13 +2,13 @@
 
 from functools import wraps
 
-import DaisyX.modules.sql.hentai_sql as sql
 import nekos
 from telegram import ParseMode
 from telegram.ext import CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
+import DaisyX.modules.sql.hentai_sql as sql
 from DaisyX import EVENT_LOGS, dispatcher
 from DaisyX.modules.disable import DisableAbleCommandHandler
 from DaisyX.modules.helper_funcs.filters import CustomFilters
