@@ -1,21 +1,16 @@
 
-# Liza Snow
+# Daisy X (A telegram Bot Project)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
+
+## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
 
 ## How to setup/deploy.
 
-### Read these notes carefully before proceeding 
-
- - Edit any mentions of @SuzuyaSupport to your own support chat. 
- - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot. [See this](https://github.com/AnimeKaizoku/DaisyX/blob/shiken/DaisyX/__main__.py#L25)
- - Lastly, if you are found to run this repo without the code being open sourced or the repository link not mentioned in the bot, we will push a gban for you in our network because of being in violation of the license, you are free to be a dick and not respect the open source code (we do not mind) but we will not be having you around our chats.
-
-
-
+### I will write a detiled documentation later
 <details>
   <summary>Steps to deploy on Heroku !! </summary>
  
- [Deploy](https://www.heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x)
+ [Deploy](https://www.heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 ```
 Fill in all the details, Deploy!
@@ -189,11 +184,11 @@ You can use [nssm](https://nssm.cc/usage) to install the bot as service on windo
 Make sure to edit the start and restart bats to your needs. 
 Note: the restart bat requires that User account control be disabled.
 
-For queries or any issues regarding the bot please open an issue ticket or visit us at [Suzuya Support](https://t.me/SuzuyaSupport)
+For queries or any issues regarding the bot please open an issue ticket or visit us at [Daisy Support](https://t.me/infinityje)
 ## How to setup on Heroku 
 For starters click on this button 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Godzilla-0/Suzuya_ProBot.git) 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git) 
 
 
 ## Credits
@@ -204,4 +199,4 @@ Also, missing proper credit for blacklistusers taken from TheRealPhoenixBot (wil
 
 Any other authorship/credits can be seen through the commits.
 
-Should any be missing kindly let us know at [Suzuya Support](https://t.me/SuzuyaSupport) or simply submit a pull request on the readme.
+Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje) or simply submit a pull request on the readme.
