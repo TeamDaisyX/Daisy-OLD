@@ -1,14 +1,14 @@
 {
-      "name": "Liza Snowgirl",
+      "name": "Daisy X",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "Saitama"
+         "DaisyX"
       ],   
-   "repository": "https://github.com/Infinity-bots/lizasnowgirl",
+   "repository": "https://github.com/InukaAsith/DaisyX",
    "addons": [
       {
          "options": {
@@ -49,11 +49,11 @@
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
-         "value": "792109647"
+         "value": "1141839926"
       },
       "OWNER_USERNAME": {
          "description": "Your username without the @",
-         "value": "Sawada"
+         "value": "InukaAsith"
       },
       "SUPPORT_CHAT": {
          "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to saitama support than consider you made an enemy.",
@@ -83,7 +83,7 @@
       "DEV_USERS": {
          "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Saitama support then keep the current ID's here at they are and add yours.",
          "required": false,
-         "value": "660565862 459034222 189005567 346981140 367222759"
+         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
       },
       "sw_api": {
          "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
@@ -97,22 +97,22 @@
       "DRAGONS": {
          "description": "A space separated list of user IDs who you want to assign as sudo users.",
          "required": false,
-         "value": "459034222 189005567 660565862 346981140 367222759"
+         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
       },
       "DEMONS": {
          "description": "A space separated list of user IDs who you wanna assign as support users(gban perms only).",
          "required": false,
-         "value": "615304572"
+         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
       },
       "TIGERS": {
          "description": "A space separated list of user IDs who you wanna assign as tiger users.",
          "required": false,
-         "value": ""
+         "value": "1141839926"
       },
       "WOLVES": {
          "description": "A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot.",
          "required": false,
-         "value": ""
+         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
       },
       "ENV": {
          "description": "Setting this to ANYTHING will enable environment variables. Leave it as it is",
@@ -136,8 +136,24 @@
       "No_LOAD": {
          "description": "Dont load these modules cause they shit, space separation",
          "required": false,
-         "value": "cleaner rss connection"
+         "value": ""
       }, 
+      
+      "STRING_SESSION ": {
+         "description": "String session here",
+         "required": true,
+         "value": ""
+      },  
+      "MONGO_DB_URI  ": {
+         "description": "Mongo db URI here. Get it from mongodb.com create acc. Crete organization. Create a cluster connection mode from everywhere give user pass get uri. replace <password> with pass <name> with DaisyX",
+         "required": true,
+         "value": ""
+      },    
+      "BOT_ID": {
+         "description": "ID of bot.. get it from other bot",
+         "required": true,
+         "value": ""
+      },         
       "BL_CHATS": {
          "description": "List of chats you want blacklisted.",
          "required": false,
