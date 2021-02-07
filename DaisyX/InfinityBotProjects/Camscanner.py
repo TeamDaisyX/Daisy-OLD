@@ -71,4 +71,3 @@ async def asciiart(event):
     await tbot.send_file(event.chat_id, "./scanned.jpg")
     os.remove(f"{downloaded_file_name}")
     os.remove("./scanned.jpg")
-

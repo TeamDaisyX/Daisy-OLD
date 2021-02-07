@@ -1,4 +1,3 @@
-
 __help__ = """
  - /camscanner: Reply to a image to scan and improve it's clarity.
 **Instructions**
