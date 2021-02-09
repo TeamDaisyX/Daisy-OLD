@@ -2,6 +2,7 @@
 # Daisy X (A telegram Bot Project)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
+## https://daisyproject.studio
 ## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
 
 ## How to setup/deploy.
