@@ -1,5 +1,5 @@
 import time
-
+import os
 from pymongo import MongoClient
 from telethon.tl import *
 from telethon.tl.types import *
@@ -14,7 +14,7 @@ tmail = db.tempmail
 
 tm = TempMail()
 api_host = "privatix-temp-mail-v1.p.rapidapi.com"
-api_key = TEMP_MAIL_KEY
+api_key = os.environ.get("TEMP_MAIL_KEY",None)
 tm.set_header(api_host, api_key)
 
 
