@@ -1,5 +1,5 @@
-import string
 import random
+import string
 from hashlib import md5
 
 import requests
@@ -15,31 +15,31 @@ class TempMail(object):
     Default value is ``api2.temp-mail.org``.
     """
 
-    def __init__(self, login=None, domain=None, api_domain='privatix-temp-mail-v1.p.rapidapi.com'):
+    def __init__(
+        self, login=None, domain=None, api_domain="privatix-temp-mail-v1.p.rapidapi.com"
+    ):
         self.login = login
         self.domain = domain
         self.api_domain = api_domain
 
     def __repr__(self):
-        return u'<TempMail [{0}]>'.format(self.get_email_address())
+        return u"<TempMail [{0}]>".format(self.get_email_address())
 
     @property
     def available_domains(self):
         """
         Return list of available domains for use in email address.
         """
-        if not hasattr(self, '_available_domains'):
-            url = 'https://{0}/request/domains/'.format(
-                self.api_domain)
-            req = requests.request("GET",url,headers=self.headers)
+        if not hasattr(self, "_available_domains"):
+            url = "https://{0}/request/domains/".format(self.api_domain)
+            req = requests.request("GET", url, headers=self.headers)
             domains = req.json()
-            setattr(self, '_available_domains', domains)
+            setattr(self, "_available_domains", domains)
         return self._available_domains
-    def set_header(self,host,key):
-        self.headers = {
-            'x-rapidapi-host': host,
-            'x-rapidapi-key': key
-        }
+
+    def set_header(self, host, key):
+        self.headers = {"x-rapidapi-host": host, "x-rapidapi-key": key}
+
     def generate_login(self, min_length=6, max_length=10, digits=True):
         """
         Generate string for email address login with defined length and
@@ -55,7 +55,7 @@ class TempMail(object):
         if digits:
             chars += string.digits
         length = random.randint(min_length, max_length)
-        return ''.join(random.choice(chars) for x in range(length))
+        return "".join(random.choice(chars) for x in range(length))
 
     def get_email_address(self):
         """
@@ -69,15 +69,15 @@ class TempMail(object):
         if self.domain is None:
             self.domain = random.choice(available_domains)
         elif self.domain not in available_domains:
-            raise ValueError('Domain not found in available domains!')
-        return u'{0}{1}'.format(self.login, self.domain)
+            raise ValueError("Domain not found in available domains!")
+        return u"{0}{1}".format(self.login, self.domain)
 
     def get_hash(self, email):
         """
         Return md5 hash for given email address.
         :param email: email address for generate md5 hash.
         """
-        return md5(email.encode('utf-8')).hexdigest()
+        return md5(email.encode("utf-8")).hexdigest()
 
     def get_mailbox(self, email=None, email_hash=None):
         """
@@ -91,7 +91,6 @@ class TempMail(object):
         if email_hash is None:
             email_hash = self.get_hash(email)
 
-        url = 'https://{0}/request/mail/id/{1}/'.format(
-            self.api_domain, email_hash)
-        req = requests.get(url,headers=self.headers)
+        url = "https://{0}/request/mail/id/{1}/".format(self.api_domain, email_hash)
+        req = requests.get(url, headers=self.headers)
         return req.json()
