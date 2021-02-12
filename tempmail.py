@@ -16,7 +16,7 @@ class TempMail(object):
     """
 
     def __init__(
-        self, login=None, domain=None, api_domain="privatix-temp-mail-v1.p.rapidapi.com"
+        self, login=None, domain=None, api_domain="easy-fast-temp-mail.p.rapidapi.com"
     ):
         self.login = login
         self.domain = domain
