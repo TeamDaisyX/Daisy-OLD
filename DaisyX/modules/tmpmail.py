@@ -3,10 +3,6 @@ import time
 from pymongo import MongoClient
 from telethon.tl import *
 from telethon.tl.types import *
-from tempmail import TempMail
-
-from DaisyX import *
-from DaisyX.events import register
 
 from DaisyX import *
 from DaisyX.events import register
