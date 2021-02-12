@@ -51,3 +51,5 @@ pySmartDL
 validators
 bing_image_downloader
 google-api-python-client
+wget
+fake-useragent
