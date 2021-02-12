@@ -8,6 +8,10 @@ from tempmail import TempMail
 from DaisyX import *
 from DaisyX.events import register
 
+from DaisyX import *
+from DaisyX.events import register
+from tempmail import TempMail
+
 client = MongoClient(MONGO_DB_URI)
 db = client["missjuliarobot"]
 tmail = db.tempmail
