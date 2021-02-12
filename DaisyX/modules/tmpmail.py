@@ -14,7 +14,7 @@ db = client["missjuliarobot"]
 tmail = db.tempmail
 
 tm = TempMail()
-api_host = "privatix-temp-mail-v1.p.rapidapi.com"
+api_host = "easy-fast-temp-mail.p.rapidapi.com"
 api_key = os.environ.get("TEMP_MAIL_KEY", None)
 tm.set_header(api_host, api_key)
 
