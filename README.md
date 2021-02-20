@@ -1,10 +1,7 @@
 
-# Daisy X (A telegram Bot Project)
 
-
-### “ Hey there 👋 I'm Daisy „
-
-#### AI based Advanced Group Management Bot Suit For All Your Needs ❤️
+# “ Hey there 👋 I'm Daisy „
+## AI based Advanced telegram Group Management Bot Suit For All Your Needs ❤️
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
@@ -30,8 +27,11 @@
 The bot is based on the original work done by [PaulSonOfLars](https://github.com/PaulSonOfLars)
 This repo was just revamped to suit an Anime-centric community. All original credits go to Paul and his dedication, Without his efforts, this fork would not have been possible!
 
-Also, missing proper credit for blacklistusers taken from TheRealPhoenixBot (will add it later, this note says unless it is done)
-
-Any other authorship/credits can be seen through the commits.
+All other credits mentioned on top of scripts
 
 Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje) or simply submit a pull request on the readme.
+
+
+### Daisy X (A telegram Bot Project) 
+### The Main Branch (Basic features)
+### DaisyX v1.0(core)
