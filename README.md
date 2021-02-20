@@ -33,4 +33,7 @@ Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje
 
 ## Daisy X the telegram Bot Project
 The Main Branch (Basic features only)
+
 DaisyX v1.0(core)
+
+
