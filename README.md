@@ -36,4 +36,7 @@ The Main Branch (Basic features only)
 
 DaisyX v1.0(core)
 
+## Special Credits
+- [ImJanindu](https://github.com/imjanindu) - A Co-Developer of Project
+- [Kaviya-Admin](https://github.com/kaviya-admin) - A Co-Developer of Project
 
