@@ -1,20 +1,16 @@
 
 # Daisy X (A telegram Bot Project)
+
+
+### “ Hey there 👋 I'm Daisy „
+
+#### AI based Advanced Group Management Bot Suit For All Your Needs ❤️
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 ## https://daisyproject.studio
 ## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
 
-
-### I will write a detailed documentation later
-<details>
-  <summary>Steps to deploy on Heroku !! </summary>
- 
- [Deploy](https://www.heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
-
-
-
- 
 
 
 ## Credits
