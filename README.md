@@ -31,7 +31,6 @@ All other credits mentioned on top of scripts
 
 Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje) or simply submit a pull request on the readme.
 
-
-### Daisy X (A telegram Bot Project) 
-### The Main Branch (Basic features)
-### DaisyX v1.0(core)
+## Daisy X the telegram Bot Project
+The Main Branch (Basic features only)
+DaisyX v1.0(core)
