@@ -35,3 +35,7 @@ Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje
 The Advanced Branch (For PRO's)
 
 DaisyX v1.0(advvanced)
+
+## Special Credits
+- [ImJanindu](https://github.com/imjanindu) - A Co-Developer of Project
+- [Kaviya-Admin](https://github.com/kaviya-admin) - A Co-Developer of Project
