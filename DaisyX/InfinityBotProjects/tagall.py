@@ -14,12 +14,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-
 from telegram.utils.helpers import mention_html
 from telethon import *
-from telethon.tl import functions, types
 from telethon.tl.types import *
-
 
 from DaisyX import telethn as tbot
 
