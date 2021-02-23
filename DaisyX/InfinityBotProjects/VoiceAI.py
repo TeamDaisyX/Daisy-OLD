@@ -101,9 +101,11 @@ async def _(event):
                     appid = WOLFRAM_ID
                     server = f"https://api.wolframalpha.com/v1/spoken?appid={appid}&i={string_to_show}"
                     res = get(server)
-                    
+
                     if "Wolfram Alpha did not understand" in res.text:
-                        answer = "I'm sorry Daisy's AI system can't undestand your problem"
+                        answer = (
+                            "I'm sorry Daisy's AI system can't undestand your problem"
+                        )
                     else:
                         answer = res.text
                     try:
