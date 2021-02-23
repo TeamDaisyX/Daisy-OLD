@@ -3,7 +3,7 @@ from telethon import *
 from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
-
+from telegram.utils.helpers import mention_html
 from DaisyX import *
 from DaisyX import telethn as tbot
 
@@ -50,7 +50,7 @@ async def _(event):
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
     async for x in event.client.iter_participants(chat):
-        mentions += f"[{x.first_name}](tg://user?id={x.id}) \n"
+        mentions += "[{}](tg://user?id={}) \n".format(mention_html(x.first_name, x.id))
     await event.delete()
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
