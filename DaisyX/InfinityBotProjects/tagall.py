@@ -45,6 +45,14 @@ async def is_register_admin(chat, user):
 async def _(event):
     if event.fwd_from:
         return
+    if event.is_group:
+        if await is_register_admin(event.input_chat, event.message.sender_id):
+            pass
+        elif event.chat_id == iid and event.sender_id == userss:
+            pass
+    else:
+        
+         return
     chat = await event.get_input_chat()
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
