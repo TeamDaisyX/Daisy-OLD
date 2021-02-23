@@ -41,7 +41,6 @@ async def is_register_admin(chat, user):
     return None
 
 
-
 @tbot.on(events.NewMessage(pattern="^/tagall (.*)"))
 async def _(event):
     if event.fwd_from:
