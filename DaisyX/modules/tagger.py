@@ -1,5 +1,5 @@
 # Written by Inukaasith for DaisyX
-
+"""
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CallbackQueryHandler, CommandHandler, Filters, run_async
@@ -255,7 +255,7 @@ def untagall(update, context):
         "Successully removed all users from {}'s tag list.".format(chat.title)
     )
 
-
+"""
 __mod_name__ = "Tagger 🖇"
 
 __help__ = """ 
@@ -270,7 +270,7 @@ Tagger is an essential feature to mention all subscribed members in the group. A
 - /addtag <userhandle>: add a user to chat tag list. (via handle, or reply)
 - /removetag <userhandle>: remove a user to chat tag list. (via handle, or reply)
 """
-
+"""
 TAG_ALL_HANDLER = DisableAbleCommandHandler("tagall", tagall, filters=Filters.group)
 UNTAG_ALL_HANDLER = DisableAbleCommandHandler(
     "untagall", untagall, filters=Filters.group
@@ -293,3 +293,4 @@ dispatcher.add_handler(TAG_ME_HANDLER)
 dispatcher.add_handler(ADD_TAG_HANDLER)
 dispatcher.add_handler(REMOVE_TAG_HANDLER)
 dispatcher.add_handler(TAGALL_CALLBACK_HANDLER)
+"""
