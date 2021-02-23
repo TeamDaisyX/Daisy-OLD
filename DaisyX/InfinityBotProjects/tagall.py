@@ -1,11 +1,7 @@
-import requests
-from telethon import *
 from telethon import events
-from telethon.tl import functions, types
-from telethon.tl.types import *
 
-from DaisyX import *
 from DaisyX import telethn as tbot
+
 
 @tbot.on(events.NewMessage(pattern="^/tagall (.*)"))
 async def _(event):
