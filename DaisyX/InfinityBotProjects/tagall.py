@@ -52,7 +52,7 @@ async def is_register_admin(chat, user):
     return None
 
 
-@register(pattern=r"^/daisy(?: |$)([\s\S]*)")
+@tbot.on(events.NewMessage(pattern="^/tagall (.*) (.*)"))
 async def _(event):
     if event.fwd_from:
         return
