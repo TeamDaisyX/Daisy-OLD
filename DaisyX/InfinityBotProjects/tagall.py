@@ -51,8 +51,8 @@ async def _(event):
         elif event.chat_id == iid and event.sender_id == userss:
             pass
     else:
-        
-         return
+
+        return
     chat = await event.get_input_chat()
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
