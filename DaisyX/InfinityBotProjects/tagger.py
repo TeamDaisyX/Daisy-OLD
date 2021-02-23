@@ -51,7 +51,7 @@ async def _(event):
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
     async for x in event.client.iter_participants(chat):
-        mentions += "[{}](tg://user?id={}) \n".format(mention_html(x.first_name, x.id))
+        mentions += f"[{mention_html(x.first_name}]({(mention_html(x.id)}) \n"
     await event.delete()
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
