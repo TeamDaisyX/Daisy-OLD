@@ -171,9 +171,7 @@ async def paginate_prevtorrent(event):
     try:
         results = requests.get(url).json()
     except Exception as e:
-        await event.reply(
-            "Sorry, Daisy Cant found any torrents for that word"
-        )
+        await event.reply("Sorry, Daisy Cant found any torrents for that word")
         print(e)
         return
     vector = len(results)
