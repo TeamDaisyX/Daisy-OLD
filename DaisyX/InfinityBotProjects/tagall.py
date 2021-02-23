@@ -20,9 +20,29 @@ from DaisyX import *
 from DaisyX.modules.helper_funcs.chat_status import bot_admin, user_admin
 
 
-@user_admin
-@bot_admin
-@register(pattern="^/tagall$")
+
+async def is_register_admin(chat, user):
+    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
+
+        return isinstance(
+            (
+                await tbot(functions.channels.GetParticipantRequest(chat, user))
+            ).participant,
+            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
+        )
+    if isinstance(chat, types.InputPeerChat):
+
+        ui = await tbot.get_peer_id(user)
+        ps = (
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
+        ).full_chat.participants.participants
+        return isinstance(
+            next((p for p in ps if p.user_id == ui), None),
+            (types.ChatParticipantAdmin, types.ChatParticipantCreator),
+        )
+    return None
+
+
 async def _(event):
     if event.fwd_from:
         return
