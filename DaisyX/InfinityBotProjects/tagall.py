@@ -18,7 +18,7 @@ from telethon import events
 
 from DaisyX import telethn as tbot
 from DaisyX.modules.helper_funcs.chat_status import bot_admin, user_admin
-
+from telegram.utils.helpers import mention_html
 
 @user_admin
 @bot_admin
@@ -30,7 +30,8 @@ async def _(event):
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
     async for x in event.client.iter_participants(chat):
-        mentions += f" @{x.username} \n"
+        mentions += "[{}](tg://user?id={}) \n".format(
+                mention_html(x.first_name, x.id)
     await event.delete()
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
