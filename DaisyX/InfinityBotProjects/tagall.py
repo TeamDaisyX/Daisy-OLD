@@ -16,7 +16,20 @@
 
 from telegram.utils.helpers import mention_html
 
+from pymongo import MongoClient
+
+from telethon import *
+from telethon.tl import functions, types
+from telethon.tl.types import *
+
 from DaisyX import *
+from DaisyX import telethn as tbot
+from DaisyX.events import register
+
+client = MongoClient()
+client = MongoClient(MONGO_DB_URI)
+db = client["missjuliarobot"]
+approved_users = db.approve
 
 
 async def is_register_admin(chat, user):
@@ -40,10 +53,21 @@ async def is_register_admin(chat, user):
         )
     return None
 
-
+@register(pattern=r"^/daisy(?: |$)([\s\S]*)")
 async def _(event):
     if event.fwd_from:
         return
+    approved_userss = approved_users.find({})
+    for ch in approved_userss:
+        iid = ch["id"]
+        userss = ch["user"]
+    if event.is_group:
+        if await is_register_admin(event.input_chat, event.message.sender_id):
+            pass
+        elif event.chat_id == iid and event.sender_id == userss:
+            pass
+        else:
+            return
     chat = await event.get_input_chat()
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
