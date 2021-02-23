@@ -8,4 +8,3 @@ Tagger is an essential feature to mention all members in the group.
 *Admin only:*
 - /tagall: mention all subscribed members.
 """
-
