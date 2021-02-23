@@ -22,7 +22,7 @@ from telegram.utils.helpers import mention_html
 
 @user_admin
 @bot_admin
-@tbot.on(events.NewMessage(pattern="^/tagall (.*)"))
+@register(pattern="^/tagall$")
 async def _(event):
     if event.fwd_from:
         return
@@ -31,7 +31,7 @@ async def _(event):
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
     async for x in event.client.iter_participants(chat):
         mentions += "[{}](tg://user?id={}) \n".format(
-                mention_html(x.first_name, x.id)
+                mention_html(x.first_name, x.id))
     await event.delete()
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
