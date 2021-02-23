@@ -108,13 +108,13 @@ def _check_member(client, message):
                             [
                                 [
                                     InlineKeyboardButton(
-                                        "Our Channel", callback_data="onUnMuteRequest"
+                                        "Our Channel", url="https://t.me/{}".format(channel)
                                     )
                                 ],
                                 [
                                     InlineKeyboardButton(
                                         "UnMute Me",
-                                        url="https://t.me/{}".format(channel),
+                                        callback_data="onUnMuteRequest"
                                     )
                                 ],
                             ]
