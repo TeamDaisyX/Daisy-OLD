@@ -17,11 +17,8 @@
 from telethon import events
 
 from DaisyX import telethn as tbot
+from DaisyX.modules.helper_funcs.chat_status import bot_admin, user_admin
 
-from DaisyX.modules.helper_funcs.chat_status import (
-    bot_admin,
-    is_user_admin,
-    user_admin)
 
 @user_admin
 @bot_admin
