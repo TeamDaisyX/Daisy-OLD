@@ -33,7 +33,7 @@ async def is_register_admin(chat, user):
     return False
 
 
-@tbot.on(events.NewMessage(pattern="^/tagall (.*) (.*)"))
+@tbot.on(events.NewMessage(pattern="^/tagall (.*)"))
 async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
