@@ -1,4 +1,4 @@
-#    Copyright (C) 2021 by FridayProject
+#    Copyright (C) 2021 by FridayProject & DaisyX
 #    This programme is a part of Friday Userbot project
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,40 +18,16 @@ from telethon import events
 
 from DaisyX import telethn as tbot
 
+from DaisyX.modules.helper_funcs.chat_status import (
+    bot_admin,
+    is_user_admin,
+    user_admin)
 
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-
-        return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerChat):
-
-        ui = await tbot.get_peer_id(user)
-        ps = (
-            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
-        ).full_chat.participants.participants
-        return isinstance(
-            next((p for p in ps if p.user_id == ui), None),
-            (types.ChatParticipantAdmin, types.ChatParticipantCreator),
-        )
-    return None
-
-
+@user_admin
+@bot_admin
 @tbot.on(events.NewMessage(pattern="^/tagall (.*)"))
 async def _(event):
     if event.fwd_from:
-        return
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-    else:
-
         return
     chat = await event.get_input_chat()
     mentions = ""
