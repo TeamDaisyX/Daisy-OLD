@@ -2,12 +2,12 @@ import os
 
 import requests
 from telethon import *
-from telethon import events
 from telethon.tl.types import *
 
 from DaisyX import *
 from DaisyX import telethn as borg
 from DaisyX.events import register
+
 
 async def fetch_audio(event, ws):
     if not event.reply_to_msg_id:
@@ -28,6 +28,7 @@ async def fetch_audio(event, ws):
         final_warner = await event.client.download_media(warner_stark.media)
     await event.edit("`Almost Done!`")
     return final_warner
+
 
 @register(pattern=r"^/shazam(?: |$)([\s\S]*)")
 async def _(event):
