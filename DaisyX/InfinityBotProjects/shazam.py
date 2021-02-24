@@ -3,7 +3,12 @@ import os
 import requests
 
 from DaisyX import telethn as borg
+from telethon import *
+from telethon import events
+from telethon.tl import functions, types
+from telethon.tl.types import *
 
+from DaisyX import *
 
 async def fetch_audio(event, ws):
     if not event.reply_to_msg_id:
