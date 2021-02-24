@@ -25,7 +25,7 @@ async def fetch_audio(event, ws):
     await event.edit("`Almost Done!`")
     return final_warner
 
-
+@borg.on(events.NewMessage(pattern="^/shazam (.*)"))
 async def _(event):
     if event.fwd_from:
         return
