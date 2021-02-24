@@ -7,7 +7,7 @@ from telethon.tl.types import *
 
 from DaisyX import *
 from DaisyX import telethn as borg
-
+from DaisyX.events import register
 
 async def fetch_audio(event, ws):
     if not event.reply_to_msg_id:
@@ -29,8 +29,7 @@ async def fetch_audio(event, ws):
     await event.edit("`Almost Done!`")
     return final_warner
 
-
-@borg.on(events.NewMessage(pattern="^/shazam (.*)"))
+@register(pattern=r"^/shazam(?: |$)([\s\S]*)")
 async def _(event):
     if event.fwd_from:
         return
