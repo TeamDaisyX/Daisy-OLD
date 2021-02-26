@@ -1,4 +1,7 @@
 
+# Project still under heavy development
+## Everything will be changed in the release
+
 
 # “ Hey there 👋 I'm Daisy „
 ## AI based Advanced telegram Group Management Bot Suit For All Your Needs ❤️
