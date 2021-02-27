@@ -1,5 +1,4 @@
 from pymongo import MongoClient
-from telegram.utils.helpers import mention_html
 from telethon import *
 from telethon import events
 from telethon.tl import functions, types
@@ -51,7 +50,7 @@ async def _(event):
     mentions = ""
     sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
     async for x in event.client.iter_participants(chat):
-        mentions += f"[{mention_html(x.first_name)}]({mention_html(x.id)}) \n"
+        mentions += f"[{x.first_name}](tg://user?id={x.id}) \n"
     await event.delete()
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
