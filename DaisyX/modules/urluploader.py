@@ -87,3 +87,11 @@ ETA: {}""".format(
                         print("Error", e)
                         # logger.info(str(e))
         return await response.release()
+
+    
+__help__ = """
+ • `/up`*:* reply to a direct download link to upload it to telegram as files
+ 
+© @ImJanindu 🇱🇰"""
+
+__mod_name__ = "URL Upload 📤"
