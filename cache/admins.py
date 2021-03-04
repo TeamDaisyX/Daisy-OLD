@@ -1,7 +1,6 @@
-from typing import List, Dict, Union
+from typing import Dict, List, Union
 
 from pyrogram.types import User
-
 
 admins: Dict[str, List[User]] = {}
 
