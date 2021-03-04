@@ -4,16 +4,7 @@ from pyrogram import Client
 from pyrogram.types import Message
 
 from helpers.admins import get_administrators
-from config import SUDO_USERS
-
-
-def errors(func: Callable) -> Coroutine:
-    async def wrapper(client: Client, message: Message):
-        try:
-            return await func(client, message)
-        except Exception as e:
-            await message.reply(f"❗️ {type(e).__name__}: {e}")
-    return wrapper
+from DaisyX import SUDO_USERS
 
 
 def admins_only(func: Callable) -> Coroutine:
