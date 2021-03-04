@@ -5,8 +5,7 @@ from pyrogram import filters
 from pytgcalls import GroupCall
 
 from DaisyX import pbot
-from cache.admins import set
-from helpers.wrappers import errors, admins_only
+from helpers.wrappers import admins_only
 
 VOICE_CHATS = {}
 
@@ -15,7 +14,7 @@ VOICE_CHATS = {}
 @admins_only
 async def test(client, message):
     if not message.reply_to_message and not message.reply_to_message.audio:
-        
+
         await message.reply("`Reply To Audio To Play It`")
         return
     audio = message.reply_to_message.audio
@@ -30,5 +29,3 @@ async def test(client, message):
         f"DaisyX now Playing `{audio.title}...` in {message.chat.title}!"
     )
     os.remove(audio_original)
-
- 
