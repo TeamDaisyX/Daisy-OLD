@@ -15,8 +15,6 @@ from DaisyX import pbot
 
 VOICE_CHATS = {}
 @pbot.on_message(filters.command(["play", "playmusic"]) & ~filters.private)
-def config(client, message):
-
 async def test(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
     if user.status is "administrator" or user.user.id in SUDO_USERS:
