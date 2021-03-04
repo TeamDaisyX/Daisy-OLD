@@ -1,5 +1,4 @@
 import asyncio
-import html
 
 import better_profanity
 import nude
@@ -11,10 +10,9 @@ from telethon.tl.types import *
 from textblob import TextBlob
 
 from DaisyX import *
-from DaisyX import BOT_ID, MONGO_DB_URI
+from DaisyX import MONGO_DB_URI
 from DaisyX import telethn as tbot
 from DaisyX.events import register
-from DaisyX.modules.sql import cleaner_sql as sql
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -60,8 +58,6 @@ async def is_register_admin(chat, user):
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
-
-
 
 
 @register(pattern="^/profanity(?: |$)(.*)")
@@ -157,6 +153,7 @@ async def profanity(event):
         await event.reply("I only understand by on or off")
         return
 
+
 @tbot.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
@@ -226,4 +223,3 @@ async def del_profanity(event):
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
-
