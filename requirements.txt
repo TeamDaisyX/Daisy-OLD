@@ -70,3 +70,6 @@ scikit-image==0.17.2
 pornhub_api
 youtube_search
 search_engine_parser
+asyncio
+ffmpeg-python>=0.2.0
+pytgcalls>=0.0.2

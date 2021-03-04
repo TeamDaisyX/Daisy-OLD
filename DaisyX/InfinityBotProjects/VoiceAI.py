@@ -61,7 +61,7 @@ async def _(event):
         appid = WOLFRAM_ID
         server = f"https://api.wolframalpha.com/v1/spoken?appid={appid}&i={i}"
         res = get(server)
-        if res == "Wolfram Alpha did not understand your input":
+        if "Wolfram Alpha did not understand" in res.text:
             await event.reply(
                 "Sorry, Daisy's AI systems could't recognized your question.."
             )
@@ -101,7 +101,13 @@ async def _(event):
                     appid = WOLFRAM_ID
                     server = f"https://api.wolframalpha.com/v1/spoken?appid={appid}&i={string_to_show}"
                     res = get(server)
-                    answer = res.text
+
+                    if "Wolfram Alpha did not understand" in res.text:
+                        answer = (
+                            "I'm sorry Daisy's AI system can't undestand your problem"
+                        )
+                    else:
+                        answer = res.text
                     try:
                         tts = gTTS(answer, tld="com", lang="en")
                         tts.save("results.mp3")
