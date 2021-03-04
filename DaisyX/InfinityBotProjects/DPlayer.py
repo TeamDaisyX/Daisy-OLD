@@ -13,7 +13,7 @@ VOICE_CHATS = {}
 async def test(client, message):
     client.get_chat_member(message.chat.id, message.from_user.id)
     if client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
-        chat_id = message.chat.id
+        message.chat.id
         message.chat.id
         if not message.reply_to_message and not message.reply_to_message.audio:
             await message.reply("`Reply To Audio To Play It`")
