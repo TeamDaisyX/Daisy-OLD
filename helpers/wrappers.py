@@ -3,8 +3,8 @@ from typing import Callable, Coroutine
 from pyrogram import Client
 from pyrogram.types import Message
 
-from helpers.admins import get_administrators
 from DaisyX import SUDO_USERS
+from helpers.admins import get_administrators
 
 
 def admins_only(func: Callable) -> Coroutine:
@@ -15,4 +15,5 @@ def admins_only(func: Callable) -> Coroutine:
         for admin in admins:
             if admin.id == message.from_user.id:
                 return await func(client, message)
+
     return wrapper
