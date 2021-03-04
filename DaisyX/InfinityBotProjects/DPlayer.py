@@ -12,7 +12,7 @@ VOICE_CHATS = {}
 @pbot.on_message(filters.command(["play", "playmusic"]) & ~filters.private)
 async def test(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.status is "administrator" or user.user.id in SUDO_USERS:
+    if (client.get_chat_member(chat_id, user_id).status in ("administrator", "creator")):
         message.chat.id
         if not message.reply_to_message and not message.reply_to_message.audio:
             await message.reply("`Reply To Audio To Play It`")
