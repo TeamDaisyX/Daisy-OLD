@@ -65,7 +65,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/DaisyX
-RUN git clone -b shiken https://github.com/Infinity-Bots/LizaDaisyX /root/DaisyX
+RUN git clone -b advanced https://github.com/TeamDaisyX/Daisy-X /root/DaisyX
 WORKDIR /root/DaisyX
 
 #Copy config file to /root/DaisyX/DaisyX
