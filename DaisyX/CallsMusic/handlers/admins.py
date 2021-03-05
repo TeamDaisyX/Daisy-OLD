@@ -1,17 +1,13 @@
+import sira
+import tgcalls
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-import tgcalls
-import sira
 from DaisyX.CallsMusic.cache.admins import set
-from DaisyX.CallsMusic.helpers.wrappers import errors, admins_only
+from DaisyX.CallsMusic.helpers.wrappers import admins_only, errors
 
 
-@Client.on_message(
-    filters.command("pause")
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command("pause") & filters.group & ~filters.edited)
 @errors
 @admins_only
 async def pause(client: Client, message: Message):
@@ -19,11 +15,7 @@ async def pause(client: Client, message: Message):
     await message.reply_text("⏸ Paused.")
 
 
-@Client.on_message(
-    filters.command("resume")
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command("resume") & filters.group & ~filters.edited)
 @errors
 @admins_only
 async def resume(client: Client, message: Message):
@@ -31,11 +23,7 @@ async def resume(client: Client, message: Message):
     await message.reply_text("▶️ Resumed.")
 
 
-@Client.on_message(
-    filters.command(["stop", "end"])
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command(["stop", "end"]) & filters.group & ~filters.edited)
 @errors
 @admins_only
 async def stop(client: Client, message: Message):
@@ -48,11 +36,7 @@ async def stop(client: Client, message: Message):
     await message.reply_text("⏹ Stopped streaming.")
 
 
-@Client.on_message(
-    filters.command(["skip", "next"])
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command(["skip", "next"]) & filters.group & ~filters.edited)
 @errors
 @admins_only
 async def skip(client: Client, message: Message):
@@ -63,18 +47,20 @@ async def skip(client: Client, message: Message):
     if sira.is_empty(chat_id):
         tgcalls.pytgcalls.leave_group_call(chat_id)
     else:
-        tgcalls.pytgcalls.change_stream(
-            chat_id, sira.get(chat_id)["file_path"]
-        )
+        tgcalls.pytgcalls.change_stream(chat_id, sira.get(chat_id)["file_path"])
 
     await message.reply_text("⏩ Skipped the current song.")
 
 
-@Client.on_message(
-    filters.command("admincache")
-)
+@Client.on_message(filters.command("admincache"))
 @errors
 @admins_only
 async def admincache(client, message: Message):
-    set(message.chat.id, [member.user for member in await message.chat.get_members(filter="administrators")])
+    set(
+        message.chat.id,
+        [
+            member.user
+            for member in await message.chat.get_members(filter="administrators")
+        ],
+    )
     await message.reply_text("❇️ Admin cache refreshed!")

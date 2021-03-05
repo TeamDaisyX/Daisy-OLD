@@ -11,5 +11,11 @@ async def get_members(chat: Chat) -> List[User]:
     if _get:
         return _get
     else:
-        set(chat.id, [member.user for member in await chat.get_administrators(filter="administrators")])
+        set(
+            chat.id,
+            [
+                member.user
+                for member in await chat.get_administrators(filter="administrators")
+            ],
+        )
         return await get_administrators(chat)

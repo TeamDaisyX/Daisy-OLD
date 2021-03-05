@@ -1,6 +1,6 @@
+from config import DURATION_LIMIT
 from youtube_dl import YoutubeDL
 
-from config import DURATION_LIMIT
 from DaisyX.CallsMusic.helpers.errors import DurationLimitError
 
 ydl_opts = {
