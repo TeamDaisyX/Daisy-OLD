@@ -2,7 +2,7 @@ from typing import List
 
 from pyrogram.types import Chat, User
 
-from cache.admins import get, set
+from DaisyX.CallsMusic.cache.admins import get, set
 
 
 async def get_members(chat: Chat) -> List[User]:
@@ -11,5 +11,5 @@ async def get_members(chat: Chat) -> List[User]:
     if _get:
         return _get
     else:
-        set(chat.id, [member.user for member in await chat.get_members(filter="members")])
-        return await get_members(chat)
+        set(chat.id, [member.user for member in await chat.get_administrators(filter="administrators")])
+        return await get_administrators(chat)

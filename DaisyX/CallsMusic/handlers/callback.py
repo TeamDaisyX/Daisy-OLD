@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery
 
-from tgcalls import pytgcalls
+from DaisyX.CallsMusic.tgcalls import pytgcalls
 
 
 @Client.on_callback_query(filters.regex("close"))

@@ -1,13 +1,13 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-import tgcalls
-from converter import convert
-from youtube import download
-import sira
-from config import DURATION_LIMIT
-from helpers.wrappers import errors
-from helpers.errors import DurationLimitError
+import DaisyX.CallsMusic.tgcalls
+from DaisyX.CallsMusic.converter import convert
+from DaisyX.CallsMusic.youtube import download
+import DaisyX.CallsMusic.sira
+from DaisyX.CallsMusic.config import DURATION_LIMIT
+from DaisyX.CallsMusic.helpers.wrappers import errors
+from DaisyX.CallsMusic.helpers.errors import DurationLimitError
 
 
 @Client.on_message(

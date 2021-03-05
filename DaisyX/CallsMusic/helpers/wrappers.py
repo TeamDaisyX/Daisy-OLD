@@ -3,8 +3,8 @@ from typing import Callable, Coroutine
 from pyrogram import Client
 from pyrogram.types import Message
 
-from helpers.admins import get_administrators
-from config import SUDO_USERS
+from DaisyX.CallsMusic.helpers.admins import get_administrators
+from DaisyX.CallsMusic.config import SUDO_USERS
 
 
 def errors(func: Callable) -> Coroutine:

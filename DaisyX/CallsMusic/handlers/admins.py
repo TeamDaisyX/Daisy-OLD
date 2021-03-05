@@ -3,8 +3,8 @@ from pyrogram.types import Message
 
 import tgcalls
 import sira
-from cache.admins import set
-from helpers.wrappers import errors, admins_only
+from DaisyX.CallsMusic.cache.admins import set
+from DaisyX.CallsMusic.helpers.wrappers import errors, admins_only
 
 
 @Client.on_message(
