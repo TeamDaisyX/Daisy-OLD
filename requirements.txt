@@ -54,3 +54,5 @@ google-api-python-client
 wget
 fake-useragent
 asyncio
+python-dotenv
+youtube_search_python
