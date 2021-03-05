@@ -24,7 +24,8 @@
     {
       "url": "heroku/python"
     }     
-  ],      
+  ], 
+   "stack": "container",     
    "env": {
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
