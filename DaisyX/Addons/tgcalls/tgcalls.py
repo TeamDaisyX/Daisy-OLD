@@ -1,9 +1,9 @@
-import config
+from DaisyX import SESSION_NAME,API_ID,API_HASH
 import sira
 from pyrogram import Client
 from pytgcalls.pytgcalls import PyTgCalls
 
-client = Client(config.SESSION_NAME, config.API_ID, config.API_HASH)
+client = Client(SESSION_NAME, API_ID, API_HASH)
 pytgcalls = PyTgCalls(client, 1512, False)
 
 
