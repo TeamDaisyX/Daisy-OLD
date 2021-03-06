@@ -73,3 +73,4 @@ search_engine_parser
 asyncio
 ffmpeg-python>=0.2.0
 pytgcalls>=0.0.2
+python-dotenv
