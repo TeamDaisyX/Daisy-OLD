@@ -8,7 +8,9 @@ from pyrogram.types import (
     InputTextMessageContent,
 )
 from youtubesearchpython import VideosSearch
-from DaisyX import  Client
+
+from DaisyX import Client
+
 
 @Client.on_inline_query()
 async def search(client: Client, query: InlineQuery):
