@@ -1,14 +1,14 @@
 """
 Written by @pokurt.
 """
-from pyrogram import Client, errors
+from pyrogram import errors
 from pyrogram.types import (
     InlineQuery,
     InlineQueryResultArticle,
     InputTextMessageContent,
 )
 from youtubesearchpython import VideosSearch
-
+from DaisyX import  Client
 
 @Client.on_inline_query()
 async def search(client: Client, query: InlineQuery):
