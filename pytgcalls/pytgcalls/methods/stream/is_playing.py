@@ -7,4 +7,4 @@ class IsPlaying:
         if chat_id in self.pytgcalls._current_status_chats:
             return self.pytgcalls._current_status_chats[chat_id]
         else:
-            raise Exception('NOT_IN_GROUP')
+            raise Exception("NOT_IN_GROUP")

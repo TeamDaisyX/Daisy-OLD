@@ -13,17 +13,17 @@ class ChangeVolumeVoiceCall:
     # noinspection PyProtectedMember
     async def _change_volume_voice_call(self, request: BaseRequest):
         result_json = {
-            'result': 'ACCESS_DENIED',
+            "result": "ACCESS_DENIED",
         }
         params = await request.json()
         if isinstance(params, str):
             params = json.loads(params)
-        if params['session_id'] == self.pytgcalls._session_id:
+        if params["session_id"] == self.pytgcalls._session_id:
             # noinspection PyBroadException
             try:
                 chat_call = (
                     await self.pytgcalls._load_full_chat(
-                        params['chat_id'],
+                        params["chat_id"],
                     )
                 ).full_chat.call
                 await self.pytgcalls._app.send(
@@ -34,11 +34,11 @@ class ChangeVolumeVoiceCall:
                             access_hash=0,
                         ),
                         muted=False,
-                        volume=params['volume'] * 100,
+                        volume=params["volume"] * 100,
                     ),
                 )
                 result_json = {
-                    'result': 'OK',
+                    "result": "OK",
                 }
             except Exception:
                 pass

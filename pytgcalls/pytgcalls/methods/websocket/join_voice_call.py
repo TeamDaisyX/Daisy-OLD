@@ -3,8 +3,7 @@ import json
 from aiohttp import web
 from aiohttp.web_request import BaseRequest
 from pyrogram.raw.functions.phone import JoinGroupCall
-from pyrogram.raw.types import DataJSON
-from pyrogram.raw.types import Updates
+from pyrogram.raw.types import DataJSON, Updates
 
 
 class JoinVoiceCall:
@@ -17,20 +16,22 @@ class JoinVoiceCall:
         if isinstance(params, str):
             params = json.loads(params)
         request_call = {
-            'ufrag': params['ufrag'],
-            'pwd': params['pwd'],
-            'fingerprints': [{
-                'hash': params['hash'],
-                'setup': params['setup'],
-                'fingerprint': params['fingerprint'],
-            }],
-            'ssrc': params['source'],
+            "ufrag": params["ufrag"],
+            "pwd": params["pwd"],
+            "fingerprints": [
+                {
+                    "hash": params["hash"],
+                    "setup": params["setup"],
+                    "fingerprint": params["fingerprint"],
+                }
+            ],
+            "ssrc": params["source"],
         }
         chat_call = None
         # noinspection PyBroadException
         try:
             chat_call = (
-                await self.pytgcalls._load_full_chat(params['chat_id'])
+                await self.pytgcalls._load_full_chat(params["chat_id"])
             ).full_chat.call
         except Exception:
             pass
@@ -43,18 +44,18 @@ class JoinVoiceCall:
                         muted=False,
                     ),
                 )
-                transport = json.loads(result.updates[0].call.params.data)[
-                    'transport'
-                ]
-                return web.json_response({
-                    'transport': {
-                        'ufrag': transport['ufrag'],
-                        'pwd': transport['pwd'],
-                        'fingerprints': transport['fingerprints'],
-                        'candidates': transport['candidates'],
-                    },
-                })
+                transport = json.loads(result.updates[0].call.params.data)["transport"]
+                return web.json_response(
+                    {
+                        "transport": {
+                            "ufrag": transport["ufrag"],
+                            "pwd": transport["pwd"],
+                            "fingerprints": transport["fingerprints"],
+                            "candidates": transport["candidates"],
+                        },
+                    }
+                )
             except Exception as e:
-                if 'GROUPCALL_FORBIDDEN' not in str(e):
+                if "GROUPCALL_FORBIDDEN" not in str(e):
                     print(e)
-        return web.json_response({'transport': None})
+        return web.json_response({"transport": None})

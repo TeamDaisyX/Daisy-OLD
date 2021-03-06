@@ -15,19 +15,21 @@ class ResumeStream(SpawnProcess):
             self._spawn_process(
                 requests.post,
                 (
-                    f'http://'
-                    f'{self.pytgcalls._host}:'
-                    f'{self.pytgcalls._port}/'
-                    f'api_internal',
-                    json.dumps({
-                        'action': 'resume',
-                        'chat_id': chat_id,
-                        'session_id': self.pytgcalls._session_id,
-                    }),
+                    f"http://"
+                    f"{self.pytgcalls._host}:"
+                    f"{self.pytgcalls._port}/"
+                    f"api_internal",
+                    json.dumps(
+                        {
+                            "action": "resume",
+                            "chat_id": chat_id,
+                            "session_id": self.pytgcalls._session_id,
+                        }
+                    ),
                 ),
             )
         else:
-            code_err = 'PYROGRAM_CLIENT_IS_NOT_RUNNING'
+            code_err = "PYROGRAM_CLIENT_IS_NOT_RUNNING"
             if not self.pytgcalls._init_js_core:
-                code_err = 'JS_CORE_NOT_RUNNING'
-            raise Exception(f'Error internal: {code_err}')
+                code_err = "JS_CORE_NOT_RUNNING"
+            raise Exception(f"Error internal: {code_err}")

@@ -13,13 +13,13 @@ class LeaveVoiceCall:
     async def _leave_voice_call(self, request: BaseRequest):
         params = await request.json()
         result = {
-            'result': 'OK',
+            "result": "OK",
         }
         if isinstance(params, str):
             params = json.loads(params)
         try:
             chat_call = (
-                await self.pytgcalls._load_full_chat(int(params['chat_id']))
+                await self.pytgcalls._load_full_chat(int(params["chat_id"]))
             ).full_chat.call
             if chat_call is not None:
                 # noinspection PyBroadException
@@ -31,7 +31,6 @@ class LeaveVoiceCall:
                 )
         except Exception as e:
             result = {
-                'result': str(e),
+                "result": str(e),
             }
-            pass
         return web.json_response(result)

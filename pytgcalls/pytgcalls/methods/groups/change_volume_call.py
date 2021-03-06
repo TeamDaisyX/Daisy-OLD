@@ -18,21 +18,23 @@ class ChangeVolume(SpawnProcess):
                 self._spawn_process(
                     requests.post,
                     (
-                        f'http://'
-                        f'{self.pytgcalls._host}:'
-                        f'{self.pytgcalls._port}/'
-                        f'request_change_volume',
-                        json.dumps({
-                            'chat_id': chat_id,
-                            'volume': volume,
-                            'session_id': self.pytgcalls._session_id,
-                        }),
+                        f"http://"
+                        f"{self.pytgcalls._host}:"
+                        f"{self.pytgcalls._port}/"
+                        f"request_change_volume",
+                        json.dumps(
+                            {
+                                "chat_id": chat_id,
+                                "volume": volume,
+                                "session_id": self.pytgcalls._session_id,
+                            }
+                        ),
                     ),
                 )
             except Exception:
-                raise Exception('Error internal: NOT_IN_GROUP')
+                raise Exception("Error internal: NOT_IN_GROUP")
         else:
-            code_err = 'PYROGRAM_CLIENT_IS_NOT_RUNNING'
+            code_err = "PYROGRAM_CLIENT_IS_NOT_RUNNING"
             if not self.pytgcalls._init_js_core:
-                code_err = 'JS_CORE_NOT_RUNNING'
-            raise Exception(f'Error internal: {code_err}')
+                code_err = "JS_CORE_NOT_RUNNING"
+            raise Exception(f"Error internal: {code_err}")
