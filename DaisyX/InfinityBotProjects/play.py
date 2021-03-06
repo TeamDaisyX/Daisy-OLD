@@ -1,10 +1,10 @@
 from converter import convert
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from youtube import download
+from DaisyX.Addons.youtube import download
 
 from DaisyX import DURATION_LIMIT
-from helpers.errors import DurationLimitError
+from DaisyX.Addons.helpers.errors import DurationLimitError
 from helpers.wrappers import errors
 
 
