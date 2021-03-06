@@ -160,18 +160,34 @@
       "description": "Make your bot talk using Intellivoid's chatbot API, get your key from https://coffeehouse.intellivoid.net/",
          "required": false,
          "value": ""
-   },      
+      },      
       "BAN_STICKER": {
          "description": "ID of the sticker you want to use when banning people.",
          "required": false,
          "value": ""
-   }, 
+      }, 
+
+      "STRING_SESSION ": {
+         "description": "String session here",
+         "required": true,
+         "value": ""
+      },  
+      "MONGO_DB_URI  ": {
+         "description": "Mongo db URI here. Get it from mongodb.com create acc. Crete organization. Create a cluster connection mode from everywhere give user pass get uri. replace <password> with pass <name> with DaisyX",
+         "required": true,
+         "value": ""
+      },    
+      "BOT_ID": {
+         "description": "ID of bot.. get it from other bot",
+         "required": true,
+         "value": ""
+      },         
          
       "SESSION_NAME": {
          "required": false,
          "value": ""
 
-   },      
+      },      
       "DURATION_LIMIT": {
          "required": false,
          "value": ""
