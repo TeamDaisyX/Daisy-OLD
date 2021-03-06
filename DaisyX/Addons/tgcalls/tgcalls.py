@@ -1,15 +1,13 @@
 from pyrogram import Client
 
 from DaisyX import API_HASH, API_ID, SESSION_NAME
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 
 from cache.pytgcalls.pytgcalls import PyTgCalls
-=======
->>>>>>> Stashed changes
+
+
 from pytgcalls.pytgcalls import PyTgCalls
->>>>>>> 60a73ca70a000171c81810dd3a06d6001971536a
+
 
 client = Client(SESSION_NAME, API_ID, API_HASH)
 pytgcalls = PyTgCalls(client, 1512, False)
