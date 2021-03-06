@@ -1,4 +1,4 @@
-from config import DURATION_LIMIT
+from DaisyX import DURATION_LIMIT
 from youtube_dl import YoutubeDL
 
 from helpers.errors import DurationLimitError
