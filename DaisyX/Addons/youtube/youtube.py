@@ -1,6 +1,6 @@
-from DaisyX import DURATION_LIMIT
 from youtube_dl import YoutubeDL
 
+from DaisyX import DURATION_LIMIT
 from helpers.errors import DurationLimitError
 
 ydl_opts = {
