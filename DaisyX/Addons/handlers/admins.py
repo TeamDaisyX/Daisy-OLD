@@ -1,5 +1,5 @@
-import sira
-import tgcalls
+import DaisyX.Addons.sira
+import DaisyX.Addons.tgcalls
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -23,7 +23,7 @@ async def resume(client: Client, message: Message):
     await message.reply_text("▶️ Resumed.")
 
 
-@Client.on_message(filters.command(["stop", "end"]) & filters.group & ~filters.edited)
+@Client.on_message(filters.command(["stopmusic", "end"]) & filters.group & ~filters.edited)
 @errors
 @admins_only
 async def stop(client: Client, message: Message):
