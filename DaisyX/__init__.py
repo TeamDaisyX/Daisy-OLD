@@ -182,7 +182,7 @@ else:
     YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
     INFOPIC = Config.INFOPIC
     SESSION_NAME =  Config("SESSION_NAME", "session")
-    DURATION_LIMIT = Config("DURATION_LIMIT", "12"))
+    DURATION_LIMIT = Config("DURATION_LIMIT", "12")
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
     except ValueError:
