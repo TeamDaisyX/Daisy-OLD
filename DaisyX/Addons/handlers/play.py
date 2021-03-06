@@ -1,6 +1,6 @@
-import sira
-import tgcalls
-from config import DURATION_LIMIT
+import DaisyX.Addons.sira
+import DaisyX.Addons.tgcalls
+from DaisyX import DURATION_LIMIT
 from converter import convert
 from pyrogram import Client, filters
 from pyrogram.types import Message
