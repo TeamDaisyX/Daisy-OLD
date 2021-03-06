@@ -1,5 +1,5 @@
 from DaisyX import SESSION_NAME,API_ID,API_HASH
-import sira
+import DaisyX.Addons.sira
 from pyrogram import Client
 from pytgcalls.pytgcalls import PyTgCalls
 
