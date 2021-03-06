@@ -1,5 +1,5 @@
 from pyrogram import Client
-from pytgcalls.pytgcalls import PyTgCalls
+from .pytgcalls import PyTgCalls
 
 from DaisyX import API_HASH, API_ID, SESSION_NAME
 
