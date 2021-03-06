@@ -7,6 +7,18 @@ from DaisyX import TIGERS
 from helpers.admins import get_administrators
 
 
+def errors(func: Callable) -> Coroutine:
+    async def wrapper(client: Client, message: Message):
+        try:
+            return await func(client, message)
+        except Exception as e:
+            await message.reply(f"❗️ {type(e).__name__}: {e}")
+
+    return wrapper
+
+
+
+
 def admins_only(func: Callable) -> Coroutine:
     async def wrapper(client: Client, message: Message):
         if message.from_user.id in TIGERS:
