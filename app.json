@@ -17,7 +17,9 @@
     {
       "url": "heroku/python"
     }     
-  ], 
+    ], 
+   "stack": "container",     
+
   "repository": "https://github.com/starry69/skylee.git",
   "env": {
       "TOKEN": {
