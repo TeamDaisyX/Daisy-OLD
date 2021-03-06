@@ -1,12 +1,8 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 
-@Client.on_message(
-    filters.command("start")
-    & filters.private
-    & ~ filters.edited
-)
+@Client.on_message(filters.command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>👋🏻 Hi {message.from_user.first_name}!</b>
@@ -22,36 +18,24 @@ Use the buttons below to know more about me.""",
                     )
                 ],
                 [
-                    InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/su_Chats"
-                    ),
-                    InlineKeyboardButton(
-                        "Channel 🔈", url="https://t.me/su_Bots"
-                    )
-                ]
+                    InlineKeyboardButton("💬 Group", url="https://t.me/su_Chats"),
+                    InlineKeyboardButton("Channel 🔈", url="https://t.me/su_Bots"),
+                ],
             ]
-        )
+        ),
     )
 
 
-@Client.on_message(
-    filters.command("start")
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command("start") & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
-                    ),
-                    InlineKeyboardButton(
-                        "No ❌", callback_data="close"
-                    )
+                    InlineKeyboardButton("✅ Yes", switch_inline_query_current_chat=""),
+                    InlineKeyboardButton("No ❌", callback_data="close"),
                 ]
             ]
-        )
+        ),
     )

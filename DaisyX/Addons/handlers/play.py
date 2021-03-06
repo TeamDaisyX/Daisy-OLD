@@ -1,23 +1,23 @@
+import sira
+import tgcalls
+from config import DURATION_LIMIT
+from converter import convert
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
-import tgcalls
-from converter import convert
 from youtube import download
-import sira
-from config import DURATION_LIMIT
-from helpers.wrappers import errors
+
 from helpers.errors import DurationLimitError
+from helpers.wrappers import errors
 
 
-@Client.on_message(
-    filters.command("play")
-    & filters.group
-    & ~ filters.edited
-)
+@Client.on_message(filters.command("play") & filters.group & ~filters.edited)
 @errors
 async def play(client: Client, message_: Message):
-    audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
+    audio = (
+        (message_.reply_to_message.audio or message_.reply_to_message.voice)
+        if message_.reply_to_message
+        else None
+    )
 
     res = await message_.reply_text("🔄 Processing...")
 
@@ -53,7 +53,7 @@ async def play(client: Client, message_: Message):
             await res.edit_text("❕ You did not give me anything to play.")
             return
 
-        url = text[offset:offset+length]
+        url = text[offset : offset + length]
 
         file_path = await convert(download(url))
 

@@ -2,8 +2,11 @@
 Written by @pokurt.
 """
 from pyrogram import Client, errors
-from pyrogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
-
+from pyrogram.types import (
+    InlineQuery,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+)
 from youtubesearchpython import VideosSearch
 
 
@@ -18,7 +21,7 @@ async def search(client: Client, query: InlineQuery):
             results=answers,
             switch_pm_text="Type a YouTube video name...",
             switch_pm_parameter="help",
-            cache_time=0
+            cache_time=0,
         )
     else:
         videosSearch = VideosSearch(search_query, limit=50)
@@ -28,23 +31,17 @@ async def search(client: Client, query: InlineQuery):
                 InlineQueryResultArticle(
                     title=v["title"],
                     description="{}, {} views.".format(
-                        v["duration"],
-                        v["viewCount"]["short"]
+                        v["duration"], v["viewCount"]["short"]
                     ),
                     input_message_content=InputTextMessageContent(
-                        "https://www.youtube.com/watch?v={}".format(
-                            v["id"]
-                        )
+                        "https://www.youtube.com/watch?v={}".format(v["id"])
                     ),
-                    thumb_url=v["thumbnails"][0]["url"]
+                    thumb_url=v["thumbnails"][0]["url"],
                 )
             )
 
         try:
-            await query.answer(
-                results=answers,
-                cache_time=0
-            )
+            await query.answer(results=answers, cache_time=0)
         except errors.QueryIdInvalid:
             await query.answer(
                 results=answers,
