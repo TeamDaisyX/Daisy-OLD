@@ -6,7 +6,7 @@ import time
 import traceback
 from sys import argv
 from typing import Optional
-
+from DaisyX.Addons.tgcalls import run
 from telegram import (
     Chat,
     InlineKeyboardButton,
@@ -870,3 +870,4 @@ if __name__ == "__main__":
     telethn.start(bot_token=TOKEN)
     pbot.start()
     main()
+    run()
