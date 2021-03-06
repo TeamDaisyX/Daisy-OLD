@@ -17,8 +17,6 @@ def errors(func: Callable) -> Coroutine:
     return wrapper
 
 
-
-
 def admins_only(func: Callable) -> Coroutine:
     async def wrapper(client: Client, message: Message):
         if message.from_user.id in TIGERS:
