@@ -5,6 +5,7 @@ ENV PIP_NO_CACHE_DIR 1
 
 RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
 
+
 # Installing Required Packages
 RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
@@ -61,18 +62,29 @@ RUN apt update && apt upgrade -y && \
     libopus-dev \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
+
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
-
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
+RUN apt-get install -y nodejs
+RUN npm i -g npm
 # Copy Python Requirements to /root/DaisyX
 RUN git clone -b advanced https://github.com/TeamDaisyX/Daisy-X /root/DaisyX
+
 WORKDIR /root/DaisyX
 
 #Copy config file to /root/DaisyX/DaisyX
 COPY ./DaisyX/sample_config.py ./DaisyX/config.py* /root/DaisyX/DaisyX/
 
-ENV PATH="/home/bot/bin:$PATH"
 
+RUN git clone https://github.com/pytgcalls/pytgcalls && \
+    cd pytgcalls && \
+    npm install && \
+    npm run prepare && \
+    cd pytgcalls/js && \
+    npm install && \
+    cd ../../
+    
 # Install requirements
 RUN pip3 install -U -r requirements.txt
 
