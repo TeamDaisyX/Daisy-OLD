@@ -1,10 +1,9 @@
 """
 To prevent conflict with built-in modules, using "sira", the Greek word for "queue".
 """
+import asyncio
 from asyncio.queues import QueueEmpty
 from typing import Dict, Union
-import asyncio
-
 
 queues: Dict[str, asyncio.Queue] = {}
 
@@ -16,11 +15,7 @@ async def add(chat_id: Union[str, int], file_path: str) -> int:
     if chat_id not in queues:
         queues[chat_id] = asyncio.Queue()
 
-    await queues[chat_id].put(
-        {
-            "file_path": file_path
-        }
-    )
+    await queues[chat_id].put({"file_path": file_path})
     return queues[str(chat_id)].qsize()
 
 
