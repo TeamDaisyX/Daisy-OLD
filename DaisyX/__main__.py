@@ -6,7 +6,7 @@ import time
 import traceback
 from sys import argv
 from typing import Optional
-from DaisyX.Addons.tgcalls import run
+
 from telegram import (
     Chat,
     InlineKeyboardButton,
@@ -53,6 +53,7 @@ from DaisyX import (
     telethn,
     updater,
 )
+from DaisyX.Addons.tgcalls import run
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!

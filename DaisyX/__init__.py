@@ -101,7 +101,7 @@ if ENV:
     IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
     IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
-    SESSION_NAME =  os.environ.get("SESSION_NAME", "session")
+    SESSION_NAME = os.environ.get("SESSION_NAME", "session")
     DURATION_LIMIT = int(os.environ.get("DURATION_LIMIT", "12"))
     try:
         WHITELIST_CHATS = set(
@@ -181,7 +181,7 @@ else:
     SPAMWATCH_API = Config.SPAMWATCH_API
     YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
     INFOPIC = Config.INFOPIC
-    SESSION_NAME =  Config("SESSION_NAME", "session")
+    SESSION_NAME = Config("SESSION_NAME", "session")
     DURATION_LIMIT = Config("DURATION_LIMIT", "12")
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
