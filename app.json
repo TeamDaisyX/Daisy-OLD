@@ -1,23 +1,16 @@
+
 {
-      "name": "Daisy X",
-      "description": "An Anime themed Telegram group management bot.",
-      "keywords": [
-         "telegram",
-         "anime",
-         "group",
-         "manager",
-         "DaisyX"
-      ],   
-   "repository": "https://github.com/InukaAsith/DaisyX",
-   "addons": [
-      {
-         "options": {
-            "version": "12"
-         },
-         "plan": "heroku-postgresql"
-      }
-   ],
-   "buildpacks": [
+  "name": "Meiko",
+  "description": "Telegram's Pro group manager. Modular Telegram group management bot!",
+  "logo": "https://telegra.ph/file/63350037b2146671a2511.jpg",
+  "keywords": [
+    "telegram",
+    "best",
+    "group",
+    "manager",
+    "3"
+  ],
+  "buildpacks": [
     {
       "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
     },
@@ -25,8 +18,8 @@
       "url": "heroku/python"
     }     
   ], 
-   "stack": "container",     
-   "env": {
+  "repository": "https://github.com/starry69/skylee.git",
+  "env": {
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
          "required": true,
@@ -188,14 +181,13 @@
          "required": false,
          "value": ""
       }
-   },
-   "keywords": [
-      "telegram",
-      "anime",
-      "group",
-      "manager",
-      "daisy"
-   ],
-   "name": "Liza Snowgirl",
-   "repository": "https://github.com/Infinity-bots/lizasnowgirl"
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ]
 }
