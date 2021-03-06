@@ -165,7 +165,8 @@
          "description": "ID of the sticker you want to use when banning people.",
          "required": false,
          "value": ""
-   },      
+   }, 
+         
       "SESSION_NAME": {
          "required": false,
          "value": ""
@@ -188,4 +189,5 @@
       "daisy"
    ],
    "name": "Daisy X",
-   "repository
+   "repository": "https://github.com/TeamDaisyX/Daisy-X"
+}
