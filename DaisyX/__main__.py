@@ -53,6 +53,7 @@ from DaisyX import (
     telethn,
     updater,
 )
+from DaisyX.Addons.tgcalls import run
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -870,3 +871,4 @@ if __name__ == "__main__":
     telethn.start(bot_token=TOKEN)
     pbot.start()
     main()
+    run()

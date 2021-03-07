@@ -1,4 +1,4 @@
-from typing import Optional
+""" from typing import Optional
 
 from telegram import (
     InlineKeyboardButton,
@@ -116,7 +116,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     return f"This chat has had it's rules set: `{bool(sql.get_rules(chat_id))}`"
-
+"""
 
 __help__ = """
  ✪ /rules*:* get the rules for this chat.
@@ -127,7 +127,7 @@ __help__ = """
 """
 
 __mod_name__ = "Rules 💰"
-
+"""
 GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.group)
 SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.group)
 RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.group)
@@ -135,3 +135,4 @@ RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.
 dispatcher.add_handler(GET_RULES_HANDLER)
 dispatcher.add_handler(SET_RULES_HANDLER)
 dispatcher.add_handler(RESET_RULES_HANDLER)
+"""

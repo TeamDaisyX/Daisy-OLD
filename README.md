@@ -1,12 +1,9 @@
 
-# Project still under heavy development
-## Everything will be changed in the release
-
 
 # “ Hey there 👋 I'm Daisy „
 ## AI based Advanced telegram Group Management Bot Suit For All Your Needs ❤️
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/TeamDaisyX/Daisy-X/tree/CallsMusic)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 ## https://daisyproject.studio
 ## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
@@ -35,11 +32,10 @@ All other credits mentioned on top of scripts
 Should any be missing kindly let us know at [InfinityJE](https://t.me/infinityje) or simply submit a pull request on the readme.
 
 ## Daisy X the telegram Bot Project
-The Main Branch (Basic features only)
+The Advanced Branch (For PRO's)
 
-DaisyX v1.0(core)
+DaisyX v1.0(advvanced)
 
 ## Special Credits
 - [ImJanindu](https://github.com/imjanindu) - A Co-Developer of Project
 - [Kaviya-Admin](https://github.com/kaviya-admin) - A Co-Developer of Project
-

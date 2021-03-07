@@ -63,23 +63,9 @@ RUN apt update && apt upgrade -y && \
 
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
-RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
-RUN apt-get install -y nodejs
-RUN npm i -g npm
-RUN cd / && \
-    git clone https://github.com/suprojects/CallsMusic smp && \
-    cd smp/ && \
-    rm -r .git && \
-    git clone https://github.com/pytgcalls/pytgcalls && \
-    cd pytgcalls/ && \
-    rm -r .git && \
-    npm install && \
-    npm run prepare && \
-    cd pytgcalls/js && \
-    npm install && \
-    cd ../../ 
+
 # Copy Python Requirements to /root/DaisyX
-RUN git clone -b shiken https://github.com/Infinity-Bots/LizaDaisyX /root/DaisyX
+RUN git clone -b advanced https://github.com/TeamDaisyX/Daisy-X /root/DaisyX
 WORKDIR /root/DaisyX
 
 #Copy config file to /root/DaisyX/DaisyX

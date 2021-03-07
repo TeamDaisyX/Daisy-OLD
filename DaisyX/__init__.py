@@ -7,9 +7,12 @@ import spamwatch
 import telegram.ext as tg
 from pyrogram import Client, errors
 from telethon import TelegramClient
+from telethon.sessions import StringSession
 
 StartTime = time.time()
-
+CMD_LIST = {}
+CMD_HELP = {}
+LOAD_PLUG = {}
 # enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -82,6 +85,14 @@ if ENV:
     AI_API_KEY = os.environ.get("AI_API_KEY", None)
     WALL_API = os.environ.get("WALL_API", None)
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
+    MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
+    VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
+    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
+    WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
+    BOT_ID = int(os.environ.get("BOT_ID", None))
+    REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
     SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
@@ -90,7 +101,8 @@ if ENV:
     IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
     IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
-
+    SESSION_NAME = os.environ.get("SESSION_NAME", "session")
+    DURATION_LIMIT = int(os.environ.get("DURATION_LIMIT", "12"))
     try:
         WHITELIST_CHATS = set(
             int(x) for x in os.environ.get("WHITELIST_CHATS", "").split()
@@ -144,7 +156,12 @@ else:
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
-
+    VIRUS_API_KEY = Config.VIRUS_API_KEY
+    WOLFRAM_ID = Config.WOLFRAM_ID
+    STRING_SESSION = Config.STRING_SESSION
+    TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
+    BOT_ID = Config.BOT_ID
+    REM_BG_API_KEY = Config.REM_BG_API_KEY
     DB_URI = Config.SQLALCHEMY_DATABASE_URI
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
@@ -158,12 +175,14 @@ else:
     TIME_API_KEY = Config.TIME_API_KEY
     AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
     YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
     INFOPIC = Config.INFOPIC
-
+    SESSION_NAME = Config("SESSION_NAME", "session")
+    DURATION_LIMIT = Config("DURATION_LIMIT", "12")
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
     except ValueError:
@@ -178,12 +197,22 @@ if not SPAMWATCH_API:
 else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
+if STRING_SESSION:
+    ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+else:
+    sys.exit(1)
+
+try:
+    ubot.start()
+except BaseException:
+    print("Network Error !")
+    sys.exit(1)
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 pbot = Client("DaisyX", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
-
+tbot = telethn
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
