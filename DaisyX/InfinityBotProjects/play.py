@@ -1,7 +1,7 @@
 from converter import convert
-from pyrogram import Client, filters
+from pyrogram import filters
 from pyrogram.types import Message
-
+from DaisyX import pbot as Client
 from DaisyX import DURATION_LIMIT
 from DaisyX.Addons.helpers.errors import DurationLimitError
 from DaisyX.Addons.youtube import download
