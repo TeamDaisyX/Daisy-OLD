@@ -1,9 +1,10 @@
-from pyrogram import Client
-
-
 import os
-from DaisyX import API_HASH, API_ID, SESSION_NAME
+
+from pyrogram import Client
 from pytgcalls.pytgcalls import PyTgCalls
+
+from DaisyX import API_HASH, API_ID, SESSION_NAME
+
 try:
     from pytgcalls.pytgcalls import PyTgCalls
 except:
@@ -18,9 +19,9 @@ except:
     os.system("npm install")
     os.system("cd ../../")
     os.system("pip3 install -r requirements.txt")
-    os.system("cd ../")    
+    os.system("cd ../")
     from pytgcalls.pytgcalls import PyTgCalls
-    
+
 client = Client(SESSION_NAME, API_ID, API_HASH)
 pytgcalls = PyTgCalls(client, 1512, False)
 
