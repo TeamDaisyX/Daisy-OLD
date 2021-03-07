@@ -1,4 +1,4 @@
-from converter import convert
+from DaisyX.Addons.converter import convert
 from pyrogram import filters
 from pyrogram.types import Message
 
