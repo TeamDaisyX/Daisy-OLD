@@ -2,7 +2,6 @@ import os
 
 from pyrogram import Client
 
-
 from DaisyX import API_HASH, API_ID, SESSION_NAME
 
 try:
