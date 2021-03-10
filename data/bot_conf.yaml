@@ -11,9 +11,8 @@ MONGO_URI: 'mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWri
 MONGO_PORT: 27017
 MONGO_DB: 'DaisyX'
 
-REDIS_URI: 'redis-10514.c241.us-east-1-4.ec2.cloud.redislabs.com'
-REDIS_PORT: 10514
-REDIS_PASSWORD: 'DaisyX'
+REDIS_URI: 'localhost'
+REDIS_PORT: 6379
 REDIS_DB_FSM: 1
 
 OWNER_ID: 1141839926
