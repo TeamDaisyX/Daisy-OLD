@@ -1,0 +1,35 @@
+stages:
+  - python:flake8
+  - docker:deploy
+
+variables:
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH"
+
+
+python:flake8:
+  image: python:latest
+  stage: python:flake8
+  allow_failure: true
+  before_script:
+    - pip install flake8
+    - pip install --force-reinstall git+https://github.com/pycqa/pyflakes
+  script:
+    - cd /builds/AllMightBot/AllMight/
+    - python3 -m flake8 AllMightRobot --max-line-length=120 --ignore=E203,E231,E701 | tee flake8-report.txt
+  artifacts:
+    paths: [flake8-report.txt]
+
+
+docker:deploy:
+  image: docker:latest
+  stage: docker:deploy
+  allow_failure: false
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" registry.gitlab.com
+  script:
+    - docker build --pull -t "$DOCKER_IMAGE" .
+    - docker push "registry.gitlab.com/AllMightbot/AllMight:v2.1"
+  only:
+    - v2.1

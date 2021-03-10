@@ -1,0 +1,618 @@
+---
+language_info:
+  flag: "🇨🇿"
+  code: cs
+STRINGS:
+  notes:
+    #/save
+    note_saved: "🗒️Poznámka<code> {note_name} </code>uložena do <b> {chat_title} </b>!"
+    note_updated: "🗒️Poznámka<code> {note_name} </code> upravena v <b> {chat_title} </b>!"
+    you_can_get_note: "\nMůžete získat tuto poznámku použitím <code>/get {note_name} </code> <code> #{note_name} </code>"
+    #Translator note: please keep sure that you don't have space in the end of string
+    note_aliases: "\nAliasy poznámek:"
+    blank_note: "Ukládání prázdné poznámky není povoleno!"
+    notename_cant_contain: "Jméno poznámky nesmí obsahovat \"<code> {symbol} </code>\"!"
+    #/get
+    cant_find_note: Nemohu najít tuto poznámku v <b> {chat_name} </b>!
+    no_note: "Nemohu najít tuto poznámku."
+    no_notes_pattern: "Nenašla jsem žádné poznámky se vzorem<code> %s </code>"
+    u_mean: "\nMyslel jsi<code> #{note_name} </code>?"
+    #/notes
+    notelist_no_notes: "V <b>{chat_title}</b> nejsou žádné poznámky!"
+    notelist_header: "<b>Poznámky v {chat_name}</b>:"
+    notes_in_private: "Klikněte na tlačítko níže pro seznam poznámek."
+    notelist_search: |
+      <b>Vzor:</b> <code>{request}</code>
+      <b>Odpovídající poznámky:</b>
+    #/clear
+    note_removed: "Poznámka <code>#{note_name}</code> odstraněna z <b>{chat_name}</b>!"
+    note_removed_multiple: |
+      Odstranění více poznámek z <b>{chat_name}</b>
+      <b>Odstraněno:</b><code>{removed}</code>
+    not_removed_multiple: "<b>Neodebráno:</b><code>{not_removed}</code>"
+    #/clearall
+    clear_all_text: "Tímto odstraníte všechny poznámky z {chat_name}. Jste si jisti?"
+    clearall_btn_yes: "Ano. Odstraň všechny moje poznámky!"
+    clearall_btn_no: "Ne!"
+    clearall_done: "Všech (<code>{num}</code>) poznámek v {chat_name} bylo odstraněno!"
+    #/search
+    search_header: |
+      <b>Požadavek na hledání v {chat_name}</b>:
+      <b>vzor:</b> <code>{request}</code>
+      <b>Odpovídající poznámky:</b>
+    #/noteinfo
+    note_info_title: "<b>Informace o poznámce</b>\n"
+    note_info_note: "Názvy poznámek: %s\n"
+    note_info_content: "Obsah poznámky: %s\n"
+    note_info_parsing: "Režim porovnávání: <code>%s</code>\n"
+    note_info_created: "Byla vytvořena dne: <code>{date}</code> uživatelem {user}\n"
+    note_info_updated: "Naposledy aktualizováno v: <code>{date}</code> uživatelem {user}\n"
+    user_blocked: "Napiš /start v soukromé zprávě!"
+    #/privatenotes
+    private_notes_false_args: "Máte 2 možnosti <code>Zakázat</code> a <code>Povolit</code>!"
+    already_enabled: "Soukromé poznámky jsou již povoleny v %s"
+    current_state_info: "V současné době je soukromá poznámka {state} v {chat}! "
+    enabled_successfully: "Soukromé poznámky byly <b>povoleny</b> v %s úspěšně!"
+    disabled_successfully: "Soukromé poznámky byly <b>zakázány</b> v %s úspěšně!"
+    not_enabled: "Není možné zakázat soukromé poznámky."
+    privatenotes_notif: "Byl jsi úspěšně připojen k <b>{chat}</b> poznámkám! Pro odpojení použij příkaz <code>/odpojit</code>!"
+    enabled: 'Povoleno'
+    disabled: 'Zakázáno'
+    #/cleannotes
+    clean_notes_enable: "Vymazání poznámek bylo úspěšně povoleno v <b>{chat_name}</b>"
+    clean_notes_disable: "Vymazání poznámek bylo úspěšně zakázáno v <b>{chat_name}</b>"
+    clean_notes_enabled: "Čištění poznámek je v současné době <b>povoleno</b> v <b>{chat_name}</b>"
+    clean_notes_disabled: "Čištění poznámek je v současné době <b>zakázáno</b> v <b>{chat_name}</b>"
+    #Filter
+    filters_title: 'Pošli poznámku'
+    filters_setup_start: 'Zašli prosím název poznámky.'
+  #delmsg_no_arg: "deletemsg button can contain only 'admin' or 'user' argument!"
+  #bot_msg: "I'm sorry, I am not able to get this message, probably this a other bot's message, so I can't save it."
+  filters:
+    no_filters_found: "Nebyly nalezeny žádné filtry v <b>{chat_name}</b>!"
+    #/addfilter
+    adding_filter: |
+      Přidávání filtru <code>{handler}</code> do <b>{chat_name}</b>
+      Vyberte akci níže:
+    #/filters
+    list_filters: "Filtry v <b>{chat_name}</b>:\n"
+    #/delfilter
+    no_such_filter: Nemůžu najít filtr v <b>{chat_name}</b>, zkontrolujte povolené filtry příkazem <code>/filters</code>.
+    del_filter: "Filtr s manipulátorem '<code>{handler}</code>' byl úspěšně odstraněn!"
+    select_filter_to_remove: |
+      Našla jsem mnoho filtrů s manipulátorem '<code>{handler}</code>'.
+      Prosím vyberte jeden pro odstranění:
+  warns:
+    #/warn
+    warn_sofi: "Haha nemůžeš mě varovat!"
+    warn_self: "Chceš varovat sám sebe? Stačí opustit konverzaci."
+    warn_admin: "Hele tak to ne... Mýlíš se. Nemůžeš varovat správce."
+    warn: "{admin} varoval {user} v <b>{chat_name}</b>\n"
+    warn_bun: "Počet upozornění byl překročen! {user} byl zabanován!"
+    warn_num: "Varování: {curr_warns}/{max_warns}\n"
+    warn_rsn: "Důvod: <code>{reason}</code>\n"
+    max_warn_exceeded: Počet upozornění byl překročen! %s byl %s!
+    "max_warn_exceeded:tmute": Počet upozornění byl překročen! %s byl umlčen na %s!
+    #warn rmv callback
+    warn_no_admin_alert: "⚠ NEJSI admin, aby jsi mohl odstranit varování!"
+    warn_btn_rmvl_success: "✅ Varování odstraněno uživatelem {admin}!"
+    #/warns
+    warns_header: "Zde jsou vaše varování v tomto chatu \n\n"
+    warns: "{count} : <code>{reason}</code> od {admin}\n"
+    no_warns: "Jasně, {user} nemá žádné varování."
+    #/warnlimit
+    warn_limit: "Limit varování v <b>{chat_name}</b> je v současné době: <code>{num}</code>"
+    warnlimit_short: 'Limit varování by měl být alespoň 2!'
+    warnlimit_long: 'Limit varování by měl být kratší než 1000!'
+    warnlimit_updated: '✅Limit varování byl úspěšně aktualizován na {num}'
+    #/delwarns
+    purged_warns: "{admin} resetoval <code>{num}</code> varovaní uživatele {user} v <b>{chat_title}</b>!"
+    usr_no_wrn: "{user} nemá žádné varování k resetování."
+    rst_wrn_sofi: 'AllMight nikdy neměla varování, takže je nemůžete resetovat.'
+    not_digit: Limit varování by měly být číslice!
+    #/warnmode
+    same_mode: Toto je aktuální režim! Jak ho mohu změnit?
+    no_time: Pro výběr režimu 'ztlumení na čas' musíte uvést čas!
+    invalid_time: Neplatný čas!
+    warnmode_success: Režim varování <b>%s</b> byl úspěšně změněn na <b>%s</b>!
+    wrng_args: |
+      Toto jsou dostupné možnosti:
+      <code>%s</code>
+    mode_info: 'Aktuální režim v tomto chatu je <b>%s</b>.'
+    banned: zabanován
+    muted: ztlumen
+    filters_title: Varovat uživatele
+    filter_handle_rsn: Automatizovaná funkce filtru!
+  msg_deleting:
+    no_rights_purge: "Nemáte dostatečná práva k odebírání v této skupině!"
+    reply_to_msg: "Odpověz na zprávu pro odstranění!"
+    purge_error: "Nemohu pokračovat v odstraňování, hlavně proto, že jste začali odstraňovat ze zprávy, která byla odeslána před více než 2 dny."
+    fast_purge_done: "<b>Rychlé odebírání dokončeno!</b>\nTato zpráva bude odstraněna za 5 sekund."
+    purge_user_done: "Všechny zprávy od {user} byly úspěšně smazány!"
+  misc:
+    your_id: "Vaše ID: <code>{id}</code>\n"
+    chat_id: "ID skupiny: <code>{id}</code>\n"
+    user_id: "{user} má ID: <code>{id}</code>\n"
+    conn_chat_id: "ID aktuálně připojeného chatu: <code>{id}</code>"
+    help_btn: "Klikni na mě pro nápovědu!"
+    help_txt: "Pro pomoc klikněte na tlačítko níže!"
+    paste_success_extra: "<b>Úspěšně vloženo!</b>\nZkrácená url: {}\nPůvodní Dogbin URL: {}"
+    paste_success: "<b>Úspěšně vloženo!</b>\nDogbin URL: {}"
+    paste_fail: "Nepodařilo se připojit k Dogbinu!"
+    paste_no_text: "Nedodali jste text pro vložení!"
+    delmsg_filter_title: 'Odstraň zprávu'
+    send_text: Pošli prosím odpověď!
+    replymsg_filter_title: 'Odpověz na zprávu'
+  promotes:
+    promote_success: "{user} byl úspěšně povýšen v {chat_name}!"
+    promote_title: "\nS vlastní rolí <code>{role}</code>!"
+    rank_to_loong: "Text vlastní role nemůže být delší než 16 znaků."
+    promote_failed: "Povýšení selhalo! Zkontrolujte, zda na to mám práva."
+    demote_success: "{user} byl úspěšně degradován v {chat_name}!"
+    demote_not_admin: "Tento uživatel není admin."
+    demote_failed: "Degradace se nezdařila. Možná nemohu degradovat nebo ho povýšil někdo jiný"
+    cant_get_user: "Nepodařilo se mi najít uživatele! Pokud chcete, prosím odpovězte na tuto zprávu a zkuste to znovu."
+    emoji_not_allowed: "Je mi líto, ale role správce nemůže mít emoji 😢"
+  pm_menu:
+    start_hi_group: 'Ahoj! Mé jméno je AllMight'
+    start_hi: "Ahoj! Mé jméno je AllMight, pomáhám ti efektivně spravovat skupinu!"
+    btn_help: "❔nápověda"
+    btn_lang: "👅Jazyk"
+    btn_chat: "👥 Skupina AllMight"
+    btn_channel: "📡novinky o AllMight"
+    back: Zpět
+    #/help
+    help_header: Ahoj! Podívejte se na naši wiki pro nápovědu
+    click_btn: Klikni zde
+  disable:
+    #/disableable
+    disablable: "<b>příkazy které je možno zakázat:</b>\n"
+    #/disabled
+    no_disabled_cmds: Žádné zakázané příkazy v <b>{chat_name}</b>!
+    disabled_list: "<b>Zakázané příkazy v {chat_name}:</b>\n"
+    #/disable
+    wot_to_disable: "Co chcete zakázat?"
+    already_disabled: "Tento příkaz je již zakázán!"
+    disabled: "Příkaz <code>{cmd}</code> byl zakázán v <b>{chat_name}</b>!"
+    #/enable
+    wot_to_enable: "Co chcete povolit?"
+    already_enabled: "Tento příkaz není zakázán!"
+    enabled: "Příkaz <code>{cmd}</code> byl povolen v <b>{chat_name}</b>!"
+    #/enableall
+    not_disabled_anything: "Nic nebylo zakázáno v <b>{chat_title}</b>!"
+    enable_all_text: "Toto zapne všechny příkazy v <b>{chat_name}</b>. Jste si jisti?"
+    enable_all_btn_yes: "Ano, povolte všechny příkazy!"
+    enable_all_btn_no: "Ne!"
+    enable_all_done: "Všech (<code>{num}</code>) příkazů bylo povoleno ve <b>{chat_name}</b>!"
+  bot_rights:
+    change_info: "Nemám právo měnit informace o skupině, prosím ustanovte mě adminkou s tímto právem."
+    edit_messages: "Nemám právo upravovat zprávy!"
+    delete_messages: "Nemám právo mazat zde zprávy."
+    ban_user: "Nemám právo zablokovat uživatele, prosím ustanovte mě administrátorkou s tímto právem."
+    pin_messages: "Nemám práva na připnutí zpráv, prosím ustanovte mě adminkou tímto právem."
+    add_admins: "Nemám právo přidávat administrátory. Prosím, ustanovte mě administrátorkou s tímto právem."
+  feds:
+    #decorators
+    need_fed_admin: "Nejste správcem ve <b>{name}</b> federaci"
+    need_fed_owner: "Nejste vlastníkem této federace: <b>{name}</b>"
+    cant_get_user: "Omlouvám se, ale nemohu najít tohoto uživatele, zkuste použít jeho ID"
+    #/fnew
+    fed_name_long: "Název federace nemůže být delší než 60 znaků!"
+    can_only_1_fed: "1 uživatel může vytvořit pouze 1 federaci, prosím odeberte jednu."
+    name_not_avaible: "Federace s názvem <code>{name}</code> již existuje! Použijte prosím jiný název."
+    created_fed: |
+      Gratuluji, úspěšně jste vytvořili Federaci.
+      <b>Název:</b> {name}
+      <b>ID:</b> <code>{id}</code>
+      <b>Tvůrce:</b> {creator}
+      Použij <code>/fjoin {id}</code> k připojení federace k chatu
+    #/fjoin
+    only_creators: "Musíte být tvůrcem chatu, abyste mohli připojit chat k federaci."
+    fed_id_invalid: "Dané ID federace je neplatné! Prosím, dejte mi platné ID."
+    joined_fed_already: "Tento chat se již připojil k federaci! Použijte /fleave pro opuštění této federace"
+    join_fed_success: "Skvělé! Chat <b>{chat}</b> je nyní součástí federace: <b>{fed}</b> !"
+    join_chat_fed_log: |
+      <b>Chat vstoupil do federace</b> #ChatJoined
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Chat:</b> {chat_name} (<code>{chat_id}</code>)
+    #/leavefed
+    chat_not_in_fed: "Tento chat ještě není v žádné federaci."
+    leave_fed_success: "Chat <b>{chat}</b> opustil <b>{fed}</b> federaci."
+    leave_chat_fed_log: |
+      <b>Chat opustil Federaci</b> #ChatLeaved
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Chat:</b> {chat_name} (<code>{chat_id}</code>)
+    #/fsub
+    already_subsed: "Federace <b>{name}</b> již sleduje <b>{name2}</b>"
+    subsed_success: "Federace <b>{name}</b> sleduje <b>{name2}</b>!"
+    #/funsub
+    not_subsed: "Federace <b>{name}</b> nesleduje <b>{name2}</b> pro ukončení sledování"
+    unsubsed_success: "Federace <b>{name}</b> přestala sledovat <b>{name2}</b>!"
+    #/fpromote
+    #admin_already_in_fed: "User {user} is already a fed admin in <b>{name}</b> Federation."
+    admin_added_to_fed: "Uživatel {user} přidán k administrátorům této federace: <b>{name}</b> ."
+    promote_user_fed_log: |
+      <b>Uživatel povýšen na správce federace</b> #UserPromoted
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Uživatel:</b> {user} (<code>{user_id}</code>)
+    #/fdemote
+    #admin_not_in_fed: "User {user} is not <b>{name}</b> Federation admin."
+    admin_demoted_from_fed: "Uživatel {user} degradoval z administrátora federace<b>{name}</b>."
+    demote_user_fed_log: |
+      <b>Uživatel degradován ze správce federace</b> #UserDemoted
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Uživatel:</b> {user} (<code>{user_id}</code>)
+    #/fsetlog
+    already_have_chatlog: "<b>{name}</b> Federace již povolila sledování v jiném chatu/kanálu!"
+    set_chat_log: |
+      Tento chat nyní zaznamenává všechny akce v <b>{name}</b> Federace
+
+      Federační sledování se používá pro interní hodnocení federace a jejího výkonu.
+      Neměla by být používána jako překážka pro veřejnost samozřejmě by měla respektovat uživatelská data a pravidla soukromí.
+    set_log_fed_log: |
+      <b>Povoleno sledování</b> #LoggingEnabled
+      <b>Fed:</b> {fed_name} (<code>{fed_id}</code>)
+    no_right_to_post: Nemám právo posílat zprávy v tomto kanálu!
+    #/funsetlog
+    not_logging: "<b>{name}</b> federace není sledována do žádného chatu/kanálu!"
+    logging_removed: "Sledování bylo úspěšně odstraněno z <b>{name}</b> federace."
+    unset_log_fed_log: |
+      <b>sledování zakázáno</b> #LoggingDisabled
+      <b>Fed:</b> {fed_name} (<code>{fed_id}</code>)
+    #/fchatlist
+    chats_in_fed: "<b>Chaty připojené k {name} Federaci:</b>\n"
+    too_large: "Výstup je příliš velký, odesílám ho jako soubor"
+    #/finfo
+    finfo_text: |
+      <b>Informace o federaci</b>
+      <b>Název:</b> {name}
+      <b>ID:</b> <code>{fed_id}</code>
+      <b>Tvůrce:</b> {creator}
+      <b>Chaty ve federaci:</b> {chats}
+      <b>Zabanovaní uživatelé ve federaci</b> {fbanned}
+    finfo_subs_title: "<b>federace sleduje tyto federace:</b>\n"
+    #/fadminlist
+    fadmins_header: "Administrátoři v <b>{fed_name}</b> Fed:\n"
+    #no_fbanned_in_fed: "There isn't any banned users in {fed_name} Federation!"
+    #/fban
+    user_wl: "Tento uživatel je na bílé listině banů."
+    fban_self: "To je pěkná show!"
+    fban_creator: "Jak mohu zabanovat tvůrce federace?! Nemyslím si, že by to bylo nějak velice vtipné."
+    fban_fed_admin: "Nebudu banovat federačního admina z jeho vlastní federace!"
+    update_fban: "Tento uživatel byl již federačně zabanován již předtím a proto aktualizuji důvod banu na <code>{reason}</code>"
+    already_fbanned: "{user} je již v této federaci zabanován."
+    fbanned_header: "<b>Nový Federační Ban</b>\n"
+    fban_info: '|#ChatLeaved <b>Federace:</b> {fed} <b>Federační admin:</b> {fadmin} <b>Uživatel:</b> {user} (<code>{user_id}</code>)'
+    fbanned_reason: "<b>Důvod:</b> <code>{reason}</code>"
+    fbanned_process: "\n<b>Stav:</b> Banuji v <code>{num}</code> federačních chatech..."
+    fbanned_done: "\n<b>Stav:</b> Hotovo! zabanován v <code>{num}</code> chatech!"
+    fbanned_silence: "Tato zpráva bude smazána za 5 sekund"
+    fbanned_subs_process: "\n<b>Stav:</b> Banuji v <code>{feds}</code> sledujících federacích..."
+    fbanned_subs_done: "\n<b>Stav:</b> Hotovo! zabanován v <code>{chats}</code> chatech této federace a <code>{subs_chats}</code> chatech <code>{feds}</code> sledovaných federací"
+    fban_usr_rmvd: |
+      Uživatel {user} je zabanován v současné federaci <b>{fed}</b>.Tak byl odstraněn!
+      Důvod: <code>{rsn}</code>
+    fban_log_fed_log: |
+      <b>Zabanuji uživatele ve federaci</b> #FedBan
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Uživatel:</b> {user} ({user_id})
+      <b>kým:</b> {by}
+      <b>Chaty zabanovány:</b> uživatel zabanován v <code>{chat_count}</code>/<code>{all_chats}</code> chatech
+    fban_reason_fed_log: "<b>Důvod:</b> <code>{reason}</code>\n"
+    fban_subs_fed_log: "\n<b>Sledující federace:</b> zabanován ve <code>{subs_chats}</code> chatech těchto:<code>{feds}</code> fedrací"
+    #/unfban
+    unfban_self: "Najděte si jinou zábavu než tohle."
+    user_not_fbanned: "{user} nebyl v této federaci zabanován."
+    un_fbanned_header: "<b>Nový federační ban odebrán</b>\n"
+    un_fbanned_process: "\n<b>Stav:</b> odebírám ban v <code>{num}</code> chatech..."
+    un_fbanned_done: "\n<b>Stav:</b> Hotovo! Ban odebrán v <code>{num}</code> chatech!"
+    un_fbanned_subs_process: "\n<b>Stav:</b> odebírám ban ve <code>{feds}</code> sledujících federacích..."
+    un_fbanned_subs_done: "\n<b>Stav:</b> Hotovo! Ban odebrán v <code>{chats}</code> chatech této federace a <code>{subs_chats}</code> chatech <code>{feds}</code> dalších sledujících federací"
+    un_fban_log_fed_log: |
+      <b>Odebírám ban uživatele ve federaci</b> #FedUnBan
+      <b>Federace:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Uživatel:</b> {user} ({user_id})
+      <b>kým:</b> {by}
+      <b>Chaty:</b> uživately odebrán ban v <code>{chat_count}</code>/<code>{all_chats}</code> chatech
+    un_fban_subs_fed_log: "\n<b>Sledující federace:</b> odblokován v chatech <code>{subs_chats}</code> federací <code>{feds}</code>"
+    #/delfed
+    delfed_btn_yes: Ano. Odstraň federaci
+    delfed_btn_no: Ne.
+    delfed: |
+      Opravdu chcete odstranit tuto federaci <b>%s</b>?
+
+      <i>Upozornění: Smazání federace odstraní všechna data spojená s ní z naší databáze!
+      Tuto akci nelze už nijak zvrátit!</i>
+    delfed_success: Federace byla úspěšně odstraněna!
+    #/frename
+    frename_same_name: Zadejte název odlišný od existujícího!
+    frename_success: Federace <b>{old_name}</b> úspěšně přejmenována na <b>{new_name}</b>!
+    #/fbanlist
+    fbanlist_locked: Počkejte prosím do %s před opětovným použitím listu banů.
+    creating_fbanlist: Vytvářím seznam federačních banů! Počkejte prosím..
+    fbanlist_done: Seznam banů federace <b>%s</b>!
+    #/importfbans
+    send_import_file: |
+      Odešlete soubor pro import!
+
+      Pro zrušení tohoto procesu ; použijte /cancel
+    rpl_to_file: Odpovězte prosím na soubor!
+    importfbans_locked: Importování federačních banů je uzamčeno do %s v této federaci.
+    big_file_csv: Podporuje pouze import csv souborů menších než {num} megabajtů!
+    big_file_json: |
+      Momentálně jsou soubory JSON omezeny na {num} megabajtů!
+      Chcete-li importovat větší soubory, použijte formát csv.
+    invalid_file: "Tento soubor je neplatný"
+    wrong_file_ext: "Špatný formát souboru! Podporované jsou: json, csv"
+    importing_process: <b>Importuji federační bany...</b>
+    import_done: Importování federačních banů dokončeno! Bylo importováno {num} banů.
+    #def
+    automatic_ban: Uživatel {user} je zabanován v současné federaci <b>{fed_name}</b>. Byl tedy odstraněn!
+    automatic_ban_sfed: Uživatel {user} je zabanován v pod-federaci <b>{fed_name}</b>. Byl tedy odstraněn!
+    automatic_ban_reason: "\nDůvod: <code>{text}</code>"
+    #/fcheck
+    fcheck_header: "<b>Informace o federačním banu:</b>\n"
+    fbanned_count_pm: "Jste federačně zabanován ve {count} federaci/federacích!\n"
+    "fban_info:fcheck": "Byli jste zabanováni ve {fed} federaci dne {date}, žádný důvod, nebyl udán!"
+    "fban_info:fcheck:reason": "Byl jste zabanován ve federaci {fed} dne {date} protože {reason}\n"
+    fbanned_data: "{user} byl zabanován v {count} federaci/federacích\n"
+    fbanned_nowhere: "{user} nikde není federačně zabanovaný!"
+    fbanned_in_fed: "Včetně této <b>{fed}</b> federace!\n"
+    "fbanned_in_fed:reason": "Včetně této <b>{fed}</b> federace z důvodu -\n <code>{reason}</code>"
+    contact_in_pm: "\n\nPro více informací o vašich federačních banech mi prosím zašlete přímou zprávu, tím zajistíme vaše soukromí!"
+    too_long_fbaninfo: "Jasně, tvoje info o federačních banech vyžaduje soubor!"
+    didnt_fbanned: "Nejste federačně zabanován v této federaci."
+  reports:
+    user_user_admin: "Jste admin, proč, proč byste měli někoho nahlašovat?.. A komu taky?.."
+    user_is_whitelisted: "Jste uživatel na bílé listině, proč byste měl někoho nahlašovat?.."
+    reports_disabled: "Nahlašování je v této skupině <b>zakázáno</b>."
+    no_user_to_report: "Koho chcete nahlásit?"
+    report_admin: "<b>nelze</b> nahlásit správce."
+    report_whitedlisted: "<b>nelze</b> nahlásit uživatele, který je na bílé listině."
+    reported_user: "<b>Nahlášeno</b> {user} správcům."
+    reported_reason: "\n<b>Důvod:</b> <code>{reason}</code>"
+    reports_on: "Nahlašování je v této skupině <b>zapnuto</b>."
+    reports_off: "Nahlašování je <b>vypnuto</b> v této skupině."
+    reports_already_on: "<b>Nahlašování je již zapnuto.</b>"
+    reports_turned_on: "Nahlašování je <b>zapnuto.</b>"
+    reports_already_off: "<b>Nahlašování je již zapnuto.</b>"
+    wrong_argument: "<b> Špatný argument. </b>"
+  language:
+    your_lang: "Váš současný jazyk: <b>{lang}</b>"
+    chat_lang: "Aktuální jazyk chatu: <b>{lang}</b>"
+    select_pm_lang: "\n<b>Vyberte nový jazyk:</b>"
+    select_chat_lang: "\n<b>Vyberte nový jazyk chatu:</b>"
+    crowdin_btn: "🌎 Pomozte nám s překladem"
+    help_us_translate: "\n\n<a href=\"https://crowdin.com/project/AllMightbot\">🌎 Pomozte nám vylepšit překlad do různých jazyků</a>"
+    not_supported_lang: Vybraný jazyk není podporován!
+    lang_changed: Jazyk byl změněn na <b>{lang_name}</b>.
+    see_translators: '👥 podívejte se na překladatelé'
+    back: Zpět
+  connections:
+    pm_connected: "Vaše zpráva byla úspěšně připojena k <b>{chat_name}</b>!"
+    connected_pm_to_me: "Vaše zpráva byla úspěšně připojena k <b>{chat_name}</b>! Prosím napište mi soukromou zprávu pro spuštění připojení."
+    chat_connection_tlt: "<b>Spojení chatu</b>\n"
+    connected_chat: |
+      <b>Aktuálně připojený chat:</b>
+      {chat_name}
+      Zapište /disconect pro odpojení od chatu
+    u_wasnt_connected: "Předtím jste nebyl připojen k žádnému chatu!"
+    select_chat_to_connect: "\n<b>Vyberte chat pro připojení:</b>"
+    disconnected: "Byli jste odpojeni od <b>{chat_name}</b>."
+    cant_find_chat: "Nemohu najít tento chat."
+    cant_find_chat_use_id: "Nemohu najít tento chat. Použijte ID chatu."
+    bad_arg_bool: "Špatná volba: podporováno pouze <code>zapnuto</code>/<code>vypnuto</code> <code>povoleno</code>/<code>zakázáno</code>"
+    enabled: povoleno
+    disabled: zakázáno
+    chat_users_connections_info: "Připojení pro běžné uživatele je v současné době <b>{status}</b> pro <b>{chat_name}</b>"
+    chat_users_connections_cng: "Připojení pro běžné uživatele změněno na <b>{status}</b> pro <b>{chat_name}</b>"
+    not_in_group: "Nejste ve skupině, ke které se snažíte připojit a odeslat v ní zprávu."
+    history_empty: "Nejste připojeni k žádnému chatu pro historii, připojte se pomocí `/connect (chat id)`"
+    not_in_chat: "Už nejste v tomto chatu, odpojím vás."
+    u_should_be_admin: "Měl bys být správcem v {}!"
+    usage_only_in_groups: "Použití omezeno pouze ve skupinách!"
+  global:
+    u_not_admin: Měli byste být admin aby jste to mohl udělat!
+    #Rights
+    "bot_no_right:not_admin": Nejsem správce!
+    bot_no_right: "Nemám k tomu potřebné oprávnění! \nChybějící oprávnění: <b>%s</b>"
+    user_no_right: "Musíte mít vyžadované oprávnění, aby jste to mohli udělat! \nChybějící oprávnění: <b>%s</b>"
+    "user_no_right:not_admin": Musíte být admin, aby jste to mohli udělat!
+  owner_stuff:
+    father: "\nJe to můj tvůrce."
+    sudo_crown: "\nHej! Podívejte, ten uživatel má korunu, nechte mě se podívat... Wow, to bylo úžasné - <b>'sudo user'</b>!"
+  stickers:
+    rpl_to_sticker: "Odpovězte na nálepku!"
+    ur_sticker: |
+      <b>Emoji:</b> <code>{emoji}</code>
+      <b>ID nálepky:</b> <code>{id}</code>
+  pins:
+    no_reply_msg: "Odpovězte na zprávu pro připnutí!"
+    chat_not_modified_pin: "Tato zpráva je již připnuta!"
+    chat_not_modified_unpin: "Pro odepnutí není žádná připnutá zpráva!"
+    pinned_success: "Úspěšně připnuto!"
+    unpin_success: "Odepnuto úspěšně!"
+  users:
+    user_info: "<b>Informace o uživateli:</b>\n"
+    info_id: "ID: <code>{id}</code>"
+    info_first: "\nKřestní jméno: {first_name}"
+    info_last: "\nPříjmení: {last_name}"
+    info_username: "\nUživatelské jméno: {username}"
+    info_link: "\nOdkaz na uživatele: {user_link}"
+    info_saw: "\nViděl jsem je ve <code>{num}</code> skupinách"
+    info_fbanned: "\nZabanován v této federaci: "
+    info_admeme: "\nUživatel má v tomto chatu práva administrátora."
+    upd_cache: "Aktualizuji mezipaměť..."
+    upd_cache_done: "Mezipaměť adminů byla aktualizována."
+    admins: "<b>Admin v této skupině:</b>\n"
+  imports_exports:
+    #Exporting
+    started_exporting: Probíhá export! Počkejte prosím...
+    export_done: Export z <b>{chat_name}</b> dokončen!
+    exports_locked: Počkejte prosím %s než budete export moci použít znovu!
+    #Importing
+    invalid_file: "Tento soubor je neplatný"
+    send_import_file: Vložte prosím soubor importu!
+    rpl_to_file: Odpovězte prosím na soubor!
+    big_file: Podporován import souborů pouze pod 50 MB!
+    started_importing: Probíhá import! Počkejte prosím...
+    bad_file: Špatný soubor! Očekáván <code>'general'</code> column.
+    file_version_so_new: Exportovaná verze souboru je novější než AllMight aktuálně podporuje!
+    imports_locked: Počkejte prosím %s než budete moci importovat znovu!
+    import_done: Import dokončen!
+  restrictions:
+    user_not_in_chat: Uživatel není v tomto chatu!
+    #Kicks
+    kick_AllMight: Namísto pokusu vykopnout mě bys mohl trávit svůj čas jinak a lépe. Tohle je úplná nuda.
+    kick_admin: Vykopávání adminů není úplně nejlepší nápad.
+    kick_self: Pokud chceš vykopnout sám sebe - prostě odejdi z chatu. Radši bych tě tu neviděla, než abych se musela dívat na tyhle žalostné pokusy o sebe potrestání.
+    user_kicked: "{user} byl vyhozen {admin} v {chat_name}."
+    #Mutes
+    mute_AllMight: Skutečně, budu tak ráda, že vás místo toho umlčím.
+    mute_admin: Pokud si myslíte, že můžete umlčet admina, mýlíte se!
+    mute_self: Pokud chceš vykopnout sám sebe - prostě odejdi z chatu. Radši bych tě tu neviděla, než abych se musela dívat na tyhle žalostné pokusy o sebe potrestání.
+    user_muted: "{user} byl umlčen {admin} v {chat_name}."
+    unmute_AllMight: Doopravdy nejsem ztlumená.
+    unmute_admin: Haha ne, zkus ztlumit nejprve ho!
+    unmute_self: Měla bych tě nejprve ztlumit?
+    user_unmuted: "Bylo zrušeno ztlumení uživatele{user} {admin}em v {chat_name}."
+    #Bans
+    ban_AllMight: Ne, neudělám to! Požádejte tvůrce chatu, aby to udělal!
+    ban_admin: Haha, nejprve ho pojďme <code>/demote</code>.
+    ban_self: Proč se snažíš zablokovat sám sebe?
+    user_banned: "{user} byl zabanován {admin} v {chat_name}."
+    unban_AllMight: Ve skutečnosti nejsem zabanovaná.
+    unban_admin: Haha ne, zkus ho nejdříve zabanovat!
+    unban_self: Měla bych tě nejdříve zabanovat?
+    user_unband: "Uživately {user} byl odebrán ban adminem {admin} v {chat_name}."
+    invalid_time: Neplatný čas!
+    enter_time: Prosím, přidejte čas!
+    on_time: "\nPro <code>%s</code>"
+    reason: "\nDůvod: <code>%s</code>"
+    purge: "\nZa 5 sekund budou zprávy vymazány!"
+    filter_title_ban: Zabanovat uživatele
+    filter_action_rsn: <code>Automatická akce filtru!</code>
+    filtr_ban_success: '%s zabanován %s pro %s'
+    filtr_mute_success: '%s umlčen %s na %s'
+    filtr_tmute_success: |
+      %s umlčen %s z %s
+      důvod je %s
+    time_setup_start: Prosím zadejte čas!
+    filtr_tban_success: |
+      %s zabanován %s z %s
+      důvod je %s
+    filter_title_tmute: ztlumit uživatele na čas
+    filter_title_mute: Ztlumit uživatele
+    filter_title_tban: zabanovat uživatele na čas
+    filter_title_kick: Vyhodit uživatele
+  rules:
+    #Set
+    saved: Pravidla byla uložena do <b>%s</b>
+    updated: Pravidla byla aktualizována v <b>%s</b>
+    #Reset
+    deleted: Pravidla byla smazána!
+    not_found: Pravidla nebyla nalezena!
+    #Callback
+    user_blocked: "Napiš mi /start do soukromé zprávy!"
+    rules_was_pmed: Pravidla byla odeslána do soukromé zprávy!
+  #cannot_find_note: "I can't find the note <code>{}</code>"
+  #set_note: "Successfully set the rules note to <code>{}</code>"
+  #didnt_set_note: "This group doesn't have rules note set."
+  #cannot_find_set_note: "I can't find the rules note."
+  #havent_set_rules_note: "You haven't set the rules note yet."
+  #success_remove_rules_note: "Successfully removed rules note in <b>{}</b>."
+  greetings:
+    default_welcome: "Vítej {mention}! Jak se máš?"
+    default_security_note: "Vítej {mention}! Stiskni prosím tlačítko níže pro dokázání toho že jsi člověk!"
+    bool_invalid_arg: Neplatný argument, expected <code>dne</code>/<code>off</code>.
+    #/setwelcome
+    saved: Uvítací zpráva byla uložena do <b>%s</b>
+    updated: Uvítací zpráva byla aktualizována v <b>%s</b>
+    #/turnwelcome
+    turnwelcome_status: Uvítání jsou <code>{status}</code> v <b>{chat_name}</b>
+    turnwelcome_enabled: Uvítání zapnuta v <b>%s</b>
+    turnwelcome_disabled: Uvítání deaktivována v <b>%s</b>
+    #/welcome
+    enabled: zapnuto
+    disabled: vypnuto
+    wlcm_security_enabled: "povoleno, nastaveno na {level}"
+    wlcm_mutes_enabled: "povoleno, nastaveno na {time}"
+    welcome_info: |
+      <b>Nastavení uvítání v {chat_name}:</b>
+      Uvítání jsou <code>{welcomes_status}</code> Uvítací zabezpečení je <code>{wlcm_security}</code> Uvítací ztišení je <code>{wlcm_mutes}</code>
+      Mazání starých uvítání je<code>{clean_welcomes}</code>
+      Mazání servisních zpráv je <code>{clean_service}</code>
+    wlcm_note: "\n\nUvítací poznámka je:"
+    raw_wlcm_note: "Nezpracovaná uvítací poznámka je:"
+    security_note: "Uvítací bezpečnostní text je:"
+    #/setsecuritynote
+    security_note_saved: "Vlastní bezpečnostní text byl uložen <b>%s</b>"
+    security_note_updated: "Vlastní bezpečnostní text byl aktualizován <b>%s</b>"
+    #/delsecuritynote
+    security_note_not_found: Bezpečnostní text v <b>%s</b> nebyl předtím nainstalován
+    del_security_note_ok: Bezpečnostní text byl resetován na výchozí v<b>%s</b>
+    #/cleanwelcome
+    cleanwelcome_enabled: Čištění uvítání povoleno v <b>%s</b>
+    cleanwelcome_disabled: Čištění uvítání zakázáno v <b>%s</b>
+    cleanwelcome_status: Čištění uvítání je <code>{status}</code> v <b>{chat_name}</b>
+    #/cleanservice
+    cleanservice_enabled: Čištění servisních zpráv povoleno v <b>%s</b>
+    cleanservice_disabled: Čištění servisních zpráv zakázáno v <b>%s</b>
+    cleanservice_status: Čištění servisních zpráv je <code>{status}</code> v <b>{chat_name}</b>
+    #/welcomemute
+    welcomemute_invalid_arg: Neplatný argument, očekáván je čas.
+    welcomemute_enabled: Uvítací umlčení povoleno v <b>%s</b>
+    welcomemute_disabled: Uvítací umlčení zakázáno v <b>%s</b>
+    welcomemute_status: Uvítací umlčení <code>{status}</code> v <b>{chat_name}</b>
+    #/welcomesecurity
+    welcomesecurity_enabled: Uvítací zabezpečení povoleno v <b>{chat_name}</b> na úrovni <code>{level}</code>.
+    welcomesecurity_enabled_word: povoleno, nastaveno na úroveň {level}
+    welcomesecurity_disabled: Uvítací zabezpečení zakázáno v <b>%s</b>.
+    welcomesecurity_invalid_arg: Neplatný argument, očekáváno <code>tlačítko</code>/<code>captcha</code>.
+    welcomesecurity_status: Uvítací bezpečnost <code>{status}</code> v <b>{chat_name}</b>
+    #Welcomesecurity handler
+    click_here: Klikněte zde!
+    not_allowed: Nejste oprávněni toto používat!
+    ws_captcha_text: Ahoj {user}, zadejte prosím číslo captchy, aby vám bylo zrušeno ztlumení.
+    regen_captcha_btn: '🔄 Změňte captchu'
+    num_is_not_digit: Zadávejte prosím pouze čísla!
+    bad_num: Chybné číslo! Zkuste to prosím znovu.
+    passed: Ověření proběhlo úspěšně, bylo vám zrušeno ztlumení v <b>%s</b>!
+    passed_no_frm: Ověření proběhlo úspěšně, bylo vám odebráno ztlumení v %s!
+    last_chance: Máte poslední šanci vstoupit do captchy!
+    btn_button_text: "Klikněte prosím na tlačítko níže, abyste se prokázali."
+    btn_wc_text: |
+      Stiskněte prosím pravé tlačítko odpovídající tomuto výrazu:
+      %s
+    math_wc_rtr_text: "Máte poslední šanci! Buďte opatrní.\n"
+    math_wc_wrong: Chyba, zkuste to prosím znovu!
+    math_wc_sry: Omlouváme se, použili jste poslední pokus. Zeptejte se správců chatu.
+    not_admin_wm: Nemohu zde omezovat lidi, takže nebudu lidí vítat ztlumením!
+    not_admin_ws: Nemohu zde omezovat lidi, takže nebudu používat bezpečné uvítání!
+    not_admin_wsr: Nemohu zde smazat zprávy, takže nebudu mazat servisní zprávy!
+    #/resetwelcome
+    deleted: Pozdravy úspěšně resetovány v <b>{chat}</b>!
+    not_found: Není co resetovat!
+    #/welcomerestrict
+    del_url: Zpráva obsahující URL od {user} byla smazána!
+    del_fwd: Přeposlaná zpráva od {user} byla smazána!
+    del_media: Zpráva obsahující média od {user} byla smazána!
+    banned: '{by} zabanován {user}!'
+    whitelisted: '{by} na bílé listině {user}!'
+    enabled_sucessfully: Zabezpečení chatu bylo úspěšně zapnuto v <b>{chat}</b>
+    disabled_sucessfully: Zabezpečení chatu bylo úspěšně vypnuto v <b>{chat}</b>
+    already_enabled: Zabezpečení chatu je již zapnuto!
+    already_disabled: Zabezpečení chatu je již vypnuto!
+    restrict_status: Uvítací omezení je <b>{state}</b> v <b>{chat}</b>!
+    unkown_option: Prosím dejte mi platnou možnost! (<code>povolit</code> nebo <code>zakázat</code>)
+    whitelist: '🏳️ Whitelist'
+    ban: '❌ Ban'
+  locks:
+    locks_header: "Zde je aktuální nastavení uzamčení v {chat_title} \n\n"
+    no_lock_args: Dej mi nějaké argumenty pro zamknutí!
+    already_locked: Kámo tohle už je zamčeno
+    no_such_lock: Podívejte se na /lock a zjistěte, co lze uzamknout a odemknout!
+    locked_successfully: '{lock} v {chat} byl úspěšně uzamčen!'
+    no_unlock_args: Dejte mi nějaké argumenty k odemknutí!
+    not_locked: Kámo, to není zamčené, nepotřebuješ to odemykat.
+    unlocked_successfully: '{lock} v {chat} byl úspěšně odemčen!'

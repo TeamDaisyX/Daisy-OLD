@@ -1,191 +1,256 @@
-from io import BytesIO
-from time import sleep
+# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
+# Copyright (C) 2019 Aiogram
 
-from telegram import TelegramError, Update
-from telegram.error import BadRequest, Unauthorized
-from telegram.ext import (
-    CallbackContext,
-    CommandHandler,
-    Filters,
-    MessageHandler,
-    run_async,
-)
+#
+# This file is part of AllMightBot.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
 
-import DaisyX.modules.sql.users_sql as sql
-from DaisyX import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from DaisyX.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from DaisyX.modules.sql.users_sql import get_all_users
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
 
-USERS_GROUP = 4
-CHAT_GROUP = 5
-DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import datetime
+import html
 
-def get_user_id(username):
-    # ensure valid userid
-    if len(username) <= 5:
-        return None
+from aiogram.dispatcher.middlewares import BaseMiddleware
 
-    if username.startswith("@"):
-        username = username[1:]
-
-    users = sql.get_userid_by_name(username)
-
-    if not users:
-        return None
-
-    elif len(users) == 1:
-        return users[0].user_id
-
-    else:
-        for user_obj in users:
-            try:
-                userdat = dispatcher.bot.get_chat(user_obj.user_id)
-                if userdat.username == username:
-                    return userdat.id
-
-            except BadRequest as excp:
-                if excp.message == "Chat not found":
-                    pass
-                else:
-                    LOGGER.exception("Error extracting user ID")
-
-    return None
+from DaisyX.decorator import register
+from DaisyX.modules import LOADED_MODULES
+from DaisyX.services.mongo import db
+from DaisyX.utils.logger import log
+from .utils.connections import chat_connection
+from .utils.disable import disableable_dec
+from .utils.language import get_strings_dec
+from .utils.user_details import get_user_dec, get_user_link, is_user_admin, get_admins_rights
+from DaisyX import dp
 
 
-@run_async
-@dev_plus
-def broadcast(update: Update, context: CallbackContext):
-    to_send = update.effective_message.text.split(None, 1)
+async def update_users_handler(message):
+    chat_id = message.chat.id
 
-    if len(to_send) >= 2:
-        to_group = False
-        to_user = False
-        if to_send[0] == "/broadcastgroups":
-            to_group = True
-        if to_send[0] == "/broadcastusers":
-            to_user = True
+    # Update chat
+    new_chat = message.chat
+    if not new_chat.type == 'private':
+
+        old_chat = await db.chat_list.find_one({'chat_id': chat_id})
+
+        if not hasattr(new_chat, 'username'):
+            chatnick = None
         else:
-            to_group = to_user = True
-        chats = sql.get_all_chats() or []
-        users = get_all_users()
-        failed = 0
-        failed_user = 0
-        if to_group:
-            for chat in chats:
-                try:
-                    context.bot.sendMessage(
-                        int(chat.chat_id),
-                        to_send[1],
-                        parse_mode="MARKDOWN",
-                        disable_web_page_preview=True,
-                    )
-                    sleep(0.1)
-                except TelegramError:
-                    failed += 1
-        if to_user:
-            for user in users:
-                try:
-                    context.bot.sendMessage(
-                        int(user.user_id),
-                        to_send[1],
-                        parse_mode="MARKDOWN",
-                        disable_web_page_preview=True,
-                    )
-                    sleep(0.1)
-                except TelegramError:
-                    failed_user += 1
-        update.effective_message.reply_text(
-            f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
+            chatnick = new_chat.username
+
+        if old_chat and 'first_detected_date' in old_chat:
+            first_detected_date = old_chat['first_detected_date']
+        else:
+            first_detected_date = datetime.datetime.now()
+
+        chat_new = {
+            "chat_id": chat_id,
+            "chat_title": html.escape(new_chat.title, quote=False),
+            "chat_nick": chatnick,
+            "type": new_chat.type,
+            "first_detected_date": first_detected_date
+        }
+
+        # Check on old chat in DB with same username
+        find_old_chat = {
+            'chat_nick': chat_new['chat_nick'],
+            'chat_id': {'$ne': chat_new['chat_id']}
+        }
+        if chat_new['chat_nick'] and (check := await db.chat_list.find_one(find_old_chat)):
+            await db.chat_list.delete_one({'_id': check['_id']})
+            log.info(
+                f"Found chat ({check['chat_id']}) with same username as ({chat_new['chat_id']}), old chat was deleted.")
+
+        await db.chat_list.update_one({'chat_id': chat_id}, {"$set": chat_new}, upsert=True)
+
+        log.debug(f"Users: Chat {chat_id} updated")
+
+    # Update users
+    await update_user(chat_id, message.from_user)
+
+    if "reply_to_message" in message and \
+            hasattr(message.reply_to_message.from_user, 'chat_id') and \
+            message.reply_to_message.from_user.chat_id:
+        await update_user(chat_id, message.reply_to_message.from_user)
+
+    if "forward_from" in message:
+        await update_user(chat_id, message.forward_from)
+
+
+async def update_user(chat_id, new_user):
+    old_user = await db.user_list.find_one({'user_id': new_user.id})
+
+    new_chat = [chat_id]
+
+    if old_user and 'chats' in old_user:
+        if old_user['chats']:
+            new_chat = old_user['chats']
+        if not new_chat or chat_id not in new_chat:
+            new_chat.append(chat_id)
+
+    if old_user and 'first_detected_date' in old_user:
+        first_detected_date = old_user['first_detected_date']
+    else:
+        first_detected_date = datetime.datetime.now()
+
+    if new_user.username:
+        username = new_user.username.lower()
+    else:
+        username = None
+
+    if hasattr(new_user, 'last_name') and new_user.last_name:
+        last_name = html.escape(new_user.last_name, quote=False)
+    else:
+        last_name = None
+
+    first_name = html.escape(new_user.first_name, quote=False)
+
+    user_new = {
+        'user_id': new_user.id,
+        'first_name': first_name,
+        'last_name': last_name,
+        'username': username,
+        'user_lang': new_user.language_code,
+        'chats': new_chat,
+        'first_detected_date': first_detected_date
+    }
+
+    # Check on old user in DB with same username
+    find_old_user = {
+        'username': user_new['username'],
+        'user_id': {'$ne': user_new['user_id']}
+    }
+    if user_new['username'] and (check := await db.user_list.find_one(find_old_user)):
+        await db.user_list.delete_one({'_id': check['_id']})
+        log.info(
+            f"Found user ({check['user_id']}) with same username as ({user_new['user_id']}), old user was deleted.")
+
+    await db.user_list.update_one({'user_id': new_user.id}, {"$set": user_new}, upsert=True)
+
+    log.debug(f"Users: User {new_user.id} updated")
+
+    return user_new
+
+
+@register(cmds="info")
+@disableable_dec("info")
+@get_user_dec(allow_self=True)
+@get_strings_dec("users")
+async def user_info(message, user, strings):
+    chat_id = message.chat.id
+
+    text = strings["user_info"]
+    text += strings["info_id"].format(id=user['user_id'])
+    text += strings["info_first"].format(first_name=str(user['first_name']))
+
+    if user['last_name'] is not None:
+        text += strings["info_last"].format(last_name=str(user['last_name']))
+
+    if user['username'] is not None:
+        text += strings["info_username"].format(username="@" + str(user['username']))
+
+    text += strings['info_link'].format(user_link=str(await get_user_link(user['user_id'])))
+
+    text += '\n'
+
+    if await is_user_admin(chat_id, user['user_id']) is True:
+        text += strings['info_admeme']
+
+    for module in [m for m in LOADED_MODULES if hasattr(m, '__user_info__')]:
+        if txt := await module.__user_info__(message, user['user_id']):
+            text += txt
+
+    text += strings['info_saw'].format(num=len(user['chats']) if 'chats' in user else 0)
+
+    await message.reply(text)
+
+
+@register(cmds="admincache", is_admin=True)
+@chat_connection(only_groups=True, admin=True)
+@get_strings_dec("users")
+async def reset_admins_cache(message, chat, strings):
+    await get_admins_rights(chat['chat_id'], force_update=True)  # Reset a cache
+    await message.reply(strings['upd_cache_done'])
+
+
+@register(cmds=["id", "chatid", "userid"])
+@disableable_dec('id')
+@get_user_dec(allow_self=True)
+@get_strings_dec('misc')
+@chat_connection()
+async def get_id(message, user, strings, chat):
+    user_id = message.from_user.id
+
+    text = strings["your_id"].format(id=user_id)
+    if message.chat.id != user_id:
+        text += strings["chat_id"].format(id=message.chat.id)
+
+    if chat['status'] is True:
+        text += strings["conn_chat_id"].format(id=chat['chat_id'])
+
+    if not user['user_id'] == user_id:
+        text += strings["user_id"].format(
+            user=await get_user_link(user['user_id']),
+            id=user['user_id']
         )
 
-
-@run_async
-def log_user(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    msg = update.effective_message
-
-    sql.update_user(msg.from_user.id, msg.from_user.username, chat.id, chat.title)
-
-    if msg.reply_to_message:
-        sql.update_user(
-            msg.reply_to_message.from_user.id,
-            msg.reply_to_message.from_user.username,
-            chat.id,
-            chat.title,
+    if "reply_to_message" in message and "forward_from" in message.reply_to_message and not \
+            message.reply_to_message.forward_from.id == message.reply_to_message.from_user.id:
+        text += strings["user_id"].format(
+            user=await get_user_link(message.reply_to_message.forward_from.id),
+            id=message.reply_to_message.forward_from.id
         )
 
-    if msg.forward_from:
-        sql.update_user(msg.forward_from.id, msg.forward_from.username)
+    await message.reply(text)
 
 
-@run_async
-@sudo_plus
-def chats(update: Update, context: CallbackContext):
-    all_chats = sql.get_all_chats() or []
-    chatfile = "List of chats.\n0. Chat name | Chat ID | Members count\n"
-    P = 1
-    for chat in all_chats:
-        try:
-            curr_chat = context.bot.getChat(chat.chat_id)
-            curr_chat.get_member(context.bot.id)
-            chat_members = curr_chat.get_members_count(context.bot.id)
-            chatfile += "{}. {} | {} | {}\n".format(
-                P, chat.chat_name, chat.chat_id, chat_members
-            )
-            P = P + 1
-        except:
-            pass
-
-    with BytesIO(str.encode(chatfile)) as output:
-        output.name = "groups_list.txt"
-        update.effective_message.reply_document(
-            document=output,
-            filename="groups_list.txt",
-            caption="Here be the list of groups in my database.",
-        )
+@register(cmds=["adminlist", "admins"])
+@disableable_dec("adminlist")
+@chat_connection(only_groups=True)
+@get_strings_dec("users")
+async def adminlist(message, chat, strings):
+    admins = await get_admins_rights(chat['chat_id'])
+    text = strings['admins']
+    for admin, rights in admins.items():
+        if rights['anonymous']:
+            continue
+        text += '- {} ({})\n'.format(await get_user_link(admin), admin)
 
 
-@run_async
-def chat_checker(update: Update, context: CallbackContext):
-    bot = context.bot
-    try:
-        if update.effective_message.chat.get_member(bot.id).can_send_messages is False:
-            bot.leaveChat(update.effective_message.chat.id)
-    except Unauthorized:
-        pass
+    await message.reply(text, disable_notification=True)
 
 
-def __user_info__(user_id):
-    if user_id in [777000, 1087968824]:
-        return """╘══「 Groups count: <code>???</code> 」"""
-    if user_id == dispatcher.bot.id:
-        return """╘══「 Groups count: <code>???</code> 」"""
-    num_chats = sql.get_user_num_chats(user_id)
-    return f"""╘══「 Groups count: <code>{num_chats}</code> 」"""
+class SaveUser(BaseMiddleware):
+    async def on_process_message(self, message, data):
+        await update_users_handler(message)
 
 
-def __stats__():
-    return f"• {sql.num_users()} users, across {sql.num_chats()} chats"
+async def __before_serving__(loop):
+    dp.middleware.setup(SaveUser())
 
 
-def __migrate__(old_chat_id, new_chat_id):
-    sql.migrate_chat(old_chat_id, new_chat_id)
+async def __stats__():
+    text = "* <code>{}</code> total users, in <code>{}</code> chats\n".format(
+        await db.user_list.count_documents({}),
+        await db.chat_list.count_documents({})
+    )
 
+    text += "* <code>{}</code> new users and <code>{}</code> new chats in the last 48 hours\n".format(
+        await db.user_list.count_documents({
+            'first_detected_date': {'$gte': datetime.datetime.now() - datetime.timedelta(days=2)}
+        }),
+        await db.chat_list.count_documents({
+            'first_detected_date': {'$gte': datetime.datetime.now() - datetime.timedelta(days=2)}
+        })
+    )
 
-__help__ = ""  # no help string
-
-BROADCAST_HANDLER = CommandHandler(
-    ["broadcastall", "broadcastusers", "broadcastgroups"], broadcast
-)
-USER_HANDLER = MessageHandler(Filters.all & Filters.group, log_user)
-CHAT_CHECKER_HANDLER = MessageHandler(Filters.all & Filters.group, chat_checker)
-CHATLIST_HANDLER = CommandHandler("groups", chats)
-
-dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
-dispatcher.add_handler(BROADCAST_HANDLER)
-dispatcher.add_handler(CHATLIST_HANDLER)
-dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
-
-__mod_name__ = "Users"
-__handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER, CHATLIST_HANDLER]
+    return text

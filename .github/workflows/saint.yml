@@ -1,5 +1,4 @@
-name: Rename Directory
-
+name: Code Base Change
 on:
   push:
 
@@ -8,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git mv SnowGirl DaisyX
+      - run: git mv AllMightRobot DaisyX
       - uses: EndBug/add-and-commit@v5.1.0

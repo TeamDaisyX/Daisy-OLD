@@ -1,23 +1,20 @@
-SaitamaRobot/config.py
-SaitamaRobot/*.session
-SaitamaRobot/*.session-journal
-SaitamaRobot/config.ini
-log.txt
+# Python cache
+__pycache__/
+*.py[cod]
 *.pyc
-.idea/
-.project
-.pydevproject
-.directory
-.vscode
-SaitamaRobot/modules/helper_funcs/temp.txt
-SaitamaRobot/elevated_users.json
-start-3.6.bat
+
+# Telethon session cache
 *.session
-kangsticker.png
-venv
-env
-saitama.session-journal
-updates.txt
-*.exe
-suzuyaPyro
-str
+*.session-journal
+
+# Config
+data/bot_conf.yaml
+
+# Logs
+logs/
+
+# Virtual environment
+venv/
+env/
+.vscode/
+.idea/

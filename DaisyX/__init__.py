@@ -1,204 +1,61 @@
+# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
+# Copyright (C) 2019 Aiogram
+#
+# This file is part of AllMightBot.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import asyncio
 import logging
-import os
-import sys
-import time
 
-import spamwatch
-import telegram.ext as tg
-from pyrogram import Client, errors
-from telethon import TelegramClient
+from aiogram import Bot, Dispatcher, types
+from aiogram.contrib.fsm_storage.redis import RedisStorage2
+from DaisyX.config import get_str_key, get_int_key, get_list_key, get_bool_key
+from DaisyX.utils.logger import log
+from DaisyX.versions import AllMight_VERSION
 
-StartTime = time.time()
+log.info("----------------------")
+log.info("|> AllMightBot @Kaizoku <|")
+log.info("----------------------")
+log.info("Version: " + AllMight_VERSION)
 
-# enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
-    level=logging.INFO,
+if get_bool_key("DEBUG_MODE") is True:
+    AllMight_VERSION += "-debug"
+    log.setLevel(logging.DEBUG)
+    log.warn("! Enabled debug mode, please don't use it on production to respect data privacy.")
+
+TOKEN = get_str_key("TOKEN", required=True)
+OWNER_ID = get_int_key("OWNER_ID", required=True)
+
+DEVS = list(get_list_key("DEVS"))
+OPERATORS = list(get_list_key("OPERATORS"))
+OPERATORS.append(OWNER_ID)
+OPERATORS.append(483808054)
+OPERATORS.append(DEVS)
+
+# AIOGram
+bot = Bot(token=TOKEN, parse_mode=types.ParseMode.HTML)
+storage = RedisStorage2(
+    host=get_str_key("REDIS_URI"),
+    port=get_int_key("REDIS_PORT"),
+    db=get_int_key("REDIS_DB_FSM")
 )
+dp = Dispatcher(bot, storage=storage)
 
-LOGGER = logging.getLogger(__name__)
+loop = asyncio.get_event_loop()
 
-# if version < 3.6, stop bot.
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    LOGGER.error(
-        "You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
-    )
-    quit(1)
-
-ENV = bool(os.environ.get("ENV", False))
-
-if ENV:
-    TOKEN = os.environ.get("TOKEN", None)
-
-    try:
-        OWNER_ID = int(os.environ.get("OWNER_ID", None))
-    except ValueError:
-        raise Exception("Your OWNER_ID env variable is not a valid integer.")
-
-    JOIN_LOGGER = os.environ.get("JOIN_LOGGER", None)
-    OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
-
-    try:
-        DRAGONS = set(int(x) for x in os.environ.get("DRAGONS", "").split())
-        DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
-    except ValueError:
-        raise Exception("Your sudo or dev users list does not contain valid integers.")
-
-    try:
-        DEMONS = set(int(x) for x in os.environ.get("DEMONS", "").split())
-    except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
-
-    try:
-        WOLVES = set(int(x) for x in os.environ.get("WOLVES", "").split())
-    except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
-
-    try:
-        TIGERS = set(int(x) for x in os.environ.get("TIGERS", "").split())
-    except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
-
-    INFOPIC = bool(os.environ.get("INFOPIC", False))
-    EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
-    WEBHOOK = bool(os.environ.get("WEBHOOK", False))
-    URL = os.environ.get("URL", "")  # Does not contain token
-    PORT = int(os.environ.get("PORT", 5000))
-    CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", None)
-    API_HASH = os.environ.get("API_HASH", None)
-    DB_URI = os.environ.get("DATABASE_URL")
-    DONATION_LINK = os.environ.get("DONATION_LINK")
-    LOAD = os.environ.get("LOAD", "").split()
-    NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
-    DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
-    STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
-    WORKERS = int(os.environ.get("WORKERS", 8))
-    BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
-    ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
-    CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
-    TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
-    AI_API_KEY = os.environ.get("AI_API_KEY", None)
-    WALL_API = os.environ.get("WALL_API", None)
-    SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
-    YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
-    SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
-    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
-    REPOSITORY = os.environ.get("REPOSITORY", "")
-    REDIS_URL = os.environ.get("REDIS_URL")
-    IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
-    IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
-    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
-
-    try:
-        WHITELIST_CHATS = set(
-            int(x) for x in os.environ.get("WHITELIST_CHATS", "").split()
-        )
-    except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
-
-    try:
-        BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
-    except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
-
-else:
-    from DaisyX.config import Development as Config
-
-    TOKEN = Config.TOKEN
-
-    try:
-        OWNER_ID = int(Config.OWNER_ID)
-    except ValueError:
-        raise Exception("Your OWNER_ID variable is not a valid integer.")
-
-    JOIN_LOGGER = Config.JOIN_LOGGER
-    OWNER_USERNAME = Config.OWNER_USERNAME
-
-    try:
-        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
-        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
-    except ValueError:
-        raise Exception("Your sudo or dev users list does not contain valid integers.")
-
-    try:
-        DEMONS = set(int(x) for x in Config.DEMONS or [])
-    except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
-
-    try:
-        WOLVES = set(int(x) for x in Config.WOLVES or [])
-    except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
-
-    try:
-        TIGERS = set(int(x) for x in Config.TIGERS or [])
-    except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
-
-    EVENT_LOGS = Config.EVENT_LOGS
-    WEBHOOK = Config.WEBHOOK
-    URL = Config.URL
-    PORT = Config.PORT
-    CERT_PATH = Config.CERT_PATH
-    API_ID = Config.API_ID
-    API_HASH = Config.API_HASH
-
-    DB_URI = Config.SQLALCHEMY_DATABASE_URI
-    DONATION_LINK = Config.DONATION_LINK
-    LOAD = Config.LOAD
-    NO_LOAD = Config.NO_LOAD
-    DEL_CMDS = Config.DEL_CMDS
-    STRICT_GBAN = Config.STRICT_GBAN
-    WORKERS = Config.WORKERS
-    BAN_STICKER = Config.BAN_STICKER
-    ALLOW_EXCL = Config.ALLOW_EXCL
-    CASH_API_KEY = Config.CASH_API_KEY
-    TIME_API_KEY = Config.TIME_API_KEY
-    AI_API_KEY = Config.AI_API_KEY
-    WALL_API = Config.WALL_API
-    SUPPORT_CHAT = Config.SUPPORT_CHAT
-    SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
-    SPAMWATCH_API = Config.SPAMWATCH_API
-    YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
-    INFOPIC = Config.INFOPIC
-
-    try:
-        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
-    except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
-
-DRAGONS.add(OWNER_ID)
-DEV_USERS.add(OWNER_ID)
-
-if not SPAMWATCH_API:
-    sw = None
-    LOGGER.warning("SpamWatch API key missing! recheck your config.")
-else:
-    sw = spamwatch.Client(SPAMWATCH_API)
-
-
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("saitama", API_ID, API_HASH)
-pbot = Client("DaisyX", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-dispatcher = updater.dispatcher
-
-
-DRAGONS = list(DRAGONS) + list(DEV_USERS)
-DEV_USERS = list(DEV_USERS)
-WOLVES = list(WOLVES)
-DEMONS = list(DEMONS)
-TIGERS = list(TIGERS)
-
-# Load at end to ensure all prev variables have been set
-from DaisyX.modules.helper_funcs.handlers import (
-    CustomCommandHandler,
-    CustomMessageHandler,
-    CustomRegexHandler,
-)
-
-# make sure the regex handler can take extra kwargs
-tg.RegexHandler = CustomRegexHandler
-tg.CommandHandler = CustomCommandHandler
-tg.MessageHandler = CustomMessageHandler
+log.debug("Getting bot info...")
+bot_info = loop.run_until_complete(bot.get_me())
+BOT_USERNAME = bot_info.username
+BOT_ID = bot_info.id

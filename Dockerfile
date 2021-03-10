@@ -1,80 +1,43 @@
-# We're using Debian Slim Buster image
-FROM python:3.8.5-slim-buster
+# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
+# Copyright (C) 2019 Aiogram
+#
+# This file is part of AllMightBot.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
 
-ENV PIP_NO_CACHE_DIR 1
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
 
-RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Installing Required Packages
-RUN apt update && apt upgrade -y && \
-    apt install --no-install-recommends -y \
-    debian-keyring \
-    debian-archive-keyring \
-    bash \
-    bzip2 \
-    curl \
-    figlet \
-    git \
-    util-linux \
-    libffi-dev \
-    libjpeg-dev \
-    libjpeg62-turbo-dev \
-    libwebp-dev \
-    linux-headers-amd64 \
-    musl-dev \
-    musl \
-    neofetch \
-    php-pgsql \
-    python3-lxml \
-    postgresql \
-    postgresql-client \
-    python3-psycopg2 \
-    libpq-dev \
-    libcurl4-openssl-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    python3-pip \
-    python3-requests \
-    python3-sqlalchemy \
-    python3-tz \
-    python3-aiohttp \
-    openssl \
-    pv \
-    jq \
-    wget \
-    python3 \
-    python3-dev \
-    libreadline-dev \
-    libyaml-dev \
-    gcc \
-    sqlite3 \
-    libsqlite3-dev \
-    sudo \
-    zlib1g \
-    ffmpeg \
-    libssl-dev \
-    libgconf-2-4 \
-    libxi6 \
-    xvfb \
-    unzip \
-    libopus0 \
-    libopus-dev \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+# Build image
+FROM python:3.8-slim AS compile-image
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends build-essential gcc
+RUN apt-get install -y --no-install-recommends libyaml-dev
 
-# Pypi package Repo upgrade
-RUN pip3 install --upgrade pip setuptools
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
 
-# Copy Python Requirements to /root/DaisyX
-RUN git clone -b shiken https://github.com/Infinity-Bots/LizaDaisyX /root/DaisyX
-WORKDIR /root/DaisyX
 
-#Copy config file to /root/DaisyX/DaisyX
-COPY ./DaisyX/sample_config.py ./DaisyX/config.py* /root/DaisyX/DaisyX/
+# Run image
+FROM python:3.8-slim AS run-image
 
-ENV PATH="/home/bot/bin:$PATH"
+# Temp
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends libyaml-dev
 
-# Install requirements
-RUN pip3 install -U -r requirements.txt
+COPY --from=compile-image /root/.local /root/.local
+ENV PATH=/root/.local/bin:$PATH
 
-# Starting Worker
-CMD ["python3","-m","DaisyX"]
+ADD . /DaisyX
+RUN rm -rf /DaisyX/data/
+WORKDIR /DaisyX
+
+CMD [ "python", "-m", "DaisyX" ]

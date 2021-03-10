@@ -1,0 +1,29 @@
+# AllMight example config
+
+# Basic
+TOKEN: "YOUR_TOKEN"
+
+# Get they in https://my.telegram.org/
+APP_ID: 1234
+APP_HASH: "YOUR_APP_HASH"
+
+MONGO_URI: localhost
+MONGO_PORT: 27017
+MONGO_DB: 'AllMight'
+
+REDIS_URI: localhost
+REDIS_PORT: 6379
+REDIS_DB_FSM: 1
+
+OWNER_ID: 483808054
+OPERATORS: [483808054, 00000000]
+DEVS: []
+
+# Advanced
+SENTRY_API_KEY: "SENTRY_API_URL"
+
+DEBUG_MODE: False
+LOAD_MODULES: True
+
+ALLOW_FORWARDS_COMMANDS: False
+ALLOW_COMMANDS_WITH_!: False

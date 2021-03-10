@@ -1,43 +1,54 @@
-from DaisyX import LOAD, LOGGER, NO_LOAD
+# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
+# Copyright (C) 2019 Aiogram
+
+#
+# This file is part of AllMightBot.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import os
+
+from DaisyX.utils.logger import log
 
 
-def __list_all_modules():
-    import glob
-    from os.path import basename, dirname, isfile
+LOADED_MODULES = []
+MOD_HELP = {}
 
-    # This generates a list of modules in this folder for the * in __main__ to work.
-    mod_paths = glob.glob(dirname(__file__) + "/*.py")
-    all_modules = [
-        basename(f)[:-3]
-        for f in mod_paths
-        if isfile(f) and f.endswith(".py") and not f.endswith("__init__.py")
-    ]
+def list_all_modules() -> list:
+    modules_directory = 'DaisyX/modules'
 
-    if LOAD or NO_LOAD:
-        to_load = LOAD
-        if to_load:
-            if not all(
-                any(mod == module_name for module_name in all_modules)
-                for mod in to_load
-            ):
-                LOGGER.error("Invalid loadorder names. Quitting.")
-                quit(1)
+    all_modules = []
+    for module_name in os.listdir(modules_directory):
+        path = modules_directory + '/' + module_name
 
-            all_modules = sorted(set(all_modules) - set(to_load))
-            to_load = list(all_modules) + to_load
+        if '__init__' in path or '__pycache__' in path:
+            continue
 
-        else:
-            to_load = all_modules
+        if path in all_modules:
+            log.path("Modules with same name can't exists!")
+            exit(5)
 
-        if NO_LOAD:
-            LOGGER.info("Not loading: {}".format(NO_LOAD))
-            return [item for item in to_load if item not in NO_LOAD]
+        # One file module type
+        if path.endswith('.py'):
+            # TODO: removesuffix
+            all_modules.append(module_name.split('.py')[0])
 
-        return to_load
+        # Module directory
+        if os.path.isdir(path) and os.path.exists(path + '/__init__.py'):
+            all_modules.append(module_name)
 
     return all_modules
 
 
-ALL_MODULES = __list_all_modules()
-LOGGER.info("Modules to load: %s", str(ALL_MODULES))
+ALL_MODULES = sorted(list_all_modules())
 __all__ = ALL_MODULES + ["ALL_MODULES"]
