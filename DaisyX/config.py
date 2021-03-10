@@ -33,7 +33,7 @@ DEFAULTS = {
     'REDIS_DB_FSM': 1,
 
     'MONGODB_URI': 'localhost',
-    'MONGO_DB': 'AllMight',
+    'MONGO_DB': 'DaisyX',
 
     'API_PORT': 8080,
 
