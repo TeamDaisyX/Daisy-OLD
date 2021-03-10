@@ -7,11 +7,11 @@ TOKEN: "YOUR_TOKEN"
 APP_ID: 1234
 APP_HASH: "YOUR_APP_HASH"
 
-MONGO_URI: localhost
+MONGO_URI: mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWrites=true&w=majority
 MONGO_PORT: 27017
-MONGO_DB: 'AllMight'
+MONGO_DB: 'DaisyX'
 
-REDIS_URI: localhost
+REDIS_URI: redis-10514.c241.us-east-1-4.ec2.cloud.redislabs.com:10514
 REDIS_PORT: 6379
 REDIS_DB_FSM: 1
 
