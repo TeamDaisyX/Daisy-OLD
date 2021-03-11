@@ -39,3 +39,6 @@ wikipedia
 
 #Pyrogram
 tgCrypto>=1.2.2
+
+#Hmm
+psycopg2
