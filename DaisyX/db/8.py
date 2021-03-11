@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX's Daisy-X (Telegram Bot)
+# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -20,7 +20,7 @@ from DaisyX.utils.logger import log
 
 changelog = \
     """
-    TeamDaisyX's Daisy-X database v8
+    TeamDaisyX Daisy-X database v8
     Warns: Change serialization method of warnmodes (time based)
     """
 log.info(changelog)

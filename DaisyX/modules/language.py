@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX's Daisy-X (Telegram Bot)
+# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -136,12 +136,12 @@ async def __import__(chat_id, data):
 __mod_name__ = "Languages"
 
 __help__ = """
-Get the available list of language in TeamDaisyX's Daisy-X by below commands.
+Get the available list of language in TeamDaisyX Daisy-X by below commands.
 
 <b>Available commands:</b>
 - /lang: Shows a list of avaible languages
 - /lang (language codename): Sets a language
 
 <b>Example:</b> <code>/lang</code>
-TeamDaisyX's Daisy-X will send you bunch of inline buttons where you can select your prefered language interatively without any hassles!
+TeamDaisyX Daisy-X will send you bunch of inline buttons where you can select your prefered language interatively without any hassles!
 """

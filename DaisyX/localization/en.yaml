@@ -137,7 +137,7 @@ STRINGS:
     # /delwarns
     purged_warns: "{admin} reset <code>{num}</code> warns of {user} in <b>{chat_title}</b>!"
     usr_no_wrn: "{user} doesn't have any warns to reset."
-    rst_wrn_sofi: 'TeamDaisyX's Daisy-X never had warns to reset.'
+    rst_wrn_sofi: 'TeamDaisyX Daisy-X never had warns to reset.'
     not_digit: Warnlimits should be digits!
 
     # /warnmode
@@ -189,7 +189,7 @@ STRINGS:
     emoji_not_allowed: "I'm sorry, but admin roles can't have emojis 😞"
 
   pm_menu:
-    start_hi_group: 'Hey there! My name is TeamDaisyX's Daisy-X'
+    start_hi_group: 'Hey there! My name is TeamDaisyX Daisy-X'
     start_hi: "Hey there! My name is <b>DaisyX.</b>\nI can help manage your groups with useful features, feel free to add me to your groups!"
     btn_source: "📦 Source code"
     btn_help: "❔ Help"

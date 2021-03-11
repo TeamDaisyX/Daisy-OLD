@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX's Daisy-X (Telegram Bot)
+# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -18,7 +18,7 @@ from pymongo import DeleteOne
 from DaisyX.services.mongo import mongodb
 from DaisyX.utils.logger import log
 
-log.info('TeamDaisyX's Daisy-X Database v6')
+log.info('TeamDaisyX Daisy-X Database v6')
 log.info("Feds: fix str user_id and fix duplications")
 log.info('Starting updating all feds...')
 

@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX's Daisy-X (Telegram Bot)
+# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -390,7 +390,7 @@ Filter module is great for everything! filter in here is used to filter words or
 
 <b>General (Admins):</b>
 - /addfilter (word/sentence)
-As in command this is used to add filter. To avoid hassle when setting up the the filter, TeamDaisyX's Daisy-X will take you through an interactive setup!
+As in command this is used to add filter. To avoid hassle when setting up the the filter, TeamDaisyX Daisy-X will take you through an interactive setup!
 - /delfilter (word/sentence)
 As in command this is used to delete a filter you want!
 <b>As of now, there is 6 actions that you can do:</b>

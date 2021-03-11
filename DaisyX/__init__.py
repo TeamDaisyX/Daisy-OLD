@@ -26,7 +26,7 @@ from DaisyX.utils.logger import log
 from DaisyX.versions import UTAH_VERSION
 
 log.info("----------------------")
-log.info("|      TeamDaisyX's Daisy-X      |")
+log.info("|      TeamDaisyX Daisy-X      |")
 log.info("----------------------")
 log.info("Version: " + UTAH_VERSION)
 
