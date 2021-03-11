@@ -33,7 +33,6 @@ async def is_register_admin(chat, user):
 
 @tbot.on(events.NewMessage(pattern="^/torrent (.*)"))
 async def _(event):
-    await event.reply("FUCK")
     approved_userss = approved_users.find({})
     for ch in approved_userss:
         iid = ch["id"]
