@@ -5,7 +5,7 @@ from DaisyX.config import get_str_key
 from DaisyX import BOT_ID
 from DaisyX.services.telethon import tbot
 from DaisyX.decorator import register
-
+from .utils.disable import disableable_dec
 MONGO_DB_URI = get_str_key("MONGO_URI", required=True)
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
