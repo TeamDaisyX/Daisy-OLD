@@ -37,7 +37,7 @@ async def can_change_info(message):
 
 
 
-@register(cmds='addchat')
+@tbot.on(events.NewMessage(pattern="addchat"))
 async def _(event):
     global api_client
     chat = event.chat
