@@ -36,6 +36,7 @@ lxml
 spamwatch
 httpx[http2]
 wikipedia
+coffeehouse
 
 #Pyrogram
 tgCrypto>=1.2.2
