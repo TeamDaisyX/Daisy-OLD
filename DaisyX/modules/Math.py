@@ -45,7 +45,8 @@ async def _(message):
     await message.reply(j)
 
 @register(cmds='derive')
-@disableable_dec('derive')    
+@disableable_dec('derive')   
+async def _(message):
     args = get_args_str(message)
     response = requests.get(f"https://newton.now.sh/api/v2/derive/{args}")
     c = response.text
@@ -54,7 +55,8 @@ async def _(message):
     await message.reply(j)    
 
 @register(cmds='integrate')
-@disableable_dec('integrate')    
+@disableable_dec('integrate') 
+async def _(message):
     args = get_args_str(message)
     response = requests.get(f"https://newton.now.sh/api/v2/integrate/{args}")
     c = response.text
@@ -63,7 +65,8 @@ async def _(message):
     await message.reply(j)
     
 @register(cmds='zeroes')
-@disableable_dec('zeroes')    
+@disableable_dec('zeroes')
+async def _(message):
     args = get_args_str(message)
     response = requests.get(f"https://newton.now.sh/api/v2/zeroes/{args}")
     c = response.text
@@ -72,7 +75,8 @@ async def _(message):
     await message.reply(j)   
     
 @register(cmds='tangent')
-@disableable_dec('tangent')    
+@disableable_dec('tangent')  
+async def _(message):
     args = get_args_str(message)
     response = requests.get(f"https://newton.now.sh/api/v2/tangent/{args}")
     c = response.text
@@ -82,6 +86,7 @@ async def _(message):
     
 @register(cmds='area')
 @disableable_dec('area')    
+async def _(message):
     args = get_args_str(message)
     response = requests.get(f"https://newton.now.sh/api/v2/area/{args}")
     c = response.text
@@ -90,42 +95,50 @@ async def _(message):
     await message.reply(j)      
     
 @register(cmds='cos')
-@disableable_dec('cos')    
+@disableable_dec('cos')
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.cos(int(args))))
     
 @register(cmds='sin')
-@disableable_dec('sin')    
+@disableable_dec('sin')  
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.sin(int(args))))    
     
 @register(cmds='tan')
-@disableable_dec('tan')    
+@disableable_dec('tan')   
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.tan(int(args))))        
     
 @register(cmds='arccos')
-@disableable_dec('arccos')    
+@disableable_dec('arccos') 
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.acos(int(args))))       
       
 @register(cmds='arcsin')
 @disableable_dec('arcsin')    
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.asin(int(args))))        
     
 @register(cmds='arctan')
-@disableable_dec('arctan')    
+@disableable_dec('arctan')   
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.atan(int(args))))    
     
 @register(cmds='abs')
 @disableable_dec('abs')    
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.fabs(int(args))))        
     
 @register(cmds='log')
 @disableable_dec('log')    
+async def _(message):
     args = get_args_str(message) 
     await message.reply(str(math.log(int(args))))        
 
