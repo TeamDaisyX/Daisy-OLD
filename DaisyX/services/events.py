@@ -8,11 +8,10 @@ from pathlib import Path
 from DaisyX.services.mongo import mongodb as db
 from telethon import events
 
-from DaisyX.services.telethon import  tbot as telethn
-
+from DaisyX.services.telethon import  tbot
 
 gbanned = db.gban
-
+CMD_LIST = {}
 
 def register(**args):
     pattern = args.get("pattern")
@@ -79,7 +78,7 @@ def chataction(**args):
     """ Registers chat actions. """
 
     def decorator(func):
-        telethn.add_event_handler(func, events.ChatAction(**args))
+        tbot.add_event_handler(func, events.ChatAction(**args))
         return func
 
     return decorator
@@ -89,7 +88,7 @@ def userupdate(**args):
     """ Registers user updates. """
 
     def decorator(func):
-        telethn.add_event_handler(func, events.UserUpdate(**args))
+        tbot.add_event_handler(func, events.UserUpdate(**args))
         return func
 
     return decorator
@@ -103,7 +102,7 @@ def inlinequery(**args):
         args["pattern"] = "(?i)" + pattern
 
     def decorator(func):
-        telethn.add_event_handler(func, events.InlineQuery(**args))
+        tbot.add_event_handler(func, events.InlineQuery(**args))
         return func
 
     return decorator
@@ -113,7 +112,7 @@ def callbackquery(**args):
     """ Registers inline query. """
 
     def decorator(func):
-        telethn.add_event_handler(func, events.CallbackQuery(**args))
+        tbot.add_event_handler(func, events.CallbackQuery(**args))
         return func
 
     return decorator
