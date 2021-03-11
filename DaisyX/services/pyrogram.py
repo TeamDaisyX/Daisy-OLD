@@ -21,6 +21,6 @@ from DaisyX.config import get_str_key, get_int_key
 TOKEN = get_str_key("TOKEN", required=True)
 APP_ID = get_int_key("APP_ID", required=True)
 APP_HASH = get_str_key("APP_HASH", required=True)
-pbot = Client("DaisyX", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+pbot = Client("DaisyX", api_id=APP_ID, api_hash=APP_HASH, bot_token=TOKEN)
 
 pbot.start()
