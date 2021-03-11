@@ -125,8 +125,8 @@ async def _(event):
                 await event.reply(rep)
         except CFError as e:
             print(e)
-
- __help__ = """
+            
+__help__ = """
  - /addchat: Activates AI mode in the chat the bot will give auto replies to anyone who tags the bot
  - /rmchat: Deactivates AI mode in the chat the bot will stop giving auto replies to anyone who tags the bot
 """
