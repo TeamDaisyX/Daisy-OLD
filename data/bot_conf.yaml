@@ -21,6 +21,7 @@ REDIS_PASS: "DaisyX"
 OWNER_ID: 1141839926
 OPERATORS: [1141839926, 00000000]
 
+DATABASE_URL: "postgres://wemhglxk:EuuPe_Djr1BuMd-T5ZNch9cKNpYQ-uAE@arjuna.db.elephantsql.com:5432/wemhglxk"
 # Advanced
 SW_API: "zRkz35AG_89QoFx3nFwKtk9AqL5UHFTcuvI_1ceMgZVmnbcQl9qHTBrszA8Lkww2"
 
