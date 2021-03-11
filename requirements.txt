@@ -1,5 +1,6 @@
 # General
 telethon~=1.17.0
+pyrogram>=1.0.7
 aiogram
 
 # DBs
@@ -37,4 +38,4 @@ httpx[http2]
 wikipedia
 
 #Pyrogram
-tgCrypto
+tgCrypto>=1.2.2
