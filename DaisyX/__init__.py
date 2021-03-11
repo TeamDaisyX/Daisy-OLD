@@ -67,3 +67,4 @@ log.debug("Getting bot info...")
 bot_info = loop.run_until_complete(bot.get_me())
 BOT_USERNAME = bot_info.username
 BOT_ID = bot_info.id
+POSTGRESS_URL = get_str_key("DATABASE_URL", required=True)
