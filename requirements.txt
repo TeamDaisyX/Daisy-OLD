@@ -41,5 +41,11 @@ coffeehouse
 #Pyrogram
 tgCrypto>=1.2.2
 
-#Hmm
+#OldProcesses
 psycopg2
+
+#ImageEditor
+NumPy
+Pillow
+glitch_this
+opencv-python-headless
