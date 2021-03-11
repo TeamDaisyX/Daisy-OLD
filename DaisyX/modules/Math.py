@@ -21,6 +21,7 @@ async def _(event):
     
 @register(cmds=['factor', 'factorize'])
 @disableable_dec('factor')
+async def _(event):
     args = event.pattern_match.group(1)
     response = requests.get(f"https://newton.now.sh/api/v2/factor/{args}")
     c = response.text
