@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "Utah"
-          replace: "TeamDaisyX's Daisy-X"
+          find: "TeamDaisyX's Daisy-X"
+          replace: "TeamDaisyX Daisy-X"
       - name: Pull All Updates
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
