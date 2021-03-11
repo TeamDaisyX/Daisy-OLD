@@ -5,7 +5,7 @@ from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from DaisyX.services.mongo import db
+from DaisyX.services.mongo import mongodb as db
 from DaisyX.services.telethon import tbot
 
 approved_users = db.approve
