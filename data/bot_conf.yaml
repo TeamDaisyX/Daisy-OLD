@@ -1,0 +1,30 @@
+# TeamDaisyX's Daisy-X example config
+
+
+# Basic
+TOKEN: "YOUR_TOKEN"
+
+# Get they in https://my.telegram.org/
+APP_ID: 1234
+APP_HASH: "YOUR_APP_HASH"
+
+MONGODB_URI': 'localhost'
+MONGO_DB': 'DaisyX'
+
+API_PORT': 8080
+
+REDIS_URI: "redis:xaxaxaxaxax"
+REDIS_PORT: 6379
+REDIS_PASS: "lol"
+
+OWNER_ID: 483808054
+OPERATORS: [483808054, 00000000]
+
+# Advanced
+SW_API: "SPAMWATCH_API_KEY"
+
+DEBUG_MODE: False
+LOAD_MODULES: True
+
+ALLOW_FORWARDS_COMMANDS: False
+ALLOW_COMMANDS_WITH_!: False
