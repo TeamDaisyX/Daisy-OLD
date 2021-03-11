@@ -47,7 +47,7 @@ from DaisyX.Addons.ImageEditor.edit_5 import (  # pylint:disable=import-error
 )
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from DaisyX.services.pyrogram import pbot as Client
-from script import script  # pylint:disable=import-error
+
 
 
 @Client.on_callback_query()
@@ -101,61 +101,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ]
             ),
         )
-    elif query.data == "start_data":
-
-        keyboard = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("HELP", callback_data="help_data"),
-                    InlineKeyboardButton("ABOUT", callback_data="about_data"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "SOURCE CODE", url="https://github.com/TroJanzHEX/Image-Editor"
-                    )
-                ],
-            ]
-        )
-
-        await query.message.edit_text(
-            script.START_MSG.format(query.from_user.mention),
-            reply_markup=keyboard,
-            disable_web_page_preview=True,
-        )
-    elif query.data == "help_data":
-        keyboard = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("BACK", callback_data="start_data"),
-                    InlineKeyboardButton("ABOUT", callback_data="about_data"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "SOURCE CODE", url="https://github.com/TroJanzHEX/Image-Editor"
-                    )
-                ],
-            ]
-        )
-        await query.message.edit_text(
-            script.HELP_MSG, reply_markup=keyboard, disable_web_page_preview=True
-        )
-    elif query.data == "about_data":
-        keyboard = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("BACK", callback_data="help_data"),
-                    InlineKeyboardButton("START", callback_data="start_data"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "SOURCE CODE", url="https://github.com/TroJanzHEX/Image-Editor"
-                    )
-                ],
-            ]
-        )
-        await query.message.edit_text(
-            script.ABOUT_MSG, reply_markup=keyboard, disable_web_page_preview=True
-        )
+    
     elif query.data == "glitch":
         await query.message.edit_text(
             "**Select required mode**ㅤㅤㅤㅤ",
