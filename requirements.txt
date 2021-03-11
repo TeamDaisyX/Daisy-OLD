@@ -7,6 +7,7 @@ redis
 aioredis # Redis memery storage fom aiogram
 pymongo
 motor
+sqlalchemy # For old modules
 dnspython # needed to connect to cloud MongoDB instances
 
 # Optional deps to make bot faster
@@ -34,3 +35,6 @@ lxml
 spamwatch
 httpx[http2]
 wikipedia
+
+#Pyrogram
+tgCrypto
