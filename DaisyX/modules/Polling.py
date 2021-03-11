@@ -4,8 +4,7 @@ from telethon.tl import *
 from DaisyX.config import get_str_key
 from DaisyX import BOT_ID
 from DaisyX.services.telethon import tbot
-from DaisyX.decorator import register
-from .utils.disable import disableable_dec
+from DaisyX.services.events import register
 MONGO_DB_URI = get_str_key("MONGO_URI", required=True)
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -34,8 +33,8 @@ async def is_register_admin(chat, user):
         )
     return None
   
-@register(cmds='poll')
-@disableable_dec('poll')
+
+@register(pattern="^/poll (.*)")
 async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -305,7 +304,8 @@ async def _(event):
         await event.reply("You can't use multiple voting with quiz mode")
         return
 
-@register(cmds='stoppoll')
+
+@register(pattern="^/stoppoll (.*)")
 async def stop(event):
     secret = event.pattern_match.group(1)
     # print(secret)
@@ -370,7 +370,7 @@ async def stop(event):
         await event.reply("This isn't a poll")
 
 
-@register(cmds='forgotpollid')
+@register(pattern="^/forgotpollid$")
 async def stop(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
