@@ -26,8 +26,8 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from DaisyX import SUDO_USERS
-from DaisyX import pbot
+from DaisyX import OWNER_ID as SUDO_USERS
+from DaisyX.services.pyrogram import pbot
 from DaisyX.services.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
