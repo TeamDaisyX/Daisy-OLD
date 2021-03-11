@@ -37,14 +37,8 @@ async def can_change_info(message):
 
 
 
-@register(cmds='addchat$')
+@register(cmds='addchat')
 async def _(event):
-    if event.is_group:
-        if not await can_change_info(message=event):
-            return
-    else:
-        return
-
     global api_client
     chat = event.chat
     send = await event.get_sender()
