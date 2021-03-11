@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -111,6 +111,6 @@ Make it easy to promote and demote users with the admin module!
 - /admincache: Update the admin cache, to take into account new admins/admin permissions.
 
 Example:
-Sometimes, you promote or demote an admin manually, and TeamDaisyX Daisy-X doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
-This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force TeamDaisyX Daisy-X to check who the admins are again.
+Sometimes, you promote or demote an admin manually, and DaisyXBot doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
+This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force DaisyXBot to check who the admins are again.
 """

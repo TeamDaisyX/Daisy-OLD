@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -305,7 +305,7 @@ Antiflood allows you to take action on users that send more than x messages in a
 - /antiflood off: Disables Antiflood
 - /setflood (limit): Sets flood limit
 
-Replace (limit) with any integer, should be less than 200. When setting up, TeamDaisyX Daisy-X would ask you to send expiration time, if you dont understand what this expiration time for? User who sends specified limit of messages consecutively within this TIME, would be kicked, banned whatever the action is. if you dont want this TIME, wants to take action against those who exceeds specified limit without mattering TIME INTERVAL between the messages. you can reply to question with 0
+Replace (limit) with any integer, should be less than 200. When setting up, DaisyXBot would ask you to send expiration time, if you dont understand what this expiration time for? User who sends specified limit of messages consecutively within this TIME, would be kicked, banned whatever the action is. if you dont want this TIME, wants to take action against those who exceeds specified limit without mattering TIME INTERVAL between the messages. you can reply to question with 0
 
 <b>Configuring the time:</b>
 2m = 2 minutes

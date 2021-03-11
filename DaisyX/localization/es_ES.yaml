@@ -164,12 +164,12 @@ STRINGS:
     cant_promote_yourself: "No puedes promoverte a ti mismo."
     emoji_not_allowed: "Lo siento, pero los roles de administrador no pueden contener emojis 😞"
   pm_menu:
-    start_hi_group: '¡Hola! Mi nombre es TeamDaisyX Daisy-X'
+    start_hi_group: '¡Hola! Mi nombre es DaisyXBot'
     start_hi: "¡Hola! ¡Mi nombre es <b>Texas</b>, te ayudo a gestionar tu grupo de una manera eficiente!"
     btn_source: "📦 Código fuente"
     btn_help: "❔ Ayuda"
     btn_lang: "es Idioma"
-    btn_channel: "📡 Noticias de TeamDaisyX Daisy-X"
+    btn_channel: "📡 Noticias de DaisyXBot"
     btn_group_help: "Support Group"
     btn_add: "Add me to your group"
     back: Atrás

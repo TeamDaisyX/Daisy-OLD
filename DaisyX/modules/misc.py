@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -290,7 +290,7 @@ An "odds and ends" module for small, simple commands which don't really fit anyw
 - /github (username): Returns info about a GitHub user or organization.
 - /ip (url): Displays information about an IP / domain.
 - /wiki (keywords): Get wikipedia articles just using this bot.
-- /cancel: Disables current state. Can help in cases if TeamDaisyX Daisy-X not responing on your message.
+- /cancel: Disables current state. Can help in cases if DaisyXBot not responing on your message.
 - /id: get the current group id. If used by replying to a message, gets that user's id.
 - /info: get information about a user.
 """

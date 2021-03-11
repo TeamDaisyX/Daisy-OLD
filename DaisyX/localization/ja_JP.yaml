@@ -164,12 +164,12 @@ STRINGS:
     cant_promote_yourself: "You can't promote yourself."
     emoji_not_allowed: "申し訳ありませんが、管理者の役割は絵文字を持つことができません。 :explosed_face:"
   pm_menu:
-    start_hi_group: 'こんにちは！私の名前はTeamDaisyX Daisy-X'
-    start_hi: "こんにちは！私の名前はTeamDaisyX Daisy-Xです。効率的な方法であなたのグループを管理するのを助けます！"
+    start_hi_group: 'こんにちは！私の名前はDaisyXBot'
+    start_hi: "こんにちは！私の名前はDaisyXBotです。効率的な方法であなたのグループを管理するのを助けます！"
     btn_source: "📦 Source code"
     btn_help: "❔ ヘルプ"
     btn_lang: "🇷🇺 Language"
-    btn_channel: ":satellite_アンテナ: TeamDaisyX Daisy-X News"
+    btn_channel: ":satellite_アンテナ: DaisyXBot News"
     btn_group_help: "Support Group"
     btn_add: "Add me to your group"
     back: 戻る

@@ -163,17 +163,17 @@ STRINGS:
     cant_promote_yourself: "Você não pode promover a si mesmo."
     emoji_not_allowed: "Sinto muito, mas o título de administrador não podem ter emojis 😞"
   pm_menu:
-    start_hi_group: 'Olá! Meu nome é TeamDaisyX Daisy-X'
-    start_hi: "Olá! Meu nome é <b>TeamDaisyX Daisy-X.</b>\nEu posso ajudar a gerenciar seus grupos com recursos úteis, fique à vontade para me adicionar aos seus grupos!"
+    start_hi_group: 'Olá! Meu nome é DaisyXBot'
+    start_hi: "Olá! Meu nome é <b>DaisyXBot.</b>\nEu posso ajudar a gerenciar seus grupos com recursos úteis, fique à vontade para me adicionar aos seus grupos!"
     btn_source: "📦 Código fonte"
     btn_help: "❔ Ajuda"
     btn_lang: "🇧🇷 Idioma"
-    btn_channel: "📬 Notícias do TeamDaisyX Daisy-X"
+    btn_channel: "📬 Notícias do DaisyXBot"
     btn_group_help: "Support Group"
     btn_add: "Add me to your group"
     back: Voltar
     #/help
-    help_header: "Ei! Meu nome é <b>TeamDaisyX Daisy-X</b>. Sou um bot de gerenciamento de grupo, estou aqui para ajudá-lo a se locomover e manter a ordem em seus grupos!\nTenho muitos recursos úteis, como controle de flood, um sistema de avisos, um sistema de notas e até mesmo respostas predeterminadas em certas palavras-chave."
+    help_header: "Ei! Meu nome é <b>DaisyXBot</b>. Sou um bot de gerenciamento de grupo, estou aqui para ajudá-lo a se locomover e manter a ordem em seus grupos!\nTenho muitos recursos úteis, como controle de flood, um sistema de avisos, um sistema de notas e até mesmo respostas predeterminadas em certas palavras-chave."
     click_btn: Clique aqui
   disable:
     #/disableable

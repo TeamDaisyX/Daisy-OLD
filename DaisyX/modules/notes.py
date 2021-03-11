@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -670,7 +670,7 @@ __mod_name__ = "Notes"
 
 __help__ = """
 Sometimes you need to save some data, like text or pictures. With notes, you can save any types of Telegram's data in your chats.
-Also notes perfectly working in PM with TeamDaisyX Daisy-X.
+Also notes perfectly working in PM with DaisyXBot.
 
 <b>Available commands:</b>
 - /save (name) (data): Saves the note.
@@ -714,7 +714,7 @@ Every note can contain special settings, for example you can change formatting m
 <code>%PREVIEW</code>: Enables the links preview in saved note
 
 <b>Saving notes from other Marie style bots:</b>
-TeamDaisyX Daisy-X can save notes from other bots, just reply /save on the saved message from another bot, saving pictures and buttons supported aswell.
+DaisyXBot can save notes from other bots, just reply /save on the saved message from another bot, saving pictures and buttons supported aswell.
 
 <b>Retrieving notes without the formatting:</b>
 To retrieve a note without the formatting, use <code>/get (name) raw</code> or <code>/get (name) noformat</code>

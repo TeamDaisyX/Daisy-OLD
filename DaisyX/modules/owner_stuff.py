@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -139,7 +139,7 @@ async def bot_stop(message):
 
 @register(cmds="restart", is_owner=True)
 async def restart_bot(message):
-    await message.reply("TeamDaisyX Daisy-X will be restarted...")
+    await message.reply("DaisyXBot will be restarted...")
     args = [sys.executable, "-m", "DaisyX"]
     os.execl(sys.executable, *args)
 
@@ -185,7 +185,7 @@ async def get_event(message):
 
 @register(cmds="stats", is_op=True)
 async def stats(message):
-    text = f"<b>TeamDaisyX Daisy-X {UTAH_VERSION} stats</b>\n"
+    text = f"<b>DaisyXBot {UTAH_VERSION} stats</b>\n"
 
     for module in [m for m in LOADED_MODULES if hasattr(m, '__stats__')]:
         text += await module.__stats__()

@@ -1,4 +1,4 @@
-# This file is part of TeamDaisyX Daisy-X (Telegram Bot)
+# This file is part of DaisyXBot (Telegram Bot)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -16,7 +16,7 @@
 from DaisyX.services.mongo import mongodb
 from DaisyX.utils.logger import log
 
-log.info('TeamDaisyX Daisy-X Database v3')
+log.info('DaisyXBot Database v3')
 log.info('Support notes aliases')
 log.info('Starting updating all notes...')
 
