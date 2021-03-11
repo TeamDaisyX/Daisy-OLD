@@ -8,8 +8,8 @@ TOKEN: "1686946474:AAGoqVT3RNem4A4IzQ1BAk8u3zLaL45cG08"
 APP_ID: 2250399
 APP_HASH: "92f3051096a1da6bae0ebf2f06b011c8"
 
-MONGODB_URI: "mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWrites=true&w=majority"
-MONGO_DB: 'DaisyX'
+MONGODB_URI': "mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWrites=true&w=majority"
+MONGO_DB': 'DaisyX'
 
 API_PORT': 8080
 
