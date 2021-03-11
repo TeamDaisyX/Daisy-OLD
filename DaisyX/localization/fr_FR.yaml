@@ -1,0 +1,667 @@
+---
+language_info:
+  flag: "🇫🇷"
+  code: fr
+STRINGS:
+  notes:
+    #/save
+    note_saved: "🗒 Note <code>{note_name}</code> enregistrée dans <b>{chat_title}</b>!"
+    note_updated: "🗒 Note <code>{note_name}</code> a été mise à jour dans <b>{chat_title}</b>!"
+    you_can_get_note: "\nVous pouvez retrouver cette note en utilisant <code>/get {note_name}</code>, ou <code>#{note_name}</code>"
+    #Translator note: please keep sure that you don't have space in the end of string
+    note_aliases: "\nAliases de note :"
+    blank_note: "Sauvegarder une note vide n'est pas autorisé !"
+    notename_cant_contain: "Le nom de la note ne peut pas contenir \"<code>{symbol}</code>\"!"
+    #/get
+    cant_find_note: Je ne peux pas trouver cette note dans <b>{chat_name}</b>!
+    no_note: "Impossible de trouver cette note."
+    no_notes_pattern: "Aucune note n'a été trouvée par le pattern <code>%s</code>"
+    u_mean: "\nVous vouliez dire <code>#{note_name}</code>?"
+    #/notes
+    notelist_no_notes: "Il n'y a aucune note dans <b>{chat_title}</b>!"
+    notelist_header: "<b>Notes dans {chat_name}</b>:"
+    notes_in_private: "Cliquez sur le bouton ci-dessous pour obtenir la liste des notes."
+    notelist_search: |
+      <b>Motif :</b> <code>{request}</code>
+      <b>Notes correspondantes :</b>
+    #/clear
+    note_removed: "Note <code>#{note_name}</code> a été supprimée dans <b>{chat_name}</b>!"
+    note_removed_multiple: |
+      Suppression multiple des notes dans <b>{chat_name}</b>
+      <b>Supprimé :</b><code>{removed}</code>
+    not_removed_multiple: "<b>Non supprimée :</b><code>{not_removed}</code>"
+    #/clearall
+    clear_all_text: "Ceci supprimera toutes les notes de {chat_name}. Êtes-vous sûr ?"
+    clearall_btn_yes: "Oui. Supprimer toutes mes notes !"
+    clearall_btn_no: "Non !"
+    clearall_done: "Toutes (<code>{num}</code>) notes de {chat_name} on été supprimées !"
+    #/search
+    search_header: |
+      <b>Recherche de requête dans {chat_name}</b>:
+      <b>Pattern :</b> <code>{request}</code>
+      <b>Notes correspondantes :</b>
+    #/noteinfo
+    note_info_title: "<b>Informations sur la note</b>\n"
+    note_info_note: "Noms des notes : %s\n"
+    note_info_content: "Contenu de la note : %s\n"
+    note_info_parsing: "Mode d'analyse : <code>%s</code>\n"
+    note_info_created: "A été créée dans: <code>{date}</code> par {user}\n"
+    note_info_updated: "Dernière mise à jour dans: <code>{date}</code> par {user}\n"
+    user_blocked: "Écrivez /start dans mon MP !"
+    #/privatenotes
+    private_notes_false_args: "Vous avez 2 options <code>Désactiver</code> et <code>Activer</code>!"
+    already_enabled: "Les notes privées sont déjà activées dans %s"
+    current_state_info: "La note privée est actuellement {state} dans {chat}! "
+    enabled_successfully: "Les notes privées sont <b>activées</b> dans %s avec succès !"
+    disabled_successfully: "Les notes privées sont <b>désactivées</b> dans %s avec succès !"
+    not_enabled: "Les notes privées ne sont pas activées pour les désactiver."
+    privatenotes_notif: "Vous avez été connecté avec succès à <b>{chat}</b> notes ! Pour se déconnecter, veuillez utiliser la commande <code>/disconnect</code>!"
+    enabled: 'Activé'
+    disabled: 'Désactivé'
+    #/cleannotes
+    clean_notes_enable: "Nettoyage des notes activé avec succès dans <b>{chat_name}</b>"
+    clean_notes_disable: "Nettoyage des notes désactivé avec succès dans <b>{chat_name}</b>"
+    clean_notes_enabled: "Le nettoyage des notes est actuellement <b>activé</b> dans <b>{chat_name}</b>"
+    clean_notes_disabled: "Le nettoyage des notes est actuellement <b>désactivé</b> dans <b>{chat_name}</b>"
+    #Filter
+    filters_title: 'Envoyer une note'
+    filters_setup_start: 'Veuillez envoyer un nom de note.'
+  #delmsg_no_arg: "deletemsg button can contain only 'admin' or 'user' argument!"
+  #bot_msg: "I'm sorry, I am not able to get this message, probably this a other bot's message, so I can't save it."
+  filters:
+    no_filters_found: "Aucun filtre n'a été trouvé dans <b>{chat_name}</b>!"
+    #/addfilter
+    anon_detected: En tant qu'administrateur anonyme, vous ne pouvez pas ajouter de nouveaux filtres, utilisez plutôt des connexions.
+    regex_too_slow: "Votre modèle regex correspond trop lentement (plus de la moitié de seconde), il ne peut pas être ajouté!"
+    cancel_btn: "🛑 Annuler"
+    adding_filter: |
+      Ajout du filtre <code>{handler}</code> dans <b>{chat_name}</b>
+      Sélectionnez l'action ci-dessous :
+    saved: "Le nouveau filtre a été enregistré avec succès!"
+    #/filters
+    list_filters: "Filtres dans <b>{chat_name}</b>:\n"
+    #/delfilter
+    no_such_filter: Je ne trouve pas ce filtre dans <b>{chat_name}</b>, vérifiez les filtres activés avec la commande <code>/filters</code>.
+    del_filter: "Filtre avec le gestionnaire '<code>{handler}</code>' a été supprimé avec succès !"
+    select_filter_to_remove: |
+      J'ai trouvé beaucoup de filtres avec le gestionnaire '<code>{handler}</code>'.
+      Veuillez en sélectionner un à supprimer :
+    #/delfilters or /delallfilters
+    not_chat_creator: Seuls les créateurs de chat peuvent utiliser cette commande!
+    delall_header: Cela supprimerait tous les filtres de ce chat. C'est irréversible.
+    confirm_yes: '⚠ Tout supprimer'
+    confirm_no: '❌ Annuler'
+    delall_success: Tous les filtres ({count}) de ce chat ont bien été supprimés!
+  warns:
+    #/warn
+    warn_sofi: "Haha aucun moyen d'avertir sois-même !"
+    warn_self: "Vous voulez vous avertir ? Quittez la discussion alors."
+    warn_admin: "Eh bien... vous avez tort. Vous ne pouvez pas avertir un administrateur."
+    warn: "{admin} a averti {user} dans <b>{chat_name}</b>\n"
+    warn_bun: "Les avertissements ont été dépassés! {user} a été banni !"
+    warn_num: "Avertissements : {curr_warns}/{max_warns}\n"
+    warn_rsn: "Raison : <code>{reason}</code>\n"
+    max_warn_exceeded: Les avertissements ont été dépassés ! %s a été %s!
+    "max_warn_exceeded:tmute": Les avertissements ont été dépassés! %s a été muté temporairement pour %s!
+    #warn rmv callback
+    warn_no_admin_alert: "⚠ Vous n'êtes PAS administrateur pour supprimer l'avertissement !"
+    warn_btn_rmvl_success: "✅ Avertissement retiré par {admin}!"
+    #/warns
+    warns_header: "Voici vos avertissements dans ce chat \n\n"
+    warns: "{count} : <code>{reason}</code> par {admin}\n"
+    no_warns: "Eh bien, {user} n'a aucun avertissement."
+    #/warnlimit
+    warn_limit: "La limite d'avertissement dans <b>{chat_name}</b> est de : <code>{num}</code>"
+    warnlimit_short: 'La limite des avertissements devrait être d''au moins 2 !'
+    warnlimit_long: 'La limite des avertissements doit être inférieure à 1 000 !'
+    warnlimit_updated: '✅ Warnlimit a été mis à jour avec succès vers {num}'
+    #/delwarns
+    purged_warns: "{admin} a réinitialiser <code>{num}</code> les avertissements de {user} dans <b>{chat_title}</b>!"
+    usr_no_wrn: "{user} n'a aucun avertissement à réinitialiser."
+    rst_wrn_sofi: 'Texas n''avait jamais d''avertissments a réinitialiser.'
+    not_digit: La limite des avertissements doit être des chiffres !
+    #/warnmode
+    same_mode: Ceci est le mode actuel ! Comment puis-je le changer ?
+    no_time: Pour sélectionner le mode 'tmute', vous devez mentionner le temps !
+    invalid_time: Temps invalide !
+    warnmode_success: Le mode d'avertissement de <b>%s</b> a été changé avec succès à <b>%s</b>!
+    wrng_args: |
+      Voici les options disponibles :
+      <code>%s</code>
+    mode_info: |
+      Le mode actuel dans ce chat est <b>%s</b>.
+    banned: banni
+    muted: en sourdine
+    filters_title: Avertir l'utilisateur
+    filter_handle_rsn: Action de filtre automatisé!
+  msg_deleting:
+    no_rights_purge: "Vous n'avez pas les droits suffisants pour supprimer dans ce groupe !"
+    reply_to_msg: "Répondre à un message pour supprimer!"
+    purge_error: "Je ne peux pas continuer de purger, principalement parce que vous avez commencé à purger un message qui a été envoyé depuis plus de 2 jours."
+    fast_purge_done: "<b>Purge rapide terminée !</b>\nCe message sera supprimé dans 5 secondes."
+    purge_user_done: "Tous les messages de {user} ont été supprimés avec succès !"
+  misc:
+    your_id: "Votre ID: <code>{id}</code>\n"
+    chat_id: "ID du groupe : <code>{id}</code>\n"
+    user_id: "ID de {user} : <code>{id}</code>\n"
+    conn_chat_id: "ID actuel du chat connecté : <code>{id}</code>"
+    help_btn: "Cliquez pour obtenir de l'aide !"
+    help_txt: "Cliquez sur le bouton ci-dessous pour obtenir de l'aide !"
+    delmsg_filter_title: 'Supprimer le message'
+    send_text: Veuillez envoyer le message de réponse !
+    replymsg_filter_title: 'Répondre au message'
+    send_customised_reason: Envoyez la <i>raison</i> que vous souhaitez inclure dans le message d'action. "<code>Aucun</code>" pour <i>aucune raison</i> à donner!
+    expected_text: Attendu un Sms!
+  promotes:
+    promote_success: "{user} a été promu avec succès dans {chat_name}!"
+    promote_title: "\nAvec un rôle personnalisé <code>{role}</code>!"
+    rank_to_loong: "Le texte du rôle personnalisé ne peut pas contenir plus de 16 symboles."
+    promote_failed: "La promotion a échoué! Vérifiez si j'en ai les droits."
+    demote_success: "{user} a été rétrogradé avec succès dans {chat_name}!"
+    demote_not_admin: "Cet utilisateur n'est pas administrateur."
+    demote_failed: "La rétrogradation a échoué. Peut-être que je ne peux pas rétrograder ou que la personne est promue par quelqu'un d'autre"
+    cant_get_user: "Je n'ai pas pu obtenir l'utilisateur! Si vous le souhaitez, veuillez répondre à son message et réessayez."
+    cant_promote_yourself: "Vous ne pouvez pas vous promouvoir vous-même."
+    emoji_not_allowed: "Je suis désolé, mais les rôles d'administration ne peuvent pas avoir d'émojis 😞"
+  pm_menu:
+    start_hi_group: 'Salut ! Je m''appelle TeamDaisyX's Daisy-X'
+    start_hi: "Bonjour! Je m'appelle Texas, je vous aide à gérer votre groupe de manière efficace !"
+    btn_source: "📦 Code source"
+    btn_help: "❔ Aide"
+    btn_lang: "🇷🇺 Langue"
+    btn_channel: "📬 TeamDaisyX's Daisy-X News"
+    btn_group_help: "Support Group"
+    btn_add: "Add me to your group"
+    back: Retour
+    #/help
+    help_header: "Hey! Je m'appelle <b>Texas</b>. Je suis un robot de gestion de groupe, là pour vous aider à vous déplacer et à garder l'ordre dans vos groupes!\nJ'ai beaucoup de fonctionnalités pratiques, telles que le contrôle des inondations, un système d'alerte, un système de conservation de notes et même des réponses prédéterminées sur certains mots clés."
+    click_btn: Cliquez ici
+  disable:
+    #/disableable
+    disablable: "<b>Commandes désactivables :</b>\n"
+    #/disabled
+    no_disabled_cmds: Aucune commande désactivée dans <b>{chat_name}</b>!
+    disabled_list: "<b>Commandes désactivées dans {chat_name}:</b>\n"
+    #/disable
+    wot_to_disable: "Que voulez-vous désactiver?"
+    already_disabled: "Cette commande est déjà désactivée !"
+    disabled: "La commande <code>{cmd}</code> a été désactivée dans <b>{chat_name}</b>!"
+    #/enable
+    wot_to_enable: "Que voulez-vous activer?"
+    already_enabled: "Cette commande n'est pas désactivée !"
+    enabled: "La commande <code>{cmd}</code> a été activée dans <b>{chat_name}</b>!"
+    #/enableall
+    not_disabled_anything: "Rien n'a été désactivé dans <b>{chat_title}</b>!"
+    enable_all_text: "Ceci activera toutes les commandes dans le <b>{chat_name}</b>. Êtes-vous sûr ?"
+    enable_all_btn_yes: "Oui. Activez toutes les commandes !"
+    enable_all_btn_no: "Non !"
+    enable_all_done: "Toutes les (<code>{num}</code>) commandes ont été activées <b>{chat_name}</b>!"
+  bot_rights:
+    change_info: "Je n'ai pas le droit de modifier les informations du groupe, veuillez me placer admin avec ce droit."
+    edit_messages: "Je n'ai pas le droit de modifier les messages !"
+    delete_messages: "Je n'ai pas le droit de supprimer les messages ici."
+    ban_user: "Je n'ai pas les droits pour bannir les utilisateurs, s'il vous plaît me placer admin avec ce droit."
+    pin_messages: "Je n'ai pas les droits d'épingler les messages, veuillez me placer admin avec ce droit."
+    add_admins: "Je n'ai pas les droits pour ajouter des administrateurs, s'il vous plaît placez moi admin avec ce droit."
+  feds:
+    #decorators
+    need_fed_admin: "Vous n'êtes pas un administrateur dans la Fédération <b>{name}</b>"
+    need_fed_owner: "Vous n'êtes pas propriétaire de la Fédération <b>{name}</b>"
+    cant_get_user: "Désolé, je ne peux pas obtenir cet utilisateur, essayez d'utiliser l'ID de l'utilisateur"
+    #/fnew
+    fed_name_long: "Le nom de la Fédération ne peut pas contenir plus de 60 symboles !"
+    can_only_1_fed: "1 utilisateur ne peut créer que 1 Fédération, veuillez en supprimer une."
+    name_not_avaible: "Fédération avec le nom <code>{name}</code> existe déjà ! Veuillez utiliser un autre nom."
+    created_fed: |
+      Félicitations, vous avez créé avec succès la Fédération.
+      <b>Nom :</b> {name}
+      <b>ID :</b> <code>{id}</code>
+      <b>Créateur :</b> {creator}
+      Utilisez <code>/fjoin {id}</code> pour connecter la fédération au chat
+    disallow_anon: Étant anonyme, vous ne pouvez pas créer de nouvelle fédération!
+    #/fjoin
+    only_creators: "Vous devriez être un créateur de chat pour pouvoir connecter le chat à la fédération."
+    fed_id_invalid: "L'ID de la Fédération est invalide ! Veuillez me donner un ID valide."
+    joined_fed_already: "Ce chat a déjà rejoint une fédération, veuillez utiliser /fleave pour quitter cette fédération"
+    join_fed_success: "Super ! le chat <b>{chat}</b> fait maintenant partie de la Fédération <b>{fed}</b> !"
+    join_chat_fed_log: |
+      <b>Chat a rejoint la Fédération</b> #ChatJoined
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Chat :</b> {chat_name} (<code>{chat_id}</code>)
+    #/leavefed
+    chat_not_in_fed: "Ce chat ne se trouve dans aucune fédération."
+    leave_fed_success: "Le chat <b>{chat}</b> a quitté la fédération <b>{fed}</b>."
+    leave_chat_fed_log: |
+      <b>Chat a quitté la Fédération</b> #ChatLeaved
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Chat :</b> {chat_name} (<code>{chat_id}</code>)
+    #/fsub
+    already_subsed: "La Fédération <b>{name}</b> s'est déjà abonner à <b>{name2}</b>"
+    subsed_success: "La Fédération <b>{name}</b> s'est abonnée à <b>{name2}</b>!"
+    #/funsub
+    not_subsed: "La Fédération <b>{name}</b> n'est pas abonnée à <b>{name2}</b> pour se désabonner"
+    unsubsed_success: "La Fédération <b>{name}</b> s'est désabonnée <b>{name2}</b>!"
+    #/fpromote
+    #admin_already_in_fed: "User {user} is already a fed admin in <b>{name}</b> Federation."
+    admin_added_to_fed: "Utilisateur {user} ajouté à <b>{name}</b> Administrateurs de la Fédération."
+    promote_user_fed_log: |
+      <b>Utilisateur promu dans les admins de Fédération </b> #UserPromoted
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Utilisateur :</b> {user} (<code>{user_id}</code>)
+    "restricted_user:promote": This user is restricted from being federation admin!
+    #/fdemote
+    #admin_not_in_fed: "User {user} is not <b>{name}</b> Federation admin."
+    admin_demoted_from_fed: "L'utilisateur {user} rétrogradé de <b>{name}</b> administrateurs de la Fédération."
+    demote_user_fed_log: |
+      <b>Utilisateur rétrogradé dans les admins de Fédération </b> #UserPromoted
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Utilisateur :</b> {user} (<code>{user_id}</code>)
+    #/fsetlog
+    already_have_chatlog: "<b>{name}</b> La Fédération a déjà activé la connexion dans un autre discussion/chaîne !"
+    set_chat_log: |
+      Ce chat enregistre désormais toutes les actions dans la Fédération <b>{name}</b>
+
+      Les logs de la Fédération ont pour but une évaluation interne ainsi que pour ses performances.
+      Il ne doit PAS être utilisé dans un usage public et doit au contraire respecter les données de l'utilisateur ainsi que nos directives de confidentialité.
+    set_log_fed_log: |
+      <b>Logs activé</b> #LoggingEnabled
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+    no_right_to_post: Je n'ai pas la permission d'envoyer des messages dans cette chaîne !
+    #/funsetlog
+    not_logging: "<b>{name}</b> La Fédération n'est connectée à aucun chat/canal !"
+    logging_removed: "Suppression des logs de la Fédération <b>{name}</b> ."
+    unset_log_fed_log: |
+      <b>Logs désactivé</b> #LoggingDisabled
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+    #/fchatlist
+    no_chats: "Il n'y a pas de chats qui ont rejoint cette Fédération <b>{name}</b>"
+    chats_in_fed: "<b>Chats connectés à la fédération {name} :</b>\n"
+    too_large: "Résultat trop grand, envoi en tant que fichier"
+    #/finfo
+    finfo_text: |
+      <b>info Fédération </b>
+      <b>Nom :</b> {name}
+      <b>ID:</b> <code>{fed_id}</code>
+      <b>Créateur :</b> {creator}
+      <b>Chats dans la fédération :</b> {chats}
+      <b>Utilisateurs bannis dans la fédération :</b> {fbanned}
+    finfo_subs_title: "<b>La Fédération est abonnée à ces Fédérations :</b>\n"
+    #/fadminlist
+    fadmins_header: "Admins dans La Fédération <b>{fed_name}</b> :\n"
+    #no_fbanned_in_fed: "There isn't any banned users in {fed_name} Federation!"
+    #/fban
+    user_wl: "Cet utilisateur est sur la liste blanche des personnes à bannir."
+    fban_self: "C'est un beau spectacle!"
+    fban_creator: "Comment puis-je bannir le créateur de la Fédération ? Je crois pas que ça sera amusant."
+    fban_fed_admin: "Je ne vais pas bannir un admin de fédération de leur propre fédération !"
+    update_fban: "Cet utilisateur a été banni plus tôt, donc je suis en train de mettre à jour la raison à <code>{reason}</code>"
+    already_fbanned: "{user} a déjà été banni dans cette fédération."
+    fbanned_header: "<b>Nouveau BanFédération</b>\n"
+    fban_info: |
+      <b>Fédération :</b> {fed}
+      <b>Admin de la Fed :</b> {fadmin}
+      <b>Utilisateur :</b> {user} (<code>{user_id}</code>)
+    fbanned_reason: "<b>Raison :</b> <code>{reason}</code>"
+    fbanned_process: "\n<b>État :</b> Bannissement dans <code>{num}</code> chats de fédération..."
+    fbanned_done: "\n<b>État :</b> Terminé ! banni dans <code>{num}</code> chats !"
+    fbanned_silence: "Ce message sera purgé dans 5 secondes"
+    fbanned_subs_process: "\n<b>État :</b> Bannissement dans <code>{feds}</code> abonnements de fédération..."
+    fbanned_subs_done: "\n<b>Statut :</b> Terminé ! banni dans <code>{chats}</code> chats de cette fédération et <code>{subs_chats}</code> chats de <code>{feds}</code> les fédérations souscrites"
+    fban_usr_rmvd: |
+      L'utilisateur {user} est banni dans la fédération actuelle <b>{fed}</b>. Donc a été supprimé !
+      Raison : <code>{rsn}</code>
+    fban_log_fed_log: |
+      <b>Bannir un utilisateur dans la Fédération</b> #FedBan
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Utilisateur :</b> {user} ({user_id})
+      <b>Par :</b> {by}
+      <b>Chats bannis:</b> utilisateur banni dans <code>{chat_count}</code>/<code>{all_chats}</code> chats
+    fban_reason_fed_log: "<b>Raison :</b> <code>{reason}</code>\n"
+    fban_subs_fed_log: "\n<b>les fédérations souscrites :</b> bannis dans <code>{subs_chats}</code> chats de <code>{feds}</code> fédérations"
+    #/unfban
+    unfban_self: "Pensez à autre chose pour vous amuser au lieu de cela."
+    user_not_fbanned: "{user} n'a pas été banni dans cette fédération."
+    un_fbanned_header: "<b>Nouveau Un-FedBan</b>\n"
+    un_fbanned_process: "\n<b>État :</b> Débannissement dans <code>{num}</code> chats..."
+    un_fbanned_done: "\n<b>État :</b> Terminé ! Débanni dans <code>{num}</code> conversations !"
+    un_fbanned_subs_process: "\n<b>État :</b> Débannissement dans <code>{feds}</code> fédérations souscrites..."
+    un_fbanned_subs_done: "\n<b>Statut :</b> Terminé ! Débanni dans <code>{chats}</code> chats de cette fédération et <code>{subs_chats}</code> chats de <code>{feds}</code> Fédérations souscrites"
+    un_fban_log_fed_log: |
+      <b>Unban un utilisateur dans la Fédération</b> #FedUnBan
+      <b>Fédération :</b> {fed_name} (<code>{fed_id}</code>)
+      <b>Utilisateur :</b> {user} ({user_id})
+      <b>Par :</b> {by}
+      <b>Chats bannis:</b> utilisateur banni dans <code>{chat_count}</code>/<code>{all_chats}</code> chats
+    un_fban_subs_fed_log: "\n<b>les fédérations souscrites :</b> unbannis dans <code>{subs_chats}</code> chats de <code>{feds}</code> fédérations"
+    #/delfed
+    delfed_btn_yes: Oui. Supprimer la fédération
+    delfed_btn_no: Non.
+    delfed: |
+      Êtes-vous sûr de vouloir supprimer cette fédération <b>%s</b>?
+
+      <i>Avertissement : La suppression de la fédération supprimera toutes les données qui lui sont associées de notre base de données !
+      Cette action est irréversible, soyez prudents !</i>
+    delfed_success: La fédération a été supprimée avec succès !
+    #/frename
+    frename_same_name: Veuillez entrer un nom différent de celui qui existe déjà !
+    frename_success: La Fédération <b>{old_name}</b> a été renommée en <b>{new_name}</b> avec succès !
+    #/fbanlist
+    fbanlist_locked: Veuillez patienter jusqu'à %s pour utiliser à nouveau fbanlist.
+    creating_fbanlist: Création de la liste fban ! Veuillez patienter..
+    fbanlist_done: Fban liste de la Fédération <b>%s</b>!
+    #/importfbans
+    send_import_file: |
+      Envoyer le fichier d'importation !
+
+      Pour annuler ce processus ; utilisez /cancel
+    rpl_to_file: Veuillez répondre avec un fichier !
+    importfbans_locked: L'importation de fbans est verrouillée pour %s dans cette fédération.
+    big_file_csv: Ne prend en charge que les fichiers csv importés moins de {num} mégaoctets!
+    big_file_json: |
+      Actuellement, les fichiers json sont limités à {num} mégaoctets!
+      Utilisez un format csv si vous voulez importer des fichiers plus grands.
+    invalid_file: "Ce fichier est invalide"
+    wrong_file_ext: "Format de fichier invalide ! Actuellement sont supportés : json, csv"
+    importing_process: <b>Importation des bans de fédération...</b>
+    import_done: Importation des bans de fédération terminée ! Les bans de {num} ont été importés.
+    #def
+    automatic_ban: L'utilisateur {user} est banni dans la fédération actuelle <b>{fed_name}</b>. L'utilisateur a donc été supprimé !
+    automatic_ban_sfed: L'utilisateur {user} est banni dans la sous-fédération <b>{fed_name}</b>. L'utilisateur a donc été supprimé !
+    automatic_ban_reason: "\nRaison : <code>{text}</code>"
+    #/fcheck
+    fcheck_header: "<b>Informations sur le ban de la Fédération :</b>\n"
+    fbanned_count_pm: "Vous êtes banni dans {count} fédération(s)!\n"
+    "fban_info:fcheck": "Vous avez été banni dans la fédération {fed} le {date}, aucune raison n'a été donnée!"
+    "fban_info:fcheck:reason": "Vous avez été banni dans la fédération {fed} le {date} pour raison -\n {reason}\n"
+    fbanned_data: "{user} a été banni dans {count} fédération(s)\n"
+    fbanned_nowhere: "{user} n'est banni nulle part !"
+    fbanned_in_fed: "Incluant cette fédération <b>{fed}</b> !\n"
+    "fbanned_in_fed:reason": "Incluant cette <b>{fed}</b> fédération pour raison de -\n <code>{reason}</code>"
+    contact_in_pm: "\n\nPour plus d'informations sur vos fbans, veuillez me contacter afin que votre vie privée soit sécurisée !"
+    too_long_fbaninfo: "« Eh bien! Votre fbaninfo a besoin d'un fichier»!"
+    didnt_fbanned: "Vous n'êtes pas fbanni dans cette fédération."
+    not_fbanned_in_fed: Anyway, they aren't fbanned in fed <b>{fed_name}</b>
+  reports:
+    user_user_admin: "Vous êtes un administrateur ici, pourquoi auriez-vous besoin de signaler quelqu'un ?.."
+    user_is_whitelisted: "Vous êtes un utilisateur sur liste blanche, pourquoi auriez-vous besoin de signaler quelqu'un ?.."
+    reports_disabled: "Les signalements sont actuellement <b>désactivés</b> dans ce groupe."
+    no_user_to_report: "Quel utilisateur souhaitez-vous signaler ?"
+    report_admin: "Vous <b>ne pouvez pas</b> signaler un administrateur."
+    report_whitedlisted: "Vous <b>ne pouvez pas</b> signaler un utilisateur sur liste blanche."
+    reported_user: "<b>Signalé</b> {user} aux administrateurs."
+    reported_reason: "\n<b>Raison :</b>\n<code>{reason}</code>"
+    reports_on: "Les signalements sont activés <b>sur</b> dans ce groupe."
+    reports_off: "Les signalements sont activés <b>sur</b> dans ce groupe."
+    reports_already_on: "<b>On a déjà activé les signalements.</b>"
+    reports_turned_on: "Les signalements sont activés <b></b>"
+    reports_already_off: "<b>Les signalements sont déjà désactivés.</b>"
+    wrong_argument: "<b> Argument erroné. </b>"
+  language:
+    your_lang: "Votre langue actuelle : <b>{lang}</b>"
+    chat_lang: "Langue actuelle du chat : <b>{lang}</b>"
+    select_pm_lang: "\n<b>Sélectionnez votre nouvelle langue :</b>"
+    select_chat_lang: "\n<b>Sélectionnez une nouvelle langue du chat :</b>"
+    not_supported_lang: Cette langue n'est pas prise en charge !
+    crowdin_btn: "🌎 Aidez-nous avec la traduction"
+    help_us_translate: "\n\n<a href=\"https://crowdin.com/project/DaisyX\">🌎 Aidez-nous à améliorer les langues</a>"
+    lang_changed: La langue a été changée en <b>{lang_name}</b>.
+    see_translators: '👥 Voir les traducteurs'
+    back: Retour
+  connections:
+    pm_connected: "Votre MP a été connecté avec succès à <b>{chat_name}</b>!"
+    connected_pm_to_me: "Votre MP a été connecté avec succès à <b>{chat_name}</b>! Veuillez me MP pour commencer à utiliser la connexion."
+    chat_connection_tlt: "<b>Connexion au chat</b>\n"
+    connected_chat: |
+      <b>Chat actuel connecté :</b>
+      {chat_name}
+      Écrire /disconect pour se déconnecter du chat
+    "connected_chat:cmds": |
+      <b>Current connected chat:</b>
+      {chat_name}, (bridged commands are {commands}),
+      ⚠ <i>You can only access bridged commands of the connected chat! all other commands would be treated as Local chat</i>
+      Write /disconnect to disconnect from chat.
+    u_wasnt_connected: "Vous n'étiez connecté à aucune conversation auparavant !"
+    select_chat_to_connect: "\n<b>Sélectionnez un chat à connecter:</b>"
+    disconnected: "Vous avez été déconnecté de <b>{chat_name}</b>."
+    cant_find_chat: "Je ne trouve pas ce chat."
+    cant_find_chat_use_id: "Je ne trouve pas ce chat. Utilisez l'ID du chat."
+    bad_arg_bool: "Choix incorrect : seulement acceptés <code>on</code>/<code>off</code> <code>enable</code>/<code>disable</code>"
+    enabled: activé
+    disabled: désactivé
+    chat_users_connections_info: "Les connexions pour les utilisateurs normaux sont actuellement <b>{status}</b> pour <b>{chat_name}</b>"
+    chat_users_connections_cng: "Les connexions pour les utilisateurs normaux ont changé à <b>{status}</b> pour <b>{chat_name}</b>"
+    not_in_group: "Vous n'êtes pas dans le groupe auquel vous essayez de vous connecter, rejoindre et d'envoyer un message."
+    history_empty: "Vous n'êtes connecté à aucun chat pour l'historique, connectez-vous via `/connect (Id de chat)`"
+    not_in_chat: "Vous n'êtes plus dans ce chat, je vais vous déconnecter."
+    u_should_be_admin: "Vous devriez être administrateur dans {} !"
+    usage_only_in_groups: "Utilisation limitée uniquement dans les groupes!"
+    anon_admin_conn: |
+      Please click below button to connect!
+    click_here: Click here!
+  global:
+    u_not_admin: Vous devriez être un administrateur pour faire ça !
+    #Rights
+    "bot_no_right:not_admin": Je ne suis pas un administrateur !
+    bot_no_right: "Je n'ai pas besoin de la permission de le faire ! \nPermission manquante : <b>%s</b>"
+    user_no_right: "Vous devriez avoir la permission de le faire ! \nPermission manquante : <b>%s</b>"
+    "user_no_right:not_admin": Vous devriez être administrateur pour le faire !
+    #is chat creator
+    unable_identify_creator: "Unable to identify anonymous chat creator, duplicate signature (titles) found!"
+  owner_stuff:
+    father: "\nIl est mon créateur."
+    sudo_crown: "\nHé ! Regardez, cet utilisateur a une couronne, laissez-moi la voir... Wow, il a une gravure - <b>'utilisateur sudo'</b>!"
+  stickers:
+    rpl_to_sticker: "Répondre à un autocollant!"
+    ur_sticker: |
+      <b>Emoji :</b> <code>{emoji}</code>
+      <b>Identifiant autocollant :</b> <code>{id}</code>
+  pins:
+    no_reply_msg: "Répondre à un message pour épingler !"
+    chat_not_modified_pin: "Ce message est déjà épinglé !"
+    chat_not_modified_unpin: "Il n'y a aucun message épinglé à annuler !"
+    pinned_success: "Épinglé avec succès!"
+    unpin_success: "Unpin avec succès!"
+  users:
+    user_info: "<b>Informations utilisateur :</b>\n"
+    info_id: "ID: <code>{id}</code>"
+    info_first: "\nPrénom : {first_name}"
+    info_last: "\nNom : {last_name}"
+    info_username: "\nNom d'utilisateur : {username}"
+    info_link: "\nLien utilisateur : {user_link}"
+    info_saw: "\nJe les ai vus dans <code>{num}</code> groupes"
+    info_fbanned: "\nBanni dans la Fédération actuelle : "
+    info_admeme: "\nL'utilisateur a des droits d'administration dans ce chat."
+    upd_cache: "Mise à jour du cache en cours..."
+    upd_cache_done: "Le cache des admins a été mis à jour."
+    admins: "<b>Admin dans ce groupe :</b>\n"
+  imports_exports:
+    #Exporting
+    started_exporting: L'exportation a démarré! Veuillez patienter...
+    export_done: Exportation de <b>{chat_name}</b> terminée !
+    exports_locked: Veuillez patienter %s jusqu'à ce que les exportations soient à nouveau utilisées!
+    #Importing
+    invalid_file: "Le fichier est invalide"
+    send_import_file: Veuillez envoyer un fichier d'importation !
+    rpl_to_file: Veuillez répondre avec un fichier !
+    big_file: Importation de fichiers supportée seulement moins de 50 Mo!
+    started_importing: L'importation a démarré! Veuillez patienter...
+    bad_file: Fichier incorrect ! La colonne <code>'general'</code> était attendue.
+    file_version_so_new: La version du fichier exporté est plus récente que ne le supporte actuellement Texas!
+    imports_locked: Veuillez attendre %s jusqu'à ce que les importations soient à nouveau utilisable!
+    import_done: Importation terminée !
+  restrictions:
+    user_not_in_chat: L'utilisateur n'est pas dans ce chat!
+    #Kicks
+    kick_DaisyX: Instead of trying kick me you could spend your time better. Thats just boring.
+    kick_admin: La meilleure idée n'est pas de kicker un administrateur.
+    kick_self: Si vous voulez vous auto kicker, quittez simplement ce chat, ça m'éviteras de regarder ces pitoyables tentatives d'auto-punition.
+    user_kicked: "{user} a été kické par {admin} dans {chat_name}."
+    #Mutes
+    mute_DaisyX: Actually, I'll be happy to shut up you instead.
+    mute_admin: Si vous pensez pouvoir faire taire l'administrateur, vous avez tort!
+    mute_self: Si vous voulez vous auto kicker, quittez simplement ce chat, ça m'éviteras de regarder ces pitoyables tentatives d'auto-punition.
+    user_muted: "{user} a été mis en sourdine par {admin} dans {chat_name}."
+    unmute_DaisyX: Actually, I'm not muted.
+    unmute_admin: Haha non, essayez de le mettre en sourdine pour commencer!
+    unmute_self: Devrais-je d'abord vous mettre en sourdine ?
+    user_unmuted: "{user} a été mis en sourdine par {admin} dans {chat_name}."
+    #Bans
+    ban_DaisyX: No, I won't do it! Ask chat creator to do it!
+    ban_admin: Haha, nous allons le <code>/demote</code> en premier.
+    ban_self: Pourquoi essayez-vous de vous bannir vous-même?
+    user_banned: "{user} a été banni par {admin} dans {chat_name}."
+    unban_DaisyX: Actually, I'm not banned.
+    unban_admin: Haha non, essayez de le bannir d'abord!
+    unban_self: Devrais-je vous bannir d'abord?
+    user_unband: "{user} a été débanni par {admin} dans {chat_name}."
+    invalid_time: Temps invalide !
+    enter_time: Veuillez ajouter le temps !
+    on_time: "\nPour <code>%s</code>"
+    reason: "\nRaison : <code>%s</code>"
+    purge: "\nDans 5 secondes, les messages seront purgés !"
+    filter_title_ban: Bannir l'utilisateur
+    filter_action_rsn: <code>Action de filtre automatisée !</code>
+    filtr_ban_success: '%s a banni %s pour %s'
+    filtr_mute_success: '%s mis en sourdine %s pour %s'
+    filtr_tmute_success: |
+      %s mis en sourdine %s pour %s
+      la raison est %s
+    time_setup_start: Veuillez envoyer le temps !
+    filtr_tban_success: |
+      %s a été banni %s pour %s
+      la raison est %s
+    filter_title_tmute: mettre l'utilisateur en sourdine temporairement
+    filter_title_mute: Mettre l'utilisateur en sourdine
+    filter_title_tban: ban l'utilisateur temporairement
+    filter_title_kick: Kicker l'utilisateur
+  rules:
+    #Set
+    saved: Les règles ont été enregistrées dans <b>%s</b>
+    updated: Les règles ont été mises à jour dans <b>%s</b>
+    #Reset
+    deleted: Les règles ont été supprimées!
+    not_found: Les règles n'ont pas été trouvées!
+    #Callback
+    user_blocked: "Écrivez /start dans mon MP !"
+    rules_was_pmed: Les règles ont été envoyées à votre PM!
+  #cannot_find_note: "I can't find the note <code>{}</code>"
+  #set_note: "Successfully set the rules note to <code>{}</code>"
+  #didnt_set_note: "This group doesn't have rules note set."
+  #cannot_find_set_note: "I can't find the rules note."
+  #havent_set_rules_note: "You haven't set the rules note yet."
+  #success_remove_rules_note: "Successfully removed rules note in <b>{}</b>."
+  greetings:
+    default_welcome: "Bienvenue {mention}! Comment ça va ?"
+    default_security_note: "Bienvenue {mention}! Veuillez appuyer sur le bouton ci-dessous pour vérifier que vous êtes humain !"
+    bool_invalid_arg: Argument invalide, attendu <code>sur</code>/<code>off</code>.
+    #/setwelcome
+    saved: Le message de bienvenue a été sauvegardé dans <b>%s</b>
+    updated: Le message de bienvenue a été mis à jour dans <b>%s</b>
+    #/turnwelcome
+    turnwelcome_status: Les bienvenues sont <code>{status}</code> à <b>{chat_name}</b>
+    turnwelcome_enabled: Bienvenue activée dans <b>%s</b>
+    turnwelcome_disabled: Bienvenue désactivée dans <b>%s</b>
+    #/welcome
+    enabled: activé
+    disabled: désactivé
+    wlcm_security_enabled: "activé, réglé sur {level}"
+    wlcm_mutes_enabled: "activé, réglé sur {time}"
+    welcome_info: |
+      <b>Paramètres de Bienvenue dans {chat_name}:</b>
+      Bienvenue est <code>{welcomes_status}</code>
+      La sécurité de Bienvenue est <code>{wlcm_security}</code>
+      Sourdine de Bienvenue est <code>{wlcm_mutes}</code>
+      La suppression des vieilles messages de bienvenue est <code>{clean_welcomes}</code>
+      La suppression des messages de service est <code>{clean_service}</code>
+    wlcm_note: "\n\nLa note de bienvenue est :"
+    raw_wlcm_note: "La note de bienvenue brute est :"
+    security_note: "Le texte de la sécurité d'accueil est :"
+    #/setsecuritynote
+    security_note_saved: "Le texte de sécurité personnalisé a été sauvegardé <b>%s</b>"
+    security_note_updated: "Le texte de sécurité personnalisé a été mis à jour <b>%s</b>"
+    #/delsecuritynote
+    security_note_not_found: Le texte de sécurité dans <b>%s</b> n'a pas été installé avant
+    del_security_note_ok: Le texte de sécurité a été réinitialisé par défaut dans <b>%s</b>
+    #/cleanwelcome
+    cleanwelcome_enabled: Nettoyage des bienvenue activé dans <b>%s</b>
+    cleanwelcome_disabled: Nettoyage de bienvenue désactivé dans <b>%s</b>
+    cleanwelcome_status: Le nettoyage des bienvenue est <code>{status}</code> dans <b>{chat_name}</b>
+    #/cleanservice
+    cleanservice_enabled: Nettoyage des messages du service activé dans <b>%s</b>
+    cleanservice_disabled: Nettoyage des messages du service désactivé dans <b>%s</b>
+    cleanservice_status: Le nettoyage des messages du service est <code>{status}</code> dans <b>{chat_name}</b>
+    #/welcomemute
+    welcomemute_invalid_arg: Argument non valide, heure attendue.
+    welcomemute_enabled: Bienvenue avec sourdine activé dans <b>%s</b>
+    welcomemute_disabled: Bienvenue avec sourdine est désactivé dans <b>%s</b>
+    welcomemute_status: Bienvenue avec sourdine est <code>{status}</code> dans <b>{chat_name}</b>
+    #/welcomesecurity
+    welcomesecurity_enabled: La sécurité de bienvenue est activée dans <b>{chat_name}</b> au niveau <code>{level}</code>.
+    "welcomesecurity_enabled:customized_time": |
+      Welcome security enabled in <b>{chat_name}</b> to <code>{level}</code>, and kick users which aren't verified within {time}.
+    ask_for_time_customization: |
+      Do you want to customize the time period to kick unverified user? (by default it's {time})
+    send_time: Please send time.
+    invalid_time: "Invalid time!"
+    welcomesecurity_enabled_word: activé, défini au niveau {level}
+    welcomesecurity_disabled: La sécurité de bienvenue est désactivée dans <b>%s</b>.
+    welcomesecurity_invalid_arg: Argument invalide, bouton <code>attendu</code>/<code>captcha</code>.
+    welcomesecurity_status: La sécurité de bienvenue est <code>{status}</code> dans <b>{chat_name}</b>
+    yes_btn: "Yes"
+    no_btn: "No"
+    #Welcomesecurity handler
+    click_here: Cliquez ici !
+    not_allowed: Vous n'êtes pas autorisé à utiliser ceci !
+    ws_captcha_text: Bonjour {user}, veuillez entrer le numéro du captcha pour enlever la sourdine dans le chat.
+    regen_captcha_btn: '🔄 Changer le captcha'
+    num_is_not_digit: Veuillez entrer uniquement des chiffres !
+    bad_num: Numéro incorrecte ! Veuillez réessayer.
+    passed: Vérification réussie, vous pouvez parler dans <b>%s</b>!
+    passed_no_frm: Vérification réussie, vous êtes plus mis en sourdine dans %s!
+    last_chance: Vous avez une dernière chance d'entrer dans le captcha !
+    btn_button_text: "Veuillez cliquer sur le bouton ci-dessous pour prouver que vous êtes humain."
+    btn_wc_text: |
+      Veuillez appuyer sur le bouton correcte correspondant à cette expression :
+      %s
+    math_wc_rtr_text: "C'est votre dernière chance ! Faites attention.\n"
+    math_wc_wrong: Faux, veuillez essayer à nouveau !
+    math_wc_sry: Désolé, vous avez utilisé votre dernière tentative. Demandez aux administrateurs de chat.
+    not_admin_wm: Je ne peux pas restreindre les gens ici, donc je n'utiliserai pas la sourdine de bienvenu !
+    not_admin_ws: Je ne peux pas restreindre les gens ici, donc je n'utiliserai pas la sécurité bienvenue !
+    not_admin_wsr: Je ne peux pas supprimer les messages ici, donc je ne supprime pas les messages du service !
+    #/resetwelcome
+    deleted: Les salutations ont été réinitialisées avec succès dans <b>{chat}</b>!
+    not_found: Il n'y a rien à réinitialiser!
+    #...
+    verification_done: Verification is done! You have been unmuted.
+  locks:
+    locks_header: "Voici les paramètres de verrouillage actuels dans {chat_title} \n\n"
+    no_lock_args: Donnez-moi quelques arguments à verrouiller !
+    already_locked: Ceci est déjà verrouillé poto
+    no_such_lock: Voir /locks pour savoir ce qui peut être verrouillé et déverrouillé !
+    locked_successfully: '{lock} verrouillé avec succès dans {chat}!'
+    no_unlock_args: Donnez-moi quelques arguments à débloquer!
+    not_locked: Poto, il n'est pas verrouillé pour déverrouiller.
+    unlocked_successfully: '{lock} a été déverrouillé avec succès dans {chat}!'
+  antiflood:
+    #enforcer
+    flood_exceeded: "{action} {user} for flooding!"
+    #/setflood
+    "invalid_args:setflood": "Expected an integer!"
+    overflowed_count: Maximum count should be less than 200!
+    config_proc_1: Please send expiration time, '0' (zero) for not being expired.
+    cancel: '❌ Cancel'
+    setup_success: Successfully configured antiflood, now enforces against those who sends {count} messages within {time}!
+    "setup_success:no_exp": Successfully configured antiflood, allows {count} messages consecutively!
+    invalid_time: Invalid time!
+    #/antiflood | /flood
+    not_configured: Antiflood isn't configured in this chat yet!
+    turned_off: Disabled antiflood in <b>{chat_title}</b>!
+    "configuration_info:with_time": Antiflood is configured in this chat, those who sents {count} message within {time} would be {action}!
+    configuration_info: Antiflood is configured in this chat, those who sents {count} consecutively would be {action}!
+    ban: banned
+    mute: muted
+    kick: kicked
+    #/setfloodaction
+    invalid_args: "Unsupported action, expected {supported_actions}!"
+    setfloodaction_success: "Successfully updated flood action to <b>{action}</b>!"

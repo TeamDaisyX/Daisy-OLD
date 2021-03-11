@@ -1,0 +1,667 @@
+---
+language_info:
+  flag: "🇮🇶"
+  code: ar
+STRINGS:
+  notes:
+    #/save
+    note_saved: "🗒 تم حفظ الملاحظة <code>{note_name}</code> في <b>{chat_title}</b>!"
+    note_updated: "🗒 تم تحديث الملاحظة <code>{note_name}</code> في<b>{chat_title}</b>!"
+    you_can_get_note: "\nيمكنك عرض الملاحظة باستخدام <code>/get {note_name}</code> أو <code>#{note_name}</code>"
+    #Translator note: please keep sure that you don't have space in the end of string
+    note_aliases: "\nبدائل طلب الملاحظة:"
+    blank_note: "لا يمكنك حفظ ملاحظة فارغة!"
+    notename_cant_contain: "الملاحظة لا يجب أن تحتوي على \"<code>{symbol}</code>\"!"
+    #/get
+    cant_find_note: لا يمكنني إيجاد الملاحظة هذه في <b>{chat_name}</b>!
+    no_note: "لم استطع إيجاد الملاحظة."
+    no_notes_pattern: "لم يتم العثور على ملاحظات من النمط <code>%s</code>"
+    u_mean: "\nهل تقصد <code>#{note_name}</code>؟"
+    #/notes
+    notelist_no_notes: "لا توجد أية ملاحظات في <b>{chat_title}</b>!"
+    notelist_header: "<b>الملاحظات في {chat_name}</b>:"
+    notes_in_private: " انقر فوق الزر أدناه للحصول على قائمة الملاحظات."
+    notelist_search: |
+      <b>Pattern:</b> <code>{request}</code>
+      <b>Matched notes:</b>
+    #/clear
+    note_removed: "الملاحظة <code>#{note_name}</code> حذفت من <b>{chat_name}</b>!"
+    note_removed_multiple: |
+      تم حذف جميع الملاحظات في <b>{chat_name}</b>
+      <b>أزيلت:</b><code>{removed}</code>
+    not_removed_multiple: "<b>لم تتم الإزالة:</b><code>{not_removed}</code>"
+    #/clearall
+    clear_all_text: "سيؤدي هذا إلى إزالة كافة الملاحظات من {chat_name}. هل أنت متأكد من فعل هذا؟"
+    clearall_btn_yes: "!نعم. إزالة جميع الملاحظات"
+    clearall_btn_no: "لا!"
+    clearall_done: "جميع (<code>{num}</code>) الملاحظات في {chat_name} أزيلت!"
+    #/search
+    search_header: |
+      <b>طلب بحث في‌‌ {chat_name}</b>:
+      <b>النمط:</b> <code>{request}</code>
+      <b>الملاحظات المتطابقة:</b>
+    #/noteinfo
+    note_info_title: "<b>معلومات الملاحظة</b>\n"
+    note_info_note: "أسماء الملاحظات: %s\n"
+    note_info_content: "محتوي الملاحظة: %s\n"
+    note_info_parsing: "وضع التحليل‌‌: <code>%s</code>\n"
+    note_info_created: "تمَّ إنشاءها في: <code>{date}</code> by {user}\n"
+    note_info_updated: "آخِر تحديثٍ في‌‌: <code>{date}</code> by {user}\n"
+    user_blocked: "أرسل /start في محادثة خاصة معي!"
+    #/privatenotes
+    private_notes_false_args: "لديك خياران <code>Disable</code> و <code>Enable</code> !"
+    already_enabled: "الملاحظة خاصة حاليا ممكّنة في %s"
+    current_state_info: "الملاحظة خاصة حاليا ممكّنة في {state} in {chat} ! "
+    enabled_successfully: "تم تفعيل الملاحظات الخاصة في <b>Enabled</b> في %s بنجاح"
+    disabled_successfully: "تم تعطيل الملاحظات الخاصة في <b>Disabled</b> في %s بنجاح"
+    not_enabled: "لم يتم تمكين الملاحظات الخاصة حتى يتم تعطيلها.‌‌"
+    privatenotes_notif: "تم الإتصال بنجاح ب <b>{chat}</b> ملاحظة! لإلغاء اتصالك مع المجموعة إستخدم الأمر <code>/disconnect</code> !"
+    enabled: 'Enabled'
+    disabled: 'Disabled'
+    #/cleannotes
+    clean_notes_enable: "تمّ تفعيل مسح الرسائل بنجاح في <b>{chat_name}</b>"
+    clean_notes_disable: "تمّ تعطيل مسح الرسائل بنجاح في <b>{chat_name}</b>"
+    clean_notes_enabled: "وضع مسح الرسائل حاليا هو <b>enabled</b> in <b>{chat_name}</b>"
+    clean_notes_disabled: "وضع مسح الرسائل حاليا هو <b>disabled</b> in <b>{chat_name}</b>"
+    #Filter
+    filters_title: 'أرسل ملاحظة'
+    filters_setup_start: 'الرجاء إرسال إسم الملاحظة'
+  #delmsg_no_arg: "deletemsg button can contain only 'admin' or 'user' argument!"
+  #bot_msg: "I'm sorry, I am not able to get this message, probably this a other bot's message, so I can't save it."
+  filters:
+    no_filters_found: "لم يتم العثور على فلاتر في <b>{chat_name}</b>!"
+    #/addfilter
+    anon_detected: Being anonymous admin, you cannot add new filters, use connections instead.
+    regex_too_slow: "Your regex pattern is matching too slow (more than the half of second), it can't be added!"
+    cancel_btn: "🛑 Cancel"
+    adding_filter: |
+      إضافة فلتر <code>{handler}</code> في <b>{chat_name}</b>
+      حدد الإجراء أدناه‌‌:
+    saved: "New filter was successfully saved!"
+    #/filters
+    list_filters: "قائمة الفلاتر في <b>{chat_name}</b>:\n"
+    #/delfilter
+    no_such_filter: لا يمكنني العثور على هذا الفلتر‌‌ في <b>{chat_name}</b>, تحقق من الفلاتر الممكّنة بواسطة‌‌ <code>/filters</code> أمر
+    del_filter: "الفلتر بإسم '<code>{handler}</code>' تمت إزالته بنجاح‌‌!"
+    select_filter_to_remove: |
+      لقد وجدت العديد من المرشحات مع إسم '<code>{handler}</code>'.
+      يرجى تحديد واحد لإزالته:
+    #/delfilters or /delallfilters
+    not_chat_creator: Only chat creators can use this command!
+    delall_header: This would delete all filters in this chat. This IS irreversible.
+    confirm_yes: '⚠ Delete all'
+    confirm_no: '❌ Cancel'
+    delall_success: Successfully deleted all ({count}) filters in this chat!
+  warns:
+    #/warn
+    warn_sofi: "أنا لن أحذِّر المشرف!"
+    warn_self: ".هل تريد أن تحذر نفسك؟ فقط اترك الدردشة"
+    warn_admin: "حسنا.. أنت مخطئ لا يمكنك تحذير مشرف :("
+    warn: "{admin} حذّر/حذّرت {user} في <b>{chat_name}</b>\n"
+    warn_bun: "تم تجاوز التحذيرات! {user} تم حظره!"
+    warn_num: "التحذيرات: {curr_warns}/{max_warns}\n"
+    warn_rsn: "السّبَب: <code>{reason}</code>\n"
+    max_warn_exceeded: تم تجاوز عدد التحذيرات! %s تم حظرة %s!
+    "max_warn_exceeded:tmute": تم تجاوز عدد التحذيرات! %s تم كتم صوته مؤقتاً حتى %s!
+    #warn rmv callback
+    warn_no_admin_alert: "⚠ أنت لست مسؤولا لايمكنك ازالة التحذير"
+    warn_btn_rmvl_success: "✅  تم إزالة التحذير بواسطة {admin} !"
+    #/warns
+    warns_header: "هنا عدد تحذيراتك في هذه الدردشة‌‌ \n\n"
+    warns: "{count} : <code>{reason}</code> بواسطة {admin}\n"
+    no_warns: "حسنًا ، ليس لدى {user} أي تحذيرات.‌‌"
+    #/warnlimit
+    warn_limit: "حد التحذيرات في <b>{chat_name}</b>  حاليًا هو: <code>{num}</code>"
+    warnlimit_short: 'يجب أن يكون حد التحذيرات 2 على الأقل!.'
+    warnlimit_long: 'عدد التحذيرات يجبُ أن يكون أقلّ من 1000'
+    warnlimit_updated: '✅  تم تحديث عدد التحذيرات بنجاح إلى {num}'
+    #/delwarns
+    purged_warns: "{admin}  تمّ حذف جميع التّحذيرات السّابقة <code>{num}</code> للمستخدم {user} في <b>{chat_title}</b>!"
+    usr_no_wrn: "{user} ليس لديها/لديهِ أي تحذيرات لإعادة تعيينها.‌‌ اي ليس لديه أي تحذيرات، لتُحذَف!"
+    rst_wrn_sofi: 'لم أَقُم بِتحذيرِ أَي أحدٍ لإعادة تعيينة'
+    not_digit: يَجبُ أن تَكونَ التحذيرات أَرقام!‌‌
+    #/warnmode
+    same_mode: هذا هو الوضع الحالي! كيف يمكنني تغيير ذلك؟
+    no_time: لاختيار الوضع "tmute" عليك أن تذكر الوقت!
+    invalid_time: وقت غير صالح!
+    warnmode_success: تم تغيير وضع التحذير <b>%s</b> إلى <b>%s</b> بنجاح!
+    wrng_args: |
+      هذه هي إجراءات المتاحة:
+      <code>%s</code>
+    mode_info: |
+      الوضع الحالي في هذه المحادثة هي <b>%s</b>.
+    banned: تم حظره
+    muted: تم كتمه
+    filters_title: تحذير المستخدم
+    filter_handle_rsn: إجراء التصفية التلقائي!
+  msg_deleting:
+    no_rights_purge: "لا تملك حقوق كافية لتنظيف رسائل هذه المجموعة!"
+    reply_to_msg: "قم بالرد على رسالة للحذف!"
+    purge_error: "لا أستطيع متابعة التنظيف، محتمل لأنك بدأت في التطهير من رسالة أرسلت قبل أكثر من يومين."
+    fast_purge_done: "<b>اكتمل التنظيف السريع!</b>\nسيتم إزالة هذه الرسالة في 5 ثوان."
+    purge_user_done: "تم حذف جميع الرسائل من {user} بنجاح!"
+  misc:
+    your_id: "معرفك: <code>{id}</code>\n"
+    chat_id: "معرف المجموعة: <code>{id}</code>\n"
+    user_id: "معرف {user}: <code>{id}</code>\n"
+    conn_chat_id: "معرف الدردشة المتصلة: <code>{id}</code>"
+    help_btn: "اضغط للمساعدة!"
+    help_txt: "اضغط الزر أدناه للمساعدة!"
+    delmsg_filter_title: 'حذف الرسالة'
+    send_text: الرجاء إرسال رسالة الرد!
+    replymsg_filter_title: 'الرد على الرسالة'
+    send_customised_reason: Send the <i>reason</i> you want to include in action message. "<code>None</code>" for <i>no reason</i> to be given!
+    expected_text: Expected a text message!
+  promotes:
+    promote_success: "تم ترقية {user} بنجاح في {chat_name}!"
+    promote_title: "\nمع اسم مستعار <code>{role}</code>!"
+    rank_to_loong: "لا يمكن أن يكون الاسم المستعار أطول من 16 حرف."
+    promote_failed: "فشلت الترقية! تحقق مما إذا كان لدي اذونات."
+    demote_success: "تم تخفيض {user} بنجاح في {chat_name}!"
+    demote_not_admin: "هذا المستخدم ليس مشرفا."
+    demote_failed: "فشل التخفيض. ربما لا أستطيع أن أخفضه أو أنه مرقى من قبل شخص آخر"
+    cant_get_user: "لم أستطع ايجاد المستخدم! إذا لم تمانع، يرجى الرد على رسالة منه والمحاولة مرة أخرى."
+    cant_promote_yourself: "لا يمكنك ترقية نفسك."
+    emoji_not_allowed: "أنا آسف، لكن الاسماء المستعارة لا يمكن أن تحتوي على إيموجي 😞"
+  pm_menu:
+    start_hi_group: 'مرحبًا هناك! إسمي صوفي'
+    start_hi: "مرحبًا هناك! اسمي صوفي، سوف أساعدك في إدارة مجموعتك بطريقة فعالة!"
+    btn_source: "📦 Source code"
+    btn_help: "مساعدة ❔"
+    btn_lang: "اللغة 🇷🇺"
+    btn_channel: "News Channel"
+    btn_group_help: "Support Group"
+    btn_add: "Add me to your group"
+    back: الرجوع
+    #/help
+    help_header: "مرحباً! تفقد الويكي الخاص بنا للحصول على المساعدة"
+    click_btn: اضغط هنا
+  disable:
+    #/disableable
+    disablable: "<b>الأوامر القابلة للتعطيل:</b>\n"
+    #/disabled
+    no_disabled_cmds: لا توجد أوامر معطلة في <b>{chat_name}</b>!
+    disabled_list: "<b>الأوامر المعطلة في {chat_name}:</b>\n"
+    #/disable
+    wot_to_disable: "ما الذي تريد تعطيله؟"
+    already_disabled: "هذا الأمر معطل بالفعل!"
+    disabled: "الأمر <code>{cmd}</code> تم تعطيله في <b>{chat_name}</b>!"
+    #/enable
+    wot_to_enable: "ما الذي تريد تفعيله؟"
+    already_enabled: "هذا الأمر غير معطل!"
+    enabled: "تم تمكين الأمر <code>{cmd}</code> في <b>{chat_name}</b>!"
+    #/enableall
+    not_disabled_anything: "لم يتم تعطيل أي شيء في <b>{chat_title}</b>!"
+    enable_all_text: "سيؤدي هذا إلى تمكين جميع الأوامر في <b>{chat_name}</b>. هل أنت متأكد؟"
+    enable_all_btn_yes: "نعم. تمكين جميع الأوامر!"
+    enable_all_btn_no: "لا!"
+    enable_all_done: "تم تمكين جميع الأوامر (<code>{num}</code>) في <b>{chat_name}</b>!"
+  bot_rights:
+    change_info: "ليس لدي حقوق في تغيير معلومات المجموعة، من فضلك أجعلني مشرفا بهذا الاذن."
+    edit_messages: "ليس لدي الاذن في تحرير الرسائل!"
+    delete_messages: "ليس لدي الاذن في حذف الرسائل هنا."
+    ban_user: "ليس لدي حقوق في حظر المستخدمين، من فضلك أجعلني مشرفا بهذا الاذن."
+    pin_messages: "ليس لدي الحق في تثبيت الرسائل، من فضلك أجعلني مشرفا بهذا الاذن."
+    add_admins: "ليس لدي حقوق في إضافة المشرفين ، من فضلك أجعلني مشرفا بهذا الاذن."
+  feds:
+    #decorators
+    need_fed_admin: "أنت لست مشرف في اتحاد <b>{name}</b>"
+    need_fed_owner: "أنت لست مالك اتحاد <b>{name}</b>"
+    cant_get_user: "عذراً، لا أستطيع ايجاد هذا المستخدم، حاول استخدام معرفه الرقمي"
+    #/fnew
+    fed_name_long: "اسم الاتحاد لا يمكن أن يكون أطول من 60 حرفا!"
+    can_only_1_fed: "يمكن لمستخدم واحد إنشاء اتحاد واحد فقط، يرجى إزالة اتحاد واحد."
+    name_not_avaible: "الاتحاد الذي يحمل الاسم <code>{name}</code> موجود مسبقاً! الرجاء استخدام اسم آخر."
+    created_fed: |
+      تهانينا، لقد قمت بإنشاء الاتحاد بنجاح.
+      <b>الاسم:</b> {name}
+      <b>المعرف:</b> <code>{id}</code>
+      <b>المنشئ:</b> {creator}
+      استخدم <code>/fjoin {id}</code> لربط الاتحاد بالدردشة
+    disallow_anon: Being anonymous, you cannot create new federation!
+    #/fjoin
+    only_creators: "يجب أن تكون منشئ الدردشة لتتمكن من ربط الدردشة بالاتحاد."
+    fed_id_invalid: "معرف الاتحاد المعين غير صالح! يرجى إعطائي معرف صالح."
+    joined_fed_already: "هذه الدردشة قد انضمت بالفعل إلى الاتحاد! الرجاء استخدام /fleave لمغادرة ذلك الاتحاد"
+    join_fed_success: "جميل! دردشة <b>{chat}</b> هي الآن جزء من اتحاد <b>{fed}</b>!"
+    join_chat_fed_log: |
+      <b>الدردشة انضمت إلى الاتحاد</b> #ChatJoined
+      <b>اتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>الدردشة:</b> {chat_name} (<code>{chat_id}</code>)
+    #/leavefed
+    chat_not_in_fed: "هذه الدردشة ليست في أي اتحاد حتى الآن."
+    leave_fed_success: "دردشة <b>{chat}</b> غادرت اتحاد <b>{fed}</b>."
+    leave_chat_fed_log: |
+      <b>الدردشة غادرت الاتحاد </b> #ChatLeaved
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>الدردشة:</b> {chat_name} (<code>{chat_id}</code>)
+    #/fsub
+    already_subsed: "الاتحاد <b>{name}</b> مشترك بالفعل في <b>{name2}</b>"
+    subsed_success: "اتحاد <b>{name}</b> اشترك في <b>{name2}</b>!"
+    #/funsub
+    not_subsed: "اتحاد <b>{name}</b> ملغى الاشتراك في <b>{name2}</b> أصلا"
+    unsubsed_success: "اتحاد <b>{name}</b> غير مشترك <b>{name2}</b>!"
+    #/fpromote
+    #admin_already_in_fed: "User {user} is already a fed admin in <b>{name}</b> Federation."
+    admin_added_to_fed: "أضاف المستخدم {user} إلى <b>{name}</b> مشرفين اتحاديين."
+    promote_user_fed_log: |
+      <b>المستخدم ترقى لمشرف</b> #UserPromoted
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>المستخدم:</b> {user} (<code>{user_id}</code>)
+    "restricted_user:promote": This user is restricted from being federation admin!
+    #/fdemote
+    #admin_not_in_fed: "User {user} is not <b>{name}</b> Federation admin."
+    admin_demoted_from_fed: "تم تخفيض المستخدم {user} من <b>{name}</b> كمشرفين اتحادي."
+    demote_user_fed_log: |
+      <b>المستخدم انخفض كمشرف اتحادي </b> #UserDemoted
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>المستخدم:</b> {user} (<code>{user_id}</code>)
+    #/fsetlog
+    already_have_chatlog: "الاتحاد <b>{name}</b> قام بالفعل بتفعيل تسجيل الدخول في دردشة / قناة أخرى!"
+    set_chat_log: |
+      هذه المحادثة تقوم الآن بتسجيل جميع الإجراءات في <b>{name}</b> اتحاد
+
+      يتم استخدام تسجيل الاتحاد للتقييم الداخلي للاتحاد وأدائه.
+      ينبغي ألا يستخدم كجدار عرض للجمهور وبالتالي احترام بيانات المستخدم ومبادئ الخصوصية الخاصة بنا.
+    set_log_fed_log: |
+      <b>تمكين تسجيل</b> #LoggingEnable
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+    no_right_to_post: ليس لدي حقوق في ارسال الرسائل في تلك القناة!
+    #/funsetlog
+    not_logging: "الاتحاد <b>{name}</b> لا يقوم بتسجيل أية محادثة/قناة!"
+    logging_removed: "تمت إزالة تسجيل الدخول بنجاح من اتحاد <b>{name}</b>."
+    unset_log_fed_log: |
+      <b>تعطيل تسجيل</b> #LoggingDisable
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+    #/fchatlist
+    no_chats: "لا توجد دردشة انضمت إلى هذا الاتحاد <b>{name}</b>"
+    chats_in_fed: "<b>دردشة متصلة بـاتحاد:{name} </b>\n"
+    too_large: "المخرج كبير جداً، سيرسل كملف"
+    #/finfo
+    finfo_text: |
+      <b>معلومات الاتحاد</b>
+      <b>الاسم:</b> {name}
+      <b>المعرف:</b> <code>{fed_id}</code>
+      <b>المنشئ:</b> {creator}
+      <b>الدردشات في الاتحاد:</b> {chats}
+      <b>المستخدمين المحظورين في الاتحاد:</b> {fbanned}
+    finfo_subs_title: "<b>الاتحاد مشترك في هذه الاتحادات:</b>\n"
+    #/fadminlist
+    fadmins_header: "المشرفين في <b>{fed_name}</b> Fed:\n"
+    #no_fbanned_in_fed: "There isn't any banned users in {fed_name} Federation!"
+    #/fban
+    user_wl: "هذا المستخدم في القائمة البيضاء من حظر."
+    fban_self: "انها عرض جميل!"
+    fban_creator: "كيف يمكنني حظر منشئ الاتحاد؟! لا أعتقد أن ذلك سيكون نكتة مضحكة."
+    fban_fed_admin: "لن أقوم بحظر مشرف اتحاد من اتحاده!"
+    update_fban: "تم حظر هذا المستخدم اتحاديا في وقت سابق لذلك أنا أقوم بتحديث السبب إلى <code>{reason}</code>"
+    already_fbanned: "{user} محظور بالفعل في هذا الاتحاد."
+    fbanned_header: "<b>حظر اتحادي جديد</b>\n"
+    fban_info: |
+      <b>الاتحاد:</b> {fed}
+      <b>مشرف الاتحاد:</b> {fadmin}
+      <b>المستخدم:</b> {user} (<code>{user_id}</code>)
+    fbanned_reason: "<b>السبب:</b> <code>{reason}</code>"
+    fbanned_process: "\n<b>الحالة:</b> حظر في <code>{num}</code> محادثات..."
+    fbanned_done: "\n<b>الحالة:</b> تم! تم حظره من<code>{num}</code> محادثة!"
+    fbanned_silence: "سيتم تنظيف هذه الرسالة في 5 ثوان"
+    fbanned_subs_process: "\n<b>الحالة:</b> حظر في <code>{feds}</code> مشترك فيها..."
+    fbanned_subs_done: "\n<b>الحالة:</b> تم! تم حظره في <code>{chats}</code> هذا الاتحاد و دردشات <code>{subs_chats}</code> من الاتحادات المشتركة <code>{feds}</code>"
+    fban_usr_rmvd: |
+      المستخدم {user} محظور في الاتحاد الحالي <b>{fed}</b>.لذا تم إزالته!
+      السبب: <code>{rsn}</code>
+    fban_log_fed_log: |
+      <b>المستخدم المحظور في الاتحاد</b> #Fedban
+      <b>الاتحاد:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>المستخدم:</b> {user} ({user_id})
+      <b>بواسطة:</b> {by}
+      <b>دردشة محظورة:</b> مستخدم محظور في <code>{chat_count}</code>/<code>{all_chats}</code> دردشة
+    fban_reason_fed_log: "<b>السبب:</b> <code>{reason}</code>\n"
+    fban_subs_fed_log: "\n<b>الاتحادات المشتركة:</b> محظور في <code>{subs_chats}</code> دردشة من اتحادات <code>{feds}</code>"
+    #/unfban
+    unfban_self: "فكر في شيء آخر لتستمتع بدلا من هذا."
+    user_not_fbanned: "لم يكن {user} محظورا في هذا الاتحاد."
+    un_fbanned_header: "<b>الغاء--حظر جديد</b>\n"
+    un_fbanned_process: "\n<b>الحالة:</b> فك الحظر من <code>{num}</code> محادثات..."
+    un_fbanned_done: "\n<b>الحالة:</b> تم! فك الحظر من <code>{num}</code> محادثات!"
+    un_fbanned_subs_process: "\n<b>الحالة:</b> فك الحظر في <code>{feds}</code> اتحادات مشتركة..."
+    un_fbanned_subs_done: "\n<b>الحالة:</b> تم! تم فك الحظر في <code>{chats}</code> دردشة هذا الاتحاد و <code>{subs_chats}</code> دردشة <code>{feds}</code> من الاتحادات المشتركة"
+    un_fban_log_fed_log: |
+      <b>فك الحظر عن المستخدم في الاتحاد</b> #FedUnban
+      <b>Fed:</b> {fed_name} (<code>{fed_id}</code>)
+      <b>المستخدم:</b> {user} ({user_id})
+      <b>بواسطة:</b> {by}
+      <b>الدردشة:</b> مستخدم غير محظور في <code>{chat_count}</code>/<code>{all_chats}</code> دردشة
+    un_fban_subs_fed_log: "\n<b>اتحادات مشتركة:</b> غير محظورة في <code>{subs_chats}</code> دردشة من <code>{feds}</code> اتحادات"
+    #/delfed
+    delfed_btn_yes: نعم. حذف الاتحاد
+    delfed_btn_no: لا.
+    delfed: |
+      هل أنت متأكد من حذف هذا الاتحاد <b>%s</b>؟
+
+      <i>إخلاء المسؤولية: سيؤدي حذف الاتحاد إلى إزالة جميع البيانات المرتبطة به من قاعدة بياناتنا!
+      لا يمكن عكس هذا الإجراء بأي ثمن!</i>
+    delfed_success: حذفت الاتحاد بنجاح!
+    #/frename
+    frename_same_name: الرجاء إدخال اسم مختلف عن الاسم الحالي!
+    frename_success: الاتحاد <b>{old_name}</b> تغيرت اسمه إلى <b>{new_name}</b> بنجاح!
+    #/fbanlist
+    fbanlist_locked: الرجاء الانتظار حتى %s لاستخدام fbanlist مرة أخرى.
+    creating_fbanlist: إنشاء قائمة fban! الرجاء الانتظار..
+    fbanlist_done: قائمة fbanlist<b>%s</b>!
+    #/importfbans
+    send_import_file: |
+      أرسل ملف الاستيراد!
+
+      لإلغاء هذه العملية ؛ استخدم /cancel
+    rpl_to_file: الرجاء الرد على ملف!
+    importfbans_locked: استيراد حظور الاتحاد مقفل لمدة %s في هذا الاتحاد.
+    big_file_csv: فقط يدعم استيراد ملفات csv أقل من {num} ميغابايت!
+    big_file_json: |
+      حاليا ملفات json محدودة بـ {num} ميغابايت!
+      استخدم تنسيق csv إذا كنت ترغب في استيراد ملفات أكبر.
+    invalid_file: "الملف غير صالح"
+    wrong_file_ext: "تنسيق الملف خاطئ! الدعم الحالي هو: json, csv"
+    importing_process: <b>استيراد حظر الاتحاد...</b>
+    import_done: انتهى استيراد حظر ااتحاد! تم استيراد {num} حظر.
+    #def
+    automatic_ban: المستخدم {user} محظور في الاتحاد الحالي <b>{fed_name}</b>. لذلك تم إزالته!
+    automatic_ban_sfed: المستخدم {user} محظور في اتحاد فرعي <b>{fed_name}</b>. لذلك تم إزالته!
+    automatic_ban_reason: "\nالسبب: <code>{text}</code>"
+    #/fcheck
+    fcheck_header: "<b>معلومات حظر الاتحاد:</b>\n"
+    fbanned_count_pm: "تم حظرك في {count} اتحاد(ات)!\n"
+    "fban_info:fcheck": "لقد تم حظرك في اتحاد {fed} على {date}، لا يوجد سبب لذلك!"
+    "fban_info:fcheck:reason": "لقد تم حظرك في اتحاد {fed} على {date} السبب -\n {reason}\n"
+    fbanned_data: "تم حظر {user} في {count} اتحاد(ات)\n"
+    fbanned_nowhere: "{user} غير محظور في أي مكان!"
+    fbanned_in_fed: "بما في ذلك هذا الاتحاد <b>{fed}</b>!\n"
+    "fbanned_in_fed:reason": "يتضمن هذا <b>{fed}</b> اتحاد لسبب -\n <code>{reason}</code>"
+    contact_in_pm: "\n\nللحصول على مزيد من المعلومات على الفواصل الخاصة بك، يرجى توجيه رسالة إليّ وبالتالي فإن خصوصيتك آمنة!"
+    too_long_fbaninfo: "حسنًا! تحتاج معلومات حظر اتحاد الخاصة بك إلى ملف!"
+    didnt_fbanned: "لست محظورا في هذا الاتحاد."
+    not_fbanned_in_fed: Anyway, they aren't fbanned in fed <b>{fed_name}</b>
+  reports:
+    user_user_admin: "أنت مشرف هنا، لماذا تحتاج إلى الإبلاغ عن شخص ما؟.."
+    user_is_whitelisted: "أنت مستخدم في القائمة البيضاء، لماذا تحتاج إلى الإبلاغ عن شخص ما؟.."
+    reports_disabled: "التقارير حاليا <b>معطلة</b> في هذه المجموعة."
+    no_user_to_report: "أي مستخدم تريد الإبلاغ عنه؟"
+    report_admin: "<b>لا يمكنك</b> التبليغ عن المشرف."
+    report_whitedlisted: "<b>لا يمكنك</b> الإبلاغ عن مستخدم في القائمة البيضاء."
+    reported_user: "<b>أبلغ</b> {user} للمشرفين."
+    reported_reason: "\n<b>السبب:</b>\n<code>{reason}</code>"
+    reports_on: "التقارير مشغلة <b>في</b> في هذه المجموعة."
+    reports_off: "التقارير معطلة <b></b> في هذه المجموعة."
+    reports_already_on: "<b>التقارير مفعلة بالفعل.</b>"
+    reports_turned_on: "<b>تم تشغيل</b> التقارير."
+    reports_already_off: "<b>تم بالفعل إيقاف تشغيل التقارير.</b>"
+    wrong_argument: "<b> معطى خاطئ.</b>"
+  language:
+    your_lang: "لغتك الحالية: <b>{lang}</b>"
+    chat_lang: "لغة الدردشة الحالية: <b>{lang}</b>"
+    select_pm_lang: "\n<b>حدد لغتك الجديدة:</b>"
+    select_chat_lang: "\n<b>حدد لغة الدردشة الجديدة:</b>"
+    not_supported_lang: هذه اللغة غير مدعومة!
+    crowdin_btn: "🌎 ساعدنا مع الترجمة"
+    help_us_translate: "\n\n<a href=\"https://crowdin.com/project/DaisyX\">🌎 ساعدنا على تحسين اللغات</a>"
+    lang_changed: تم تغيير اللغة إلى <b>{lang_name}</b>.
+    see_translators: '👥 عرض المترجمين'
+    back: الرجوع
+  connections:
+    pm_connected: "تم ربط خاصك معي بنجاح بـ <b>{chat_name}</b>!"
+    connected_pm_to_me: "تم ربط خاصك معي بنجاح بـ <b>{chat_name}</b>! الرجاء مراسلتي للبدء في استخدام الاتصال."
+    chat_connection_tlt: "<b>اتصال الدردشة</b>\n"
+    connected_chat: |
+      <b>الدردشة المتصلة:</b>
+      {chat_name}
+      اكتب /disconect من الدردشة
+    "connected_chat:cmds": |
+      <b>Current connected chat:</b>
+      {chat_name}, (bridged commands are {commands}),
+      ⚠ <i>You can only access bridged commands of the connected chat! all other commands would be treated as Local chat</i>
+      Write /disconnect to disconnect from chat.
+    u_wasnt_connected: "لم تكن متصلاً بأي دردشة من قبل!"
+    select_chat_to_connect: "\n<b>اختر دردشة للاتصال:</b>"
+    disconnected: "لقد تم فصلك عن <b>{chat_name}</b>."
+    cant_find_chat: "لا أستطيع العثور على هذه المحادثة."
+    cant_find_chat_use_id: "لا أستطيع العثور على هذه المحادثة. استخدم معرف المحادثة."
+    bad_arg_bool: "خيار خاطئ: فقط يدعم  <code>on</code>/<code>off</code> <code>enable</code>/<code>disable</code>"
+    enabled: مفعّل
+    disabled: معطّل
+    chat_users_connections_info: "الاتصالات للمستخدمين العاديين حاليا <b>{status}</b> لـ <b>{chat_name}</b>"
+    chat_users_connections_cng: "تم تغيير الاتصالات للمستخدمين العاديين إلى <b>{status}</b> لـ <b>{chat_name}</b>"
+    not_in_group: "أنت لست في المجموعة التي تحاول الاتصال بها والانضمام إليها وإرسال رسالة."
+    history_empty: "أنت غير متصل بأي محادثة في التاريخ، قم بالاتصال عن طريق`/connect (محادثة id)`"
+    not_in_chat: "أنت لست في هذه المحادثة بعد الآن، سأفصل اتصالاتك."
+    u_should_be_admin: "يجب أن تكون مشرفا في {}!"
+    usage_only_in_groups: "الاستخدام محدود فقط في المجموعات!"
+    anon_admin_conn: |
+      Please click below button to connect!
+    click_here: Click here!
+  global:
+    u_not_admin: يجب أن تكون مشرفا للقيام بهذا!
+    #Rights
+    "bot_no_right:not_admin": أنا لست مشرفًا!
+    bot_no_right: "لست بحاجة إلى إذن للقيام بذلك! \nإذن مفقود: <b>%s</b>"
+    user_no_right: "يجب أن يكون لديك الإذن للقيام بذلك! \nالصلاحية مفقودة: <b>%s</b>"
+    "user_no_right:not_admin": يجب أن تكون مشرف للقيام بذلك!
+    #is chat creator
+    unable_identify_creator: "Unable to identify anonymous chat creator, duplicate signature (titles) found!"
+  owner_stuff:
+    father: "\nانه منشئي."
+    sudo_crown: "\nمرحبا! انظر، هذا المستخدم لديه تاج، دعوني أراه... واو، لديه نحت - <b>'مستخدم سودو'</b>!"
+  stickers:
+    rpl_to_sticker: "الرد على الملصق!"
+    ur_sticker: |
+      <b>الإيموجي:</b> <code>{emoji}</code>
+      <b>معرف الملصق:</b> <code>{id}</code>
+  pins:
+    no_reply_msg: "الرد على رسالة لتثبيت الرسائل!"
+    chat_not_modified_pin: "هذه الرسالة مثبتة بالفعل!"
+    chat_not_modified_unpin: "لا توجد أي رسالة مثبتة لإزالتها!"
+    pinned_success: "تم تثبيت النجاح!"
+    unpin_success: "تم إلغاء التثبيت بنجاح!"
+  users:
+    user_info: "<b>معلومات المستخدم:</b>\n"
+    info_id: "ID: <code>{id}</code>"
+    info_first: "\nالاسم الأول: {first_name}"
+    info_last: "\nاسم العائلة: {last_name}"
+    info_username: "\nاسم المستخدم: {username}"
+    info_link: "\nرابط المستخدم: {user_link}"
+    info_saw: "\nرأيتهم في <code>{num}</code> مجموعات"
+    info_fbanned: "\nمحظور في الاتحاد الحالي: "
+    info_admeme: "\nللمستخدم حقوق المشرف في هذه المحادثة."
+    upd_cache: "تحديث ذاكرة التخزين المؤقت الآن..."
+    upd_cache_done: "تم تحديث ذاكرة التخزين المؤقت للمشرفين."
+    admins: "<b>المشرف في هذه المجموعة:</b>\n"
+  imports_exports:
+    #Exporting
+    started_exporting: بدأ التصدير! الرجاء الانتظار...
+    export_done: تم التصدير من <b>{chat_name}</b>!
+    exports_locked: الرجاء الانتظار %s حتى استخدام الصادرات مرة أخرى!
+    #Importing
+    invalid_file: "الملف غير صالح"
+    send_import_file: الرجاء إرسال ملف استيراد!
+    rpl_to_file: الرجاء الرد على ملف!
+    big_file: تم استيراد الملفات المدعومة تحت 50 ميغابايت فقط!
+    started_importing: بدأ الاستيراد! الرجاء الانتظار...
+    bad_file: ملف سيئ! توقع <code>'عام'</code> عمود.
+    file_version_so_new: إصدار الملف المصدَّر أحدث مما يدعمه صوفي حالياً!
+    imports_locked: الرجاء الانتظار %s حتى استخدام الواردات مرة أخرى!
+    import_done: تم الاستيراد!
+  restrictions:
+    user_not_in_chat: المستخدم ليس في هذه المحادثة!
+    #Kicks
+    kick_DaisyX: بدلاً من محاولة طردي يمكنك قضاء وقتك بشكل أفضل. هذا ممل فقط.
+    kick_admin: ليس من الأفضل التفكير في طرد المدير.
+    kick_self: إذا أردت أن تركل نفسك - فقط اترك هذه المحادثة. أنا لا أراك بدلاً من النظر إلى هذه المحاولات المشؤومة لمعاقبة النفس.
+    user_kicked: "{user} تم طرده من قبل {admin} في {chat_name}."
+    #Mutes
+    mute_DaisyX: في الواقع، سأكون سعيدة بإغلاقك بدلاً من ذلك.
+    mute_admin: إذا كنت تعتقد أنه يمكنك إغلاق المشرف، فأنت على خطأ!
+    mute_self: إذا أردت أن تركل نفسك - فقط اترك هذه المحادثة. أنا لا أراك بدلاً من النظر إلى هذه المحاولات المشؤومة لمعاقبة النفس.
+    user_muted: "{user} تم كتم الصوت بواسطة {admin} في {chat_name}."
+    unmute_texas: في الواقع، أنا لست مكتوما.
+    unmute_admin: هاها لا، حاول كتم اسمه أولاً!
+    unmute_self: هل يجب علي كتم صوتك أولاً؟
+    user_unmuted: "تم إلغاء كتم {user} بواسطة {admin} في {chat_name}."
+    #Bans
+    ban_DaisyX: لا، لن أفعل ذلك! اطلب من منشئ الدردشة أن يفعلها!
+    ban_admin: هاها، دعونا <code>/demote</code> أولاً.
+    ban_self: لماذا تحاول حظر نفسك؟
+    user_banned: "{user} تم حظره من قبل {admin} في {chat_name}."
+    unban_DaisyX: في الواقع، أنا لست محظورة.
+    unban_admin: هاها لا، حاول حظره أولاً!
+    unban_self: هل يجب أن أمنعك أولاً؟
+    user_unband: "{user} تم فك حظره من قبل {admin} في {chat_name}."
+    invalid_time: وقت غير صالح!
+    enter_time: الرجاء إضافة وقت!
+    on_time: "\nمن أجل <code>%s</code>"
+    reason: "\nالسبب: <code>%s</code>"
+    purge: "\nخلال 5 ثوان سيتم تنظيف الرسائل!"
+    filter_title_ban: حظر المستخدم
+    filter_action_rsn: <code>إجراء الفلتر الآلي!</code>
+    filtr_ban_success: '%s حظر %s ل %s'
+    filtr_mute_success: '%s كتم %s لـ %s'
+    filtr_tmute_success: |
+      %s تم كتم %s ل %s
+      السبب هو %s
+    time_setup_start: الرجاء إرسال الوقت!
+    filtr_tban_success: |
+      %s حظر %s ل %s
+      السبب هو %s
+    filter_title_tmute: كتم صوت المستخدم
+    filter_title_mute: كتم صوت المستخدم
+    filter_title_tban: حظر المستخدم
+    filter_title_kick: طرد المستخدم
+  rules:
+    #Set
+    saved: تم حفظ القواعد في <b>%s</b>
+    updated: تم تحديث القواعد في <b>%s</b>
+    #Reset
+    deleted: تم حذف القواعد!
+    not_found: لم يتم العثور على القواعد!
+    #Callback
+    user_blocked: "اكتب /start في PM!"
+    rules_was_pmed: تم إرسال القواعد إلى بريدك!
+  #cannot_find_note: "I can't find the note <code>{}</code>"
+  #set_note: "Successfully set the rules note to <code>{}</code>"
+  #didnt_set_note: "This group doesn't have rules note set."
+  #cannot_find_set_note: "I can't find the rules note."
+  #havent_set_rules_note: "You haven't set the rules note yet."
+  #success_remove_rules_note: "Successfully removed rules note in <b>{}</b>."
+  greetings:
+    default_welcome: "مرحبا {mention}! كيف؟"
+    default_security_note: "مرحبا بك {mention}! الرجاء الضغط على الزر أدناه للتحقق من أنهم كبشر!"
+    bool_invalid_arg: حجة غير صالحة، زر <code>المتوقع</code>/<code>كلمة التحقق</code>.
+    #/setwelcome
+    saved: تم تعطيل كتم الترحيب في <b>%s</b>
+    updated: تم تحديث رسالة الترحيب في <b>%s</b>
+    #/turnwelcome
+    turnwelcome_status: المراحلات هي <code>{status}</code> في <b>{chat_name}</b>
+    turnwelcome_enabled: تم تمكين الترحيب في <b>%s</b>
+    turnwelcome_disabled: الترحيب المعطل في <b>%s</b>
+    #/welcome
+    enabled: مفعّل
+    disabled: معطل
+    wlcm_security_enabled: "مفعل، تعيين إلى {level}"
+    wlcm_mutes_enabled: "مفعل، تعيين إلى {time}"
+    welcome_info: |
+      <b>إعدادات الترحيب في {chat_name}:</b>
+      مرحبا بك <code>{welcomes_status}</code>
+      مرحبا بالأمان <code>{wlcm_security}</code>
+      كتم الترحيب هو <code>{wlcm_mutes}</code>
+      حذف الترحيبات القديمة هو <code>{clean_welcomes}</code>
+      حذف رسائل الخدمة هو <code>{clean_service}</code>
+    wlcm_note: "\n\nملاحظة الترحيب هي:"
+    raw_wlcm_note: "ملاحظة الترحيب الأولية هي:"
+    security_note: "نص الأمان الترحيبي هو:"
+    #/setsecuritynote
+    security_note_saved: "تم حفظ نص الحماية المخصص <b>%s</b>"
+    security_note_updated: "تم تحديث نص الأمان المخصص <b>%s</b>"
+    #/delsecuritynote
+    security_note_not_found: لم يتم تثبيت نص الأمان في <b>%s</b> قبل
+    del_security_note_ok: تم إعادة تعيين نص الأمان إلى الافتراضي في <b>%s</b>
+    #/cleanwelcome
+    cleanwelcome_enabled: تم تمكين تنظيف الترحيب في <b>%s</b>
+    cleanwelcome_disabled: تنظيف الترحيب معطل في <b>%s</b>
+    cleanwelcome_status: تنظيف الترحيب هو <code>{status}</code> في <b>{chat_name}</b>
+    #/cleanservice
+    cleanservice_enabled: تنظيف رسائل الخدمة مفعّل في <b>%s</b>
+    cleanservice_disabled: تم تعطيل تنظيف رسائل الخدمة في <b>%s</b>
+    cleanservice_status: تنظيف رسائل الخدمة هو <code>{status}</code> في <b>{chat_name}</b>
+    #/welcomemute
+    welcomemute_invalid_arg: معطى غير صالح، الوقت المتوقع.
+    welcomemute_enabled: تم تمكين كتم الترحيب في <b>%s</b>
+    welcomemute_disabled: تم تعطيل كتم الترحيب في <b>%s</b>
+    welcomemute_status: كتم الترحيب هو <code>{status}</code> في <b>{chat_name}</b>
+    #/welcomesecurity
+    welcomesecurity_enabled: تم تمكين الأمان الترحيبي في <b>{chat_name}</b> إلى <code>{level}</code> مستوى.
+    "welcomesecurity_enabled:customized_time": |
+      Welcome security enabled in <b>{chat_name}</b> to <code>{level}</code>, and kick users which aren't verified within {time}.
+    ask_for_time_customization: |
+      Do you want to customize the time period to kick unverified user? (by default it's {time})
+    send_time: Please send time.
+    invalid_time: "Invalid time!"
+    welcomesecurity_enabled_word: مفعل، تعيين إلى المستوى {level}
+    welcomesecurity_disabled: تم تعطيل الأمان الترحيبي في <b>%s</b>.
+    welcomesecurity_invalid_arg: حجة غير صالحة، زر <code>المتوقع</code>/<code>كلمة التحقق</code>.
+    welcomesecurity_status: الأمان الترحيبي هو <code>{status}</code> في <b>{chat_name}</b>
+    yes_btn: "Yes"
+    no_btn: "No"
+    #Welcomesecurity handler
+    click_here: انقر هنا!
+    not_allowed: غير مسموح لك باستخدام هذا!
+    ws_captcha_text: مرحبا {user}، الرجاء إدخال رقم كلمة التحقق ليتم عدم كتم الكتم في المحادثة.
+    regen_captcha_btn: '🔄 تغيير كلمة التحقق'
+    num_is_not_digit: الرجاء إدخال الأرقام فقط!
+    bad_num: رقم خاطئ! الرجاء المحاولة مرة أخرى.
+    passed: تم التحقق، لقد تم إلغاء كتم في <b>%s</b>!
+    passed_no_frm: تمرير التحقق، لقد تم إلغاء كتم الصوت في %s!
+    last_chance: لديك آخر فرصة للدخول إلى كلمة التحقق!
+    btn_button_text: "الرجاء النقر على الزر أدناه لإثبات نفسك."
+    btn_wc_text: |
+      الرجاء الضغط على الزر الأيمن المطابق في هذا التعبير:
+      %s
+    math_wc_rtr_text: "لديك الفرصة الأخيرة! كن حذرا.\n"
+    math_wc_wrong: خطأ، الرجاء المحاولة مرة أخرى!
+    math_wc_sry: عذرا لقد استخدمت المحاولة الأخيرة. اسأل مسؤولي الدردشة.
+    not_admin_wm: لا أستطيع تقييد الناس هنا، لذلك لن أستخدم كتم الترحيب!
+    not_admin_ws: لا أستطيع تقييد الناس هنا، لذلك لن أستخدم الأمن الترحيبي!
+    not_admin_wsr: لا يمكنني حذف الرسائل هنا، لذلك لن أحذف رسائل الخدمة!
+    #/resetwelcome
+    deleted: تم إعادة تعيين التحيات بنجاح في <b>{chat}</b>!
+    not_found: لا يوجد شيء لإعادة تعيينه!
+    #...
+    verification_done: Verification is done! You have been unmuted.
+  locks:
+    locks_header: "فيما يلي إعدادات القفل الحالية في {chat_title} \n\n"
+    no_lock_args: أعطني بعض الفقرات لقفلها!
+    already_locked: المحادثة مخفية اصلا هل تشعر بدوار ام ماذا
+    no_such_lock: انظر إلى /locks لمعرفة ما يمكن أن يكون مقفلاً وفتحه!
+    locked_successfully: تم قفل {lock} في {chat} بنجاح!
+    no_unlock_args: أعطني بعض الفقرات لقفلها!
+    not_locked: هههه، غير مقفل اصلا لفتحه.
+    unlocked_successfully: تم فتح {lock} في {chat} بنجاح!
+  antiflood:
+    #enforcer
+    flood_exceeded: "{action} {user} for flooding!"
+    #/setflood
+    "invalid_args:setflood": "Expected an integer!"
+    overflowed_count: Maximum count should be less than 200!
+    config_proc_1: Please send expiration time, '0' (zero) for not being expired.
+    cancel: '❌ Cancel'
+    setup_success: Successfully configured antiflood, now enforces against those who sends {count} messages within {time}!
+    "setup_success:no_exp": Successfully configured antiflood, allows {count} messages consecutively!
+    invalid_time: Invalid time!
+    #/antiflood | /flood
+    not_configured: Antiflood isn't configured in this chat yet!
+    turned_off: Disabled antiflood in <b>{chat_title}</b>!
+    "configuration_info:with_time": Antiflood is configured in this chat, those who sents {count} message within {time} would be {action}!
+    configuration_info: Antiflood is configured in this chat, those who sents {count} consecutively would be {action}!
+    ban: banned
+    mute: muted
+    kick: kicked
+    #/setfloodaction
+    invalid_args: "Unsupported action, expected {supported_actions}!"
+    setfloodaction_success: "Successfully updated flood action to <b>{action}</b>!"
