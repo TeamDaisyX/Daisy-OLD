@@ -10,7 +10,7 @@ from coffeehouse.lydia import LydiaAI
 from DaisyX import OWNER_ID, BOT_ID
 from telethon import types
 from telethon.tl import functions
-from DaisyX.decorator import register
+from DaisyX.services.events import register
 from telethon import events
 from DaisyX.config import get_str_key
 
@@ -37,8 +37,13 @@ async def can_change_info(message):
 
 
 
-@tbot.on(events.NewMessage(pattern="addchat"))
+@register(pattern="^/addchat$")
 async def _(event):
+    if event.is_group:
+        if not await can_change_info(message=event):
+            return
+    else:
+        return    
     global api_client
     chat = event.chat
     send = await event.get_sender()
@@ -55,7 +60,8 @@ async def _(event):
     return ""
 
 
-@register(cmds='rmchat$')
+
+@register(pattern="^/rmchat$")
 async def _(event):
     if event.is_group:
         if not await can_change_info(message=event):
