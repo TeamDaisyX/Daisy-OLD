@@ -12,6 +12,8 @@ from telethon import types
 from telethon.tl import functions
 from DaisyX.decorator import register
 from telethon import events
+from DaisyX.config import get_str_key
+
 
 LYDIA_API_KEY = get_str_key("LYDIA_API_KEY", required=False)
 CoffeeHouseAPI = API(LYDIA_API_KEY)
