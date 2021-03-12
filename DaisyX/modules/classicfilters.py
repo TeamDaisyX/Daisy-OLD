@@ -191,7 +191,7 @@ async def on_snip_save(event):
         )
 
 
-@register(pattern="^/listfilters$")
+@register(pattern="^/classicfilters$")
 async def on_snip_list(event):
     if event.is_group:
         pass
@@ -199,7 +199,7 @@ async def on_snip_list(event):
         return
     all_snips = get_all_filters(event.chat_id)
 
-    OUT_STR = "Available Filters in the Current Chat:\n"
+    OUT_STR = "Available Classic Filters in the Current Chat:\n"
 
     if len(all_snips) > 0:
 
@@ -209,7 +209,7 @@ async def on_snip_list(event):
 
     else:
 
-        OUT_STR = "No Filters. Start Saving using /savefilter"
+        OUT_STR = "No Classic Filters in this chat. "
 
     if len(OUT_STR) > 4096:
 
