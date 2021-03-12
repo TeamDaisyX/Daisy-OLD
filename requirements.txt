@@ -62,3 +62,4 @@ zalgo_text
 cowpy 
 fontTools
 nltk
+emoji
