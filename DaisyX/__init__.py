@@ -23,12 +23,12 @@ from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
 from DaisyX.config import get_str_key, get_int_key, get_list_key, get_bool_key
 from DaisyX.utils.logger import log
-from DaisyX.versions import UTAH_VERSION
+from DaisyX.versions import DAISY_VERSION
 
 log.info("----------------------")
 log.info("|      DaisyXBot      |")
 log.info("----------------------")
-log.info("Version: " + UTAH_VERSION)
+log.info("Version: " + DAISY_VERSION)
 
 if get_bool_key("DEBUG_MODE") is True:
     UTAH_VERSION += "-debug"
