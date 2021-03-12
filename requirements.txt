@@ -62,3 +62,4 @@ selenium
 zalgo_text 
 textwrap
 cowpy 
+fontTools
