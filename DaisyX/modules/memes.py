@@ -28,7 +28,7 @@ from cowpy import cow
 from fontTools.ttLib import TTFont
 from PIL import ImageDraw
 from PIL import ImageFont
-from DaisyX.services.mongo import mongodb as db
+
 from telethon import *
 from telethon.tl import functions
 from telethon.tl.types import *
@@ -41,37 +41,12 @@ WIDE_MAP = {i: i + 0xFEE0 for i in range(0x21, 0x7F)}
 WIDE_MAP[0x20] = 0x3000
 
 
-client = MongoClient()
-client = MongoClient(MONGO_DB_URI)
-db = client["missjuliarobot"]
-approved_users = db.approve
 
-
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-        return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerUser):
-        return True
 
 
 @register(pattern="^/owu$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     reply_tex = await event.get_reply_message()
     reply_text = reply_tex.text
     if reply_text is None:
@@ -113,17 +88,7 @@ async def msg(event):
 
 @register(pattern="^/copypasta$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -180,17 +145,7 @@ async def msg(event):
 
 @register(pattern="^/bmoji$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -203,17 +158,7 @@ async def msg(event):
 
 @register(pattern="^/clapmoji$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -227,17 +172,7 @@ async def msg(event):
 
 @register(pattern="^/stretch$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -250,17 +185,6 @@ async def msg(event):
 
 @register(pattern="^/vapor(?: |$)(.*)")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
 
     rtex = await event.get_reply_message()
     rtext = rtex.text
@@ -278,17 +202,7 @@ async def msg(event):
 
 @register(pattern="^/zalgofy$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -300,17 +214,7 @@ async def msg(event):
 
 @register(pattern="^/forbesify$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -337,17 +241,6 @@ async def msg(event):
 
 @register(pattern="^/shout (.*)")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
 
     rtext = event.pattern_match.group(1)
 
@@ -372,17 +265,7 @@ async def msg(event):
 
 @register(pattern="^/angrymoji$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -400,17 +283,7 @@ async def msg(event):
 
 @register(pattern="^/crymoji$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
@@ -431,18 +304,6 @@ CARBONLANG = "en"
 
 @register(pattern="^/carbon (.*)")
 async def carbon_api(e):
-    """this method of approve system is made by @AyushChatterjee, god will curse your family if you kang it motherfucker"""
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if e.is_group:
-        if await is_register_admin(e.input_chat, e.message.sender_id):
-            pass
-        elif e.chat_id == iid and e.sender_id == userss:
-            pass
-        else:
-            return
 
     jj = "`Processing..`"
     gg = await e.reply(jj)
@@ -496,17 +357,7 @@ async def carbon_api(e):
 
 @register(pattern="^/deepfry(?: |$)(.*)")
 async def deepfryer(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     try:
         frycount = int(event.pattern_match.group(1))
         if frycount < 1:
@@ -596,17 +447,7 @@ async def check_media(reply_message):
 
 @register(pattern="^/type (.*)")
 async def typewriter(typew):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if typew.is_group:
-        if await is_register_admin(typew.input_chat, typew.message.sender_id):
-            pass
-        elif typew.chat_id == iid and typew.sender_id == userss:
-            pass
-        else:
-            return
+
 
     message = typew.pattern_match.group(1)
     if message:
@@ -626,20 +467,10 @@ async def typewriter(typew):
         await now.edit(old_text)
         await asyncio.sleep(2)
 
-
+"""
 @register(pattern="^/sticklet (.*)")
 async def sticklet(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     R = random.randint(0, 256)
     G = random.randint(0, 256)
     B = random.randint(0, 256)
@@ -705,20 +536,10 @@ async def get_font_file(client, channel_id):
     # download and return the file path
     return await client.download_media(font_file_message)
 
-
+"""
 @register(pattern=r"^/(\w+)say (.*)")
 async def univsaye(cowmsg):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if cowmsg.is_group:
-        if await is_register_admin(cowmsg.input_chat, cowmsg.message.sender_id):
-            pass
-        elif cowmsg.chat_id == iid and cowmsg.sender_id == userss:
-            pass
-        else:
-            return
+
     """ For .cowsay module, uniborg wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("#", "@"):
         arg = cowmsg.pattern_match.group(1).lower()
@@ -738,17 +559,7 @@ async def univsaye(cowmsg):
 async def _(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     input_str = print(randrange(6))
     r = await event.reply(file=InputMediaDice("🏀"))
     if input_str:
@@ -765,17 +576,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     await event.reply(file=InputMediaDice("🎰"))
 
 
@@ -783,17 +584,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     input_str = print(randrange(7))
     r = await event.reply(file=InputMediaDice("🎯"))
     if input_str:
@@ -1226,17 +1017,7 @@ async def replied_user(draw, tot, text, maxlength, title):
 async def _(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
 
     reply = await event.get_reply_message()
     msg = reply.message
@@ -1283,17 +1064,7 @@ def deEmojify(inputString: str) -> str:
 
 @register(pattern="^/animate (.*)")
 async def stickerizer(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     newtext = event.pattern_match.group(1)
     animus = [20, 32, 33, 40, 41, 42, 58]
     sticcers = await ubot.inline_query(
@@ -1309,17 +1080,7 @@ async def stickerizer(event):
 async def _(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     input_str = print(randrange(7))
     r = await event.reply(file=InputMediaDice(""))
     if input_str:
@@ -1336,17 +1097,7 @@ async def _(event):
 async def fortunate(event):
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+ 
     jit = subprocess.check_output(["python", "fortune.py"])
     pit = jit.decode()
     await event.reply(pit)
@@ -1551,35 +1302,13 @@ TOSS = (
 
 @register(pattern="^/roll$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     await event.reply(str(random.choice(range(1, 7))))
 
 
 @register(pattern="^/toss$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
-    await event.reply(random.choice(TOSS))
-
+ 
 
 @register(pattern="^/abuse$")
 async def msg(event):
@@ -1606,17 +1335,7 @@ async def msg(event):
 
 @register(pattern="^/bluetext$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
@@ -1631,17 +1350,7 @@ async def msg(event):
 
 @register(pattern="^/rlg$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     eyes = random.choice(EYES)
     mouth = random.choice(MOUTHS)
     ears = random.choice(EARS)
@@ -1651,17 +1360,7 @@ async def _(event):
 
 @register(pattern="^/decide$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     r = randint(1, 100)
     if r <= 65:
         await event.reply("Yes.")
@@ -1673,17 +1372,7 @@ async def _(event):
 
 @register(pattern="^/table$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     r = randint(1, 100)
     if r <= 45:
         await event.reply("(╯°□°）╯彡 ┻━┻")
@@ -1766,17 +1455,7 @@ SFW_STRINGS = (
 
 @register(pattern="^/insult$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
@@ -2057,17 +1736,7 @@ reactions = [
 
 @register(pattern="^/react$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
@@ -2079,17 +1748,7 @@ async def _(event):
 
 @register(pattern="^/rhappy$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
@@ -2101,17 +1760,7 @@ async def _(event):
 
 @register(pattern="^/rangry$")
 async def _(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
