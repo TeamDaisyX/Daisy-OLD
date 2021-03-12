@@ -56,3 +56,9 @@ bs4
 glob
 html2text
 bing_image_downloader 
+
+#Memes
+selenium
+zalgo_text 
+textwrap
+cowpy 
