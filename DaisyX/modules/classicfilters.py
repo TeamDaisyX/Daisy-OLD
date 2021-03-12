@@ -1,4 +1,5 @@
-
+#This Module is originally owned by @MissJuliaRobot
+#Full credits to Julia
 import os
 from DaisyX.services.events import register
 from telethon.tl import functions
@@ -17,14 +18,10 @@ from DaisyX.services.sql.filters_sql import (
 )
 
 DELETE_TIMEOUT = 0
-
 TYPE_TEXT = 0
-
 TYPE_PHOTO = 1
-
 TYPE_DOCUMENT = 2
-
-last_triggered_filters = {}  # pylint:disable=E0602
+last_triggered_filters = {}  
 
 
 async def can_change_info(message):
@@ -133,7 +130,7 @@ async def on_snip(event):
                 last_triggered_filters[event.chat_id].remove(name)
 
 
-@register(pattern="^/classicfilter (.*)")
+@register(pattern="^/cfillter (.*)")
 async def on_snip_save(event):
     if event.is_group:
         if not await can_change_info(message=event):
@@ -191,7 +188,20 @@ async def on_snip_save(event):
         )
 
 
-@register(pattern="^/classicfilters$")
+@register(pattern="^/stopfilter (.*)")
+async def on_snip_delete(event):
+    if event.is_group:
+        if not await can_change_info(message=event):
+            return
+    else:
+        return
+    name = event.pattern_match.group(1)
+
+    remove_filter(event.chat_id, name)
+
+    await event.reply(f"Filter **{name}** deleted successfully")
+
+@register(pattern="^/cfilters$")
 async def on_snip_list(event):
     if event.is_group:
         pass
@@ -230,22 +240,7 @@ async def on_snip_list(event):
 
         await event.reply(OUT_STR)
 
-
-@register(pattern="^/stopfilter (.*)")
-async def on_snip_delete(event):
-    if event.is_group:
-        if not await can_change_info(message=event):
-            return
-    else:
-        return
-    name = event.pattern_match.group(1)
-
-    remove_filter(event.chat_id, name)
-
-    await event.reply(f"Filter **{name}** deleted successfully")
-
-
-@register(pattern="^/stopallfilters$")
+@register(pattern="^/stopcfilter$")
 async def on_all_snip_delete(event):
     if event.is_group:
         if not await can_change_info(message=event):
@@ -262,9 +257,9 @@ file_helpo = file_help.replace("_", " ")
 
 __help__ = """
 **Admin Only**
- - /classicfilter <word>: Every time someone says "word", the bot will reply with that message
-You can also include buttons in filters, example send `/savefilter google` in reply to "`Click Here To Open Google | [button('Google', 'google.com')]`"
-If you want more buttons, seperate each with "`•`", example send `/savefilter searchengine` in reply to "`Search Engines | [button('Google', 'google.com')] • [button('Yahoo', 'yahoo.com')] • [button('Bing', 'bing.com')]`"
+ - /cfilter <word>: Add a classic filter (Marie type)
+You can also include buttons in filters, example send `/cfilter google` in reply to "`Click Here To Open Google | [button('Google', 'google.com')]`"
+If you want more buttons, seperate each with "`•`", example send `/cfilter searchengine` in reply to "`Search Engines | [button('Google', 'google.com')] • [button('Yahoo', 'yahoo.com')] • [button('Bing', 'bing.com')]`"
 **NOTE**: 
 You need to use either ' or " to enclose the button text and url
 eg : `[button('Google', 'google.com')]`
