@@ -1308,21 +1308,12 @@ async def msg(event):
 
 @register(pattern="^/toss$")
 async def msg(event):
- 
+        await event.reply(random.choice(TOSS))
+                           
 
 @register(pattern="^/abuse$")
 async def msg(event):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
-            pass
-        else:
-            return
+
     if event.reply_to_msg_id:
         reply = await event.get_reply_message()
         replyto = reply.sender_id
