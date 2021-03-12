@@ -31,7 +31,7 @@ log.info("----------------------")
 log.info("Version: " + DAISY_VERSION)
 
 if get_bool_key("DEBUG_MODE") is True:
-    UTAH_VERSION += "-debug"
+    DAISY_VERSION += "-debug"
     log.setLevel(logging.DEBUG)
     log.warn(
         "! Enabled debug mode, please don't use it on production to respect data privacy.")
