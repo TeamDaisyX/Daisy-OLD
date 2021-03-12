@@ -57,10 +57,10 @@ async def _(event):
         buttons=[
             [
                 Button.inline(
-                    "📤", data=f"torrent-{sender}|{search}|{index}|{chatid}|{msgid}"
+                    "📤 Get Torrents from Sumanjay's API", data=f"torrent-{sender}|{search}|{index}|{chatid}|{msgid}"
                 )
             ],
-            [Button.inline("❌", data=f"torrentstop-{sender}|{chatid}|{msgid}")],
+            [Button.inline("❌ Cancel Search", data=f"torrentstop-{sender}|{chatid}|{msgid}")],
         ],
     )
 
