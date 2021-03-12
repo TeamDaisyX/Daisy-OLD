@@ -40,6 +40,7 @@ coffeehouse
 PyDictionary==2.0.1
 google-trans-new==1.1.9
 temp-mail
+hachoir
 
 #Pyrogram
 tgCrypto>=1.2.2
