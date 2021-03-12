@@ -59,6 +59,5 @@ bing_image_downloader
 #Memes
 selenium
 zalgo_text 
-textwrap
 cowpy 
 fontTools
