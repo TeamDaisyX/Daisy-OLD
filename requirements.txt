@@ -61,3 +61,4 @@ selenium
 zalgo_text 
 cowpy 
 fontTools
+nltk
