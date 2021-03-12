@@ -52,8 +52,7 @@ youtube_dl
 youtube_search_python
 
 #Search
-bs4 
-glob
+bs4
 html2text
 bing_image_downloader 
 
