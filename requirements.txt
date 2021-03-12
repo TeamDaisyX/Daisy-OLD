@@ -53,3 +53,8 @@ NumPy
 Pillow
 glitch_this
 opencv-python-headless
+
+#CallsMusic
+python-dotenv
+youtube_dl
+youtube_search_python
