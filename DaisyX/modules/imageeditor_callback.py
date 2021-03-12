@@ -50,7 +50,7 @@ from DaisyX.services.pyrogram import pbot
 
 
 
-@pbot.on_callback_query(static_data_filter)
+@pbot.on_callback_query()
 async def cb_handler(client, query):
     if query.data == "removebg":
         await query.message.edit_text(
