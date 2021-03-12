@@ -46,12 +46,12 @@ from DaisyX.Addons.ImageEditor.edit_5 import (  # pylint:disable=import-error
     scanlineglitch_5,
 )
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from DaisyX.services.pyrogram import pbot as Client
+from DaisyX.services.pyrogram import pbot
 
 
 
-@Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery):
+@pbot.on_callback_query(static_data_filter)
+async def cb_handler(client, query):
     if query.data == "removebg":
         await query.message.edit_text(
             "**Select required mode**ㅤㅤㅤㅤ",
