@@ -20,7 +20,7 @@ import os
 import requests
 import rapidjson
 
-from DaisyX import OWNER_ID, OPERATORS, UTAH_VERSION, dp
+from DaisyX import OWNER_ID, OPERATORS, DAISY_VERSION, dp
 from DaisyX.decorator import REGISTRED_COMMANDS, COMMANDS_ALIASES, register
 from DaisyX.modules import LOADED_MODULES
 from DaisyX.services.mongo import db, mongodb
@@ -185,7 +185,7 @@ async def get_event(message):
 
 @register(cmds="stats", is_op=True)
 async def stats(message):
-    text = f"<b>DaisyXBot {UTAH_VERSION} stats</b>\n"
+    text = f"<b>DaisyXBot {DAISY_VERSION} stats</b>\n"
 
     for module in [m for m in LOADED_MODULES if hasattr(m, '__stats__')]:
         text += await module.__stats__()
