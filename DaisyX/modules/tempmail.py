@@ -39,4 +39,4 @@ def mails(m):
                 for i in mails:
                         bot.send_message(m.from_user.id, 'Mail from: '+i['mail_from']+'\n\nSubject: '+i['mail_subject']+'\n\nText: ' +i['mail_text'])
     except:
-       await bot.send_message(m.from_user.id, 'There is no email...')
+       bot.send_message(m.from_user.id, 'There is no email...')
