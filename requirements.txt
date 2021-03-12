@@ -39,6 +39,7 @@ wikipedia
 coffeehouse
 PyDictionary==2.0.1
 google-trans-new==1.1.9
+sudo pip install temp-mail
 
 #Pyrogram
 tgCrypto>=1.2.2
