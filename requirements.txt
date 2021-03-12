@@ -50,3 +50,9 @@ psycopg2
 #YTDL
 youtube_dl
 youtube_search_python
+
+#Search
+bs4 
+glob
+html2text
+bing_image_downloader 
