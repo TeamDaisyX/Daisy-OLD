@@ -1,4 +1,4 @@
-from DaiyX.services.redis import redis as r
+from DaisyX.services.redis import redis as r
 from tempmail import TempMail
 from DaisyX import bot
 from DaisyX.decorator import register
