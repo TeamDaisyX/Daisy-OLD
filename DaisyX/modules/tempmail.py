@@ -6,7 +6,7 @@ from .utils.disable import disableable_dec
 from .utils.message import get_arg
 from .utils.message import get_args_str
 
-user = bot.get_me().username
+user = bot.get_me()
 
 @register(cmds=['newmail', 'addmail'])
 @disableable_dec('newmail')
