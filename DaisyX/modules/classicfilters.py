@@ -178,7 +178,7 @@ async def on_snip_save(event):
             snip.get("fr"),
         )
 
-        await event.reply(f"Filter {name} saved successfully. Get it with {name}")
+        await event.reply(f"Classic Filter {name} saved successfully. you can get it with {name}\nNote: Try our new filter system /addfilter ")
 
     else:
 
@@ -231,7 +231,7 @@ async def on_snip_list(event):
                 out_file,
                 force_document=True,
                 allow_cache=False,
-                caption="Available Filters in the Current Chat",
+                caption="Available Classic Filters in the Current Chat",
                 reply_to=event,
             )
 
@@ -247,7 +247,7 @@ async def on_all_snip_delete(event):
     else:
         return
     remove_all_filters(event.chat_id)
-    await event.reply(f"Filters in current chat deleted successfully !")
+    await event.reply(f"Classic Filter in current chat deleted !")
 
 
 file_help = os.path.basename(__file__)
