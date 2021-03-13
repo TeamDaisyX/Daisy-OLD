@@ -183,7 +183,7 @@ async def on_snip_save(event):
     else:
 
         await event.reply(
-            "Reply to a message with /savefilter keyword to save the filter"
+            "Usage: Reply to user message with /cfilter <text>.. \nNot Recomended use new filter system /savefilter"
         )
 
 
