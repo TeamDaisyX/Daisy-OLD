@@ -44,9 +44,6 @@ async def _(event):
             pass
         else:
             return
-    async def _(event):
-    if event.fwd_from:
-        return
     mentions = "@tagall"
     chat = await event.get_input_chat()
     async for x in borg.iter_participants(chat, 100):
