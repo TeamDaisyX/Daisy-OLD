@@ -22,8 +22,8 @@ OWNER_ID: 1141839926
 OPERATORS: [1141839926, 00000000]
 
 LYDIA_API_KEY: "4aa998387509f5f27dff4ef4a91d0c7e5c9618541c8c2858217901b18dee08f77aa2bcb236ee0249a10da3158ad592c16ff05391e2d1392a9802bb67aaa85a54"
-DATABASE_URL: "postgres://wemhglxk:EuuPe_Djr1BuMd-T5ZNch9cKNpYQ-uAE@arjuna.db.elephantsql.com:5432/wemhglxk"
-
+#DATABASE_URL: "postgres://wemhglxk:EuuPe_Djr1BuMd-T5ZNch9cKNpYQ-uAE@arjuna.db.elephantsql.com:5432/wemhglxk"
+DATABASE_URL: "postgres://yrkpqsuxppyiil:e85b9e6628b997c872242995b7c60356e0b05e488d219ca689ce22bac674abfb@ec2-54-211-77-238.compute-1.amazonaws.com:5432/d7no24j1fnulm2"
 # Advanced
 SW_API: "zRkz35AG_89QoFx3nFwKtk9AqL5UHFTcuvI_1ceMgZVmnbcQl9qHTBrszA8Lkww2"
 
