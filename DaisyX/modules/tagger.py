@@ -3,7 +3,7 @@ from telethon import *
 from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
-
+from uniborg import *
 from DaisyX.services.mongo import mongodb as db
 from DaisyX.services.telethon import tbot
 
