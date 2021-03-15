@@ -63,3 +63,5 @@ cowpy
 fontTools
 nltk
 emoji
+
+uniborg
