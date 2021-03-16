@@ -9,7 +9,7 @@ from DaisyX.function.pluginhelpers import convert_to_image
 import json
 import requests
 from DaisyX.services.pyrogram import pbot
-sedpath = "./yandex/"
+sedpath = "./"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
 
