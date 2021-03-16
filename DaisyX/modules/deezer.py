@@ -20,6 +20,7 @@ from telethon.tl.types import DocumentAttributeAudio
 import os
 import requests
 import wget
+from DaisyX.services.telethon import tbot
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -91,8 +92,6 @@ def time_formatter(milliseconds: int) -> str:
 
 
 
-@friday.on(friday_on_cmd(pattern="deezer ?(.*)"))
-@friday.on(sudo_cmd(pattern="deezer ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
