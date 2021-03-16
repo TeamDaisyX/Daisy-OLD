@@ -22,12 +22,12 @@ from youtube_dl.utils import (
 )
 
 from DaisyX.function.pluginhelpers import get_readable_time, delete_or_pass, progress,get_text
-from DaisyX.services.pyrogram import pbot as tbot
+from DaisyX.services.pyrogram import pbot
 
 
 
 
-@tbot.on(events.NewMessage(pattern="^/vsong (.*)"))
+@pbot.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message):
     urlissed = get_text(message)
     if not urlissed:
@@ -79,7 +79,7 @@ async def ytmusic(client, message):
 
 
 
-@tbot.on(events.NewMessage(pattern="^/song (.*)"))
+@pbot.on_message(filters.command(["song", "music"]))
 async def ytmusic(client, message):
     urlissed = get_text(message)
     if not urlissed:
@@ -132,9 +132,7 @@ async def ytmusic(client, message):
         if files and os.path.exists(files):
             os.remove(files)
     
-
-
-@tbot.on(events.NewMessage(pattern="^/deezer (.*)"))
+@pbot.on_message(filters.command(["deezer", "dsong"]))
 async def deezer(client, message):
     pablo = await reply(message, "`Searching For Song.....`")
     sgname = get_text(message)
