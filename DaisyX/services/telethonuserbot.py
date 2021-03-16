@@ -14,15 +14,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-
+from telethon import TelegramClient
+from telethon.sessions import StringSession
 from DaisyX.config import get_str_key, get_int_key
 
 STRING_SESSION = get_str_key("STRING_SESSION", required=True)
 API_ID = get_int_key("APP_ID", required=True)
 API_HASH = get_str_key("APP_HASH", required=True
-from telethon import TelegramClient
-from telethon.sessions import StringSession
-
+                       
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot.start()
