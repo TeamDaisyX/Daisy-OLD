@@ -5,7 +5,7 @@ from telethon import types
 from telethon.tl import functions
 from telethon import events
 from DaisyX.services.events import register
-from DaisyX.function.pluginhelpers import convert_to_image
+from DaisyX.function.telethonhelpers import convert_to_image
 import json
 import requests
 from DaisyX.services.telethon import tbot
