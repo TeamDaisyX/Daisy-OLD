@@ -64,4 +64,3 @@ fontTools
 nltk
 emoji
 
-uniborg
