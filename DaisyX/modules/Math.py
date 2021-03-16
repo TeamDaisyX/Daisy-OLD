@@ -47,7 +47,7 @@ async def _(message):
 @disableable_dec('math')
 async def _(message):
     args = get_args_str(message)
-    cmd = args.split(" ", maxsplit=1)[1]
+    cmd = args #.split(" ", maxsplit=1)[1]
     event = await message.reply("Calculating ...")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
