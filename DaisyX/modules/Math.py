@@ -45,10 +45,10 @@ async def _(message):
 
 @register(cmds=['solve', 'math'])
 @disableable_dec('math')
-async def _(car):
+async def _(message):
     args = get_args_str(message)
     cmd = args.split(" ", maxsplit=1)[1]
-    event = await friday.edit_or_reply(car, "Calculating ...")
+    event = await message.reply("Calculating ...")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -75,7 +75,7 @@ async def _(car):
     final_output = "**EQUATION**: `{}` \n\n **SOLUTION**: \n`{}` \n".format(
         cmd, evaluation
     )
-    await car.reply(final_output)
+    await message.reply(final_output)
 
 
 async def aexec(code, event):
