@@ -23,7 +23,7 @@ from .utils.disable import disableable_dec
 from .utils.message import get_arg
 from .utils.message import get_args_str
 
-
+"""
 @register(cmds=['simplify', 'solve'])
 @disableable_dec('simplify')
 async def _(message):
@@ -33,7 +33,58 @@ async def _(message):
     obj = json.loads(c)
     j = obj["result"]
     await message.reply(j)
-    
+    """
+
+import io
+import sys
+import traceback
+from fridaybot import CMD_HELP
+
+from fridaybot.utils import friday_on_cmd, edit_or_reply
+
+
+
+
+@register(cmds=['solve', 'math'])
+@disableable_dec('math')
+async def _(car):
+    args = get_args_str(message)
+    cmd = args.split(" ", maxsplit=1)[1]
+    event = await friday.edit_or_reply(car, "Calculating ...")
+    old_stderr = sys.stderr
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = io.StringIO()
+    redirected_error = sys.stderr = io.StringIO()
+    stdout, stderr, exc = None, None, None
+    san = f"print({cmd})"
+    try:
+        await aexec(san, event)
+    except Exception:
+        exc = traceback.format_exc()
+    stdout = redirected_output.getvalue()
+    stderr = redirected_error.getvalue()
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
+    evaluation = ""
+    if exc:
+        evaluation = exc
+    elif stderr:
+        evaluation = stderr
+    elif stdout:
+        evaluation = stdout
+    else:
+        evaluation = "Sorry I can't find result for the given equation"
+    final_output = "**EQUATION**: `{}` \n\n **SOLUTION**: \n`{}` \n".format(
+        cmd, evaluation
+    )
+    await car.reply(final_output)
+
+
+async def aexec(code, event):
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    return await locals()["__aexec"](event)
+
+
 @register(cmds=['factor', 'factorize'])
 @disableable_dec('factor')
 async def _(message):
