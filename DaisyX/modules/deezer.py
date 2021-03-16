@@ -22,7 +22,7 @@ from youtube_dl.utils import (
 )
 
 from DaisyX.functions.pluginhelpers import get_readable_time, delete_or_pass, progress,get_text
-
+from DaisyX.services.pyrogram import pbot as tbot
 
 
 
