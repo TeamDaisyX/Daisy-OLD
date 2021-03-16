@@ -68,7 +68,7 @@ async def is_nsfw(event):
       is_nsfw = False
     return is_nsfw
   
-@tbot.on(events.NewMessage(pattern="addnsfw$"))
+@tbot.on(events.NewMessage(pattern="/addnsfw$"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.edit("You Can Only Nsfw Watch in Groups.")
@@ -82,7 +82,7 @@ async def nsfw_watch(event):
     add_nsfwatch(str(event.chat_id))
     await event.edit(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
     
-@tbot.on(events.NewMessage(pattern="rmnsfw$"))
+@tbot.on(events.NewMessage(pattern="/rmnsfw$"))
 async def disable_nsfw(event):
     if not event.is_group:
         await event.edit("You Can Only Disable Nsfw Mode in Groups.")
