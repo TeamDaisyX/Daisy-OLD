@@ -66,3 +66,4 @@ emoji
 
 #Deezer
 wget
+asyncio
