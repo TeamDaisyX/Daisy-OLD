@@ -1,4 +1,22 @@
 
+from math import ceil
+import textwrap
+from pyrogram import Client
+from pyrogram.types import InlineKeyboardButton, InlineQueryResultArticle, InputTextMessageContent, Message
+from pyrogram.errors import FloodWait, MessageNotModified
+import asyncio
+import shlex
+import subprocess
+import json
+import math
+import requests
+import re
+import os
+import markdown
+import subprocess
+from typing import List, Optional, Tuple
+import time
+from datetime import datetime
 
 
 
@@ -132,7 +150,7 @@ async def fetch_audio(client, message):
         await runcmd(stark_cmd)
         final_warner = "friday.mp3"
     elif warner_stark.audio:
-        await message.reply("`Download Started !`")
+        await message.edit("`Download Started !`")
         final_warner = await message.reply_to_message.download(progress=progress, progress_args=(message, c_time, f'`Downloading Video!`'))
-    await message.reply("`Almost Done!`")    
+    await message.edit("`Almost Done!`")    
     return final_warner    
