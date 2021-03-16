@@ -6,6 +6,7 @@ import sys
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen, urlretrieve
 from DaisyX.services.telethon import tbot
+from telethon import events
 
 @tbot.on(events.NewMessage(pattern="^/book (.*)"))
 async def _(event):
