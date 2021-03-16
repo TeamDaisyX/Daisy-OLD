@@ -276,7 +276,7 @@ async def _(event):
                 return
             await silently_send_message(d_conv, sticker_emoji)
             await silently_send_message(d_conv, "/publish")
-            response = await silently_send_message(bot_conv, f"<{packname}>")
+            response = await silently_send_message(d_conv, f"<{packname}>")
             await silently_send_message(d_conv, "/skip")
             response = await silently_send_message(d_conv, packshortname)
             if response.text == "Sorry, this short name is already taken.":
