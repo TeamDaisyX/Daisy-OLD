@@ -51,7 +51,7 @@ async def _(event):
                 end = datetime.now()
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
-                await event.edit(
+                await event.reply(
                     "Uploaded to https://telegra.ph{} in {} seconds.".format(
                         media_urls[0], (ms + ms_two)
                     ),
@@ -80,7 +80,7 @@ async def _(event):
             response = telegraph.create_page(title_of_page, html_content=page_content)
             end = datetime.now()
             ms = (end - start).seconds
-            await event.edit(
+            await event.reply(
                 "Pasted to https://telegra.ph/{} in {} seconds.".format(
                     response["path"], ms
                 ),
@@ -88,7 +88,7 @@ async def _(event):
             )
     else:
         await event.reply(
-            "Reply to a message to get a permanent telegra.ph link. (Inspired by @ControllerBot)"
+            "Reply to a message to get a permanent telegra.ph link. "
         )
 
 
