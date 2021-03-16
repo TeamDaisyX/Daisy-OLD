@@ -75,7 +75,8 @@ async def _(message):
     final_output = "<b>EQUATION</b>: {} \n\n <b>SOLUTION</b>: \n{} \n".format(
         cmd, evaluation
     )
-    await message.edit(final_output)
+    await message.edit_text(text: final_output, parse_mode: = html) 
+    #await message.reply(final_output)
 
 
 async def aexec(code, event):
