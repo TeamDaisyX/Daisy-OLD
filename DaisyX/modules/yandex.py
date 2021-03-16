@@ -8,7 +8,7 @@ from DaisyX.services.events import register
 from DaisyX.function.pluginhelpers import convert_to_image
 import json
 import requests
-from DaisyX.services.pyrogram import pbot
+from DaisyX.services.telethon import tbot
 sedpath = "./"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
