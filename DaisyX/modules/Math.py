@@ -16,13 +16,16 @@
 import json
 import math
 import requests
+import io
+import sys
+import traceback
 from telethon import types
 from telethon.tl import functions
 from DaisyX.decorator import register
 from .utils.disable import disableable_dec
 from .utils.message import get_arg
 from .utils.message import get_args_str
-
+from telethon import events
 """
 @register(cmds=['simplify', 'solve'])
 @disableable_dec('simplify')
@@ -35,12 +38,7 @@ async def _(message):
     await message.reply(j)
     """
 
-import io
-import sys
-import traceback
-from fridaybot import CMD_HELP
 
-from fridaybot.utils import friday_on_cmd, edit_or_reply
 
 
 
