@@ -34,8 +34,8 @@ async def hmm(event):
 Reverse Searched Link:- {img_search_url}
 Note:- Yandex is a Russian search engine, so better open link in chrome with auto-translate.
 Another Note:- Don't Use This Command continually, Yandex Will Block Your Request.
-<u><b>Reverse Search Completed By Friday.
-Get Your Own Friday From @FRIDAYCHAT.</b></u>
+<u><b>Reverse Search Completed By @DaisyXBot.
+Say Hi to the Support @DaisySupport_Official.</b></u>
 """
     await tbot.send_message(
         event.chat_id,
