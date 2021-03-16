@@ -33,7 +33,7 @@ async def ytmusic(client,message: Message):
     if not urlissed:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
         return
-    pablo = await edit_or_reply(message, f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
+    pablo = await message.reply(f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
@@ -83,9 +83,9 @@ async def ytmusic(client,message: Message):
 async def ytmusic(client, message: Message):
     urlissed = get_text(message)
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        await pablo.reply("Invalid Command Syntax, Please Check Help Menu To Know More!")
         return
-    pablo = await message.reply(message, f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
+    pablo = await message.reply(f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
@@ -134,7 +134,7 @@ async def ytmusic(client, message: Message):
     
 @pbot.on_message(filters.command(["deezer", "dsong"]))
 async def deezer(client, message: Message):
-    pablo = await message.reply(message, "`Searching For Song.....`")
+    pablo = await message.reply("`Searching For Song.....`")
     sgname = get_text(message)
     if not sgname:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
