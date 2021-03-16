@@ -48,7 +48,7 @@ async def _(message):
 async def _(message):
     args = get_args_str(message)
     cmd = args #.split(" ", maxsplit=1)[1]
-    event = await message.reply("Calculating ...")
+    #event = await message.reply("Calculating ...")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -56,7 +56,7 @@ async def _(message):
     stdout, stderr, exc = None, None, None
     san = f"print({cmd})"
     try:
-        await aexec(san, event)
+        await aexec(san) #event
     except Exception:
         exc = traceback.format_exc()
     stdout = redirected_output.getvalue()
@@ -72,11 +72,10 @@ async def _(message):
         evaluation = stdout
     else:
         evaluation = "Sorry I can't find result for the given equation"
-    final_output = "<b>EQUATION</b>: {} \n\n <b>SOLUTION</b>: \n{} \n".format(
+    final_output = "EQUATION: {} \n\n SOLUTION: \n{} \n".format(
         cmd, evaluation
     )
-    await message.edit_text(final_output, parse_mode = html) 
-    #await message.reply(final_output)
+    await message.reply(final_output)
 
 
 async def aexec(code, event):
