@@ -18,7 +18,7 @@ import io
 from aiogram.types.input_file import InputFile
 
 from DaisyX.services.telethon import tbot
-from DaisyX.services.userbot import ubot
+from DaisyX.services.telethonuserbot import ubot
 from bs4 import BeautifulSoup as bs
 import urllib.request as urllib
 import requests
