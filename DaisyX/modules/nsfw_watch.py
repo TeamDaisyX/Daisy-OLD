@@ -30,7 +30,7 @@ from telethon.tl.functions.channels import (
     EditBannedRequest,
     EditPhotoRequest,
 )
-from DaisyX.services.telethon import pbot
+from DaisyX.services.telethon import tbot
 
 
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
