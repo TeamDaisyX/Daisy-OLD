@@ -1,4 +1,4 @@
-#    Copyright (C) DevsExpo 2020-2021
+#    Copyright (C) DevsExpo 2020-2021 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -11,11 +11,13 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+
+
 from telethon import Button, custom, events, functions
 import requests
 import string 
 import random 
-from fridaybot.modules.sql_helper.nsfw_watch_sql import add_nsfwatch, rmnsfwatch, get_all_nsfw_enabled_chat, is_nsfwatch_indb
+from DaisyX.services.sql.nsfw_watch_sql import add_nsfwatch, rmnsfwatch, get_all_nsfw_enabled_chat, is_nsfwatch_indb
 from telethon.tl.types import (
     ChannelParticipantsAdmins,
     ChatAdminRights,
@@ -28,6 +30,9 @@ from telethon.tl.functions.channels import (
     EditBannedRequest,
     EditPhotoRequest,
 )
+from DaisyX.services.telethon import pbot
+
+
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 async def is_nsfw(event):
@@ -63,7 +68,7 @@ async def is_nsfw(event):
       is_nsfw = False
     return is_nsfw
   
-@friday.on(friday_on_cmd(pattern="anw$"))
+@tbot.on(events.NewMessage(pattern="addnsfw$"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.edit("You Can Only Nsfw Watch in Groups.")
@@ -75,9 +80,9 @@ async def nsfw_watch(event):
         await event.edit("`This Chat Has Already Enabled Nsfw Watch.`")
         return
     add_nsfwatch(str(event.chat_id))
-    await event.edit(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted And Logged in Logging Group**")
-
-@friday.on(friday_on_cmd(pattern="rmnw$"))
+    await event.edit(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
+    
+@tbot.on(events.NewMessage(pattern="rmnsfw$"))
 async def disable_nsfw(event):
     if not event.is_group:
         await event.edit("You Can Only Disable Nsfw Mode in Groups.")
@@ -123,3 +128,7 @@ async def ws(event):
             ujwal = wstark.username
         else:
             ujwal = wstark.id
+        await tbot.send_message(event.chat_id, f"**#NSFW_WATCH** \n**{ujwal} your message contain NSFW content.. \n So, Daisy deleted your message")  
+
+    
+    
