@@ -67,3 +67,6 @@ emoji
 #Deezer
 wget
 asyncio
+
+#Markup
+Markdown>=3.3.4
