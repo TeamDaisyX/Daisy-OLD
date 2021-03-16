@@ -72,7 +72,16 @@ async def delete_or_pass(message):
         return message
     return await message.delete()
   
-  
+def humanbytes(size):
+    if not size:
+        return ""
+    power = 2 ** 10
+    raised_to_pow = 0
+    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    while size > power:
+        size /= power
+        raised_to_pow += 1
+    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"  
   
 
 async def progress(current, total, message, start, type_of_ps, file_name=None):
