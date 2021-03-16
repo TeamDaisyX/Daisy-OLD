@@ -1,7 +1,7 @@
 from DaisyX.services.telethon import tbot as client
 from telethon import events
 
-@client.on(events.NewMessage(pattern="tagall(?: |$)(.*)"))
+@client.on(events.NewMessage(pattern="/tagall(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
