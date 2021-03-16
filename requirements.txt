@@ -40,6 +40,7 @@ coffeehouse
 PyDictionary==2.0.1
 google-trans-new==1.1.9
 hachoir
+telegraph
 
 #Pyrogram
 tgCrypto>=1.2.2
@@ -55,6 +56,7 @@ youtube_search_python
 bs4
 html2text
 bing_image_downloader 
+search_engine_parser
 
 #Memes
 selenium
@@ -71,5 +73,4 @@ asyncio
 #Markup
 Markdown>=3.3.4
 
-#Search
-search_engine_parser
+
