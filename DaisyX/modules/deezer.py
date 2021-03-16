@@ -134,7 +134,7 @@ async def ytmusic(client, message):
     
 @pbot.on_message(filters.command(["deezer", "dsong"]))
 async def deezer(client, message):
-    pablo = await reply(message, "`Searching For Song.....`")
+    pablo = await message.reply(message, "`Searching For Song.....`")
     sgname = get_text(message)
     if not sgname:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
