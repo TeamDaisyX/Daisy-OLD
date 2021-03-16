@@ -1,7 +1,7 @@
 # This plugin is ported from https://github.com/thehamkercat/WilliamButcherBot
 from search_engine_parser import GoogleSearch
 from pyrogram import filters
-from DaisyX.services import pbot as app
+from DaisyX.services.pyrogram import pbot as app
 from DaisyX.modules.utils.fetch import fetch
 ARQ = "https://thearq.tech/"
 @app.on_message(filters.command("ud") & ~filters.edited)
