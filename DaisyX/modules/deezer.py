@@ -23,12 +23,12 @@ from youtube_dl.utils import (
 
 from DaisyX.function.pluginhelpers import get_readable_time, delete_or_pass, progress,get_text
 from DaisyX.services.pyrogram import pbot
-
+from pyrogram.types import Message
 
 
 
 @pbot.on_message(filters.command(["vsong", "video"]))
-async def ytmusic(client, message):
+async def ytmusic(client,message: Message):
     urlissed = get_text(message)
     if not urlissed:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
@@ -80,7 +80,7 @@ async def ytmusic(client, message):
 
 
 @pbot.on_message(filters.command(["song", "music"]))
-async def ytmusic(client, message):
+async def ytmusic(client, message: Message):
     urlissed = get_text(message)
     if not urlissed:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
@@ -133,7 +133,7 @@ async def ytmusic(client, message):
             os.remove(files)
     
 @pbot.on_message(filters.command(["deezer", "dsong"]))
-async def deezer(client, message):
+async def deezer(client, message: Message):
     pablo = await message.reply(message, "`Searching For Song.....`")
     sgname = get_text(message)
     if not sgname:
