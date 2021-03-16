@@ -12,7 +12,7 @@ from telethon import events
 
 
 telegraph = Telegraph()
-r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
+r = telegraph.create_account(short_name="DaisyX")
 auth_url = r["auth_url"]
 
 #Will change later
