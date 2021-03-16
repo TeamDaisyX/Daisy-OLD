@@ -21,36 +21,6 @@ from telethon.tl.types import *
 from DaisyX.services.telethon import tbot
 from DaisyX.services.events import register
 
-@register(pattern="^/google (.*)")
-async def _(event):
-    if event.fwd_from:
-        return
-    # SHOW_DESCRIPTION = False
-    # + " -inurl:(htm|html|php|pls|txt) intitle:index.of \"last modified\" (mkv|mp4|avi|epub|pdf|mp3)"
-    input_str = event.pattern_match.group(1)
-    input_url = "https://bots.shrimadhavuk.me/search/?"
-    headers = {"USER-AGENT": "UniBorgV3"}
-    async with aiohttp.ClientSession() as requests:
-        data = {
-            "q": input_str,
-            GOOGLE_SRCH_KEY: GOOGLE_SRCH_VALUE
-        }
-        reponse = await requests.get(
-            input_url + urlencode(data),
-            headers=headers
-        )
-        response = await reponse.json()
-    output_str = " "
-    for result in response["results"]:
-        text = result.get("title")
-        url = result.get("url")
-        description = result.get("description")
-        last = html2text.html2text(description)
-        output_str += "[{}]({})\n{}\n".format(text, url, last)
-    await event.reply(
-        "{}".format(output_str), link_preview=False, parse_mode="Markdown"
-    )
-
 
 @register(pattern="^/img (.*)")
 async def img_sampler(event):
@@ -267,6 +237,9 @@ async def apk(e):
 
 __help__ = """
  - /google <text>: Perform a google search
+ - /so - Search For Something On Stack OverFlow
+ - /gh - Search For Something On GitHub
+ - /yts - Search For Something On YouTub
  - /reverse: Does a reverse image search of the media which it was replied to.
  - /img <text>: Search Google for images and returns them\nFor greater no. of results specify lim, For eg: `/img hello lim=10`
  - /app <appname>: Searches for an app in Play Store and returns its details.
