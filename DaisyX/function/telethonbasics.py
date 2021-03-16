@@ -1,3 +1,5 @@
+from telethon import events
+
 async def get_all_admin_chats(event):
     lul_stark = []
     all_chats = [
