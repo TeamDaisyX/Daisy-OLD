@@ -17,7 +17,7 @@ import subprocess
 from typing import List, Optional, Tuple
 import time
 from datetime import datetime
-from telethon import event
+from telethon import events
 from DaisyX.services.telethon import tbot as borg
 
 
