@@ -64,3 +64,5 @@ fontTools
 nltk
 emoji
 
+#Deezer
+wget
