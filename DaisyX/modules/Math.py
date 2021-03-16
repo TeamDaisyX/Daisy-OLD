@@ -73,7 +73,7 @@ async def _(message):
     else:
         evaluation = "Sorry I can't find result for the given equation"
     final_output = "**EQUATION**: `{}` \n\n **SOLUTION**: \n`{}` \n".format(
-        cmd, evaluation,.parse_mode = Markdown
+        cmd, evaluation, parse_mode = Markdown
     )
     await message.edit(final_output)
 
