@@ -18,6 +18,7 @@ import requests
 import string 
 import random 
 from DaisyX.services.sql.nsfw_watch_sql import add_nsfwatch, rmnsfwatch, get_all_nsfw_enabled_chat, is_nsfwatch_indb
+from DaisyX.function.telethonbasics import get_all_admin_chats,is_admin
 from telethon.tl.types import (
     ChannelParticipantsAdmins,
     ChatAdminRights,
