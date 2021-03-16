@@ -71,30 +71,30 @@ async def is_nsfw(event):
 @tbot.on(events.NewMessage(pattern="/addnsfw$"))
 async def nsfw_watch(event):
     if not event.is_group:
-        await event.edit("You Can Only Nsfw Watch in Groups.")
+        await event.reply("You Can Only Nsfw Watch in Groups.")
         return
     if not await is_admin(event, bot.uid): 
-        await event.edit("`I Should Be Admin To Do This!`")
+        await event.reply("`I Should Be Admin To Do This!`")
         return
     if is_nsfwatch_indb(str(event.chat_id)):
-        await event.edit("`This Chat Has Already Enabled Nsfw Watch.`")
+        await event.reply("`This Chat Has Already Enabled Nsfw Watch.`")
         return
     add_nsfwatch(str(event.chat_id))
-    await event.edit(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
+    await event.reply(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
     
 @tbot.on(events.NewMessage(pattern="/rmnsfw$"))
 async def disable_nsfw(event):
     if not event.is_group:
-        await event.edit("You Can Only Disable Nsfw Mode in Groups.")
+        await event.reply("You Can Only Disable Nsfw Mode in Groups.")
         return
     if not await is_admin(event, bot.uid): 
-        await event.edit("`I Should Be Admin To Do This!`")
+        await event.reply("`I Should Be Admin To Do This!`")
         return
     if not is_nsfwatch_indb(str(event.chat_id)):
-        await event.edit("This Chat Has Not Enabled Nsfw Watch.")
+        await event.reply("This Chat Has Not Enabled Nsfw Watch.")
         return
     rmnsfwatch(str(event.chat_id))
-    await event.edit(f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Nsfw Watch**")
+    await event.reply(f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Nsfw Watch**")
     
 @tbot.on(events.NewMessage())        
 async def ws(event):
