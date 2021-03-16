@@ -125,14 +125,13 @@ def get_text(message: Message) -> [None, str]:
         return None  
       
       
- async def iter_chats(client):
+async def iter_chats(client):
     chats = []
     async for dialog in client.iter_dialogs():
         if dialog.chat.type in ["supergroup", "channel"]:
             chats.append(dialog.chat.id)
     return chats
-    
-    
+      
 
 async def fetch_audio(client, message):
     c_time = time.time()
