@@ -201,6 +201,13 @@ def find_instance(items, class_or_tuple):
 DEFAULTUSER = "DaisyX"
 FILLED_UP_DADDY = "Invalid pack selected."
 
+async def get_sticker_emoji(event):
+    reply_message = await event.get_reply_message()
+    try:
+        final_emoji = reply_message.media.document.attributes[1].alt
+    except:
+        final_emoji = '😎'
+    return final_emoji
 
 @Daisy(pattern="^/kang ?(.*)")
 async def _(event):
@@ -208,11 +215,10 @@ async def _(event):
         await event.reply("PLease, Reply To A Sticker / Image To Add It Your Pack")
         return
     reply_message = await event.get_reply_message()
-    sticker_emoji = "😎"
+    sticker_emoji = await get_sticker_emoji(event)
     input_str = event.pattern_match.group(1)
     if input_str:
         sticker_emoji = input_str
-
     user = await event.get_sender()
     if not user.first_name:
         user.first_name = user.id
