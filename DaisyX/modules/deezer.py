@@ -21,7 +21,7 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from DaisyX.function.pluginhelpers import get_readable_time, delete_or_pass, progress,get_text
+from DaisyX.function.pluginhelpers import get_readable_time, delete_or_pass, progress,get_text , humanbytes
 from DaisyX.services.pyrogram import pbot
 from pyrogram.types import Message
 
