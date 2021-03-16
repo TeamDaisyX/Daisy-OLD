@@ -2,7 +2,7 @@
 from search_engine_parser import GoogleSearch
 from pyrogram import filters
 from DaisyX.services import pbot as app
-from DaisyX.function.fetch import fetch
+from DaisyX.modules.utils.fetch import fetch
 ARQ = "https://thearq.tech/"
 @app.on_message(filters.command("ud") & ~filters.edited)
 async def urbandict(_, message):
