@@ -21,6 +21,7 @@ import os
 import requests
 import wget
 from DaisyX.services.telethon import tbot
+from telethon import events
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
