@@ -1,18 +1,14 @@
 from DaisyX.services.telethon import tbot as client
 from telethon import events
+import DaisyX.function.pluginhelpers as borg
 
 @client.on(events.NewMessage(pattern="/tagall(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
+    mentions = "@tagall"
     chat = await event.get_input_chat()
-    mentions = ""
-    sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
-    async for x in event.client.iter_participants(chat):
-        mentions += f"[{x.first_name}](tg://user?id={x.id}) \n"
+    async for x in borg.iter_participants(chat, 100):
+        mentions += f"[\u2063](tg://user?id={x.id})"
+    await event.reply(mentions)
     await event.delete()
-    n = 4096
-    kk = [mentions[i:i+n] for i in range(0, len(mentions), n)]
-    for i in kk:
-        j = f"**{sh}** \n{i}"
-        await event.client.send_message(event.chat_id, j)
