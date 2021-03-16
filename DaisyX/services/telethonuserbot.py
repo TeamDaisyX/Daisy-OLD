@@ -1,4 +1,25 @@
+# This file is part of DaisyXBot (Telegram Bot)
 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+from DaisyX.config import get_str_key, get_int_key
+
+STRING_SESSION = get_str_key("STRING_SESSION", required=True)
+API_ID = get_int_key("APP_ID", required=True)
+API_HASH = get_str_key("APP_HASH", required=True
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
