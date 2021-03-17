@@ -24,7 +24,7 @@ globalchat = db.globchat
 CMD_STARTERS = "/"
 profanity.load_censor_words_from_file("./profanity_wordlist.txt")
 
-
+"""
 async def can_change_info(message):
     result = await tbot(
         functions.channels.GetParticipantRequest(
@@ -58,15 +58,21 @@ async def is_register_admin(chat, user):
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
-
+"""
 
 @register(pattern="^/profanity(?: |$)(.*)")
 async def profanity(event):
     if event.fwd_from:
         return
-    if event.is_private:
+    if not event.is_group:
+        await event.reply("You Can Only Nsfw Watch in Groups.")
         return
-    if not await can_change_info(message=event):
+    input_str = event.pattern_match.group(1)
+    if not await is_admin(event, BOT_ID): 
+        await event.reply("`I Should Be Admin To Do This!`")
+        return
+    if not await is_admin(event, event.message.sender_id): 
+        await event.reply("`You Should Be Admin To Do This!`")
         return
     input = event.pattern_match.group(1)
     chats = spammers.find({})
@@ -110,9 +116,15 @@ async def profanity(event):
 async def profanity(event):
     if event.fwd_from:
         return
-    if event.is_private:
+    if not event.is_group:
+        await event.reply("You Can Only Nsfw Watch in Groups.")
         return
-    if not await can_change_info(message=event):
+    input_str = event.pattern_match.group(1)
+    if not await is_admin(event, BOT_ID): 
+        await event.reply("`I Should Be Admin To Do This!`")
+        return
+    if not await is_admin(event, event.message.sender_id): 
+        await event.reply("`You Should Be Admin To Do This!`")
         return
     input = event.pattern_match.group(1)
     chats = globalchat.find({})
@@ -152,14 +164,19 @@ async def profanity(event):
 
 @tbot.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
-    if event.is_private:
-        return
     msg = str(event.text)
     sender = await event.get_sender()
     let = sender.username
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            return
+    if not event.is_group:
+        await event.reply("You Can Only Nsfw Watch in Groups.")
+        return
+    input_str = event.pattern_match.group(1)
+    if not await is_admin(event, BOT_ID): 
+        await event.reply("`I Should Be Admin To Do This!`")
+        return
+    if not await is_admin(event, event.message.sender_id): 
+        await event.reply("`You Should Be Admin To Do This!`")
+        return
     chats = spammers.find({})
     for c in chats:
         if event.text:
