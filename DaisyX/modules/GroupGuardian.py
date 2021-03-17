@@ -376,7 +376,7 @@ def extract_emojis(s):
 async def del_profanity(event):
     if event.is_private:
         return
-    msg = str(event.message)
+    msg = str(event.text)
     sender = await event.get_sender()
     sender.username
     if await is_admin(event, event.message.sender_id):
