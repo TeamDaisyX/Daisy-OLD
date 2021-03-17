@@ -110,6 +110,9 @@ async def ws(event):
         return
     if not await is_admin(event, BOT_ID):
         return
+    if await is_admin(event, event.message.sender_id):
+        print("he is a admin")
+        return
     hmmstark = await is_nsfw(event)
     his_id = event.sender_id
     if hmmstark is True:
@@ -129,6 +132,6 @@ async def ws(event):
             ujwal = wstark.username
         else:
             ujwal = wstark.id
-        await tbot.send_message(event.chat_id, f"**#NSFW_GUARDIAN** \n**{ujwal} your message contain NSFW content.. **\n So, Daisy deleted your message\n\n n**Nsfw Sender - User / Bot :** `{ujwal}` \n**Chat Title:** `{ctitle}` \n `Automatically Detected By DaisyAI` ")  
+        await tbot.send_message(event.chat_id, f"**#NSFW_GUARDIAN** \n**{ujwal} your message contain NSFW content.. **\n   So, Daisy deleted your message\n\n **Nsfw Sender - User / Bot :** `{ujwal}` \n**Chat Title:** `{ctitle}` \n\n`Automatically Detected By DaisyAI` ")  
 
     
