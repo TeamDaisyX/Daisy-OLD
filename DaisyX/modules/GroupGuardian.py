@@ -38,12 +38,14 @@ from telethon.tl.functions.channels import (
     EditBannedRequest,
     EditPhotoRequest,
 )
+from google_trans_new import google_translator
 from DaisyX.services.mongo import mongodb as db
 from DaisyX.services.events import register
 
 from DaisyX.services.telethon import tbot
 from DaisyX import BOT_ID
 
+translator = google_translator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 async def is_nsfw(event):
