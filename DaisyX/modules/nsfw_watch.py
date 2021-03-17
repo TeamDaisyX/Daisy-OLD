@@ -78,6 +78,9 @@ async def nsfw_watch(event):
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
+    if not await is_admin(event, event.message.sender_id): 
+        await event.reply("`You Should Be Admin To Do This!`")
+        return
     if (input_str == 'on' or input_str == 'On' or input_str == 'ON' or input_str == 'enable'):
         if is_nsfwatch_indb(str(event.chat_id)):
             await event.reply("`This Chat Has Already Enabled Nsfw Watch.`")
