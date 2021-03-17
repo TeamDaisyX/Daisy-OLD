@@ -15,6 +15,10 @@ MONGO_URI: "mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWri
 MONGO_PORT: 27017
 MONGO_DB': 'DaisyX'
 
+# For auto filters
+MONGO_URI2: "None" 
+MONGO_URI2_NAME: 'AutoFilters'
+
 API_PORT': 8080
 
 REDIS_URI: "redis-10514.c241.us-east-1-4.ec2.cloud.redislabs.com"
