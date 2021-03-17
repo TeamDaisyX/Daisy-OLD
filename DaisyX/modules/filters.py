@@ -389,7 +389,16 @@ __help__ = """
 Filter module is great for everything! filter in here is used to filter words or sentences in your chat - send notes, warn, ban those!
 
 <b>General (Admins):</b>
-- /addfilter (word/sentence)
+- /addfilter (word/sentence) (Mordern)
+- /cfilter <word>: Add a classic filter (Marie bot based)
+You can also include buttons in filters, example send `/cfilter google` in reply to "`Click Here To Open Google | [button('Google', 'google.com')]`"
+If you want more buttons, seperate each with "`•`", example send `/cfilter searchengine` in reply to "`Search Engines | [button('Google', 'google.com')] • [button('Yahoo', 'yahoo.com')] • [button('Bing', 'bing.com')]`"
+NOTE: 
+You need to use either ' or " to enclose the button text and url
+eg : `[button('Google', 'google.com')]`
+or `[button("Google", "google.com")]`
+- /stopfilter <word>: Stop that filter.
+- /stopallfilters: Delete all filters in the current chat.
 As in command this is used to add filter. To avoid hassle when setting up the the filter, DaisyXBot will take you through an interactive setup!
 - /delfilter (word/sentence)
 As in command this is used to delete a filter you want!
@@ -406,7 +415,7 @@ A filter can support multiple actions !
 Ah if you don't understand what this actions are for? Actions says bot what to do when the given <code>word/sentence</code> is triggered.
 
 <b>Available for all users:</b>
-- /filters or /listfilters
+- /filters or /listfilters : List all active filters in the chat.
 
 You want to know all filter of your chat/ chat you joined? Use this command. It will list all filters along with specified actions !
 """
