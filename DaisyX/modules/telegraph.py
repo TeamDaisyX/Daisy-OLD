@@ -1,7 +1,7 @@
-"""@telegraph Utilities
-Available Commands:
-/telegraph media as reply to a media
-/telegraph text as reply to a large text"""
+#@telegraph Utilities
+#Available Commands:
+#/telegraph media as reply to a media
+#/telegraph text as reply to a large text
 import os
 from datetime import datetime
 
@@ -21,7 +21,7 @@ TMP_DOWNLOAD_DIRECTORY = "./"
 BOTLOG = False
 
 
-@borg.on(events.NewMessage(pattern="/telegraph (media|text) ?(.*)"))
+@borg.on(events.NewMessage(pattern="/tegraph (media|text) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,9 +36,9 @@ async def _(event):
             )
             end = datetime.now()
             ms = (end - start).seconds
-            await event.reply(
-                "Downloaded to {} in {} seconds.".format(downloaded_file_name, ms)
-            )
+            del_res = await event.reply(
+                          "Downloaded to {} in {} seconds.".format(downloaded_file_name, ms)
+                      )            
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
             try:
@@ -57,6 +57,7 @@ async def _(event):
                     ),
                     link_preview=True,
                 )
+                await del_res.delete()
         elif input_str == "text":
             user_object = await borg.get_entity(r_message.sender_id)
             title_of_page = user_object.first_name  # + " " + user_object.last_name
@@ -86,6 +87,7 @@ async def _(event):
                 ),
                 link_preview=True,
             )
+            await del_res.delete()
     else:
         await event.reply(
             "Reply to a message to get a permanent telegra.ph link. "
@@ -96,13 +98,12 @@ def resize_image(image):
     im = Image.open(image)
     im.save(image, "PNG")
 
+__mod_name__ = "Telegraph"
+     #   telegraph: Telegraph
+# - /telegraph media <reply to image or video>
+# Usage : Upload image and video directly to telegraph.
+# - /telegraph text <reply to text>
+# Usage : upload text directly to telegraph .
+#"""
 
-__mod_name__ = """ Telegraph
-        telegraph: Telegraph
- - /telegraph media <reply to image or video>
- Usage : Upload image and video directly to telegraph.
- - /telegraph text <reply to text>
- Usage : upload text directly to telegraph .
-"""
-
-__help__ = "Telegraph"
+#__help__ = "Telegraph"
