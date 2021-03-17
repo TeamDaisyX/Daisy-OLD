@@ -69,7 +69,7 @@ async def is_nsfw(event):
       is_nsfw = False
     return is_nsfw
   
-@borg.on(events.NewMessage(pattern="/nsfwguardian (.*)"))
+@tbot.on(events.NewMessage(pattern="/nsfwguardian (.*)"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
