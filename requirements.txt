@@ -10,6 +10,7 @@ pymongo
 motor
 sqlalchemy==1.3.20 # For old modules
 dnspython # needed to connect to cloud MongoDB instances
+umongo #Auto Filters
 
 # Optional deps to make bot faster
 aiohttp[speedups]
