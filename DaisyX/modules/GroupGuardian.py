@@ -329,3 +329,5 @@ async def del_profanity(event):
                     await asyncio.sleep(10)
                     await dev.delete()
     
+
+    
