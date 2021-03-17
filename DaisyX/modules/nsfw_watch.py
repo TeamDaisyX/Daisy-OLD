@@ -78,7 +78,9 @@ async def nsfw_watch(event):
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
-    if not await is_admin(event, event.message.sender_id): 
+    if await is_admin(event, event.message.sender_id):       
+        continue
+    else:
         await event.reply("`You Should Be Admin To Do This!`")
         return
     if (input_str == 'on' or input_str == 'On' or input_str == 'ON' or input_str == 'enable'):
@@ -118,7 +120,7 @@ async def ws(event):
     if hmmstark is True:
         try:
             await event.delete()
-            await event.client(EditBannedRequest(event.chat_id, his_id, MUTE_RIGHTS))
+            #await event.client(EditBannedRequest(event.chat_id, his_id, MUTE_RIGHTS))
         except:
             pass
         lolchat = await event.get_chat()
