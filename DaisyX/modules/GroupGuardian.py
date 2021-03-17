@@ -141,7 +141,7 @@ async def ws(event):
             ujwal = wstark.username
         else:
             ujwal = wstark.id
-        await tbot.send_message(event.chat_id, f"**#NSFW_GUARDIAN** \n**{ujwal} your message contain NSFW content.. **\n   So, Daisy deleted your message\n\n **Nsfw Sender - User / Bot :** `{ujwal}` \n**Chat Title:** `{ctitle}` \n\n`Automatically Detected By DaisyAI` ") 
+        await tbot.send_message(event.chat_id, f"**NSFW DETECTED**\n\n{ujwal}'s message contain NSFW content.. So, Daisy deleted the message\n\n **Nsfw Sender - User / Bot :** `{ujwal}` \n**Chat Title:** `{ctitle}` \n\n`⚔️Automatic Detections Powered By DaisyAI` \n**#GROUP_GUARDIAN** ") 
         
 # This Module is ported from https://github.com/MissJuliaRobot/MissJuliaRobot
 # This hardwork was completely done by MissJuliaRobot
@@ -299,10 +299,7 @@ async def del_profanity(event):
                         dev = await event.respond(final)
                         await asyncio.sleep(10)
                         await dev.delete()
-                        os.remove("nudes.jpg")
-        else:
-            await event.reply("`You Should Be Admin To Do This!`")
-            return
+                            os.remove("nudes.jpg")
 @tbot.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
