@@ -74,7 +74,7 @@ async def nsfw_watch(event):
     if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
         return
-    if not await is_admin(event, bot.uid): 
+    if not await is_admin(event, tbot.uid): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
     if is_nsfwatch_indb(str(event.chat_id)):
@@ -88,7 +88,7 @@ async def disable_nsfw(event):
     if not event.is_group:
         await event.reply("You Can Only Disable Nsfw Mode in Groups.")
         return
-    if not await is_admin(event, bot.uid): 
+    if not await is_admin(event, tbot.uid): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
     if not is_nsfwatch_indb(str(event.chat_id)):
@@ -108,7 +108,7 @@ async def ws(event):
         return
     if not (event.gif or event.video or event.video_note or event.photo or event.sticker):
         return
-    if not await is_admin(event, bot.uid):
+    if not await is_admin(event, tbot.uid):
         return
     hmmstark = await is_nsfw(event)
     his_id = event.sender_id
