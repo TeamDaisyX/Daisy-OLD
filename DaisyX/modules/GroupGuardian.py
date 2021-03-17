@@ -410,7 +410,7 @@ async def del_profanity(event):
                     rm = re.sub(r"\[([^]]+)]\(\s*([^)]+)\s*\)", r"", msg)
                 else:
                     rm = msg
-                # print (rm)
+                print (rm)
                 b = translator.detect(rm)
                 if not "en" in b and not b == "":
                     await event.delete()
