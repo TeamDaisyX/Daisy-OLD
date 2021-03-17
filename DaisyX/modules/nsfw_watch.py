@@ -78,28 +78,26 @@ async def nsfw_watch(event):
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
-    if await is_admin(event, event.message.sender_id):       
-        continue
+    if await is_admin(event, event.message.sender_id):      
+        if (input_str == 'on' or input_str == 'On' or input_str == 'ON' or input_str == 'enable'):
+            if is_nsfwatch_indb(str(event.chat_id)):
+                await event.reply("`This Chat Has Already Enabled Nsfw Watch.`")
+                return
+            add_nsfwatch(str(event.chat_id))
+            await event.reply(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
+        elif (input_str == 'off' or input_str == 'Off' or input_str == 'OFF' or input_str == 'disable'):    
+            if not is_nsfwatch_indb(str(event.chat_id)):
+                await event.reply("This Chat Has Not Enabled Nsfw Watch.")
+                return
+            rmnsfwatch(str(event.chat_id))
+            await event.reply(f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Nsfw Watch**")
+        else:
+            await event.reply(
+                "I undestand `/nsfwguardian on` and `/nsfwguardian off` only"
+            )
     else:
         await event.reply("`You Should Be Admin To Do This!`")
         return
-    if (input_str == 'on' or input_str == 'On' or input_str == 'ON' or input_str == 'enable'):
-        if is_nsfwatch_indb(str(event.chat_id)):
-            await event.reply("`This Chat Has Already Enabled Nsfw Watch.`")
-            return
-        add_nsfwatch(str(event.chat_id))
-        await event.reply(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
-    elif (input_str == 'off' or input_str == 'Off' or input_str == 'OFF' or input_str == 'disable'):    
-        if not is_nsfwatch_indb(str(event.chat_id)):
-            await event.reply("This Chat Has Not Enabled Nsfw Watch.")
-            return
-        rmnsfwatch(str(event.chat_id))
-        await event.reply(f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Nsfw Watch**")
-    else:
-        await event.reply(
-            "I undestand `/nsfwguardian on` and `/nsfwguardian off` only"
-        )
-    
 @tbot.on(events.NewMessage())        
 async def ws(event):
     warner_starkz = get_all_nsfw_enabled_chat()
