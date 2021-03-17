@@ -84,7 +84,7 @@ async def nsfw_watch(event):
             return
         add_nsfwatch(str(event.chat_id))
         await event.reply(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Groups Nsfw Contents Will Be Deleted**")
-    elif (input_str == 'on' or input_str == 'On' or input_str == 'ON' or input_str == 'enable'):    
+    elif (input_str == 'off' or input_str == 'Off' or input_str == 'OFF' or input_str == 'disable'):    
         if not is_nsfwatch_indb(str(event.chat_id)):
             await event.reply("This Chat Has Not Enabled Nsfw Watch.")
             return
