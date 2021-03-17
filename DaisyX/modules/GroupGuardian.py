@@ -20,6 +20,7 @@ import random
 import asyncio
 import better_profanity
 import nude
+import emoji
 from better_profanity import profanity
 from textblob import TextBlob
 import os
