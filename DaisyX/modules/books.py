@@ -7,8 +7,11 @@ from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen, urlretrieve
 from DaisyX.services.telethon import tbot
 from telethon import events
+from .utils.disable import disableable_dec
+
 
 @tbot.on(events.NewMessage(pattern="^/book (.*)"))
+@disableable_dec('book')
 async def _(event):
     if event.fwd_from:
         return
