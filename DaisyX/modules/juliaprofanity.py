@@ -8,8 +8,8 @@ import better_profanity
 import nude
 from better_profanity import profanity
 from telethon import events, types
-#from telethon.tl import *
-#from telethon.tl.types import *
+from telethon.tl import *
+from telethon.tl.types import *
 from textblob import TextBlob
 
 from DaisyX import *
@@ -39,7 +39,7 @@ async def can_change_info(message):
 
 
 async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
+    if isinstance(chat, (InputPeerChannel, InputChannel)):
 
         return isinstance(
             (
@@ -47,7 +47,7 @@ async def is_register_admin(chat, user):
             ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
-    if isinstance(chat, types.InputPeerChat):
+    if isinstance(chat, InputPeerChat):
 
         ui = await tbot.get_peer_id(user)
         ps = (
