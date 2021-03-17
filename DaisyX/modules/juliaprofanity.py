@@ -8,8 +8,8 @@ import better_profanity
 import nude
 from better_profanity import profanity
 from telethon import events, types
-from telethon.tl import *
-from telethon.tl.types import *
+#from telethon.tl import *
+#from telethon.tl.types import *
 from textblob import TextBlob
 
 from DaisyX import *
