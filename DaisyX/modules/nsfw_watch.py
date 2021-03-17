@@ -109,7 +109,6 @@ async def ws(event):
     if not await is_admin(event, BOT_ID):
         return
     if await is_admin(event, event.message.sender_id):
-        print("he is a admin")
         return
     hmmstark = await is_nsfw(event)
     his_id = event.sender_id
