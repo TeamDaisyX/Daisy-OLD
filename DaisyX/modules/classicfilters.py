@@ -254,19 +254,19 @@ file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
 
-__help__ = """
-Admin Only
- - /cfilter <word>: Add a classic filter (Marie type)
-You can also include buttons in filters, example send `/cfilter google` in reply to "`Click Here To Open Google | [button('Google', 'google.com')]`"
-If you want more buttons, seperate each with "`•`", example send `/cfilter searchengine` in reply to "`Search Engines | [button('Google', 'google.com')] • [button('Yahoo', 'yahoo.com')] • [button('Bing', 'bing.com')]`"
-NOTE: 
-You need to use either ' or " to enclose the button text and url
-eg : `[button('Google', 'google.com')]`
-or `[button("Google", "google.com")]`
- - /stopfilter <word>: Stop that filter.
- - /stopallfilters: Delete all filters in the current chat.
-Admin+Non-Admin
- - /listfilters: List all active filters in the chat
-"""
+#__help__ = """
+#Admin Only
+# - /cfilter <word>: Add a classic filter (Marie type)
+#You can also include buttons in filters, example send `/cfilter google` in reply to "`Click Here To Open Google | [button('Google', 'google.com')]`"
+#If you want more buttons, seperate each with "`•`", example send `/cfilter searchengine` in reply to "`Search Engines | [button('Google', 'google.com')] • [button('Yahoo', 'yahoo.com')] • [button('Bing', 'bing.com')]`"
+#NOTE: 
+#You need to use either ' or " to enclose the button text and url
+#eg : `[button('Google', 'google.com')]`
+#or `[button("Google", "google.com")]`
+# - /stopfilter <word>: Stop that filter.
+# - /stopallfilters: Delete all filters in the current chat.
+#Admin+Non-Admin
+# - /listfilters: List all active filters in the chat
+#"""
 
 __mod_name__ = "Classic Filters"
