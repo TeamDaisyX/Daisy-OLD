@@ -267,7 +267,6 @@ async def del_profanity(event):
     let = sender.username
     if not event.is_group:
         return
-    input_str = event.pattern_match.group(1)
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
