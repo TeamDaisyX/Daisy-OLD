@@ -22,7 +22,7 @@ import better_profanity
 import nude
 from better_profanity import profanity
 from textblob import TextBlob
-
+import os
 from DaisyX.services.sql.nsfw_watch_sql import add_nsfwatch, rmnsfwatch, get_all_nsfw_enabled_chat, is_nsfwatch_indb
 from DaisyX.function.telethonbasics import get_all_admin_chats,is_admin
 from telethon.tl.types import (
@@ -299,7 +299,7 @@ async def del_profanity(event):
                         dev = await event.respond(final)
                         await asyncio.sleep(10)
                         await dev.delete()
-                            os.remove("nudes.jpg")
+                        os.remove("nudes.jpg")
 @tbot.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
