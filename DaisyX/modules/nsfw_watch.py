@@ -31,7 +31,6 @@ from telethon.tl.functions.channels import (
     EditBannedRequest,
     EditPhotoRequest,
 )
-import os
 from DaisyX.services.telethon import tbot
 from DaisyX import BOT_ID
 
@@ -50,15 +49,15 @@ async def is_nsfw(event):
         return False
     if lmao.video or lmao.video_note or lmao.sticker or lmao.gif:
         try:
-            await event.client.download_media(lmao.media, thumb=-1 ,"nudes.jpg")
+            starkstark = await event.client.download_media(lmao.media, thumb=-1)
         except:
             return False
     elif lmao.photo or lmao.sticker:
         try:
-            await event.client.download_media(lmao.media,"nudes.jpg")
+            starkstark = await event.client.download_media(lmao.media)
         except:
             return False
-    img = "nudes.jpg"
+    img = starkstark
     f = {"file": (img, open(img, "rb"))}
     
     r = requests.post("https://starkapi.herokuapp.com/nsfw/", files = f).json()
@@ -68,7 +67,6 @@ async def is_nsfw(event):
       is_nsfw = True
     elif r.get("is_nsfw") is False:
       is_nsfw = False
-    os.remove("nudes.jpg")
     return is_nsfw
   
 @tbot.on(events.NewMessage(pattern="/addnsfw$"))
@@ -133,5 +131,4 @@ async def ws(event):
             ujwal = wstark.id
         await tbot.send_message(event.chat_id, f"**#NSFW_WATCH** \n**{ujwal} your message contain NSFW content.. \n So, Daisy deleted your message")  
 
-    
     
