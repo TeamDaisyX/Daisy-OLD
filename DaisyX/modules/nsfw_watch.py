@@ -129,6 +129,6 @@ async def ws(event):
             ujwal = wstark.username
         else:
             ujwal = wstark.id
-        await tbot.send_message(event.chat_id, f"**#NSFW_WATCH** \n**{ujwal} your message contain NSFW content.. \n So, Daisy deleted your message")  
+        await tbot.send_message(event.chat_id, f"**#NSFW_GUARDIAN** \n**{ujwal} your message contain NSFW content.. **\n So, Daisy deleted your message\n\n n**Nsfw Sender - User / Bot :** `{ujwal}` \n**Chat Title:** `{ctitle}` \n `Automatically Detected By DaisyAI` ")  
 
     
