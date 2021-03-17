@@ -45,7 +45,7 @@ telegraph
 #Pyrogram
 tgCrypto>=1.2.2
 
-#OldProcesses
+#Old DB Processes
 psycopg2
 
 #YTDL
@@ -73,4 +73,7 @@ asyncio
 #Markup
 Markdown>=3.3.4
 
-
+#profanity (Credits to Julia)
+better_profanity
+textblob 
+nudepy
