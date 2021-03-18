@@ -9,9 +9,9 @@ APP_ID: 2250399
 APP_HASH: "92f3051096a1da6bae0ebf2f06b011c8"
 
 #Generate a telethon str session  with https://repl.it/@SpEcHiDe/GenerateStringSession
-STRING_SESSION: "1BVtsOKgBu0m-fztwBvm6XqOCGccS9W-lI_8XcglfXLRIIhZogn8-ibc1hqB-FLddjWtdXT9aB3STHKX7TFF8uHv0BfaVPeEsJDpgqOnz-kmCpXh90YAdsYH7WvOr49uYBDWQB4iGYsI8k_KFiJfowAE3tzDN1I8atlPPEBQELEtPDRRvd0mwZkF9_YKVJIB1a8xxjzKfDipPDNP7TtYmFkZkWPpEYu5AnLkmIDddJzvCaa1Mlc_rOBMuXbNyIXKXWSy4apB0T12goNUgSgqG4zgFhdbDNg8iPSfALIHDKWNKlYtY8b_d43ZY-7cCPZbE4CXa9paxDng0oMroCpU0awywGb_eVZQ="
+STRING_SESSION: "1BVtsOI4Bu3TTK7IjFnJFmCxmyMIgQyuPlRs0onaBndTmknBn4q97Zq8AOpU8jy7zLYYANSMguTNR61UTnKGcV-kdzSl2LZJj8xQRLIgXkjGAzziSMGgepblRK7E6x5FgSc0NCR0oU9aQe7ue5bpWOxhUgLvZDyILPL2bS-77JfOsB6rcGb_WAiL6H4PtmWJKiPP64u1JG1MhqNoXOWAhcv-1eRRQMXQXT-4Q51_AFZ57BxsVuVoDINPb84gJRtcATguhLuYAq0bmtO4TBHHAyr77JptKWXbA5PDj42VJQaxTTgsOXbqeDdLdL_YPCE8nk9ZKsg6Ah3dkJ3ufAQCxgvBHWSc2Wc8="
 
-MONGO_URI: "mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWrites=true&w=majority"
+MONGO_URI: "mongodb+srv://DaisyX:DaisyX@cluster0.vrgjt.mongodb.net/DaisyX?retryWrites=true&w=majority"
 MONGO_PORT: 27017
 MONGO_DB': 'DaisyX'
 
