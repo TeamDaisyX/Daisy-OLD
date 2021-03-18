@@ -27,8 +27,8 @@ OWNER =get_int_key("OWNER_ID", required=True)
     
 @pbot.on_message(filters.command(["pyrorestart"]))    
 async def restartPyrogram(cls, message: Message) -> None:                   
-    #user = message.from_user.id if message.from_user else 0
-    user = client.get_chat_member(message.chat.id, message.from_user.id)
+    user = message.from_user.id if message.from_user else 0
+    #user = client.get_chat_member(message.chat.id, message.from_user.id)
     if user.user.id == OWNER:
       await message.answer(f"Restarting pyrogram, initiated by {user}")
       log.info(f"Restarting pyrogram, initiated by {user}")
@@ -38,8 +38,8 @@ async def restartPyrogram(cls, message: Message) -> None:
 
 @pbot.on_message(filters.command(["pyroreset"]))                
 async def resetPyrogram(cls, message: Message) -> None:
-    #user = message.from_user.id if message.from_user else 0
-    user = client.get_chat_member(message.chat.id, message.from_user.id)
+    user = message.from_user.id if message.from_user else 0
+    #user = client.get_chat_member(message.chat.id, message.from_user.id)
     if user.user.id == OWNER:
       await message.answer(f"Resetting pyrogram, initiated by {user}")
       log.warning(f"Resetting pyrogram, initiated by {user}")
