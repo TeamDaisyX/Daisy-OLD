@@ -19,8 +19,8 @@ from telethon.sessions import StringSession
 from DaisyX.config import get_str_key, get_int_key
 
 STRING_SESSION = get_str_key("STRING_SESSION", required=True)
-API_ID = get_int_key("APP_ID", required=True)
-API_HASH = get_str_key("APP_HASH", required=True)
+API_ID = get_int_key("APPID", required=True)
+API_HASH = get_str_key("APPHASH", required=True)
                        
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
