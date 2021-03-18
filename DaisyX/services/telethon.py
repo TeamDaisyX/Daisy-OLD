@@ -23,8 +23,8 @@ NAME = TOKEN.split(':')[0]
 
 tbot = TelegramClient(
     NAME,
-    get_int_key("APP_ID", required=True),
-    get_str_key("APP_HASH", required=True)
+    get_int_key("APPID", required=True),
+    get_str_key("APPHASH", required=True)
 )
 
 # Telethon
