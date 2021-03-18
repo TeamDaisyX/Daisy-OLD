@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+from pyrogram import filters
 from typing import TYPE_CHECKING
 
 from DaisyX.utils.logger import log
