@@ -9,7 +9,13 @@ from DaisyX.services.telethon import tbot
 from telethon import events
 
 
-@tbot.on(events.NewMessage(pattern="^/book (.*)"))
+#@tbot.on(events.NewMessage(pattern="^/book (.*)"))
+from DaisyX.decorator import register
+from .utils.disable import disableable_dec
+
+
+@register(cmds=['book', 'books'])
+@disableable_dec('book')
 async def _(event):
     if event.fwd_from:
         return
