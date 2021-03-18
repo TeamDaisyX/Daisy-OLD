@@ -29,7 +29,7 @@ OWNER =get_int_key("OWNER_ID", required=True)
 async def restartPyrogram(cls, message: Message) -> None:                   
     user = message.from_user.id if message.from_user else 0
     #user = client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.user.id == OWNER:
+    if user == OWNER:
       await message.answer(f"Restarting pyrogram, initiated by {user}")
       log.info(f"Restarting pyrogram, initiated by {user}")
       if await pbot.restart():
@@ -40,7 +40,7 @@ async def restartPyrogram(cls, message: Message) -> None:
 async def resetPyrogram(cls, message: Message) -> None:
     user = message.from_user.id if message.from_user else 0
     #user = client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.user.id == OWNER:
+    if user == OWNER:
       await message.answer(f"Resetting pyrogram, initiated by {user}")
       log.warning(f"Resetting pyrogram, initiated by {user}")
       if await pbot.log_out():
