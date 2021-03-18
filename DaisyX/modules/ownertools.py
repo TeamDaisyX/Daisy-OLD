@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from DaisyX.utils.logging import log
+from DaisyX.utils.logger import log
 from DaisyX.services.pyrogram import pbot
 if TYPE_CHECKING:
     from aiogram.api.types import Message
