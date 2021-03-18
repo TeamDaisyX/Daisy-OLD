@@ -11,7 +11,7 @@ APP_HASH: "92f3051096a1da6bae0ebf2f06b011c8"
 #Generate a telethon str session  with https://repl.it/@SpEcHiDe/GenerateStringSession
 STRING_SESSION: "1BVtsOKMBu0g8L4eSLZD0nbTWWTxAjBaPEbLFmRMZhoPKP7fwqqChM6zTHZKbjcfa3Vdvot8iVvbuumbBc-wLig3nsAHzovpaSCxvZV6fqwJY_8OLW9ekU5ZXLZXC_EUgBRMkdWLRPOXm6NaHsHJIRwc4kyhM4lFeuwsKIbK4RyphgdJy9OuNhQjttjCkhBge-3nnVEIMmY9aaIEFIw4w3M6INqE1fynkzDVK95Tp1SYyyPMQ0TwUWZFD-biK9H2SehbH2zsQJlUmVMOGjGgArkE-KtGVbm6VyIpesA8FtsLpoe72jXBmGElcLaDOve3AxfLGZVzM92AwAizPezj3aemOLegHVk8="
 
-MONGO_URI: "mongodb+srv://DaisyX:DaisyX@cluster0.vrgjt.mongodb.net/DaisyX?retryWrites=true&w=majority"
+MONGO_URI: "mongodb+srv://daisy:daisy@cluster0.ffb4i.mongodb.net/DaisyX?retryWrites=true&w=majority"
 MONGO_PORT: 27017
 MONGO_DB': 'DaisyX'
 
