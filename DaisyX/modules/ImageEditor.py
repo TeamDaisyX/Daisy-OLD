@@ -74,7 +74,18 @@ async def hmm(client, message):
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
         return
-    
+    @Client.on_message(filters.text)
+    async def exxit(client: Client, message: Message):
+
+        args = message.text.split(None, 1)
+        args = str(args)
+        if "/" in args:
+
+
+            await client.send_message(
+            chat_id=message.chat.id,
+            text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
+            return
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
@@ -304,7 +315,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         await query.message.delete()
         if query.data == "bright":
-            await bright(client, query.message)
+            await bright(client, query.message) and return
 
         elif query.data == "mix":
             await mix(client, query.message)
