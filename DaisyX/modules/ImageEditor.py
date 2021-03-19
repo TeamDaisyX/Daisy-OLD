@@ -61,7 +61,7 @@ async def hmm(client, message):
             chat_id=message.chat.id,
             text="**Image Editor Running, Now send a image to process**ㅤㅤ")  
     """
-
+    replied = message.reply_to_message
     if not (replied.photo):
         return
     else:
@@ -106,7 +106,7 @@ async def hmm(client, message):
                             ],
                         ]
                     ),
-                    reply_to_message_id = message.message_id,
+                    reply_to_message_id = message.reply_to_message.id,
                 )
             except Exception as e:
                 print("photomarkup error - " + str(e))
