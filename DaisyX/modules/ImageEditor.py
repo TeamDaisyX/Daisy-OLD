@@ -315,18 +315,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         await query.message.delete()
         if query.data == "bright":
-            await bright(client, query.message) and return
-
+            await bright(client, query.message)  
+            return
         elif query.data == "mix":
             await mix(client, query.message)
             return
 
         elif query.data == "b|w":
             await black_white(client, query.message)
-
+            return
         elif query.data == "circlewithbg":
             await circle_with_bg(client, query.message)
-
+            return
         elif query.data == "circlewithoutbg":
             await circle_without_bg(client, query.message)
 
