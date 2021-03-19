@@ -74,18 +74,7 @@ async def hmm(client, message):
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
         return
-    @Client.on_message(filters.text)
-    async def exxit(client: Client, message: Message):
 
-        args = message.text.split(None, 1)
-        args = str(args)
-        if "/" in args:
-
-
-            await client.send_message(
-            chat_id=message.chat.id,
-            text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
-            return
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
