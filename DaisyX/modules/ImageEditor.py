@@ -52,14 +52,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from DaisyX.services.pyrogram import pbot as Client 
 from pyrogram import filters
 
-@Client.on_message(filters.command(["imgeditor", "editimage","editor"]))
+@Client.on_message(filters.command(["imgeditor", "editimage","editor","imageeditor"]))
 async def hmm(client, message):
     
    
     
     await client.send_message(
             chat_id=message.chat.id,
-            text="**Image Editor Running, Now send a image to edit**ㅤㅤ",reply_markup=InlineKeyboardMarkup(
+            text="**Image Editor Running, Now send a image to edit\n Send /cancel to exit**ㅤㅤ",reply_markup=InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(text="CANCEL", callback_data="close_e")  
@@ -68,7 +68,7 @@ async def hmm(client, message):
             )
         
     )
-    @Client.on_message(filters.text)
+    @Client.on_message(filters.command(["cancel", "end","stop"]))
     async def wow(client: Client, message: Message):
         await client.send_message(
             chat_id=message.chat.id,
@@ -79,7 +79,7 @@ async def hmm(client, message):
         try:
             await client.send_message(
                 chat_id=message.chat.id,
-                text="Select your required mode from below!\n **Powered by @DaisySupport_Official**ㅤㅤ",
+                text="Select your required mode from below!\n **Powered by**  @DaisySupport_Officialㅤㅤ",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
