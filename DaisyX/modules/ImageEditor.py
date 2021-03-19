@@ -7,12 +7,12 @@ from DaisyX.Addons.ImgEditor.edit_1 import (  # pylint:disable=import-error
     mix,
     g_blur,
     normal_blur,
+    black_white,
     box_blur,
 )
 from DaisyX.Addons.ImgEditor.edit_2 import (  # pylint:disable=import-error
     circle_with_bg,
     circle_without_bg,
-    black_white,
     sticker,
     edge_curved,
     contrast,
