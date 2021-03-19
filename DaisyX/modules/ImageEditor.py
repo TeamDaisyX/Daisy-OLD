@@ -99,7 +99,7 @@ async def photo(client: Client, message: Message):
                     ],
                 ]
             ),
-            reply_to_message_id = message_id, replies=0,
+            reply_to_message_id = message_id,
         )
     except Exception as e:
         print("photomarkup error - " + str(e))
@@ -276,7 +276,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
         #await query.message.delete()
         if query.data == "bright":
-            await bright(client, query.message)
+            await bright(client, message)
 
         elif query.data == "mix":
             await mix(client, query.message)
