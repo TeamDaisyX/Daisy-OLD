@@ -42,12 +42,12 @@ def _onUnMuteRequest(client, cb):
     user_id = cb.from_user.id
     chat_id = cb.message.chat.id
     chat_db = sql.fs_settings(chat_id)
-    user = client.get_chat_member(message.chat.id, message.from_user.id)
+    user = client.get_chat_member(cb.chat.id, cb.from_user.id)
     if user.status is "administrator":    
         client.unban_chat_member(chat_id, user_id)
         cb.message.delete()
         client.send_message(chat_id,f"❗ **Congragulations {cb.from_user.mention} you got a VIP entry\n`Unmuted by an Admin`")
-    else:    
+    else: 
         if chat_db:
             channel = chat_db.channel
             chat_member = client.get_chat_member(chat_id, user_id)
