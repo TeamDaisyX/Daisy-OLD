@@ -42,7 +42,7 @@ def _onUnMuteRequest(client, cb):
     user_id = cb.from_user.id
     chat_id = cb.message.chat.id
     chat_db = sql.fs_settings(chat_id)
-    user = client.get_chat_member(cb.chat.id, cb.from_user.id)
+    user = client.get_chat_member(client.get_chat_member(chat_id, user_id))
     if user.status is "administrator":    
         client.unban_chat_member(chat_id, user_id)
         cb.message.delete()
