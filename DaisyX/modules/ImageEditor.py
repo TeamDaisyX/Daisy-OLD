@@ -1,3 +1,4 @@
+
 # By @TroJanzHEX
 # Rewrite to DaisyX by @InukaASiTH
 
@@ -74,6 +75,18 @@ async def hmm(client, message):
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
         return
+    @Client.on_message(filters.text)
+    async def exxit(client: Client, message: Message):
+            
+        args = message.text.split(None, 1)
+        args = str(args)
+        if "/" in args:
+            
+            
+            await client.send_message(
+            chat_id=message.chat.id,
+            text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
+            return
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
@@ -288,162 +301,156 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ),
         )
 
-    if query.data not in [
-        "removebg",
-        "stick",
-        "rotate",
-        "glitch",
-        "normalglitch",
-        "scanlineglitch",
-        "blur",
-        "circle",
-        "border",
-    ]:
 
+    
+    if query.data == "bright":
+        await bright(client, query.message)
         await query.message.delete()
-        if query.data == "bright":
-            await bright(client, query.message)
-            return
+        return
 
-        elif query.data == "mix":
-            await mix(client, query.message)
-            return
+    elif query.data == "mix":
+        await mix(client, query.message)
+        return
 
-        elif query.data == "b|w":
-            await black_white(client, query.message)
-            return
+    elif query.data == "b|w":
+        await black_white(client, query.message)
+        return
 
-        elif query.data == "circlewithbg":
-            await circle_with_bg(client, query.message)
-            return
+    elif query.data == "circlewithbg":
+        await circle_with_bg(client, query.message)
+        return
 
-        elif query.data == "circlewithoutbg":
-            await circle_without_bg(client, query.message)
-            return
+    elif query.data == "circlewithoutbg":
+        await circle_without_bg(client, query.message)
+        return
 
-        elif query.data == "green":
-            await green_border(client, query.message)
-            return
+    elif query.data == "green":
+        await green_border(client, query.message)
+        return
 
-        elif query.data == "blue":
-            await blue_border(client, query.message)
-            return
+    elif query.data == "blue":
+        await blue_border(client, query.message)
+        return
 
-        elif query.data == "red":
-            await red_border(client, query.message)
-            return
+    elif query.data == "red":
+        await red_border(client, query.message)
+        return
 
-        elif query.data == "black":
-            await black_border(client, query.message)
-            return
+    elif query.data == "black":
+        await black_border(client, query.message)
+        return
 
-        elif query.data == "circle_sticker":
-            await round_sticker(client, query.message)
-            return
-    
-        elif query.data == "close_e":
-            return
-    
-        elif query.data == "inverted":
-            await inverted(client, query.message)
-            return
+    elif query.data == "circle_sticker":
+        await round_sticker(client, query.message)
+        return
 
-        elif query.data == "stkr":
-            await sticker(client, query.message)
-            return
+    elif query.data == "close_e":
+        return
 
-        elif query.data == "cur_ved":
-            await edge_curved(client, query.message)
-            return
+    elif query.data == "inverted":
+        await inverted(client, query.message)
+        return
 
-        elif query.data == "90":
-            await rotate_90(client, query.message)
-            return
+    elif query.data == "stkr":
+        await sticker(client, query.message)
+        return
 
-        elif query.data == "180":
-            await rotate_180(client, query.message)
-            return
+    elif query.data == "cur_ved":
+        await edge_curved(client, query.message)
+        return
 
-        elif query.data == "270":
-            await rotate_270(client, query.message)
-            return
+    elif query.data == "90":
+        await rotate_90(client, query.message)
+        return
 
-        elif query.data == "contrast":
-            await contrast(client, query.message)
-            return
+    elif query.data == "180":
+        await rotate_180(client, query.message)
+        return
 
-        elif query.data == "box":
-            await box_blur(client, query.message)
-            return
+    elif query.data == "270":
+        await rotate_270(client, query.message)
+        return
 
-        elif query.data == "gas":
-            await g_blur(client, query.message)
-            return
+    elif query.data == "contrast":
+        await contrast(client, query.message)
+        return
 
-        elif query.data == "normal":
-            await normal_blur(client, query.message)
-            return
+    elif query.data == "box":
+        await box_blur(client, query.message)
+        return
 
-        elif query.data == "sepia":
-            await sepia_mode(client, query.message)
-            return
+    elif query.data == "gas":
+        await g_blur(client, query.message)
+        return
 
-        elif query.data == "pencil":
-            await pencil(client, query.message)
-            return
+    elif query.data == "normal":
+        await normal_blur(client, query.message)
+        return
 
-        elif query.data == "cartoon":
-            await cartoon(client, query.message)
-            return
+    elif query.data == "sepia":
+        await sepia_mode(client, query.message)
+        return
 
-        elif query.data == "normalglitch1":
-            await normalglitch_1(client, query.message)
-            return
+    elif query.data == "pencil":
+        await pencil(client, query.message)
+        return
 
-        elif query.data == "normalglitch2":
-            await normalglitch_2(client, query.message)
-            return
+    elif query.data == "cartoon":
+        await cartoon(client, query.message)
+        return
 
-        elif query.data == "normalglitch3":
-            await normalglitch_3(client, query.message)
-            return
+    elif query.data == "normalglitch1":
+        await normalglitch_1(client, query.message)
+        return
 
-        elif query.data == "normalglitch4":
-            await normalglitch_4(client, query.message)
-            return
+    elif query.data == "normalglitch2":
+        await normalglitch_2(client, query.message)
+        return
 
-        elif query.data == "normalglitch5":
-            await normalglitch_5(client, query.message)
-            return
+    elif query.data == "normalglitch3":
+        await normalglitch_3(client, query.message)
+        return
 
-        elif query.data == "scanlineglitch1":
-            await scanlineglitch_1(client, query.message)
-            return
+    elif query.data == "normalglitch4":
+        await normalglitch_4(client, query.message)
+        return
 
-        elif query.data == "scanlineglitch2":
-            await scanlineglitch_2(client, query.message)
-            return
+    elif query.data == "normalglitch5":
+        await normalglitch_5(client, query.message)
+        return
 
-        elif query.data == "scanlineglitch3":
-            await scanlineglitch_3(client, query.message)
-            return
+    elif query.data == "scanlineglitch1":
+        await scanlineglitch_1(client, query.message)
+        return
 
-        elif query.data == "scanlineglitch4":
-            await scanlineglitch_4(client, query.message)
-            return
+    elif query.data == "scanlineglitch2":
+        await scanlineglitch_2(client, query.message)
+        return
 
-        elif query.data == "scanlineglitch5":
-            await scanlineglitch_5(client, query.message)
-            return
+    elif query.data == "scanlineglitch3":
+        await scanlineglitch_3(client, query.message)
+        return
 
-        elif query.data == "rmbgwhite":
-            await removebg_white(client, query.message)
-            return
+    elif query.data == "scanlineglitch4":
+        await scanlineglitch_4(client, query.message)
+        return
 
-        elif query.data == "rmbgplain":
-            await removebg_plain(client, query.message)
-            return
+    elif query.data == "scanlineglitch5":
+        await scanlineglitch_5(client, query.message)
+        return
 
-        elif query.data == "rmbgsticker":
-            await removebg_sticker(client, query.message)
-            return
+    elif query.data == "rmbgwhite":
+        await removebg_white(client, query.message)
+        return
+
+    elif query.data == "rmbgplain":
+        await removebg_plain(client, query.message)
+        return
+
+    elif query.data == "rmbgsticker":
+        await removebg_sticker(client, query.message)
+        return
+
+
+
+
