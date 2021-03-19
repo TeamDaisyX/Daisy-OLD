@@ -73,7 +73,7 @@ async def hmm(client, message):
         await client.send_message(
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
-        return
+        break
     @Client.on_message(filters.text)
     async def exxit(client: Client, message: Message):
 
@@ -85,7 +85,7 @@ async def hmm(client, message):
             await client.send_message(
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
-            return
+            break
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
@@ -300,7 +300,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ),
         )
     elif query.data == "close_e":
-        return    
+        break    
     if query.data not in [
         "removebg",
         "stick",
@@ -316,17 +316,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
         if query.data == "bright":
             await bright(client, query.message)  
-            return
+            break
         elif query.data == "mix":
             await mix(client, query.message)
-            return
+            break
 
         elif query.data == "b|w":
             await black_white(client, query.message)
-            return
+            break
         elif query.data == "circlewithbg":
             await circle_with_bg(client, query.message)
-            return
+            break
         elif query.data == "circlewithoutbg":
             await circle_without_bg(client, query.message)
 
