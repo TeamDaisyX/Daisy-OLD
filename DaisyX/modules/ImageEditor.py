@@ -54,12 +54,16 @@ from pyrogram import filters
 
 @Client.on_message(filters.command(["imgeditor", "editimage","editor"]))
 async def hmm(client, message):
-    
+  """  
     await client.send_message(
             chat_id=message.chat.id,
-            text="**Image Editor Running, Now send a image to process**ㅤㅤ")   
-    
-    @Client.on_message(filters.photo)
+            text="**Image Editor Running, Now send a image to process**ㅤㅤ")   """
+
+    if not (replied.photo):
+        return
+    else:
+        
+    #@Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
             await client.send_message(
@@ -280,6 +284,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         elif query.data == "mix":
             await mix(client, query.message)
+            return
 
         elif query.data == "b|w":
             await black_white(client, query.message)
