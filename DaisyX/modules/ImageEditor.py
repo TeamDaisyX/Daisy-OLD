@@ -210,7 +210,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(
                             text="SCAN LINES", callback_data="scanlineglitch"
                         ),
-                    ]
+                    ],
                     [InlineKeyboardButton(text="CANCEL", callback_data="close_e")],
                 ]
             ),
