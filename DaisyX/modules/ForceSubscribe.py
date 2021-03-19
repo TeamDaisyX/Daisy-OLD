@@ -47,18 +47,26 @@ def _onUnMuteRequest(client, cb):
         chat_member = client.get_chat_member(chat_id, user_id)
         if chat_member.restricted_by:
             if chat_member.restricted_by.id == (client.get_me()).id:
-                try:
-                    client.get_chat_member(channel, user_id)
+                if (client.get_chat_member(chat_id, (client.get_me()).id).status == "administrator"):
                     client.unban_chat_member(chat_id, user_id)
                     cb.message.delete()
-                    # if cb.message.reply_to_message.from_user.id == user_id:
-                    # cb.message.delete()
-                except UserNotParticipant:
-                    client.answer_callback_query(
-                        cb.id,
-                        text=f"❗ Join our @{channel} channel and press 'UnMute Me' button.",
-                        show_alert=True,
-                    )
+                    client.send_message(
+                    chat_id,
+                    f"❗ **Congragulations {cb.from_user.mention} you got a VIP entry\n`Unmuted by an Admin`",
+                )
+                else:
+                    try:
+                        client.get_chat_member(channel, user_id)
+                        client.unban_chat_member(chat_id, user_id)
+                        cb.message.delete()
+                        # if cb.message.reply_to_message.from_user.id == user_id:
+                        # cb.message.delete()
+                    except UserNotParticipant:
+                        client.answer_callback_query(
+                            cb.id,
+                            text=f"❗ Join our @{channel} channel and press 'UnMute Me' button.",
+                            show_alert=True,
+                        )
             else:
                 client.answer_callback_query(
                     cb.id,
