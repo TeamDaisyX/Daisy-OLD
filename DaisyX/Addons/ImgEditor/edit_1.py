@@ -17,7 +17,7 @@ async def bright(client, message):
                 "Downloading image", quote=True
             )
             a = await client.download_media(
-                message=message.reply_to_message, file_name=download_location
+                message=message.get_reply_message(), file_name=download_location
             )
             await msg.edit("Processing Image...")
             image = Image.open(a)
