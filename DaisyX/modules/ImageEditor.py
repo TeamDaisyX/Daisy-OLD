@@ -49,8 +49,7 @@ from DaisyX.Addons.ImgEditor.edit_5 import (  # pylint:disable=import-error
     scanlineglitch_5,
 )
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message
-from DaisyX.services.pyrogram import pbot as Client
-from script import script  # pylint:disable=import-error
+from DaisyX.services.pyrogram import pbot as Client 
 from pyrogram import filters
 
 @Client.on_message(filters.command(["edit", "editimage","editor"]))
