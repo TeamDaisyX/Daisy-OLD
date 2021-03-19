@@ -68,12 +68,13 @@ async def hmm(client, message):
             )
         
     )
-    @Client.on_message(filters.text)
+    @Client.on_message(filters.command(["cancel", "end","stop"]))
     async def wow(client: Client, message: Message):
         await client.send_message(
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
         return
+    
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
