@@ -54,10 +54,13 @@ from pyrogram import filters
 
 @Client.on_message(filters.command(["imgeditor", "editimage","editor"]))
 async def hmm(client, message):
-  """  
+    
+    
+    """  
     await client.send_message(
             chat_id=message.chat.id,
-            text="**Image Editor Running, Now send a image to process**ㅤㅤ")   """
+            text="**Image Editor Running, Now send a image to process**ㅤㅤ")  
+    """
 
     if not (replied.photo):
         return
