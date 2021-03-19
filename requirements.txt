@@ -78,3 +78,9 @@ Markdown>=3.3.4
 better_profanity
 textblob 
 nudepy
+
+#ImageEditor
+glitch_this
+NumPy
+opencv-python-headless
+Pillow
