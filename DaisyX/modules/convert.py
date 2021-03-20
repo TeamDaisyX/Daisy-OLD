@@ -3,7 +3,7 @@ import asyncio
 import os
 import time
 from datetime import datetime
-
+from telethon import events
 from DaisyX.function.telethonbasics import progress
 from DaisyX.services.telethon import tbot
 TMP_DOWNLOAD_DIRECTORY = "./"
