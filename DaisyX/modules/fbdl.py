@@ -21,6 +21,7 @@ from DaisyX.services.telethon import tbot
 from DaisyX.function.telethonbasics import is_admin
 from telethon import events
 
+daisythumb = "./DaisyX/stuff/daisy.jpg"
 
 def main(url, filename):
     try:
@@ -77,10 +78,11 @@ async def _(event):
       kk = f"{filename}.mp4"
       caption= f"Facebook Video downloaded Successfully by @DaisyXBot.\nSay hi to devs @DaisySupport_Official."
 
-      await tbot.send_message(
+      await tbot.send_file(
         event.chat_id,
         caption,
         parse_mode="HTML",
+        thumb=daisythumb,
         file=kk,
         force_document=True,
         allow_cache=False,
