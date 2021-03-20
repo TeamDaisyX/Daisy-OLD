@@ -164,8 +164,10 @@ async def deezer(client, message: Message):
     await client.send_chat_action(message.chat.id, "cancel")
     await pablo.delete()
 
-_mod_name_ = "Deezer"
+_mod_name_ = "Music"
 
 _help_ = """
-/deezer : download from deezer
+/video <query>: download video from youtube
+/deezer <query>: download from deezer
+/song <query>: download song from youtube
 """
