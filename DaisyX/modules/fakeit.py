@@ -11,7 +11,7 @@
 #    You should have received a copy of the GNU Affero General Public License	
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.	
 
-
+from DaisyX import BOT_ID
 from faker import Faker	
 from faker.providers import internet	
 from DaisyX.services.telethon import tbot
