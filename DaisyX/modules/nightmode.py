@@ -72,7 +72,7 @@ async def close_ws(event):
           await event.reply(f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Database. This Group Will Be No Longer Closed On 12Am(IST) And Will Opened On 06Am(IST)**")
         else:
             await event.reply(
-                "I undestand `/nsfwguardian on` and `/nsfwguardian off` only"
+                "I undestand `/nightmode on` and `/nightmode off` only"
             )
     else:
         await event.reply("`You Should Be Admin To Do This!`")
