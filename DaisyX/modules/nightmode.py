@@ -18,6 +18,7 @@ from DaisyX.function.telethonbasics import is_admin
 from DaisyX.services.sql.night_mode_sql import add_nightmode, rmnightmode, get_all_chat_id, is_nightmode_indb
 from telethon.tl.types import ChatBannedRights
 from DaisyX.services.telethon import tbot
+from DaisyX import BOT_ID
 from telethon import events
 hehes = ChatBannedRights(
     until_date=None,
