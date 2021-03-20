@@ -75,13 +75,14 @@ async def __(message):
           await asyncio.sleep(0.3)
           out.export(m, format="ogg", bitrate="64k", codec="libopus")
           await message.edit("`Process Completed. Uploading Now Here..`")
-          await borg.send_file(
+          await tbot.send_file(
               message.to_id,
               m,
               reply_to=reply.id,
               voice_note=True,
               caption="Bass Boosted, \nDone By @DaisySupport_Official",
           )
+          
           os.remove(m)
       else:
           m.name = "BassBoosted.mp3"
@@ -102,8 +103,10 @@ async def __(message):
               ],
               caption="Bass Boosted, \nDone By @DaisySupport_Official",
           )
+          str(m)
           os.remove(m)
       await message.delete()
+      str(fname)
       os.remove(fname)
       
     else:
