@@ -165,7 +165,7 @@ async def fetch_audio(client, message):
         await message.reply("`Format Not Supported`")
         return
     if warner_stark.video:
-        await message.reply("`Video Detected, Converting To Audio !`")
+        lel=await message.reply("`Video Detected, Converting To Audio !`")
         warner_bros = await message.reply_to_message.download()
         stark_cmd = f"ffmpeg -i {warner_bros} -map 0:a friday.mp3"
         await runcmd(stark_cmd)
