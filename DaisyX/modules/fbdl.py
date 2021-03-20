@@ -21,7 +21,6 @@ from DaisyX.services.telethon import tbot
 from DaisyX.function.telethonbasics import is_admin
 from telethon import events
 
-daisythumb = "./DaisyX/stuff/daisy.jpg"
 
 def main(url, filename):
     try:
@@ -81,7 +80,6 @@ async def _(event):
       await tbot.send_message(
         event.chat_id,
         caption,
-        thumb=daisythumb,
         parse_mode="HTML",
         file=kk,
         force_document=True,
