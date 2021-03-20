@@ -18,8 +18,7 @@ from pyrogram import filters
 async def shazamm(client, message):
     kek = await edit_or_reply(message, "`Shazaming In Progress!`")
     if not message.reply_to_message:
-        await kek.reply("Reply To The Audio.")
-        await kek.delete
+        await kek.edit("Reply To The Audio.")
         return
     if os.path.exists("friday.mp3"):
       os.remove("friday.mp3")
@@ -37,7 +36,6 @@ async def shazamm(client, message):
     if xo.get("success") is False:
         await kek.edit("`Song Not Found IN Database. Please Try Again.`")
         os.remove(downloaded_file_name)
-        await kek.delete
         return
     xoo = xo.get("response")
     zz = xoo[1]
