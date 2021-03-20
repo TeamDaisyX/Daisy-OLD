@@ -52,6 +52,6 @@ async def _(event):
         await KkK.delete()
         
 __mod_name__ = "Books"
-__help__ = """booksdl: Books Scrapper
-Syntax : /book <book name>
+__help__ = """booksdl- Books Scrapper
+Syntax - /book <book name>
 Usage :Gets Instant Download Link Of Given Book."""
