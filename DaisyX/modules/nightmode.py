@@ -47,7 +47,8 @@ openhehe = ChatBannedRights(
 )
 @tbot.on(events.NewMessage(pattern="/nightmode (.*)"))
 async def close_ws(event):
-     if not event.is_group:
+    
+    if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
         return
     input_str = event.pattern_match.group(1)
