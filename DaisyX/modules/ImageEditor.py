@@ -74,7 +74,7 @@ async def hmm(client, message):
         await client.send_message(
             chat_id=message.chat.id,
             text="**Image Editor stopped.. \n   Thanks for using** @DaisyXBot")
-        return as 0
+        return 0
     @Client.on_message(filters.photo)
     async def photo(client: Client, message: Message):
         try:
