@@ -105,4 +105,4 @@ __mod_name__ = """ Telegraph
  Usage : upload text directly to telegraph .
 """
 
-__help__ = "Telegraph"
+__mod_name__ = "Telegraph"
