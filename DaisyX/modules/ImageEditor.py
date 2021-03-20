@@ -129,8 +129,7 @@ async def hmm(client, message):
                     except Exception:
                         return
 
-     except:
-        
+    except:      
         return
 
 
