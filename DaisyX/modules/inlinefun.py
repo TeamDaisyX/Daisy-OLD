@@ -1,18 +1,5 @@
-
+from DaisyX.services.telethon import tbot
 from telethon import events
-
-@friday.on(friday_on_cmd(pattern="stat$"))
-async def stats(event):
-    if event.fwd_from:
-        return
-    ahyes = await tbot.get_me()
-    botusername = ahyes.username
-    noob = "stats"
-    if event.reply_to_msg_id:
-        await event.get_reply_message()
-    tap = await tbot.inline_query(botusername, noob)
-    await tap[0].click(event.chat_id)
-    await event.delete()
 
 @tbot.on(events.NewMessage(pattern="/xogame$"))
 async def gamez(event):
