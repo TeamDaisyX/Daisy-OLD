@@ -69,10 +69,10 @@ async def _(event):
                 f.write(response.content)
 
         captin = f"Fake Image powered by @DaisySupport_Official."
-        fole = "hmm.jpg"
-        await borg.send_file(event.chat_id, fole, caption=captin)
+        fole = "FRIDAYOT.jpg"
+        await tbot.send_file(event.chat_id, fole, caption=captin)
         await event.delete()
-        os.system("rm /root/virtualuserbot/hmm.jpg ")
+        os.system("rm ./FRIDAYOT.jpg ")
 
 
 
