@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 
 from DaisyX.function.telethonbasics import progress
+from DaisyX.services.telethon import tbot
 TMP_DOWNLOAD_DIRECTORY = "./"
 
 
@@ -15,17 +16,17 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit(
-            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
+        await event.reply(
+            "reply to a media to use the `nfc` operation.\nInspired by @FridayOT"
         )
         return
-    await event.edit("trying to download media file, to my local")
+    await event.reply("trying to download media file, to my local")
     try:
         start = datetime.now()
         c_time = time.time()
-        downloaded_file_name = await borg.download_media(
+        downloaded_file_name = await tbot.download_media(
             reply_message,
-            Config.TMP_DOWNLOAD_DIRECTORY,
+            TMP_DOWNLOAD_DIRECTORY,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
             ),
@@ -98,7 +99,7 @@ async def _(event):
         os.remove(downloaded_file_name)
         if os.path.exists(new_required_file_name):
             end_two = datetime.now()
-            await borg.send_file(
+            await tbot.send_file(
                 entity=event.chat_id,
                 file=new_required_file_name,
                 caption=new_required_file_caption,
