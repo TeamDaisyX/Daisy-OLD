@@ -16,7 +16,7 @@ from pyrogram import filters
 
 @pbot.on_message(filters.command(["identify", "shazam"]))
 async def shazamm(client, message):
-    kek = await event.reply("`Shazaming In Progress!`")
+    kek = await message.reply_text("`Shazaming In Progress!`")
     if not message.reply_to_message:
         await kek.reply("Reply To The Audio.")
         return
