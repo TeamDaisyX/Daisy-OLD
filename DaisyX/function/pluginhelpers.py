@@ -172,7 +172,7 @@ async def fetch_audio(client, message):
         final_warner = "friday.mp3"
     elif warner_stark.audio:
         lel = await edit_or_reply(message,"`Download Started !`")
-        final_warner = await message.reply_to_message.download(f'`Downloading Video!`') #)progress=progress, progress_args=(message, c_time, 
+        final_warner = await message.reply_to_message.download(progress=progress, progress_args=(message:lel, c_time, ))
     await lel.edit("`Almost Done!`")    
     return final_warner    
 
