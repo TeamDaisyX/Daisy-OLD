@@ -1,4 +1,5 @@
 from DaisyX.services.telethon import tbot
+from DaisyX.services.telethonuserbot import ubot
 from telethon import events
 
 @tbot.on(events.NewMessage(pattern="/xogame$"))
@@ -22,7 +23,7 @@ async def wspr(event):
     botusername = "@whisperBot"
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    tap = await tbot.inline_query(botusername, wwwspr)
+    tap = await ubot.inline_query(botusername, wwwspr)
     await tap[0].click(event.chat_id)
     await event.delete()
 
@@ -36,7 +37,7 @@ async def mod(event):
     botusername = "@PremiumAppBot"
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    tap = await tbot.inline_query(botusername, modr)
+    tap = await ubot.inline_query(botusername, modr)
     await tap[0].click(event.chat_id)
     await event.delete()
 
