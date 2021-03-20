@@ -1,5 +1,5 @@
 import os
-import ffmpeg
+#import ffmpeg
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.raw.functions.channels import GetFullChannel
