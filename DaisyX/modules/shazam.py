@@ -29,7 +29,6 @@ async def shazamm(client, message):
     r = requests.post("https://starkapi.herokuapp.com/shazam/", files = f)
     try:
       xo = r.json()
-
     except JSONDecodeError:
       await kek.edit('`Seems Like Our Server Has Some Issues, Please Try Again Later!`')
       return
