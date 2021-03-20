@@ -13,13 +13,13 @@ from DaisyX import BOT_ID
 
 @tbot.on(events.NewMessage(pattern="/bassboost (.*)"))
 async def __(message):
-    if not event.is_group:
-        await event.reply("To reduce server overloading. We restricted using this command only in groups")
+    if not message.is_group:
+        await message.reply("To reduce server overloading. We restricted using this command only in groups")
         return
-    if not await is_admin(event, BOT_ID): 
-        await event.reply("`I Should Be Admin To Do This!`")
+    if not await is_admin(message, BOT_ID): 
+        await message.reply("`I Should Be Admin To Do This!`")
         return
-    if await is_admin(event, event.message.sender_id): 
+    if await is_admin(message, message.message.sender_id): 
       v = False
       accentuate_db = 40
       reply = await message.get_reply_message()
