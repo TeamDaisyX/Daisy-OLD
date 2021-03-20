@@ -173,7 +173,7 @@ async def fetch_audio(client, message):
     elif warner_stark.audio:
         await message.reply("`Download Started !`")
         final_warner = await message.reply_to_message.download(progress=progress, progress_args=(message, c_time, f'`Downloading Video!`'))
-    await message.edit("`Almost Done!`")    
+    await message.reply("`Almost Done!`")    
     return final_warner    
 
 # Admin check
