@@ -3,7 +3,7 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.raw.functions.channels import GetFullChannel
-from DaisyX.function.pluginhelpers import fetch_audio, get_readable_time, progress
+from DaisyX.function.pluginhelpers import fetch_audio, get_readable_time, progress,edit_or_reply
 from DaisyX.services.pyrogram import pbot
 import asyncio
 import math
