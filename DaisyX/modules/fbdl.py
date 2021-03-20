@@ -78,15 +78,7 @@ async def _(event):
       kk = f"{filename}.mp4"
       caption= f"Facebook Video downloaded Successfully by @DaisyXBot.\nSay hi to devs @DaisySupport_Official."
 
-      await tbot.send_file(
-        event.chat_id,
-        caption,
-        parse_mode="HTML",
-        thumb=daisythumb,
-        file=kk,
-        force_document=True,
-        allow_cache=False,
-      )
+      await tbot.send_file(event.chat_id,kk,caption="Facebook Video downloaded Successfully by @DaisyXBot.\nSay hi to devs @DaisySupport_Official.")
       os.system(f"rm {kk}")
     else:
         await event.reply("`You Should Be Admin To Do This!`")
