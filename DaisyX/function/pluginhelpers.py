@@ -17,7 +17,6 @@ import subprocess
 from typing import List, Optional, Tuple,Callable, Coroutine, Dict, Union
 import time
 from datetime import datetime
-# © @Mr_Dark_Prince
 import sys
 import traceback
 from functools import wraps
