@@ -10,7 +10,8 @@
 #	
 #    You should have received a copy of the GNU Affero General Public License	
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.	
-
+import os
+import requests
 from DaisyX import BOT_ID
 from faker import Faker	
 from faker.providers import internet	
@@ -47,10 +48,36 @@ async def hi(event):
     else:
         await event.reply("`You Should Be Admin To Do This!`")
         return
-      
+
+
+
+@tbot.on(events.NewMessage(pattern="/picgen$"))
+async def _(event):
+    if event.fwd_from:	
+        return	
+    if not event.is_group:
+        await event.reply("You Can Only Nsfw Watch in Groups.")
+        return
+    if not await is_admin(event, BOT_ID): 
+        await event.reply("`I Should Be Admin To Do This!`")
+        return
+    if await is_admin(event, event.message.sender_id):  
+        url = "https://thispersondoesnotexist.com/image"
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open("FRIDAYOT.jpg", "wb") as f:
+                f.write(response.content)
+
+        captin = f"Fake Image powered by @DaisySupport_Official."
+        fole = "hmm.jpg"
+        await borg.send_file(event.chat_id, fole, caption=captin)
+        await event.delete()
+        os.system("rm /root/virtualuserbot/hmm.jpg ")
+
+
 
 __mod_name__="FakeGen"
 __help__= """ Fake Information Generator
-Syntax - .fakegen
-Usage - Generates Fake Information
+- /fakegen : Generates Fake Information
+- /picgen : generate a fake pic
 """
