@@ -158,22 +158,22 @@ async def iter_chats(client):
 async def fetch_audio(client, message):
     c_time = time.time()
     if not message.reply_to_message:
-        await message.reply("`Reply To A Video / Audio.`")
+        await message.edit("`Reply To A Video / Audio.`")
         return
     warner_stark = message.reply_to_message
     if warner_stark.audio is None  and warner_stark.video is None:
-        await message.reply("`Format Not Supported`")
+        await message.edit("`Format Not Supported`")
         return
     if warner_stark.video:
-        await message.reply("`Video Detected, Converting To Audio !`")
+        await message.edit("`Video Detected, Converting To Audio !`")
         warner_bros = await message.reply_to_message.download(progress=progress, progress_args=(message, c_time, f'`Downloading Audio!`'))
         stark_cmd = f"ffmpeg -i {warner_bros} -map 0:a friday.mp3"
         await runcmd(stark_cmd)
         final_warner = "friday.mp3"
     elif warner_stark.audio:
-        await message.reply("`Download Started !`")
+        await message.edit("`Download Started !`")
         final_warner = await message.reply_to_message.download(f'`Downloading Video!`') #)progress=progress, progress_args=(message, c_time, 
-    await message.reply("`Almost Done!`")    
+    await message.edit("`Almost Done!`")    
     return final_warner    
 
 async def edit_or_reply(message, text, parse_mode="md"):
