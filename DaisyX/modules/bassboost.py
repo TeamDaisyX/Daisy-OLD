@@ -8,14 +8,14 @@ from pydub import AudioSegment
 from telethon import types
 from telethon import events
 from DaisyX.services.telethon import tbot
-
+from DaisyX.function.telethonbasics import is_admin
+from DaisyX import BOT_ID
 
 @tbot.on(events.NewMessage(pattern="/bassboost (.*)"))
 async def __(message):
     if not event.is_group:
         await event.reply("To reduce server overloading. We restricted using this command only in groups")
         return
-    input_str = event.pattern_match.group(1)
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
