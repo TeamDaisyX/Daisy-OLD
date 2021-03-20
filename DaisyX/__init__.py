@@ -38,6 +38,7 @@ if get_bool_key("DEBUG_MODE") is True:
 
 TOKEN = get_str_key("TOKEN", required=True)
 OWNER_ID = get_int_key("OWNER_ID", required=True)
+SUPPORT_CHAT = get_str_key("SUPPORT_CHAT", required=True)
 
 OPERATORS = list(get_list_key("OPERATORS"))
 OPERATORS.append(OWNER_ID)
