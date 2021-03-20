@@ -63,7 +63,7 @@ async def close_ws(event):
               return
           add_nightmode(str(event.chat_id))
           await event.reply(f"**Added Chat {event.chat.title} With Id {event.chat_id} To Database. This Group Will Be Closed On 12Am(IST) And Will Opened On 06Am(IST)**")
-        if (input_str == 'off' or input_str == 'Off' or input_str == 'OFF' or input_str == 'disable'):
+        elif (input_str == 'off' or input_str == 'Off' or input_str == 'OFF' or input_str == 'disable'):
 
           if not is_nightmode_indb(str(event.chat_id)):
               await event.reply("This Chat is Has Not Enabled Night Mode.")
