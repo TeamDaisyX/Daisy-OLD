@@ -27,7 +27,7 @@ async def gamez(event):
     await event.delete()
 
 
-@tbot.on(events.NewMessage(pattern="wspr ?(.*)"))
+@tbot.on(events.NewMessage(pattern="/wspr ?(.*)"))
 async def wspr(event):
     if event.fwd_from:
         return
@@ -41,7 +41,7 @@ async def wspr(event):
 
 
 
-@tbot.on(events.NewMessage(pattern="mod ?(.*)"))
+@tbot.on(events.NewMessage(pattern="/mod ?(.*)"))
 async def mod(event):
     if event.fwd_from:
         return
