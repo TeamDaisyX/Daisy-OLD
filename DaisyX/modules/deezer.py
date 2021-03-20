@@ -81,9 +81,10 @@ async def ytmusic(client,message: Message):
 
 @pbot.on_message(filters.command(["song", "music"]))
 async def ytmusic(client, message: Message):
+    pablo = await message.reply("`Searching For Song.....`")
     urlissed = get_text(message)
     if not urlissed:
-        await pablo.reply("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
         return
     pablo = await message.reply(f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
