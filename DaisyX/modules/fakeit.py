@@ -16,7 +16,7 @@ from faker import Faker
 from faker.providers import internet	
 from DaisyX.services.telethon import tbot
 from DaisyX.function.telethonbasics import is_admin
-from telethon import tbot
+from telethon import events
 
 @tbot.on(events.NewMessage(pattern="/fakegen$"))
 async def hi(event):	
