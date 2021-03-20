@@ -56,7 +56,7 @@ async def _(event):
 
       if x:
           html = requests.get(url).content.decode('utf-8')
-          await event.reply("Starting Video download... \n Please note: FBDL is not for big files. To reserve main processes uncrashed we slowed down this process")
+          await event.reply("Starting Video download... \n Please note: FBDL is not for big files.")
       else:
           await event.reply("This Video Is Either Private Or URL Is Invalid. Exiting... ")
           return
