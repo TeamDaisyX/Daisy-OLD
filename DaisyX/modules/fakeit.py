@@ -23,9 +23,6 @@ from telethon import events
 async def hi(event):	
     if event.fwd_from:	
         return	
-    if not event.is_group:
-        await event.reply("You Can Only Nsfw Watch in Groups.")
-        return
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
@@ -55,9 +52,6 @@ async def hi(event):
 async def _(event):
     if event.fwd_from:	
         return	
-    if not event.is_group:
-        await event.reply("You Can Only Nsfw Watch in Groups.")
-        return
     if not await is_admin(event, BOT_ID): 
         await event.reply("`I Should Be Admin To Do This!`")
         return
