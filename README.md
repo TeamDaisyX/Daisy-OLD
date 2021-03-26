@@ -1,13 +1,13 @@
 
 
-# “ Hey there 👋 I'm Daisy „
-## AI based Advanced telegram Group Management Bot Suit For All Your Needs ❤️
+# Daisy Based on Python Telegram Bot
+## OLD version of @DaisyXBot
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 ## https://daisyproject.studio
 ## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
-
+## NEW BOT AVAILABLE
 
 
 ## Credits
