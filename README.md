@@ -5,9 +5,11 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
-## https://daisyproject.studio
-## Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
-## NEW BOT AVAILABLE
+
+## New version Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
+## DaisyX-v2.0 is the latest
+
+
 
 
 ## Credits
