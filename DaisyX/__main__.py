@@ -67,7 +67,7 @@ PM_START_TEXT = """
 
 I am an Themed Group Managing Bot and I will help in managing your group
 
- Type help see my functions. 
+ Type /help see my functions. 
 """
 
 buttons = [
