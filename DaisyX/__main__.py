@@ -63,7 +63,7 @@ from DaisyX.modules.helper_funcs.misc import paginate_modules
 from DaisyX.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
- Hello there, I'm Rimuru tempest!(https://telegra.ph/file/ede402e98740d2c317c90.jpg)
+ Hello there, I'm Rimuru tempest! (https://telegra.ph/file/ede402e98740d2c317c90.jpg)
 
 I am an Themed Group Managing Bot and I will help in managing your group
 
