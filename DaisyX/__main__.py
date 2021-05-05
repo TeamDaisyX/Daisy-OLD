@@ -67,15 +67,13 @@ PM_START_TEXT = """
 
 I am an Themed Group Managing Bot and I will help in managing your group
 
-✪ Make sure you read *INFO* Section Below ✪ 
+ Type help see my functions. 
 """
 
 buttons = [
     [
         InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
-    ],
-    [
-        InlineKeyboardButton(text=" Help & Commands ", callback_data="help_back"),
+    
     ],
     [
         InlineKeyboardButton(
