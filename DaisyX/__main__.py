@@ -63,7 +63,7 @@ from DaisyX.modules.helper_funcs.misc import paginate_modules
 from DaisyX.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
- Hello there, I'm Rimuru tempest! (https://telegra.ph/file/ede402e98740d2c317c90.jpg)
+ Hello there, I'm Rimuru tempest! 
 
 I am an Themed Group Managing Bot and I will help in managing your group
 
@@ -95,7 +95,7 @@ HELP_STRINGS = f"""
     dispatcher.bot.first_name,
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
-
+SAITAMA_IMG = "https://telegra.ph/file/ede402e98740d2c317c90.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer's of the Base code,
