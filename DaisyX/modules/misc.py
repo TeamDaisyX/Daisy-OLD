@@ -614,48 +614,48 @@ def stats(update, context):
 # /ip is for private use
 __help__ = """
 
- ✪ /gdpr: Deletes your information from the bot's database. Private chats only.
- ✪ /markdownhelp: Quick summary of how markdown works in telegram - can only be called in private chats.
- ✪ /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
+ • /gdpr: Deletes your information from the bot's database. Private chats only.
+ • /markdownhelp: Quick summary of how markdown works in telegram - can only be called in private chats.
+ • /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
 
 *➩Info:*
-  ✪ /whois: Get information about user using pyrogram  method.
+  • /whois: Get information about user using pyrogram  method.
 
 *➩Translator:*
-  ✪ /tr or /tl: To translate to your language, by default language is set to english, use /tr <lang code> for some other language!
-  ✪ /splcheck: As a reply to get grammar corrected text of gibberish message.
-  ✪ /tts: To some message to convert it into audio format!
-  ✪ /stt: Convert audio to text ( only English).
+  • /tr or /tl: To translate to your language, by default language is set to english, use /tr <lang code> for some other language!
+  • /splcheck: As a reply to get grammar corrected text of gibberish message.
+  • /tts: To some message to convert it into audio format!
+  • /stt: Convert audio to text ( only English).
 
 *➩Search:*
-  ✪ /google <text>:- search google queries.Use in bot pm (admin can use in group).
-  ✪ /wiki: Search wikipedia articles.
-  ✪ /ud <query>: Search stuffs in urban dictionary.
-  ✪ /reverse: Reverse searches image or stickers on google.
-  ✪ /app <app name>: Finds an app in playstore for you
-  ✪ /cash: currency converter
-  ✪ /wall <query>: Get random wallpapers directly from bot!
+  • /google <text>:- search google queries.Use in bot pm (admin can use in group).
+  • /wiki: Search wikipedia articles.
+  • /ud <query>: Search stuffs in urban dictionary.
+  • /reverse: Reverse searches image or stickers on google.
+  • /app <app name>: Finds an app in playstore for you
+  • /cash: currency converter
+  • /wall <query>: Get random wallpapers directly from bot!
 
 *➩Github:*
-  ✪ /git: Returns info about a GitHub user or organization.
-  ✪ /repo: Return the GitHub user or organization repository list (Limited at 40).
+  • /git: Returns info about a GitHub user or organization.
+  • /repo: Return the GitHub user or organization repository list (Limited at 40).
 
 *➩Covid:*
-  ✪ /covid :To get Global data.
-  ✪ /covid <country>:To get data of a country.
+  • /covid :To get Global data.
+  • /covid <country>:To get data of a country.
  
 *➩Paste:*
-  ✪ /paste: Create a paste or a shortened url using dogbin. *From letters to url.*
-  ✪ /getpaste: Get the content of a paste or shortened url from dogbin
-  ✪ /fpaste: Create a paste or a shortened url using dogbin and nekobin.*From files to url.*
+  • /paste: Create a paste or a shortened url using dogbin. *From letters to url.*
+  • /getpaste: Get the content of a paste or shortened url from dogbin
+  • /fpaste: Create a paste or a shortened url using dogbin and nekobin.*From files to url.*
 
 *➩Time and Weather:*
-  ✪ /time <query>: Gives information about a timezone.
-  ✪ /weather <city>: Gets weather information of particular place!
+  • /time <query>: Gives information about a timezone.
+  • /weather <city>: Gets weather information of particular place!
 \
 """
 
-__mod_name__ = "Miscs 🚀"
+__mod_name__ = "Miscs"
 
 APP_HANDLER = DisableAbleCommandHandler("app", app)
 LYRICS_HANDLER = DisableAbleCommandHandler("lyrics", lyrics, pass_args=True)
