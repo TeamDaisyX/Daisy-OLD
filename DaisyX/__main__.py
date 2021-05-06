@@ -74,7 +74,7 @@ buttons = [
     [
         InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
     ],
-    [
+    (
         InlineKeyboardButton( 
             text="Repo", url="https://github.com/MOAYAZ154/Rimuru-tempest"
     ],
