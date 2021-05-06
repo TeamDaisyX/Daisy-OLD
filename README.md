@@ -10,3 +10,10 @@ Rimuru Robot Telegram Bot for managing your group with additional features
 
 
 A modular Telegram Python bot running on python3 with a sqlalchemy database and an entirely themed persona to make Rimuru suitable for Anime and Manga group chats.
+
+
+
+
+
+
+Can be found on telegram as [Rimuru Tempest](https://t.me/Remuru_bot).
