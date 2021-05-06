@@ -118,17 +118,17 @@ def report(update: Update, context: CallbackContext) -> str:
                 ],
                 [
                     InlineKeyboardButton(
-                        "⚠ Kick",
+                        "Kick",
                         callback_data=f"report_{chat.id}=kick={reported_user.id}={reported_user.first_name}",
                     ),
                     InlineKeyboardButton(
-                        "⛔️ Ban",
+                        "Ban",
                         callback_data=f"report_{chat.id}=banned={reported_user.id}={reported_user.first_name}",
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "❎ Delete Message",
+                        "Delete Message",
                         callback_data=f"report_{chat.id}=delete={reported_user.id}={message.reply_to_message.message_id}",
                     )
                 ],
@@ -265,12 +265,12 @@ def buttons(update: Update, context: CallbackContext):
 
 
 __help__ = """
-✪ /report <reason>*:* reply to a message to report it to admins.
-✪ `@admin`*:* reply to a message to report it to admins.
+• /report <reason>*:* reply to a message to report it to admins.
+• `@admin`*:* reply to a message to report it to admins.
 *NOTE:* Neither of these will get triggered if used by admins.
 
 *Admins only:*
- ✪ /reports <on/off>*:* change report setting, or view current status.
+ • /reports <on/off>*:* change report setting, or view current status.
    • If done in pm, toggles your status.
    • If in group, toggles that groups's status.
 """
@@ -286,7 +286,7 @@ dispatcher.add_handler(SETTING_HANDLER)
 dispatcher.add_handler(REPORT_HANDLER, REPORT_GROUP)
 dispatcher.add_handler(ADMIN_REPORT_HANDLER, REPORT_GROUP)
 
-__mod_name__ = "Reporting ⚠️"
+__mod_name__ = "Reporting "
 __handlers__ = [
     (REPORT_HANDLER, REPORT_GROUP),
     (ADMIN_REPORT_HANDLER, REPORT_GROUP),
