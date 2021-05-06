@@ -204,13 +204,13 @@ __help__ = """
 Note: Only creator of the group can setup me and i will not allow force subscribe again if not done so.
  
 *Commmands*
-✪ /ForceSubscribe - To get the current settings.
-✪ /ForceSubscribe no/off/disable - To turn of ForceSubscribe.
-✪ /ForceSubscribe {channel username} - To turn on and setup the channel.
-✪ /ForceSubscribe clear - To unmute all members who muted by me.
+ /ForceSubscribe - To get the current settings.
+ /ForceSubscribe no/off/disable - To turn of ForceSubscribe.
+ /ForceSubscribe {channel username} - To turn on and setup the channel.
+ /ForceSubscribe clear - To unmute all members who muted by me.
 
 Note: /FSub is an alias of /ForceSubscribe
 
  
 """
-__mod_name__ = "📢 Force Subscribe 💭"
+__mod_name__ = " Force Subscribe "
