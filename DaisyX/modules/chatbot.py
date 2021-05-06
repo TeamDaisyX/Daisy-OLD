@@ -148,8 +148,8 @@ Chatbot utilizes the CoffeeHouse API and allows Senku to talk and provides a mor
 
 *Commands:* 
 *Admins only:*
- ✪ `/addchat`*:* Enables Chatbot mode in the chat.
- ✪ `/rmchat`*:* Disables Chatbot mode in the chat.
+  `/addchat`*:* Enables Chatbot mode in the chat.
+  `/rmchat`*:* Disables Chatbot mode in the chat.
 
 Reports bugs at @{SUPPORT_CHAT}
 [Powered by CoffeeHouse](https://coffeehouse.intellivoid.net) from @Intellivoid
@@ -172,7 +172,7 @@ dispatcher.add_handler(REMOVE_CHAT_HANDLER)
 dispatcher.add_handler(CHATBOT_HANDLER)
 dispatcher.add_handler(LIST_CB_CHATS_HANDLER)
 
-__mod_name__ = "Chatbot 🙋‍♀️"
+__mod_name__ = "Chatbot"
 __command_list__ = ["addchat", "rmchat", "listaichats"]
 __handlers__ = [
     ADD_CHAT_HANDLER,
