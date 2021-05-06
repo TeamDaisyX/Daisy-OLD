@@ -398,10 +398,10 @@ __help__ = """
 You know how sometimes, people join, send 100 messages, and ruin your chat? With antiflood, that happens no more!
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood \
 will result in restricting that user.
- ✪ /flood*:* Get the current flood control setting
+ • /flood*:* Get the current flood control setting
 *Admin only:*
- ✪ /setflood <int/'no'/'off'>: enables or disables flood control
- ✪ /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
+ • /setflood <int/'no'/'off'>: enables or disables flood control
+ • /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
  Note:
  - Value must be filled for tban and tmute!
  It can be:
@@ -411,7 +411,7 @@ will result in restricting that user.
  1w = 1 week
  """
 
-__mod_name__ = "Antiflood 🛡"
+__mod_name__ = "Antiflood "
 
 FLOOD_BAN_HANDLER = MessageHandler(
     Filters.all & ~Filters.status_update & Filters.group, check_flood
