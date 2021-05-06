@@ -77,7 +77,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="Add Rimuru to your group", url="t.me/daisyXBot?startgroup=true"
+            text="Add Rimuru to your group", url="t.me/Remuru_bot?startgroup=true"
         ),
     ],
 ]
