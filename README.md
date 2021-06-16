@@ -1,14 +1,14 @@
 
 
-# Max-Robot Based on Python Telegram Bot
-## Newest version of @DaisyXBot
-# swith advanced for all fetures
+# 🔥Max-Robot Based on Python Telegram Bot
+## 🔥Newest version of @DaisyXBot
+#🔥 with advanced for all fetures
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sltechworld/Max-Robot.git)
 
 
-## New version Avaiilable on Telegram as [@MaxRobot](https://t.me/daisyxbot)
-## DaisyX-v2.0 is the latest
+##🔥 New version Avaiilable on Telegram as [@MaxRobot](https://t.me/daisyxbot)
+## 🔥 Max-Robot is the latest
 
 
 
@@ -40,5 +40,4 @@ The Advanced Branch (For PRO's)
 DaisyX v1.0(advvanced)
 
 ## Special Credits
-- [ImJanindu](https://github.com/imjanindu) - A Co-Developer of Project
-- [Kaviya-Admin](https://github.com/kaviya-admin) - A Co-Developer of Project
+- [sltechworld](https://github.com/sltechworld) - A Co-Developer of Project
