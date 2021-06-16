@@ -7,7 +7,7 @@
          "anime",
          "group",
          "manager",
-         "DaisyX"
+         "daisy"
       ],   
    "repository": "https://github.com/sltechworld/Max-Robot",
    "addons": [
@@ -178,7 +178,7 @@
       "anime",
       "group",
       "manager",
-      "DaisyX"
+      "daisy"
    ],
    "name": "Max Robot",
    "repository": "https://github.com/sltechworld/Max-Robot",
