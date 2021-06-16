@@ -9,7 +9,7 @@
          "manager",
          "DaisyX"
       ],   
-   "repository": "https://github.com/Inukaasith/daisy-x",
+   "repository": "https://github.com/sltechworld/Max-Robot",
    "addons": [
       {
          "options": {
@@ -84,7 +84,7 @@
       "DEV_USERS": {
          "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Saitama support then keep the current ID's here at they are and add yours.",
          "required": false,
-         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
+         "value": "1141839926"
       },
       "sw_api": {
          "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
@@ -98,22 +98,22 @@
       "DRAGONS": {
          "description": "A space separated list of user IDs who you want to assign as sudo users.",
          "required": false,
-         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
+         "value": "1141839926"
       },
       "DEMONS": {
          "description": "A space separated list of user IDs who you wanna assign as support users(gban perms only).",
          "required": false,
-         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
+         "value": "1141839926"
       },
       "TIGERS": {
          "description": "A space separated list of user IDs who you wanna assign as tiger users.",
          "required": false,
-         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
+         "value": "1141839926"
       },
       "WOLVES": {
          "description": "A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot.",
          "required": false,
-         "value": "1141839926 1186105905 1204360944 1082702383 1321570688 1116300562 694380168 1347096051"
+         "value": "1141839926"
       },
       "ENV": {
          "description": "Setting this to ANYTHING will enable environment variables. Leave it as it is",
@@ -181,5 +181,5 @@
       "daisy"
    ],
    "name": "Max Robot",
-   "repository": "https://github.com/Inukaasith/daisy-x"
+   "repository": "https://github.com/sltechworld/Max-Robot"
 }
