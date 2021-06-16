@@ -39,3 +39,4 @@ The Advanced Branch
 
 ## Special Credits
 - [sltechworld](https://github.com/sltechworld) - A Co-Developer of Project
+- [Supun Max](https://t.me/maxsupun1)- Develper
