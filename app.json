@@ -1,6 +1,7 @@
 {
-      "name": "Daisy X",
+      "name": "Max Robot",
       "description": "An Anime themed Telegram group management bot.",
+      "logo": "https://telegra.ph/file/18db78aca96c01c79b27b.jpg",
       "keywords": [
          "telegram",
          "anime",
@@ -179,6 +180,6 @@
       "manager",
       "daisy"
    ],
-   "name": "Daisy X",
+   "name": "Max Robot",
    "repository": "https://github.com/Inukaasith/daisy-x"
 }
