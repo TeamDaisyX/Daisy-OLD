@@ -9,7 +9,7 @@
          "manager",
          "DaisyX"
       ],   
-   "repository": "TeamDaisyX/Daisy-OLD",
+   "repository": "https://github.com/sltechworld/Daisy-OLD/blob/32cfc04b1cfff23e7d7aab39b46abc2cb7da919e/DaisyX/__main__.py,
    "addons": [
       {
          "options": {
