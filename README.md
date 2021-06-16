@@ -32,12 +32,10 @@ This repo was just revamped to suit an Anime-centric community. All original cre
 
 All other credits mentioned on top of scripts
 
-Should any be missing kindly let us know at [Daisy Support](https://t.me/DaisySupport_Official) or simply submit a pull request on the readme.
+Should any be missing kindly let us know at [Max Robot Support](https://t.me/SL_Tech_Worldchat) or simply submit a pull request on the readme.
 
-## Daisy X the telegram Bot Project
-The Advanced Branch (For PRO's)
-
-DaisyX v1.0(advvanced)
+## Max Robot the telegram Bot Project
+The Advanced Branch 
 
 ## Special Credits
 - [sltechworld](https://github.com/sltechworld) - A Co-Developer of Project
