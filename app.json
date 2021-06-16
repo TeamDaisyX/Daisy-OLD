@@ -1,14 +1,14 @@
 {
-      "name": "Daisy X",
+      "name": "Max Robot",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "DaisyX"
+         "Max Robot"
       ],   
-   "repository": "https://github.com/Inukaasith/daisy-x",
+   "repository": "https://github.com/sltechworld/Max-Robot",
    "addons": [
       {
          "options": {
