@@ -6,7 +6,7 @@
          "anime",
          "group",
          "manager",
-         "Max Robot"
+         "daisy"
       ],   
    "repository": "https://github.com/sltechworld/Max-Robot",
    "addons": [
@@ -19,7 +19,7 @@
    ],
    "buildpacks": [
     {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+      "url": "https://github.com/sltechworld/heroku-buildpack-ffmpeg-latest"
     },
     {
       "url": "heroku/python"
@@ -177,7 +177,7 @@
       "anime",
       "group",
       "manager",
-      "Max Robot"
+      "daisy"
    ],
    "name": "Max Robot",
    "repository": "https://github.com/sltechworld/Max-Robot",
