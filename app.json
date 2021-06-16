@@ -1,12 +1,13 @@
 {
       "name": "Max Robot",
       "description": "An Anime themed Telegram group management bot.",
+       "logo": "https://telegra.ph/file/18db78aca96c01c79b27b.jpg",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "daisy"
+         "DaisyX"
       ],   
    "repository": "https://github.com/sltechworld/Max-Robot",
    "addons": [
@@ -19,7 +20,7 @@
    ],
    "buildpacks": [
     {
-      "url": "https://github.com/sltechworld/heroku-buildpack-ffmpeg-latest"
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
     },
     {
       "url": "heroku/python"
