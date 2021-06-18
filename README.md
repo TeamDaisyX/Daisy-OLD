@@ -38,5 +38,5 @@ Should any be missing kindly let us know at [Max Robot Support](https://t.me/SL_
 The Advanced Branch 
 
 ## Special Credits
-- [sltechworld](https://github.com/sltechworld) - A Co-Developer of Project
 - [Supun Max](https://t.me/maxsupun1)- Develper
+- [sltechworld](https://github.com/sltechworld) - Our group
