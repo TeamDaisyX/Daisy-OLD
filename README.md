@@ -40,4 +40,4 @@ The Advanced Branch
 ## Special credits
 - [sltechworld](https://t.me/SL_Tech_Worldchat) - Our Telegram group
 
-## [sltechworld]() - Our Youtube channel
+## [sltechworld](https://www.youtube.com/channel/UCLziWEeJ-VZuUnZaFUIYTOA?sub_confirmation=1) - Our Youtube channel
