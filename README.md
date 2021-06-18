@@ -37,6 +37,7 @@ Should any be missing kindly let us know at [Max Robot Support](https://t.me/SL_
 ## Max Robot the telegram Bot Project
 The Advanced Branch 
 
-## Special Credits
-- [Supun Max](https://t.me/maxsupun1)- Develper
-- [sltechworld](https://github.com/sltechworld) - Our group
+## Special credits
+- [sltechworld](https://t.me/SL_Tech_Worldchat) - Our Telegram group
+
+## [sltechworld]() - Our Youtube channel
