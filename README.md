@@ -1,14 +1,14 @@
 
 
-# Daisy Based on Python Telegram Bot
-## OLD version of @DaisyXBot
-# 2 Branches available. this is main brach. swith advanced for all fetures
+# 🔥Max-Robot Based on Python Telegram Bot
+## 🔥Newest version of @DaisyXBot
+#🔥 with advanced for all fetures
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sltechworld/Max-Robot.git)
 
 
-## New version Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
-## DaisyX-v2.0 is the latest
+##🔥 New version Avaiilable on Telegram as [@MaxRobot](https://t.me/daisyxbot)
+## 🔥 Max-Robot is the latest
 
 
 
@@ -32,13 +32,12 @@ This repo was just revamped to suit an Anime-centric community. All original cre
 
 All other credits mentioned on top of scripts
 
-Should any be missing kindly let us know at [Daisy Support](https://t.me/DaisySupport_Official) or simply submit a pull request on the readme.
+Should any be missing kindly let us know at [Max Robot Support](https://t.me/SL_Tech_Worldchat) or simply submit a pull request on the readme.
 
-## Daisy X the telegram Bot Project
-The Advanced Branch (For PRO's)
+## Max Robot the telegram Bot Project
+The Advanced Branch 
 
-DaisyX v1.0(advvanced)
+## Special credits
+- [sltechworld](https://t.me/SL_Tech_Worldchat) - Our Telegram group
 
-## Special Credits
-- [ImJanindu](https://github.com/imjanindu) - A Co-Developer of Project
-- [Kaviya-Admin](https://github.com/kaviya-admin) - A Co-Developer of Project
+## [sltechworld](https://www.youtube.com/channel/UCLziWEeJ-VZuUnZaFUIYTOA?sub_confirmation=1) - Our Youtube channel
