@@ -56,11 +56,11 @@ from DaisyX import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from DaisyX.modules import ALL_MODULES
-from DaisyX.modules.helper_funcs.alternate import typing_action
-from DaisyX.modules.helper_funcs.chat_status import is_user_admin
-from DaisyX.modules.helper_funcs.misc import paginate_modules
-from DaisyX.modules.helper_funcs.readable_time import get_readable_time
+from VishaBot.modules import ALL_MODULES
+from VishaBot.modules.helper_funcs.alternate import typing_action
+from VishaBot.modules.helper_funcs.chat_status import is_user_admin
+from VishaBot.modules.helper_funcs.misc import paginate_modules
+from VishaBot.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
 Hello there, I'm [𝑉𝐼𝑆𝐻𝐴 𝘽𝙊𝙏](https://share.icloud.com/photos/0OiUCOjZ5XY9IcsxmggVkAYjQ)
@@ -118,7 +118,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("DaisyX.modules." + module_name)
+    imported_module = importlib.import_module("VishaBot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
