@@ -1,13 +1,13 @@
 
 
-# Daisy Based on Python Telegram Bot
+# VishaBot Based on Python Telegram Bot
 ## OLD version of @DaisyXBot
 # 2 Branches available. this is main brach. swith advanced for all fetures
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inukaasith/Daisy-x.git)
 
 
-## New version Avaiilable on Telegram as [@DaisyXBot](https://t.me/daisyxbot)
+## New version Avaiilable on Telegram as [@DaisyXBot](https://t.me/VISHA_BBY_BOT)
 ## DaisyX-v2.0 is the latest
 
 

@@ -56,14 +56,14 @@ from DaisyX import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from DaisyX.modules import ALL_MODULES
-from DaisyX.modules.helper_funcs.alternate import typing_action
-from DaisyX.modules.helper_funcs.chat_status import is_user_admin
-from DaisyX.modules.helper_funcs.misc import paginate_modules
-from DaisyX.modules.helper_funcs.readable_time import get_readable_time
+from VishaBot.modules import ALL_MODULES
+from VishaBot.modules.helper_funcs.alternate import typing_action
+from VishaBot.modules.helper_funcs.chat_status import is_user_admin
+from VishaBot.modules.helper_funcs.misc import paginate_modules
+from VishaBot.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
-Hello there, I'm [𝓓𝓪𝓲𝓼𝔂 𝓧](https://telegra.ph/file/473cc17913393959e0667.jpg)
+Hello there, I'm [𝑉𝐼𝑆𝐻𝐴 𝘽𝙊𝙏](https://share.icloud.com/photos/0OiUCOjZ5XY9IcsxmggVkAYjQ)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
@@ -79,14 +79,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="💫 Add Daisy to your group 💫", url="t.me/daisyXBot?startgroup=true"
+            text="💫 Add Visha to your group 💫", url="t.me/VishaBot?startgroup=true"
         ),
     ],
 ]
 
 
 HELP_STRINGS = f"""
-*Main Commands :* [🤖](https://telegra.ph/file/473cc17913393959e0667.jpg)
+*Main Commands :* [🤖](https://share.icloud.com/photos/0OiUCOjZ5XY9IcsxmggVkAYjQ)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /donate: You can support my creater using this command.
@@ -101,7 +101,7 @@ HELP_STRINGS = f"""
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer's of the Base code,
-Support them  [Inuka](t.me/InukaASiTH),[Jason](t.me/imjanindu),"""
+Support them  [Inuka](t.me/VISHA_BBY),[Jason](t.me/imjanindu),"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -118,7 +118,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("DaisyX.modules." + module_name)
+    imported_module = importlib.import_module("VishaBot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
