@@ -63,7 +63,7 @@ from DaisyX.modules.helper_funcs.misc import paginate_modules
 from DaisyX.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
-Hello there, I'm [𝓓𝓪𝓲𝓼𝔂 𝓧](https://telegra.ph/file/473cc17913393959e0667.jpg)
+Hello there, Iam[mohini](https://telegra.ph/file/2651f0e35ebee89c1f125.jpg)
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
@@ -79,14 +79,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="💫 Add Daisy to your group 💫", url="t.me/daisyXBot?startgroup=true"
+            text="💫 Add mohini to your group 💫", url=".me/mohinislbz_bot?startgroup=true"
         ),
     ],
 ]
 
 
 HELP_STRINGS = f"""
-*Main Commands :* [🤖](https://telegra.ph/file/473cc17913393959e0667.jpg)
+*Main Commands :* [🤖](https://telegra.ph/file/2651f0e35ebee89c1f125.jpg)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /donate: You can support my creater using this command.
@@ -101,7 +101,7 @@ HELP_STRINGS = f"""
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer's of the Base code,
-Support them  [Inuka](t.me/InukaASiTH),[Jason](t.me/imjanindu),"""
+Support them  [Supun](t.me/slbotzone ),[sl geek show](t.me/ @slbotzone ),"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -222,7 +222,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            "I'm now online!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -360,10 +360,10 @@ def DaisyX_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*😍 Hi again!  The name's {dispatcher.bot.first_name} 😍 \n\nAs  You I'm a next generational group management bot developed by Infinity_Bots.* "
-            f"\n\n 🔥 Join [Infinity_Bots](https://t.me/Infinity_Bots) To Keep Yourself Updated About {dispatcher.bot.first_name} 🔥"
+            text=f"*😍 Hi again!  The name's {dispatcher.bot.first_name} 😍 \n\nAs  You I'm a next generational group management bot developed by sl bot zone.* "
+            f"\n\n 🔥 Join [slbotzone](https://t.me/slbotzone ) To Keep Yourself Updated About {dispatcher.bot.first_name} 🔥"
             f"\n\n I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL banning system which safegaurds and helps your group from spammers."
-            f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/473cc17913393959e0667.jpg)"
+            f"\n\nI Can Manage Your Groups Smoothly, With Some Special Features [:)](https://telegra.ph/file/2651f0e35ebee89c1f125.jpg)"
             f"\n\n👇 You Can Know More About Me By Clicking The Below Buttons 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -398,7 +398,7 @@ def DaisyX_about_callback(update, context):
         query.message.edit_text(
             text=f"* ｢ BASIC HELP 」*"
             f"\nIf You Can Also Add {dispatcher.bot.first_name} To Your Chats By Clicking [Here](http://t.me/{dispatcher.bot.username}?startgroup=true) And Selecting Chat. \n"
-            f"\n\nYou Can get support {dispatcher.bot.first_name} by joining [InfinityJE](https://t.me/infinityje).\n"
+            f"\n\nYou Can get support {dispatcher.bot.first_name} by joining [sl bot zone ](https://t.me/slbotzone ).\n"
             f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -477,7 +477,7 @@ def DaisyX_about_callback(update, context):
             text=f"<b> ｢ Terms and Conditions 」</b>\n"
             f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
             f"\n✪ We always respect your privacy \n  We never log into bot's api and spying on you \n  We use a encripted database \n  Bot will automatically stops if someone logged in with api."
-            f"\n✪ Always try to keep credits, so \n  This hardwork is done by Infinity_Bots team spending many sleepless nights.. So, Respect it."
+            f"\n✪ Always try to keep credits, so \n  This hardwork is done by infinity team spending many sleepless nights.. So, Respect it."
             f"\n✪ Some modules in this bot is owned by different authors, So, \n  All credits goes to them \n  Also for <b>Paul Larson for Marie</b>."
             f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
             f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
