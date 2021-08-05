@@ -3,7 +3,7 @@
 # Daisy Based on Python Telegram Bot
 
 # Just anonther saitama fork. Unmaintained 
-
+# bit modified saitama fork. all credits goes to original owners. We dont own sourcs code. just did few modifications only. if any credits missing please send a pull request 
 ## OLD version of @DaisyXBot
 # 2 Branches available. this is main brach. swith advanced for all fetures
 
